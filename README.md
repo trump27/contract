@@ -1,51 +1,105 @@
-# CakePHP Application Skeleton
+# CakePHP3 
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+cakephp 3.5.1  
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 3.x.
+1. プロジェクト作成＆設定
+1. friendsofcake/bootstrap-uiの導入
+1. friendsofcake/searchの導入
+1. Josegonzalez/Uploadの導入
+1. ユーザ認証
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+# インストール
 
-## Installation
+以降、コマンドはbashで行う。
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
-
-If Composer is installed globally, run
-
-```bash
-composer create-project --prefer-dist cakephp/app
+## composer準備
+```
+php $(dirname $0)/composer.phar $@
+// @php "%~dp0composer.phar" %*
 ```
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
-
+## project作成
 ```bash
-composer create-project --prefer-dist cakephp/app myapp
+composer self-update
+composer create-project --prefer-dist cakephp/app:~3 myproj
+
+sed -i -e "s|/config/app.php|#/config/app.php|" .gitignore
+
+# change directory
+git init
+git add .
+git commit -m "initial commit"
 ```
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+## アプリケーションの設定
+
+DBをSQliteに設定、他。DB名は適宜変更のこと。
 
 ```bash
-bin/cake server -p 8765
+sed -i -e "s|'APP_DEFAULT_LOCALE', 'en_US'|'APP_DEFAULT_LOCALE', 'ja_JP'|" config/app.php
+sed -i -e 's|Driver\\Mysql|Driver\\SQLite|' config/app.php
+sed -i -e "s|'database' => 'my_app'|'database' => ROOT . DS . 'contract.db'|" config/app.php
+
+sed -i -e "s|date_default_timezone_set('UTC');|date_default_timezone_set('Asia/Tokyo');|" config/bootstrap.php
 ```
 
-Then visit `http://localhost:8765` to see the welcome page.
+設定確認
+config/app.php
+```php
+'defaultLocale' => env('APP_DEFAULT_LOCALE', 'ja_JP'),
+'driver' => 'Cake\Database\Driver\Sqlite',
+'database' => ROOT . DS . 'my.db',
 
-## Update
+'timezone' => 'Asia/Tokyo',
+```
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+config/bootstrap.php
+```php
+date_default_timezone_set('Asia/Tokyo');
+```
 
-## Configuration
+# リソースの追加
 
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
+bootstrap-uiで使用するjquery, bootstrap(css)等をwebrootにコピーする。
 
-## Layout
+## composerでリソースを取得
+```
+composer require twbs/bootstrap:~3
+composer require components/jquery:~2
+composer require components/jqueryui:~1
+```
 
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) (v5) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+## webrootに配置（コピー）
+```bash
+mkdir -p webroot/css/bootstrap webroot/js/bootstrap webroot/js/jquery webroot/js/jqueryui webroot/css/jqueryui/themes
+# jquery
+cp vendor/components/jquery/jquery*.js webroot/js/jquery/
+# bootstrap
+cp vendor/twbs/bootstrap/dist/js/bootstrap*.js webroot/js/bootstrap/
+cp vendor/twbs/bootstrap/dist/css/bootstrap*.css webroot/css/bootstrap/
+cp -r vendor/twbs/bootstrap/dist/fonts webroot/css/
+# jqueryui
+cp vendor/components/jqueryui/jquery-ui*.js webroot/js/jqueryui/
+cp -R vendor/components/jqueryui/themes/base/ webroot/css/jqueryui/themes
+
+```
+
+## remove packages
+```
+composer remove twbs/bootstrap
+composer remove components/jqueryui
+composer remove components/jquery
+
+git init
+git add *
+git commit -m "setting up the project"
+```
+
+# BootstrapUIの導入＆設定
+
+[導入＆設定](doc/01.bootstrap-ui.md)
+
+この後bakeする。
+```
+bin/cake bake all -f xxxxxx 
+```
