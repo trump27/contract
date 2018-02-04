@@ -13,6 +13,7 @@
  */
 namespace App\View;
 
+use BootstrapUI\View\UIViewTrait;
 use Cake\View\View;
 
 /**
@@ -24,6 +25,8 @@ use Cake\View\View;
  */
 class AppView extends View
 {
+    // public $layout = 'default';
+    use UIViewTrait;
 
     /**
      * Initialization hook method.
@@ -36,5 +39,11 @@ class AppView extends View
      */
     public function initialize()
     {
+        // parent::initialize();
+        $this->initializeUI(['layout' => 'defaultui']);
+        $this->Form->setTemplates([
+            // 'dateWidget' => '{{day}}{{month}}{{year}}',
+            // 'dateWidget' => '<input type="text" class="form-control datepicker" name="{{name}}" {{attrs}} />',
+        ]);
     }
 }

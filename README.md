@@ -36,9 +36,12 @@ git commit -m "initial commit"
 DBをSQliteに設定、他。DB名は適宜変更のこと。
 
 ```bash
+mydb="contract.db"
+sed -i -e "3i $mydb" .gitignore
+
 sed -i -e "s|'APP_DEFAULT_LOCALE', 'en_US'|'APP_DEFAULT_LOCALE', 'ja_JP'|" config/app.php
 sed -i -e 's|Driver\\Mysql|Driver\\SQLite|' config/app.php
-sed -i -e "s|'database' => 'my_app'|'database' => ROOT . DS . 'contract.db'|" config/app.php
+sed -i -e "s|'database' => 'my_app'|'database' => ROOT . DS . '$mydb'|" config/app.php
 
 sed -i -e "s|date_default_timezone_set('UTC');|date_default_timezone_set('Asia/Tokyo');|" config/bootstrap.php
 ```

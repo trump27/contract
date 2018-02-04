@@ -1,5 +1,6 @@
 # CakePHP specific files #
 ##########################
+contract.db
 #/config/app.php
 /config/.env
 /logs/*
