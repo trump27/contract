@@ -40,7 +40,7 @@ mydb="contract.db"
 sed -i -e "3i $mydb" .gitignore
 
 sed -i -e "s|'APP_DEFAULT_LOCALE', 'en_US'|'APP_DEFAULT_LOCALE', 'ja_JP'|" config/app.php
-sed -i -e 's|Driver\\Mysql|Driver\\SQLite|' config/app.php
+sed -i -e 's|Driver\\Mysql|Driver\\Sqlite|' config/app.php
 sed -i -e "s|'database' => 'my_app'|'database' => ROOT . DS . '$mydb'|" config/app.php
 sed -i -e "s|'timezone' => 'UTC'|'timezone' => 'Asia/Tokyo'|" config/app.php
 
