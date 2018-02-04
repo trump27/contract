@@ -73,7 +73,7 @@ $html5Shim =
     <![endif]-->
 HTML;
 $this->prepend('css', $this->Html->css(['jqueryui/themes/base/jquery-ui.min']));
-$this->prepend('css', $this->Html->css(['bootstrap/bootstrap']));
+$this->prepend('css', $this->Html->css(['bootstrap/bootstrap.min']));
 
 $this->append('css', $html5Shim);
 
@@ -82,7 +82,7 @@ $this->append('css', $html5Shim);
  */
 $this->prepend('script', $this->Html->script(['my']));
 $this->prepend('script', $this->Html->script(['jqueryui/jquery-ui.min']));
-$this->prepend('script', $this->Html->script(['jquery/jquery', 'bootstrap/bootstrap']));
+$this->prepend('script', $this->Html->script(['jquery/jquery.min', 'bootstrap/bootstrap.min']));
 
 ?>
 <!DOCTYPE html>

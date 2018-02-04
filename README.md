@@ -1,6 +1,6 @@
-# CakePHP3 
+# 概要 
 
-cakephp 3.5.1  
+cakephp 3.5
 
 1. プロジェクト作成＆設定
 1. friendsofcake/bootstrap-uiの導入
@@ -42,6 +42,7 @@ sed -i -e "3i $mydb" .gitignore
 sed -i -e "s|'APP_DEFAULT_LOCALE', 'en_US'|'APP_DEFAULT_LOCALE', 'ja_JP'|" config/app.php
 sed -i -e 's|Driver\\Mysql|Driver\\SQLite|' config/app.php
 sed -i -e "s|'database' => 'my_app'|'database' => ROOT . DS . '$mydb'|" config/app.php
+sed -i -e "s|'timezone' => 'UTC'|'timezone' => 'Asia/Tokyo'|" config/app.php
 
 sed -i -e "s|date_default_timezone_set('UTC');|date_default_timezone_set('Asia/Tokyo');|" config/bootstrap.php
 ```
@@ -106,3 +107,16 @@ git commit -m "setting up the project"
 ```
 bin/cake bake all -f xxxxxx 
 ```
+
+# Bake all
+
+1. すべてをbakeする、
+```
+bin/cake bake all --everything -f
+```
+2. modelを設定する。(ex.displayField)
+2. 再度bakeする。
+
+# Sqliteの操作
+
+[02.sqlite.md](document/02.sqlite.md)

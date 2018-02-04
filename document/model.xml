@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: file:///D:/temp/wwwsqldesigner-master/index.html -->
+<sql>
+	<datatypes db="sqlite">
+		<group label="Affinity">
+			<type label="Text" default="" length="1" sql="TEXT" quote="'" color="rgb(255,200,200)"/>
+			<type label="Numeric" default="0" length="0" sql="NUMERIC" quote="" color="rgb(238,238,170)"/>
+			<type label="Integer" default="0" length="0" sql="INTEGER" quote="" color="rgb(238,238,170)"/>
+			<type label="Real" default="0" length="0" sql="REAL" quote="" color="rgb(238,238,170)"/>
+			<type label="None" default="" length="0" sql="NONE" quote="" color="rgb(200,255,200)"/>
+		</group>
+	</datatypes>
+	<table x="29" y="105" name="取引先 clients">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="企業名" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="33" y="261" name="利用者 customers">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="client_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="取引先 clients" row="id" />
+		</row>
+		<row name="企業/組織" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="担当者1" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="担当者2" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="323" y="269" name="ライセンス契約 licenses">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="customer_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="利用者 customers" row="id" />
+		</row>
+		<row name="order_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="受注 orders" row="id" />
+		</row>
+		<row name="契約No" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="申込書類" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="証書" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="324" y="469" name="サポート契約 supports">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="customer_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="利用者 customers" row="id" />
+		</row>
+		<row name="order_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="受注 orders" row="id" />
+		</row>
+		<row name="契約No" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="申込書類" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="証書" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="272" y="76" name="受注 orders">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="受注番号" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="受注明細番号" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="client_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="取引先 clients" row="id" />
+		</row>
+		<row name="product_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="製品 products" row="id" />
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="595" y="235" name="ライセンス履歴">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="license_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="ライセンス契約 licenses" row="id" />
+		</row>
+		<row name="契約No" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="601" y="395" name="サポート履歴">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="suppot_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="サポート契約 supports" row="id" />
+		</row>
+		<row name="契約No" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="511" y="78" name="製品 products">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="製品名" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="328" y="676" name="契約書類">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="書類名称" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="書類" null="1" autoincrement="0">
+			<datatype>TEXT</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+</sql>
