@@ -79,6 +79,7 @@ class LicensesController extends AppController
         $license = $this->Licenses->get($id, [
             'contain' => []
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
             if ($this->Licenses->save($license)) {

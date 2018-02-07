@@ -101,18 +101,18 @@ git commit -m "setting up the project"
 
 # BootstrapUIの導入＆設定
 
-[導入＆設定](doc/01.bootstrap-ui.md)
+[導入＆設定](document/01.bootstrap-ui.md)
 
 この後bakeする。
-```
-bin/cake bake all -f xxxxxx 
-```
 
 # Bake all
 
 1. すべてをbakeする、
 ```
-bin/cake bake all --everything -f
+# パスを通す
+export PATH=$PATH:`pwd`/bin
+
+cake bake all --everything -f
 ```
 2. modelを設定する。(ex.displayField)
 2. 再度bakeする。
