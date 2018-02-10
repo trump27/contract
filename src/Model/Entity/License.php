@@ -7,26 +7,31 @@ use Cake\ORM\Entity;
  * License Entity
  *
  * @property int $id
- * @property string $license_no
- * @property \Cake\I18n\FrozenDate $issued
- * @property int $status_id
+ * @property int $client_id
  * @property int $customer_id
  * @property int $order_id
+ * @property int $status_id
+ * @property \Cake\I18n\FrozenDate $issued
+ * @property string $license_no
+ * @property string $relate_no
+ * @property string $product_name
  * @property string $license_name
+ * @property string $language
  * @property int $license_qty
  * @property \Cake\I18n\FrozenDate $startdate
  * @property \Cake\I18n\FrozenDate $enddate
+ * @property string $license_key
  * @property string $notice
- * @property string $application
+ * @property string $file
  * @property string $dir
  * @property int $size
  * @property string $type
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\Order $order
  * @property \App\Model\Entity\Status $status
  * @property \App\Model\Entity\Customer $customer
- * @property \App\Model\Entity\Order $order
  */
 class License extends Entity
 {
@@ -41,24 +46,29 @@ class License extends Entity
      * @var array
      */
     protected $_accessible = [
-        'license_no' => true,
-        'issued' => true,
-        'status_id' => true,
+        'client_id' => true,
         'customer_id' => true,
         'order_id' => true,
+        'status_id' => true,
+        'issued' => true,
+        'license_no' => true,
+        'relate_no' => true,
+        'product_name' => true,
         'license_name' => true,
+        'language' => true,
         'license_qty' => true,
         'startdate' => true,
         'enddate' => true,
+        'license_key' => true,
         'notice' => true,
-        'application' => true,
+        'file' => true,
         'dir' => true,
         'size' => true,
         'type' => true,
         'created' => true,
         'modified' => true,
+        'order' => true,
         'status' => true,
-        'customer' => true,
-        'order' => true
+        'customer' => true
     ];
 }

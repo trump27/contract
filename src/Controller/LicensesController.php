@@ -21,7 +21,7 @@ class LicensesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Statuses', 'Customers', 'Orders']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
         ];
         $licenses = $this->paginate($this->Licenses);
 
@@ -38,7 +38,7 @@ class LicensesController extends AppController
     public function view($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => ['Statuses', 'Customers', 'Orders']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
         ]);
 
         $this->set('license', $license);
@@ -61,10 +61,11 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
+        $clients = $this->Licenses->Clients->find('list', ['limit' => 200]);
         $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'statuses', 'customers', 'orders'));
+        $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses'));
     }
 
     /**
@@ -79,7 +80,6 @@ class LicensesController extends AppController
         $license = $this->Licenses->get($id, [
             'contain' => []
         ]);
-
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
             if ($this->Licenses->save($license)) {
@@ -89,10 +89,11 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
+        $clients = $this->Licenses->Clients->find('list', ['limit' => 200]);
         $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'statuses', 'customers', 'orders'));
+        $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses'));
     }
 
     /**

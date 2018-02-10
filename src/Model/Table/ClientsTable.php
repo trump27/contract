@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -10,7 +8,6 @@ use Cake\Validation\Validator;
  * Clients Model
  *
  * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\HasMany $Customers
- * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\HasMany $Orders
  *
  * @method \App\Model\Entity\Client get($primaryKey, $options = [])
  * @method \App\Model\Entity\Client newEntity($data = null, array $options = [])
@@ -38,11 +35,16 @@ class ClientsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->hasMany('Customers', [
-            'foreignKey' => 'client_id'
+            'foreignKey' => 'client_id',
+        ]);
+        $this->hasMany('Licenses', [
+            'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Orders', [
-            'foreignKey' => 'client_id'
+            'bindingKey' => 'company_code', // リレーション先のカラム名
+            'foreignKey' => 'company_code', // FK
         ]);
+
     }
 
     /**
@@ -60,21 +62,26 @@ class ClientsTable extends Table
         $validator
             ->scalar('client_name')
             ->maxLength('client_name', 128)
-            ->allowEmpty('client_name');
+            ->requirePresence('client_name', 'create')
+            ->notEmpty('client_name');
 
         $validator
-            ->scalar('sales_dept')
-            ->maxLength('sales_dept', 128)
-            ->allowEmpty('sales_dept');
+            ->scalar('company_code')
+            ->maxLength('company_code', 20)
+            ->allowEmpty('company_code');
 
         $validator
-            ->scalar('sales_staff')
-            ->maxLength('sales_staff', 64)
-            ->allowEmpty('sales_staff');
+            ->scalar('identity1')
+            ->maxLength('identity1', 4)
+            ->allowEmpty('identity1');
 
         $validator
-            ->scalar('notice')
-            ->allowEmpty('notice');
+            ->scalar('partner_flag')
+            ->allowEmpty('partner_flag');
+
+        $validator
+            ->scalar('remarks')
+            ->allowEmpty('remarks');
 
         return $validator;
     }

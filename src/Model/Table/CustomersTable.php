@@ -39,7 +39,8 @@ class CustomersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Clients', [
-            'foreignKey' => 'client_id'
+            'foreignKey' => 'client_id',
+            'joinType' => 'INNER'
         ]);
         $this->hasMany('Licensehistories', [
             'foreignKey' => 'customer_id'
@@ -64,11 +65,32 @@ class CustomersTable extends Table
         $validator
             ->scalar('customer_name')
             ->maxLength('customer_name', 128)
-            ->allowEmpty('customer_name');
+            ->requirePresence('customer_name', 'create')
+            ->notEmpty('customer_name');
 
         $validator
-            ->scalar('notice')
-            ->allowEmpty('notice');
+            ->scalar('address')
+            ->maxLength('address', 512)
+            ->allowEmpty('address');
+
+        $validator
+            ->scalar('identity2')
+            ->maxLength('identity2', 4)
+            ->allowEmpty('identity2');
+
+        $validator
+            ->scalar('sales_dept')
+            ->maxLength('sales_dept', 256)
+            ->allowEmpty('sales_dept');
+
+        $validator
+            ->scalar('sales_staff')
+            ->maxLength('sales_staff', 128)
+            ->allowEmpty('sales_staff');
+
+        $validator
+            ->scalar('remarks')
+            ->allowEmpty('remarks');
 
         $validator
             ->scalar('admin_name1')
@@ -77,12 +99,12 @@ class CustomersTable extends Table
 
         $validator
             ->scalar('div1')
-            ->maxLength('div1', 128)
+            ->maxLength('div1', 256)
             ->allowEmpty('div1');
 
         $validator
             ->scalar('mail1')
-            ->maxLength('mail1', 128)
+            ->maxLength('mail1', 256)
             ->allowEmpty('mail1');
 
         $validator
@@ -92,12 +114,12 @@ class CustomersTable extends Table
 
         $validator
             ->scalar('div2')
-            ->maxLength('div2', 128)
+            ->maxLength('div2', 256)
             ->allowEmpty('div2');
 
         $validator
             ->scalar('mail2')
-            ->maxLength('mail2', 128)
+            ->maxLength('mail2', 256)
             ->allowEmpty('mail2');
 
         return $validator;

@@ -7,20 +7,28 @@ use Cake\ORM\Entity;
  * Order Entity
  *
  * @property int $id
- * @property int $client_id
+ * @property string $company_code
+ * @property string $company_name1
+ * @property string $company_name2
  * @property \Cake\I18n\FrozenDate $order_date
+ * @property string $order_no
+ * @property string $order_detail_no
+ * @property string $purchase_no
+ * @property \Cake\I18n\FrozenDate $delivery_date
+ * @property \Cake\I18n\FrozenDate $sales_date
+ * @property string $status_msg
+ * @property string $product_category
  * @property string $product_code
- * @property string $order_name
+ * @property string $product_name
  * @property int $quantity
- * @property int $amount_money
+ * @property int $price
  * @property string $sales_dept
  * @property string $sales_staff
- * @property string $proof
+ * @property string $file
  * @property string $dir
  * @property int $size
  * @property string $type
  *
- * @property \App\Model\Entity\Client $client
  * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  */
@@ -37,19 +45,27 @@ class Order extends Entity
      * @var array
      */
     protected $_accessible = [
-        'client_id' => true,
+        'company_code' => true,
+        'company_name1' => true,
+        'company_name2' => true,
         'order_date' => true,
+        'order_no' => true,
+        'order_detail_no' => true,
+        'purchase_no' => true,
+        'delivery_date' => true,
+        'sales_date' => true,
+        'status_msg' => true,
+        'product_category' => true,
         'product_code' => true,
-        'order_name' => true,
+        'product_name' => true,
         'quantity' => true,
-        'amount_money' => true,
+        'price' => true,
         'sales_dept' => true,
         'sales_staff' => true,
-        'proof' => true,
+        'file' => true,
         'dir' => true,
         'size' => true,
         'type' => true,
-        'client' => true,
         'licensehistories' => true,
         'licenses' => true
     ];

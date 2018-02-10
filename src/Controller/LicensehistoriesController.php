@@ -21,7 +21,7 @@ class LicensehistoriesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Statuses', 'Customers', 'Orders']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
         ];
         $licensehistories = $this->paginate($this->Licensehistories);
 
@@ -38,7 +38,7 @@ class LicensehistoriesController extends AppController
     public function view($id = null)
     {
         $licensehistory = $this->Licensehistories->get($id, [
-            'contain' => ['Statuses', 'Customers', 'Orders']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
         ]);
 
         $this->set('licensehistory', $licensehistory);
@@ -61,10 +61,11 @@ class LicensehistoriesController extends AppController
             }
             $this->Flash->error(__('The licensehistory could not be saved. Please, try again.'));
         }
-        $statuses = $this->Licensehistories->Statuses->find('list', ['limit' => 200]);
+        $clients = $this->Licensehistories->Clients->find('list', ['limit' => 200]);
         $customers = $this->Licensehistories->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licensehistories->Orders->find('list', ['limit' => 200]);
-        $this->set(compact('licensehistory', 'statuses', 'customers', 'orders'));
+        $statuses = $this->Licensehistories->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('licensehistory', 'clients', 'customers', 'orders', 'statuses'));
     }
 
     /**
@@ -88,10 +89,11 @@ class LicensehistoriesController extends AppController
             }
             $this->Flash->error(__('The licensehistory could not be saved. Please, try again.'));
         }
-        $statuses = $this->Licensehistories->Statuses->find('list', ['limit' => 200]);
+        $clients = $this->Licensehistories->Clients->find('list', ['limit' => 200]);
         $customers = $this->Licensehistories->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licensehistories->Orders->find('list', ['limit' => 200]);
-        $this->set(compact('licensehistory', 'statuses', 'customers', 'orders'));
+        $statuses = $this->Licensehistories->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('licensehistory', 'clients', 'customers', 'orders', 'statuses'));
     }
 
     /**

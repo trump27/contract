@@ -19,10 +19,10 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_name'); ?></th>
-            <th><?= $this->Paginator->sort('admin_name1'); ?></th>
-            <th><?= $this->Paginator->sort('div1'); ?></th>
-            <th><?= $this->Paginator->sort('mail1'); ?></th>
-            <th><?= $this->Paginator->sort('admin_name2'); ?></th>
+            <th><?= $this->Paginator->sort('address'); ?></th>
+            <th><?= $this->Paginator->sort('identity2'); ?></th>
+            <th><?= $this->Paginator->sort('sales_dept'); ?></th>
+            <th><?= $this->Paginator->sort('sales_staff'); ?></th>
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
@@ -34,10 +34,10 @@ $this->start('tb_actions');
                 <?= $customer->has('client') ? $this->Html->link($customer->client->client_name, ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?>
             </td>
             <td><?= h($customer->customer_name) ?></td>
-            <td><?= h($customer->admin_name1) ?></td>
-            <td><?= h($customer->div1) ?></td>
-            <td><?= h($customer->mail1) ?></td>
-            <td><?= h($customer->admin_name2) ?></td>
+            <td><?= h($customer->address) ?></td>
+            <td><?= h($customer->identity2) ?></td>
+            <td><?= h($customer->sales_dept) ?></td>
+            <td><?= h($customer->sales_staff) ?></td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $customer->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $customer->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>

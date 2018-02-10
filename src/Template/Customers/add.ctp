@@ -50,7 +50,11 @@ $this->end();
     <?php
     echo $this->Form->control('client_id', ['options' => $clients]);
     echo $this->Form->control('customer_name');
-    echo $this->Form->control('notice');
+    echo $this->Form->control('address');
+    echo $this->Form->control('identity2');
+    echo $this->Form->control('sales_dept');
+    echo $this->Form->control('sales_staff');
+    echo $this->Form->control('remarks');
     echo $this->Form->control('admin_name1');
     echo $this->Form->control('div1');
     echo $this->Form->control('mail1');

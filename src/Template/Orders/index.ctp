@@ -4,12 +4,12 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('New Order'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
@@ -17,12 +17,12 @@ $this->start('tb_actions');
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('client_id'); ?></th>
+            <th><?= $this->Paginator->sort('company_code'); ?></th>
+            <th><?= $this->Paginator->sort('company_name1'); ?></th>
+            <th><?= $this->Paginator->sort('company_name2'); ?></th>
             <th><?= $this->Paginator->sort('order_date'); ?></th>
-            <th><?= $this->Paginator->sort('product_code'); ?></th>
-            <th><?= $this->Paginator->sort('order_name'); ?></th>
-            <th><?= $this->Paginator->sort('quantity'); ?></th>
-            <th><?= $this->Paginator->sort('amount_money'); ?></th>
+            <th><?= $this->Paginator->sort('order_no'); ?></th>
+            <th><?= $this->Paginator->sort('order_detail_no'); ?></th>
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
@@ -30,14 +30,12 @@ $this->start('tb_actions');
         <?php foreach ($orders as $order): ?>
         <tr>
             <td><?= $this->Number->format($order->id) ?></td>
-            <td>
-                <?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
-            </td>
+            <td><?= h($order->company_code) ?></td>
+            <td><?= h($order->company_name1) ?></td>
+            <td><?= h($order->company_name2) ?></td>
             <td><?= h($order->order_date) ?></td>
-            <td><?= h($order->product_code) ?></td>
-            <td><?= h($order->order_name) ?></td>
-            <td><?= $this->Number->format($order->quantity) ?></td>
-            <td><?= $this->Number->format($order->amount_money) ?></td>
+            <td><?= h($order->order_no) ?></td>
+            <td><?= h($order->order_detail_no) ?></td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $order->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>

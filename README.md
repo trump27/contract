@@ -94,7 +94,6 @@ composer remove twbs/bootstrap
 composer remove components/jqueryui
 composer remove components/jquery
 
-git init
 git add *
 git commit -m "setting up the project"
 ```

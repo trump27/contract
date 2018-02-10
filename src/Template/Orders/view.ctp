@@ -8,12 +8,12 @@ $this->start('tb_actions');
 <li><?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?> </li>
 <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Order'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -24,12 +24,12 @@ $this->start('tb_sidebar');
 <li><?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?> </li>
 <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Order'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -37,20 +37,48 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($order->order_name) ?></h3>
+        <h3 class="panel-title"><?= h($order->product_name) ?></h3>
     </div>
     <table class="table table-striped table-responsive text-nowrap">
         <tr>
-            <td><?= __('Client') ?></td>
-            <td><?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?></td>
+            <td><?= __('Company Code') ?></td>
+            <td><?= h($order->company_code) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Company Name1') ?></td>
+            <td><?= h($order->company_name1) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Company Name2') ?></td>
+            <td><?= h($order->company_name2) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Order No') ?></td>
+            <td><?= h($order->order_no) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Order Detail No') ?></td>
+            <td><?= h($order->order_detail_no) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Purchase No') ?></td>
+            <td><?= h($order->purchase_no) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Status Msg') ?></td>
+            <td><?= h($order->status_msg) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Product Category') ?></td>
+            <td><?= h($order->product_category) ?></td>
         </tr>
         <tr>
             <td><?= __('Product Code') ?></td>
             <td><?= h($order->product_code) ?></td>
         </tr>
         <tr>
-            <td><?= __('Order Name') ?></td>
-            <td><?= h($order->order_name) ?></td>
+            <td><?= __('Product Name') ?></td>
+            <td><?= h($order->product_name) ?></td>
         </tr>
         <tr>
             <td><?= __('Sales Dept') ?></td>
@@ -59,6 +87,10 @@ $this->end();
         <tr>
             <td><?= __('Sales Staff') ?></td>
             <td><?= h($order->sales_staff) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('File') ?></td>
+            <td><?= h($order->file) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>
@@ -77,8 +109,8 @@ $this->end();
             <td><?= $this->Number->format($order->quantity) ?></td>
         </tr>
         <tr>
-            <td><?= __('Amount Money') ?></td>
-            <td><?= $this->Number->format($order->amount_money) ?></td>
+            <td><?= __('Price') ?></td>
+            <td><?= $this->Number->format($order->price) ?></td>
         </tr>
         <tr>
             <td><?= __('Size') ?></td>
@@ -89,8 +121,12 @@ $this->end();
             <td><?= h($order->order_date) ?></td>
         </tr>
         <tr>
-            <td><?= __('Proof') ?></td>
-            <td><?= $this->Text->autoParagraph(h($order->proof)); ?></td>
+            <td><?= __('Delivery Date') ?></td>
+            <td><?= h($order->delivery_date) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Sales Date') ?></td>
+            <td><?= h($order->sales_date) ?></td>
         </tr>
     </table>
 </div>
@@ -105,17 +141,21 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('License No') ?></th>
-                <th><?= __('Issued') ?></th>
-                <th><?= __('Status Id') ?></th>
-                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Order Id') ?></th>
+                <th><?= __('Status Id') ?></th>
+                <th><?= __('Issued') ?></th>
+                <th><?= __('License No') ?></th>
+                <th><?= __('Relate No') ?></th>
+                <th><?= __('Customer Id') ?></th>
+                <th><?= __('Product Name') ?></th>
                 <th><?= __('License Name') ?></th>
+                <th><?= __('Language') ?></th>
                 <th><?= __('License Qty') ?></th>
                 <th><?= __('Startdate') ?></th>
                 <th><?= __('Enddate') ?></th>
+                <th><?= __('License Key') ?></th>
                 <th><?= __('Notice') ?></th>
-                <th><?= __('Application') ?></th>
+                <th><?= __('File') ?></th>
                 <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
                 <th><?= __('Type') ?></th>
@@ -128,17 +168,21 @@ $this->end();
             <?php foreach ($order->licensehistories as $licensehistories): ?>
                 <tr>
                     <td><?= h($licensehistories->id) ?></td>
-                    <td><?= h($licensehistories->license_no) ?></td>
-                    <td><?= h($licensehistories->issued) ?></td>
-                    <td><?= h($licensehistories->status_id) ?></td>
-                    <td><?= h($licensehistories->customer_id) ?></td>
                     <td><?= h($licensehistories->order_id) ?></td>
+                    <td><?= h($licensehistories->status_id) ?></td>
+                    <td><?= h($licensehistories->issued) ?></td>
+                    <td><?= h($licensehistories->license_no) ?></td>
+                    <td><?= h($licensehistories->relate_no) ?></td>
+                    <td><?= h($licensehistories->customer_id) ?></td>
+                    <td><?= h($licensehistories->product_name) ?></td>
                     <td><?= h($licensehistories->license_name) ?></td>
+                    <td><?= h($licensehistories->language) ?></td>
                     <td><?= h($licensehistories->license_qty) ?></td>
                     <td><?= h($licensehistories->startdate) ?></td>
                     <td><?= h($licensehistories->enddate) ?></td>
+                    <td><?= h($licensehistories->license_key) ?></td>
                     <td><?= h($licensehistories->notice) ?></td>
-                    <td><?= h($licensehistories->application) ?></td>
+                    <td><?= h($licensehistories->file) ?></td>
                     <td><?= h($licensehistories->dir) ?></td>
                     <td><?= h($licensehistories->size) ?></td>
                     <td><?= h($licensehistories->type) ?></td>
@@ -167,17 +211,21 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('License No') ?></th>
-                <th><?= __('Issued') ?></th>
-                <th><?= __('Status Id') ?></th>
-                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Order Id') ?></th>
+                <th><?= __('Status Id') ?></th>
+                <th><?= __('Issued') ?></th>
+                <th><?= __('License No') ?></th>
+                <th><?= __('Relate No') ?></th>
+                <th><?= __('Customer Id') ?></th>
+                <th><?= __('Product Name') ?></th>
                 <th><?= __('License Name') ?></th>
+                <th><?= __('Language') ?></th>
                 <th><?= __('License Qty') ?></th>
                 <th><?= __('Startdate') ?></th>
                 <th><?= __('Enddate') ?></th>
+                <th><?= __('License Key') ?></th>
                 <th><?= __('Notice') ?></th>
-                <th><?= __('Application') ?></th>
+                <th><?= __('File') ?></th>
                 <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
                 <th><?= __('Type') ?></th>
@@ -190,17 +238,21 @@ $this->end();
             <?php foreach ($order->licenses as $licenses): ?>
                 <tr>
                     <td><?= h($licenses->id) ?></td>
-                    <td><?= h($licenses->license_no) ?></td>
-                    <td><?= h($licenses->issued) ?></td>
-                    <td><?= h($licenses->status_id) ?></td>
-                    <td><?= h($licenses->customer_id) ?></td>
                     <td><?= h($licenses->order_id) ?></td>
+                    <td><?= h($licenses->status_id) ?></td>
+                    <td><?= h($licenses->issued) ?></td>
+                    <td><?= h($licenses->license_no) ?></td>
+                    <td><?= h($licenses->relate_no) ?></td>
+                    <td><?= h($licenses->customer_id) ?></td>
+                    <td><?= h($licenses->product_name) ?></td>
                     <td><?= h($licenses->license_name) ?></td>
+                    <td><?= h($licenses->language) ?></td>
                     <td><?= h($licenses->license_qty) ?></td>
                     <td><?= h($licenses->startdate) ?></td>
                     <td><?= h($licenses->enddate) ?></td>
+                    <td><?= h($licenses->license_key) ?></td>
                     <td><?= h($licenses->notice) ?></td>
-                    <td><?= h($licenses->application) ?></td>
+                    <td><?= h($licenses->file) ?></td>
                     <td><?= h($licenses->dir) ?></td>
                     <td><?= h($licenses->size) ?></td>
                     <td><?= h($licenses->type) ?></td>
@@ -217,5 +269,45 @@ $this->end();
         </table>
     <?php else: ?>
         <p class="panel-body">no related Licenses</p>
+    <?php endif; ?>
+</div>
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= __('Related Clients') ?></h3>
+    </div>
+    <?php if (!empty($order->clients)): ?>
+        <table class="table table-striped text-nowrap">
+            <thead>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Client Name') ?></th>
+                <th><?= __('Company Code') ?></th>
+                <th><?= __('Identity1') ?></th>
+                <th><?= __('Partner Flag') ?></th>
+                <th><?= __('Remarks') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($order->clients as $clients): ?>
+                <tr>
+                    <td><?= h($clients->id) ?></td>
+                    <td><?= h($clients->client_name) ?></td>
+                    <td><?= h($clients->company_code) ?></td>
+                    <td><?= h($clients->identity1) ?></td>
+                    <td><?= h($clients->partner_flag) ?></td>
+                    <td><?= h($clients->remarks) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link('', ['controller' => 'Clients', 'action' => 'view', $clients->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Clients', 'action' => 'edit', $clients->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('', ['controller' => 'Clients', 'action' => 'delete', $clients->id], ['confirm' => __('Are you sure you want to delete # {0}?', $clients->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="panel-body">no related Clients</p>
     <?php endif; ?>
 </div>

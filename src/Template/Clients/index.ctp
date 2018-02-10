@@ -6,6 +6,8 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Client'), ['action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
@@ -16,8 +18,9 @@ $this->start('tb_actions');
         <tr>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_name'); ?></th>
-            <th><?= $this->Paginator->sort('sales_dept'); ?></th>
-            <th><?= $this->Paginator->sort('sales_staff'); ?></th>
+            <th><?= $this->Paginator->sort('company_code'); ?></th>
+            <th><?= $this->Paginator->sort('identity1'); ?></th>
+            <th><?= $this->Paginator->sort('partner_flag'); ?></th>
             <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
@@ -26,8 +29,9 @@ $this->start('tb_actions');
         <tr>
             <td><?= $this->Number->format($client->id) ?></td>
             <td><?= h($client->client_name) ?></td>
-            <td><?= h($client->sales_dept) ?></td>
-            <td><?= h($client->sales_staff) ?></td>
+            <td><?= h($client->company_code) ?></td>
+            <td><?= h($client->identity1) ?></td>
+            <td><?= $this->Number->format($client->partner_flag) ?></td>
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $client->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $client->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>

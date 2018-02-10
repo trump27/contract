@@ -20,6 +20,8 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('List Clients'), ['action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
 <?php
@@ -39,6 +41,8 @@ $this->start('tb_sidebar');
     <li><?= $this->Html->link(__('List Clients'), ['action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
 </ul>
@@ -61,9 +65,10 @@ $this->end();
     <legend><?= __('Edit {0}', ['Client']) ?></legend>
     <?php
     echo $this->Form->control('client_name');
-    echo $this->Form->control('sales_dept');
-    echo $this->Form->control('sales_staff');
-    echo $this->Form->control('notice');
+    echo $this->Form->control('company_code');
+    echo $this->Form->control('identity1');
+    echo $this->Form->control('partner_flag');
+    echo $this->Form->control('remarks');
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>

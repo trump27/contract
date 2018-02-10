@@ -9,9 +9,10 @@ use Cake\Validation\Validator;
 /**
  * Licenses Model
  *
- * @property \App\Model\Table\StatusesTable|\Cake\ORM\Association\BelongsTo $Statuses
+ * @property |\Cake\ORM\Association\BelongsTo $Clients
  * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\BelongsTo $Customers
  * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\BelongsTo $Orders
+ * @property \App\Model\Table\StatusesTable|\Cake\ORM\Association\BelongsTo $Statuses
  *
  * @method \App\Model\Entity\License get($primaryKey, $options = [])
  * @method \App\Model\Entity\License newEntity($data = null, array $options = [])
@@ -37,19 +38,22 @@ class LicensesTable extends Table
         parent::initialize($config);
 
         $this->setTable('licenses');
-        $this->setDisplayField('license_nameid');
+        $this->setDisplayField('license_name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Statuses', [
-            'foreignKey' => 'status_id'
+        $this->belongsTo('Clients', [
+            'foreignKey' => 'client_id'
         ]);
         $this->belongsTo('Customers', [
             'foreignKey' => 'customer_id'
         ]);
         $this->belongsTo('Orders', [
             'foreignKey' => 'order_id'
+        ]);
+        $this->belongsTo('Statuses', [
+            'foreignKey' => 'status_id'
         ]);
     }
 
@@ -66,18 +70,33 @@ class LicensesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->date('issued')
+            ->allowEmpty('issued');
+
+        $validator
             ->scalar('license_no')
             ->maxLength('license_no', 20)
             ->allowEmpty('license_no');
 
         $validator
-            ->date('issued')
-            ->allowEmpty('issued');
+            ->scalar('relate_no')
+            ->maxLength('relate_no', 20)
+            ->allowEmpty('relate_no');
+
+        $validator
+            ->scalar('product_name')
+            ->maxLength('product_name', 256)
+            ->allowEmpty('product_name');
 
         $validator
             ->scalar('license_name')
             ->maxLength('license_name', 256)
             ->allowEmpty('license_name');
+
+        $validator
+            ->scalar('language')
+            ->maxLength('language', 64)
+            ->allowEmpty('language');
 
         $validator
             ->integer('license_qty')
@@ -92,13 +111,18 @@ class LicensesTable extends Table
             ->allowEmpty('enddate');
 
         $validator
+            ->scalar('license_key')
+            ->maxLength('license_key', 256)
+            ->allowEmpty('license_key');
+
+        $validator
             ->scalar('notice')
             ->allowEmpty('notice');
 
         $validator
-            ->scalar('application')
-            ->maxLength('application', 256)
-            ->allowEmpty('application');
+            ->scalar('file')
+            ->maxLength('file', 256)
+            ->allowEmpty('file');
 
         $validator
             ->scalar('dir')
@@ -126,9 +150,10 @@ class LicensesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['status_id'], 'Statuses'));
+        $rules->add($rules->existsIn(['client_id'], 'Clients'));
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
         $rules->add($rules->existsIn(['order_id'], 'Orders'));
+        $rules->add($rules->existsIn(['status_id'], 'Statuses'));
 
         return $rules;
     }

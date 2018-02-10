@@ -61,17 +61,21 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('License No') ?></th>
-                <th><?= __('Issued') ?></th>
-                <th><?= __('Status Id') ?></th>
-                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Order Id') ?></th>
+                <th><?= __('Status Id') ?></th>
+                <th><?= __('Issued') ?></th>
+                <th><?= __('License No') ?></th>
+                <th><?= __('Relate No') ?></th>
+                <th><?= __('Customer Id') ?></th>
+                <th><?= __('Product Name') ?></th>
                 <th><?= __('License Name') ?></th>
+                <th><?= __('Language') ?></th>
                 <th><?= __('License Qty') ?></th>
                 <th><?= __('Startdate') ?></th>
                 <th><?= __('Enddate') ?></th>
+                <th><?= __('License Key') ?></th>
                 <th><?= __('Notice') ?></th>
-                <th><?= __('Application') ?></th>
+                <th><?= __('File') ?></th>
                 <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
                 <th><?= __('Type') ?></th>
@@ -84,17 +88,21 @@ $this->end();
             <?php foreach ($status->licensehistories as $licensehistories): ?>
                 <tr>
                     <td><?= h($licensehistories->id) ?></td>
-                    <td><?= h($licensehistories->license_no) ?></td>
-                    <td><?= h($licensehistories->issued) ?></td>
-                    <td><?= h($licensehistories->status_id) ?></td>
-                    <td><?= h($licensehistories->customer_id) ?></td>
                     <td><?= h($licensehistories->order_id) ?></td>
+                    <td><?= h($licensehistories->status_id) ?></td>
+                    <td><?= h($licensehistories->issued) ?></td>
+                    <td><?= h($licensehistories->license_no) ?></td>
+                    <td><?= h($licensehistories->relate_no) ?></td>
+                    <td><?= h($licensehistories->customer_id) ?></td>
+                    <td><?= h($licensehistories->product_name) ?></td>
                     <td><?= h($licensehistories->license_name) ?></td>
+                    <td><?= h($licensehistories->language) ?></td>
                     <td><?= h($licensehistories->license_qty) ?></td>
                     <td><?= h($licensehistories->startdate) ?></td>
                     <td><?= h($licensehistories->enddate) ?></td>
+                    <td><?= h($licensehistories->license_key) ?></td>
                     <td><?= h($licensehistories->notice) ?></td>
-                    <td><?= h($licensehistories->application) ?></td>
+                    <td><?= h($licensehistories->file) ?></td>
                     <td><?= h($licensehistories->dir) ?></td>
                     <td><?= h($licensehistories->size) ?></td>
                     <td><?= h($licensehistories->type) ?></td>
@@ -123,17 +131,21 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('License No') ?></th>
-                <th><?= __('Issued') ?></th>
-                <th><?= __('Status Id') ?></th>
-                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Order Id') ?></th>
+                <th><?= __('Status Id') ?></th>
+                <th><?= __('Issued') ?></th>
+                <th><?= __('License No') ?></th>
+                <th><?= __('Relate No') ?></th>
+                <th><?= __('Customer Id') ?></th>
+                <th><?= __('Product Name') ?></th>
                 <th><?= __('License Name') ?></th>
+                <th><?= __('Language') ?></th>
                 <th><?= __('License Qty') ?></th>
                 <th><?= __('Startdate') ?></th>
                 <th><?= __('Enddate') ?></th>
+                <th><?= __('License Key') ?></th>
                 <th><?= __('Notice') ?></th>
-                <th><?= __('Application') ?></th>
+                <th><?= __('File') ?></th>
                 <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
                 <th><?= __('Type') ?></th>
@@ -146,17 +158,21 @@ $this->end();
             <?php foreach ($status->licenses as $licenses): ?>
                 <tr>
                     <td><?= h($licenses->id) ?></td>
-                    <td><?= h($licenses->license_no) ?></td>
-                    <td><?= h($licenses->issued) ?></td>
-                    <td><?= h($licenses->status_id) ?></td>
-                    <td><?= h($licenses->customer_id) ?></td>
                     <td><?= h($licenses->order_id) ?></td>
+                    <td><?= h($licenses->status_id) ?></td>
+                    <td><?= h($licenses->issued) ?></td>
+                    <td><?= h($licenses->license_no) ?></td>
+                    <td><?= h($licenses->relate_no) ?></td>
+                    <td><?= h($licenses->customer_id) ?></td>
+                    <td><?= h($licenses->product_name) ?></td>
                     <td><?= h($licenses->license_name) ?></td>
+                    <td><?= h($licenses->language) ?></td>
                     <td><?= h($licenses->license_qty) ?></td>
                     <td><?= h($licenses->startdate) ?></td>
                     <td><?= h($licenses->enddate) ?></td>
+                    <td><?= h($licenses->license_key) ?></td>
                     <td><?= h($licenses->notice) ?></td>
-                    <td><?= h($licenses->application) ?></td>
+                    <td><?= h($licenses->file) ?></td>
                     <td><?= h($licenses->dir) ?></td>
                     <td><?= h($licenses->size) ?></td>
                     <td><?= h($licenses->type) ?></td>

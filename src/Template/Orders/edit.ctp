@@ -18,12 +18,12 @@ $this->start('tb_actions');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -39,12 +39,12 @@ $this->start('tb_sidebar');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -64,15 +64,24 @@ $this->end();
 <fieldset>
     <legend><?= __('Edit {0}', ['Order']) ?></legend>
     <?php
-    echo $this->Form->control('client_id', ['options' => $clients]);
+    echo $this->Form->control('company_code');
+    echo $this->Form->control('company_name1');
+    echo $this->Form->control('company_name2');
     echo $this->Form->control('order_date');
+    echo $this->Form->control('order_no');
+    echo $this->Form->control('order_detail_no');
+    echo $this->Form->control('purchase_no');
+    echo $this->Form->control('delivery_date');
+    echo $this->Form->control('sales_date');
+    echo $this->Form->control('status_msg');
+    echo $this->Form->control('product_category');
     echo $this->Form->control('product_code');
-    echo $this->Form->control('order_name');
+    echo $this->Form->control('product_name');
     echo $this->Form->control('quantity');
-    echo $this->Form->control('amount_money');
+    echo $this->Form->control('price');
     echo $this->Form->control('sales_dept');
     echo $this->Form->control('sales_staff');
-    echo $this->Form->control('proof');
+    echo $this->Form->control('file');
     echo $this->Form->control('dir');
     echo $this->Form->control('size');
     echo $this->Form->control('type');

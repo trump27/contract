@@ -1,15 +1,12 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
  * Orders Model
  *
- * @property \App\Model\Table\ClientsTable|\Cake\ORM\Association\BelongsTo $Clients
  * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
@@ -35,18 +32,20 @@ class OrdersTable extends Table
         parent::initialize($config);
 
         $this->setTable('orders');
-        $this->setDisplayField('order_name');
+        $this->setDisplayField('product_name');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Clients', [
-            'foreignKey' => 'client_id'
-        ]);
         $this->hasMany('Licensehistories', [
-            'foreignKey' => 'order_id'
+            'foreignKey' => 'order_id',
         ]);
         $this->hasMany('Licenses', [
-            'foreignKey' => 'order_id'
+            'foreignKey' => 'order_id',
         ]);
+        $this->hasMany('Clients', [
+            'bindingKey' => 'company_code', // リレーション先のカラム名
+            'foreignKey' => 'company_code', // FK
+        ]);
+
     }
 
     /**
@@ -62,39 +61,94 @@ class OrdersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('company_code')
+            ->maxLength('company_code', 20)
+            ->requirePresence('company_code', 'create')
+            ->notEmpty('company_code');
+
+        $validator
+            ->scalar('company_name1')
+            ->maxLength('company_name1', 256)
+            ->allowEmpty('company_name1');
+
+        $validator
+            ->scalar('company_name2')
+            ->maxLength('company_name2', 256)
+            ->allowEmpty('company_name2');
+
+        $validator
             ->date('order_date')
             ->allowEmpty('order_date');
 
         $validator
+            ->scalar('order_no')
+            ->maxLength('order_no', 20)
+            ->allowEmpty('order_no');
+
+        $validator
+            ->scalar('order_detail_no')
+            ->maxLength('order_detail_no', 20)
+            ->allowEmpty('order_detail_no');
+
+        $validator
+            ->scalar('purchase_no')
+            ->maxLength('purchase_no', 20)
+            ->allowEmpty('purchase_no');
+
+        $validator
+            ->date('delivery_date')
+            ->allowEmpty('delivery_date');
+
+        $validator
+            ->date('sales_date')
+            ->allowEmpty('sales_date');
+
+        $validator
+            ->scalar('status_msg')
+            ->maxLength('status_msg', 64)
+            ->allowEmpty('status_msg');
+
+        $validator
+            ->scalar('product_category')
+            ->maxLength('product_category', 256)
+            ->allowEmpty('product_category');
+
+        $validator
             ->scalar('product_code')
+            ->maxLength('product_code', 20)
             ->allowEmpty('product_code');
 
         $validator
-            ->scalar('order_name')
-            ->allowEmpty('order_name');
+            ->scalar('product_name')
+            ->maxLength('product_name', 256)
+            ->allowEmpty('product_name');
 
         $validator
             ->integer('quantity')
             ->allowEmpty('quantity');
 
         $validator
-            ->integer('amount_money')
-            ->allowEmpty('amount_money');
+            ->integer('price')
+            ->allowEmpty('price');
 
         $validator
             ->scalar('sales_dept')
+            ->maxLength('sales_dept', 256)
             ->allowEmpty('sales_dept');
 
         $validator
             ->scalar('sales_staff')
+            ->maxLength('sales_staff', 128)
             ->allowEmpty('sales_staff');
 
         $validator
-            ->scalar('proof')
-            ->allowEmpty('proof');
+            ->scalar('file')
+            ->maxLength('file', 256)
+            ->allowEmpty('file');
 
         $validator
             ->scalar('dir')
+            ->maxLength('dir', 256)
             ->allowEmpty('dir');
 
         $validator
@@ -103,22 +157,9 @@ class OrdersTable extends Table
 
         $validator
             ->scalar('type')
+            ->maxLength('type', 64)
             ->allowEmpty('type');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['client_id'], 'Clients'));
-
-        return $rules;
     }
 }

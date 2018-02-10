@@ -8,12 +8,14 @@ $this->start('tb_actions');
 <li><?= $this->Form->postLink(__('Delete License'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id)]) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New License'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -24,12 +26,14 @@ $this->start('tb_sidebar');
 <li><?= $this->Form->postLink(__('Delete License'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id)]) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New License'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -37,16 +41,12 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($license->license_nameid) ?></h3>
+        <h3 class="panel-title"><?= h($license->license_name) ?></h3>
     </div>
     <table class="table table-striped table-responsive text-nowrap">
         <tr>
-            <td><?= __('License No') ?></td>
-            <td><?= h($license->license_no) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Status') ?></td>
-            <td><?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?></td>
+            <td><?= __('Client') ?></td>
+            <td><?= $license->has('client') ? $this->Html->link($license->client->client_name, ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Customer') ?></td>
@@ -54,15 +54,39 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Order') ?></td>
-            <td><?= $license->has('order') ? $this->Html->link($license->order->order_name, ['controller' => 'Orders', 'action' => 'view', $license->order->id]) : '' ?></td>
+            <td><?= $license->has('order') ? $this->Html->link($license->order->product_name, ['controller' => 'Orders', 'action' => 'view', $license->order->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Status') ?></td>
+            <td><?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <td><?= __('License No') ?></td>
+            <td><?= h($license->license_no) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Relate No') ?></td>
+            <td><?= h($license->relate_no) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Product Name') ?></td>
+            <td><?= h($license->product_name) ?></td>
         </tr>
         <tr>
             <td><?= __('License Name') ?></td>
             <td><?= h($license->license_name) ?></td>
         </tr>
         <tr>
-            <td><?= __('Application') ?></td>
-            <td><?= h($license->application) ?></td>
+            <td><?= __('Language') ?></td>
+            <td><?= h($license->language) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('License Key') ?></td>
+            <td><?= h($license->license_key) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('File') ?></td>
+            <td><?= h($license->file) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>
