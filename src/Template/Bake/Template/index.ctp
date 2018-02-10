@@ -35,15 +35,23 @@ $fields = collection($fields)
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
+            <th class="actions"><?= __('Actions'); ?></th>
 <% foreach ($fields as $field): %>
             <th><?= $this->Paginator->sort('<%= $field %>'); ?></th>
 <% endforeach; %>
-            <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($<%= $pluralVar %> as $<%= $singularVar %>): ?>
         <tr>
+<%
+            $pk = '$' . $singularVar . '->' . $primaryKey[0];
+%>            
+            <td class="actions">
+                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
+                <?= $this->Form->postLink('', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
+            </td>
 <%
             foreach ($fields as $field) {
                 $isKey = false;
@@ -72,14 +80,7 @@ $fields = collection($fields)
                     }
                 }
             }
-
-            $pk = '$' . $singularVar . '->' . $primaryKey[0];
             %>
-            <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?>
-            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>
