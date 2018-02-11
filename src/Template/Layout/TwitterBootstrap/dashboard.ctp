@@ -24,7 +24,7 @@ $this->start('tb_body_start');
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-divider"></li>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">ステータス</a></li>
                     <li><a href="#">Settings</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Help</a></li>
