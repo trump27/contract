@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Muffin\Footprint\Auth\FootprintAwareTrait;
 
 /**
  * Application Controller
@@ -26,6 +27,8 @@ use Cake\Controller\Controller;
  */
 class AppController extends Controller
 {
+    
+    use FootprintAwareTrait;
 
     /**
      * Initialization hook method.
@@ -50,9 +53,11 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
 
+        // $this->_userModel = 'Users';
         $this->loadComponent('Auth', [
             'authenticate' => [
                 'Form' => [
+                    // 'userModel' => $this->_userModel,
                     'fields' => [
                         'username' => 'username',
                         'password' => 'password',
@@ -66,7 +71,7 @@ class AppController extends Controller
             // 未認証の場合、直前のページに戻します
             'unauthorizedRedirect' => $this->referer(),
         ]);
-        $this->Auth->allow(['display', 'login', 'index']);
+        $this->Auth->allow(['display', 'index']);
 
     }
 }

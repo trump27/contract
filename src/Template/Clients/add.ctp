@@ -65,7 +65,6 @@ $this->end();
     echo $this->Form->control('identity1');
     echo $this->Form->control('partner_flag');
     echo $this->Form->control('remarks');
-    echo $this->Form->control('user_id', ['options' => $users]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add"), ['class'=>'btn-primary']); ?>

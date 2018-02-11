@@ -62,6 +62,15 @@ class ClientsTable extends Table
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'company_code', // FK
         ]);
+    
+        $this->addBehavior('Muffin/Footprint.Footprint', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'user_id' => 'always',
+                ],
+            ]
+        ]);
+
     }
 
     /**

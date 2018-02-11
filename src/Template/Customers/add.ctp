@@ -69,7 +69,6 @@ $this->end();
     echo $this->Form->control('admin_name2');
     echo $this->Form->control('div2');
     echo $this->Form->control('mail2');
-    echo $this->Form->control('user_id', ['options' => $users]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add"), ['class'=>'btn-primary']); ?>

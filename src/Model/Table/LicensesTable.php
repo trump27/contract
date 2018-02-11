@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -46,23 +45,31 @@ class LicensesTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Clients', [
-            'foreignKey' => 'client_id'
+            'foreignKey' => 'client_id',
         ]);
         $this->belongsTo('Customers', [
-            'foreignKey' => 'customer_id'
+            'foreignKey' => 'customer_id',
         ]);
         $this->belongsTo('Orders', [
-            'foreignKey' => 'order_id'
+            'foreignKey' => 'order_id',
         ]);
         $this->belongsTo('Statuses', [
-            'foreignKey' => 'status_id'
+            'foreignKey' => 'status_id',
         ]);
         $this->belongsTo('Languages', [
-            'foreignKey' => 'language_id'
+            'foreignKey' => 'language_id',
         ]);
         $this->belongsTo('Users', [
-            'foreignKey' => 'user_id'
+            'foreignKey' => 'user_id',
         ]);
+        $this->addBehavior('Muffin/Footprint.Footprint', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'user_id' => 'always',
+                ],
+            ],
+        ]);
+
     }
 
     /**

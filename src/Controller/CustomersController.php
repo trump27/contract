@@ -63,7 +63,7 @@ class CustomersController extends AppController
         }
         $clients = $this->Customers->Clients->find('list', ['limit' => 200]);
         $users = $this->Customers->Users->find('list', ['limit' => 200]);
-        $this->set(compact('customer', 'clients', 'users'));
+        $this->set(compact('customer', 'clients'));
     }
 
     /**
@@ -89,7 +89,7 @@ class CustomersController extends AppController
         }
         $clients = $this->Customers->Clients->find('list', ['limit' => 200]);
         $users = $this->Customers->Users->find('list', ['limit' => 200]);
-        $this->set(compact('customer', 'clients', 'users'));
+        $this->set(compact('customer', 'clients'));
     }
 
     /**

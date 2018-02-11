@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -45,17 +44,25 @@ class ContractsTable extends Table
 
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',
-            'joinType' => 'INNER'
+            'joinType' => 'INNER',
         ]);
         $this->belongsTo('Customers', [
-            'foreignKey' => 'customer_id'
+            'foreignKey' => 'customer_id',
         ]);
         $this->belongsTo('Contractnames', [
-            'foreignKey' => 'contractname_id'
+            'foreignKey' => 'contractname_id',
         ]);
         $this->belongsTo('Users', [
-            'foreignKey' => 'user_id'
+            'foreignKey' => 'user_id',
         ]);
+        $this->addBehavior('Muffin/Footprint.Footprint', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'user_id' => 'always',
+                ],
+            ],
+        ]);
+
     }
 
     /**
