@@ -49,6 +49,7 @@ if ('tb_sidebar' === $block):
 $this->end();
 <% endforeach; %>
 ?>
+<h1 class="page-header"><?= __('<%= $singularHumanName %>') ?></h1>
 <?= $this->Form->create($<%= $singularVar %>, ['align' => [
     'sm' => [
         'left' => 3,

@@ -45,6 +45,7 @@ $this->start('tb_sidebar');
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Clients') ?></h1>
 <?= $this->Form->create($client, ['align' => [
     'sm' => [
         'left' => 3,

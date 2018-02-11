@@ -4,11 +4,10 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('New Contractname'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
+<h1 class="page-header"><?= __('Contractnames') ?></h1>
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>

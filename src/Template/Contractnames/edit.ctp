@@ -18,8 +18,6 @@ $this->start('tb_actions');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Contractnames'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -35,12 +33,11 @@ $this->start('tb_sidebar');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Contractnames'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Contractnames') ?></h1>
 <?= $this->Form->create($contractname, ['align' => [
     'sm' => [
         'left' => 3,

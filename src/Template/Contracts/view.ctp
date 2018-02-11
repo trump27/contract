@@ -38,6 +38,7 @@ $this->start('tb_sidebar');
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Contract') ?></h1>
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">

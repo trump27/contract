@@ -32,6 +32,7 @@ $fields = collection($fields)
         })
         ->take(7);
 %>
+<h1 class="page-header"><?= __('<%= $singularHumanName %>') ?></h1>
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>

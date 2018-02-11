@@ -98,6 +98,9 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->request['data']['newpassword']) {
+                $user['password'] = $this->request['data']['newpassword'];
+            }
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

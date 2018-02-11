@@ -61,6 +61,7 @@ $this->start('tb_sidebar');
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Licensehistories') ?></h1>
 <?= $this->Form->create($licensehistory, ['align' => [
     'sm' => [
         'left' => 3,

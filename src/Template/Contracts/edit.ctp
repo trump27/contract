@@ -53,6 +53,7 @@ $this->start('tb_sidebar');
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Contract') ?></h1>
 <?= $this->Form->create($contract, ['align' => [
     'sm' => [
         'left' => 3,

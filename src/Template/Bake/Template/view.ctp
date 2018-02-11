@@ -73,6 +73,7 @@ if ('tb_sidebar' === $block):
 $this->end();
 <% endforeach; %>
 ?>
+<h1 class="page-header"><?= __('<%= $singularHumanName %>') ?></h1>
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">

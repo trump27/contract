@@ -18,10 +18,6 @@ $this->start('tb_actions');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Languages'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -37,14 +33,11 @@ $this->start('tb_sidebar');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Languages'), ['action' => 'index']) ?></li>
-    <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Languages') ?></h1>
 <?= $this->Form->create($language, ['align' => [
     'sm' => [
         'left' => 3,

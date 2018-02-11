@@ -45,6 +45,7 @@ $this->start('tb_sidebar');
 <?php
 $this->end();
 ?>
+<h1 class="page-header"><?= __('Licenses') ?></h1>
 <?= $this->Form->create($license, ['align' => [
     'sm' => [
         'left' => 3,
