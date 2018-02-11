@@ -10,6 +10,8 @@ use Cake\Validation\Validator;
  * Customers Model
  *
  * @property \App\Model\Table\ClientsTable|\Cake\ORM\Association\BelongsTo $Clients
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\ContractsTable|\Cake\ORM\Association\HasMany $Contracts
  * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
@@ -20,6 +22,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Customer patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Customer[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Customer findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class CustomersTable extends Table
 {
@@ -38,9 +42,17 @@ class CustomersTable extends Table
         $this->setDisplayField('customer_name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('Clients', [
             'foreignKey' => 'client_id',
             'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Contracts', [
+            'foreignKey' => 'customer_id'
         ]);
         $this->hasMany('Licensehistories', [
             'foreignKey' => 'customer_id'
@@ -135,6 +147,7 @@ class CustomersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['client_id'], 'Clients'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

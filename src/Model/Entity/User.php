@@ -13,6 +13,13 @@ use Cake\ORM\Entity;
  * @property string $email
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Client[] $clients
+ * @property \App\Model\Entity\Contract[] $contracts
+ * @property \App\Model\Entity\Customer[] $customers
+ * @property \App\Model\Entity\Licensehistory[] $licensehistories
+ * @property \App\Model\Entity\License[] $licenses
+ * @property \App\Model\Entity\Order[] $orders
  */
 class User extends Entity
 {
@@ -32,7 +39,13 @@ class User extends Entity
         'password' => true,
         'email' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'clients' => true,
+        'contracts' => true,
+        'customers' => true,
+        'licensehistories' => true,
+        'licenses' => true,
+        'orders' => true
     ];
 
     /**

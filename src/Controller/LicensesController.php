@@ -21,7 +21,7 @@ class LicensesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users']
         ];
         $licenses = $this->paginate($this->Licenses);
 
@@ -38,7 +38,7 @@ class LicensesController extends AppController
     public function view($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users']
         ]);
 
         $this->set('license', $license);
@@ -65,7 +65,9 @@ class LicensesController extends AppController
         $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses'));
+        $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
+        $users = $this->Licenses->Users->find('list', ['limit' => 200]);
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages', 'users'));
     }
 
     /**
@@ -93,7 +95,9 @@ class LicensesController extends AppController
         $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses'));
+        $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
+        $users = $this->Licenses->Users->find('list', ['limit' => 200]);
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages', 'users'));
     }
 
     /**

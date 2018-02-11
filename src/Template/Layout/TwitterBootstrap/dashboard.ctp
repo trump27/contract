@@ -16,7 +16,7 @@ $this->start('tb_body_start');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Hello</a>
+                <a class="navbar-brand" href="#">Contract</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right visible-xs">
@@ -38,10 +38,10 @@ $this->start('tb_body_start');
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-2 col-md-1 sidebar">
                 <?= $this->fetch('tb_sidebar') ?>
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
                 <h1 class="page-header"><?= $this->request->controller; ?></h1>
 <?php
 /**

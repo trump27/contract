@@ -12,12 +12,17 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
+            <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_id'); ?></th>
@@ -25,12 +30,17 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('status_id'); ?></th>
             <th><?= $this->Paginator->sort('issued'); ?></th>
             <th><?= $this->Paginator->sort('license_no'); ?></th>
-            <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($licensehistories as $licensehistory): ?>
         <tr>
+            
+            <td class="actions">
+                <?= $this->Html->link('', ['action' => 'view', $licensehistory->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', $licensehistory->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
+                <?= $this->Form->postLink('', ['action' => 'delete', $licensehistory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $licensehistory->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
+            </td>
             <td><?= $this->Number->format($licensehistory->id) ?></td>
             <td>
                 <?= $licensehistory->has('client') ? $this->Html->link($licensehistory->client->client_name, ['controller' => 'Clients', 'action' => 'view', $licensehistory->client->id]) : '' ?>
@@ -46,11 +56,6 @@ $this->start('tb_actions');
             </td>
             <td><?= h($licensehistory->issued) ?></td>
             <td><?= h($licensehistory->license_no) ?></td>
-            <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $licensehistory->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $licensehistory->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $licensehistory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $licensehistory->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?>
-            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

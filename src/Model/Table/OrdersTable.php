@@ -1,12 +1,15 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
  * Orders Model
  *
+ * @property \App\Model\Table\StatusesTable|\Cake\ORM\Association\BelongsTo $Statuses
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
@@ -17,6 +20,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Order patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Order[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Order findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class OrdersTable extends Table
 {
@@ -35,17 +40,24 @@ class OrdersTable extends Table
         $this->setDisplayField('product_name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Statuses', [
+            'foreignKey' => 'status_id',
+        ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->hasMany('Licensehistories', [
             'foreignKey' => 'order_id',
         ]);
         $this->hasMany('Licenses', [
             'foreignKey' => 'order_id',
         ]);
-        $this->hasMany('Clients', [
+        $this->belongsTo('Clients', [
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'company_code', // FK
         ]);
-
     }
 
     /**
@@ -142,6 +154,10 @@ class OrdersTable extends Table
             ->allowEmpty('sales_staff');
 
         $validator
+            ->scalar('product_detail')
+            ->allowEmpty('product_detail');
+
+        $validator
             ->scalar('file')
             ->maxLength('file', 256)
             ->allowEmpty('file');
@@ -161,5 +177,20 @@ class OrdersTable extends Table
             ->allowEmpty('type');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['status_id'], 'Statuses'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
+
+        return $rules;
     }
 }

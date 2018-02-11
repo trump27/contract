@@ -1,13 +1,18 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
  * Clients Model
  *
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\ContractsTable|\Cake\ORM\Association\HasMany $Contracts
  * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\HasMany $Customers
+ * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
+ * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
  * @method \App\Model\Entity\Client get($primaryKey, $options = [])
  * @method \App\Model\Entity\Client newEntity($data = null, array $options = [])
@@ -16,6 +21,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Client patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Client[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Client findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ClientsTable extends Table
 {
@@ -34,7 +41,18 @@ class ClientsTable extends Table
         $this->setDisplayField('client_name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('Contracts', [
+            'foreignKey' => 'client_id',
+        ]);
         $this->hasMany('Customers', [
+            'foreignKey' => 'client_id',
+        ]);
+        $this->hasMany('Licensehistories', [
             'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Licenses', [
@@ -44,7 +62,6 @@ class ClientsTable extends Table
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'company_code', // FK
         ]);
-
     }
 
     /**
@@ -76,7 +93,7 @@ class ClientsTable extends Table
             ->allowEmpty('identity1');
 
         $validator
-            ->scalar('partner_flag')
+            ->integer('partner_flag')
             ->allowEmpty('partner_flag');
 
         $validator
@@ -84,5 +101,19 @@ class ClientsTable extends Table
             ->allowEmpty('remarks');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
+
+        return $rules;
     }
 }

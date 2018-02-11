@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
+ * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\HasMany $Orders
  *
  * @method \App\Model\Entity\Status get($primaryKey, $options = [])
  * @method \App\Model\Entity\Status newEntity($data = null, array $options = [])
@@ -41,6 +42,9 @@ class StatusesTable extends Table
             'foreignKey' => 'status_id'
         ]);
         $this->hasMany('Licenses', [
+            'foreignKey' => 'status_id'
+        ]);
+        $this->hasMany('Orders', [
             'foreignKey' => 'status_id'
         ]);
     }

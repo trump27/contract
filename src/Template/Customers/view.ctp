@@ -10,6 +10,10 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('New Customer'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
@@ -26,6 +30,10 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('New Customer'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
@@ -89,8 +97,20 @@ $this->end();
             <td><?= h($customer->mail2) ?></td>
         </tr>
         <tr>
+            <td><?= __('User') ?></td>
+            <td><?= $customer->has('user') ? $this->Html->link($customer->user->name, ['controller' => 'Users', 'action' => 'view', $customer->user->id]) : '' ?></td>
+        </tr>
+        <tr>
             <td><?= __('Id') ?></td>
             <td><?= $this->Number->format($customer->id) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Created') ?></td>
+            <td><?= h($customer->created) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Modified') ?></td>
+            <td><?= h($customer->modified) ?></td>
         </tr>
         <tr>
             <td><?= __('Remarks') ?></td>
@@ -102,6 +122,58 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
+        <h3 class="panel-title"><?= __('Related Contracts') ?></h3>
+    </div>
+    <?php if (!empty($customer->contracts)): ?>
+        <table class="table table-striped text-nowrap">
+            <thead>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Client Id') ?></th>
+                <th><?= __('Customer Id') ?></th>
+                <th><?= __('Contractname Id') ?></th>
+                <th><?= __('Remarks') ?></th>
+                <th><?= __('File') ?></th>
+                <th><?= __('Dir') ?></th>
+                <th><?= __('Size') ?></th>
+                <th><?= __('Type') ?></th>
+                <th><?= __('User Id') ?></th>
+                <th><?= __('Created') ?></th>
+                <th><?= __('Modified') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($customer->contracts as $contracts): ?>
+                <tr>
+                    <td><?= h($contracts->id) ?></td>
+                    <td><?= h($contracts->client_id) ?></td>
+                    <td><?= h($contracts->customer_id) ?></td>
+                    <td><?= h($contracts->contractname_id) ?></td>
+                    <td><?= h($contracts->remarks) ?></td>
+                    <td><?= h($contracts->file) ?></td>
+                    <td><?= h($contracts->dir) ?></td>
+                    <td><?= h($contracts->size) ?></td>
+                    <td><?= h($contracts->type) ?></td>
+                    <td><?= h($contracts->user_id) ?></td>
+                    <td><?= h($contracts->created) ?></td>
+                    <td><?= h($contracts->modified) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'view', $contracts->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'edit', $contracts->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('', ['controller' => 'Contracts', 'action' => 'delete', $contracts->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contracts->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="panel-body">no related Contracts</p>
+    <?php endif; ?>
+</div>
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
         <h3 class="panel-title"><?= __('Related Licensehistories') ?></h3>
     </div>
     <?php if (!empty($customer->licensehistories)): ?>
@@ -109,15 +181,16 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
+                <th><?= __('Client Id') ?></th>
+                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Order Id') ?></th>
                 <th><?= __('Status Id') ?></th>
                 <th><?= __('Issued') ?></th>
                 <th><?= __('License No') ?></th>
                 <th><?= __('Relate No') ?></th>
-                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Product Name') ?></th>
                 <th><?= __('License Name') ?></th>
-                <th><?= __('Language') ?></th>
+                <th><?= __('Language Id') ?></th>
                 <th><?= __('License Qty') ?></th>
                 <th><?= __('Startdate') ?></th>
                 <th><?= __('Enddate') ?></th>
@@ -127,6 +200,7 @@ $this->end();
                 <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
                 <th><?= __('Type') ?></th>
+                <th><?= __('User Id') ?></th>
                 <th><?= __('Created') ?></th>
                 <th><?= __('Modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -136,15 +210,16 @@ $this->end();
             <?php foreach ($customer->licensehistories as $licensehistories): ?>
                 <tr>
                     <td><?= h($licensehistories->id) ?></td>
+                    <td><?= h($licensehistories->client_id) ?></td>
+                    <td><?= h($licensehistories->customer_id) ?></td>
                     <td><?= h($licensehistories->order_id) ?></td>
                     <td><?= h($licensehistories->status_id) ?></td>
                     <td><?= h($licensehistories->issued) ?></td>
                     <td><?= h($licensehistories->license_no) ?></td>
                     <td><?= h($licensehistories->relate_no) ?></td>
-                    <td><?= h($licensehistories->customer_id) ?></td>
                     <td><?= h($licensehistories->product_name) ?></td>
                     <td><?= h($licensehistories->license_name) ?></td>
-                    <td><?= h($licensehistories->language) ?></td>
+                    <td><?= h($licensehistories->language_id) ?></td>
                     <td><?= h($licensehistories->license_qty) ?></td>
                     <td><?= h($licensehistories->startdate) ?></td>
                     <td><?= h($licensehistories->enddate) ?></td>
@@ -154,6 +229,7 @@ $this->end();
                     <td><?= h($licensehistories->dir) ?></td>
                     <td><?= h($licensehistories->size) ?></td>
                     <td><?= h($licensehistories->type) ?></td>
+                    <td><?= h($licensehistories->user_id) ?></td>
                     <td><?= h($licensehistories->created) ?></td>
                     <td><?= h($licensehistories->modified) ?></td>
                     <td class="actions">
@@ -179,15 +255,16 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
+                <th><?= __('Client Id') ?></th>
+                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Order Id') ?></th>
                 <th><?= __('Status Id') ?></th>
                 <th><?= __('Issued') ?></th>
                 <th><?= __('License No') ?></th>
                 <th><?= __('Relate No') ?></th>
-                <th><?= __('Customer Id') ?></th>
                 <th><?= __('Product Name') ?></th>
                 <th><?= __('License Name') ?></th>
-                <th><?= __('Language') ?></th>
+                <th><?= __('Language Id') ?></th>
                 <th><?= __('License Qty') ?></th>
                 <th><?= __('Startdate') ?></th>
                 <th><?= __('Enddate') ?></th>
@@ -197,6 +274,7 @@ $this->end();
                 <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
                 <th><?= __('Type') ?></th>
+                <th><?= __('User Id') ?></th>
                 <th><?= __('Created') ?></th>
                 <th><?= __('Modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -206,15 +284,16 @@ $this->end();
             <?php foreach ($customer->licenses as $licenses): ?>
                 <tr>
                     <td><?= h($licenses->id) ?></td>
+                    <td><?= h($licenses->client_id) ?></td>
+                    <td><?= h($licenses->customer_id) ?></td>
                     <td><?= h($licenses->order_id) ?></td>
                     <td><?= h($licenses->status_id) ?></td>
                     <td><?= h($licenses->issued) ?></td>
                     <td><?= h($licenses->license_no) ?></td>
                     <td><?= h($licenses->relate_no) ?></td>
-                    <td><?= h($licenses->customer_id) ?></td>
                     <td><?= h($licenses->product_name) ?></td>
                     <td><?= h($licenses->license_name) ?></td>
-                    <td><?= h($licenses->language) ?></td>
+                    <td><?= h($licenses->language_id) ?></td>
                     <td><?= h($licenses->license_qty) ?></td>
                     <td><?= h($licenses->startdate) ?></td>
                     <td><?= h($licenses->enddate) ?></td>
@@ -224,6 +303,7 @@ $this->end();
                     <td><?= h($licenses->dir) ?></td>
                     <td><?= h($licenses->size) ?></td>
                     <td><?= h($licenses->type) ?></td>
+                    <td><?= h($licenses->user_id) ?></td>
                     <td><?= h($licenses->created) ?></td>
                     <td><?= h($licenses->modified) ?></td>
                     <td class="actions">

@@ -21,7 +21,7 @@ class CustomersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients']
+            'contain' => ['Clients', 'Users']
         ];
         $customers = $this->paginate($this->Customers);
 
@@ -38,7 +38,7 @@ class CustomersController extends AppController
     public function view($id = null)
     {
         $customer = $this->Customers->get($id, [
-            'contain' => ['Clients', 'Licensehistories', 'Licenses']
+            'contain' => ['Clients', 'Users', 'Contracts', 'Licensehistories', 'Licenses']
         ]);
 
         $this->set('customer', $customer);
@@ -62,7 +62,8 @@ class CustomersController extends AppController
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $clients = $this->Customers->Clients->find('list', ['limit' => 200]);
-        $this->set(compact('customer', 'clients'));
+        $users = $this->Customers->Users->find('list', ['limit' => 200]);
+        $this->set(compact('customer', 'clients', 'users'));
     }
 
     /**
@@ -87,7 +88,8 @@ class CustomersController extends AppController
             $this->Flash->error(__('The customer could not be saved. Please, try again.'));
         }
         $clients = $this->Customers->Clients->find('list', ['limit' => 200]);
-        $this->set(compact('customer', 'clients'));
+        $users = $this->Customers->Users->find('list', ['limit' => 200]);
+        $this->set(compact('customer', 'clients', 'users'));
     }
 
     /**

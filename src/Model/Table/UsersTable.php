@@ -9,6 +9,13 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \App\Model\Table\ClientsTable|\Cake\ORM\Association\HasMany $Clients
+ * @property \App\Model\Table\ContractsTable|\Cake\ORM\Association\HasMany $Contracts
+ * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\HasMany $Customers
+ * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
+ * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
+ * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\HasMany $Orders
+ *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -37,6 +44,25 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Clients', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Contracts', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Customers', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Licensehistories', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Licenses', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Orders', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**

@@ -21,7 +21,7 @@ class LicensehistoriesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users']
         ];
         $licensehistories = $this->paginate($this->Licensehistories);
 
@@ -38,7 +38,7 @@ class LicensehistoriesController extends AppController
     public function view($id = null)
     {
         $licensehistory = $this->Licensehistories->get($id, [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users']
         ]);
 
         $this->set('licensehistory', $licensehistory);
@@ -65,7 +65,9 @@ class LicensehistoriesController extends AppController
         $customers = $this->Licensehistories->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licensehistories->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licensehistories->Statuses->find('list', ['limit' => 200]);
-        $this->set(compact('licensehistory', 'clients', 'customers', 'orders', 'statuses'));
+        $languages = $this->Licensehistories->Languages->find('list', ['limit' => 200]);
+        $users = $this->Licensehistories->Users->find('list', ['limit' => 200]);
+        $this->set(compact('licensehistory', 'clients', 'customers', 'orders', 'statuses', 'languages', 'users'));
     }
 
     /**
@@ -93,7 +95,9 @@ class LicensehistoriesController extends AppController
         $customers = $this->Licensehistories->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licensehistories->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licensehistories->Statuses->find('list', ['limit' => 200]);
-        $this->set(compact('licensehistory', 'clients', 'customers', 'orders', 'statuses'));
+        $languages = $this->Licensehistories->Languages->find('list', ['limit' => 200]);
+        $users = $this->Licensehistories->Users->find('list', ['limit' => 200]);
+        $this->set(compact('licensehistory', 'clients', 'customers', 'orders', 'statuses', 'languages', 'users'));
     }
 
     /**

@@ -20,8 +20,13 @@ use Cake\ORM\Entity;
  * @property string $admin_name2
  * @property string $div2
  * @property string $mail2
+ * @property int $user_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Client $client
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Contract[] $contracts
  * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  */
@@ -51,7 +56,12 @@ class Customer extends Entity
         'admin_name2' => true,
         'div2' => true,
         'mail2' => true,
+        'user_id' => true,
+        'created' => true,
+        'modified' => true,
         'client' => true,
+        'user' => true,
+        'contracts' => true,
         'licensehistories' => true,
         'licenses' => true
     ];

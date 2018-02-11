@@ -6,6 +6,10 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Customer'), ['action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']); ?></li>
+    <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
+    <li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
@@ -16,6 +20,7 @@ $this->start('tb_actions');
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
+            <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_name'); ?></th>
@@ -23,12 +28,17 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('identity2'); ?></th>
             <th><?= $this->Paginator->sort('sales_dept'); ?></th>
             <th><?= $this->Paginator->sort('sales_staff'); ?></th>
-            <th class="actions"><?= __('Actions'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($customers as $customer): ?>
         <tr>
+            
+            <td class="actions">
+                <?= $this->Html->link('', ['action' => 'view', $customer->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', $customer->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
+                <?= $this->Form->postLink('', ['action' => 'delete', $customer->id], ['confirm' => __('Are you sure you want to delete # {0}?', $customer->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
+            </td>
             <td><?= $this->Number->format($customer->id) ?></td>
             <td>
                 <?= $customer->has('client') ? $this->Html->link($customer->client->client_name, ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?>
@@ -38,11 +48,6 @@ $this->start('tb_actions');
             <td><?= h($customer->identity2) ?></td>
             <td><?= h($customer->sales_dept) ?></td>
             <td><?= h($customer->sales_staff) ?></td>
-            <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $customer->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $customer->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $customer->id], ['confirm' => __('Are you sure you want to delete # {0}?', $customer->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?>
-            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

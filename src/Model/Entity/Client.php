@@ -10,10 +10,18 @@ use Cake\ORM\Entity;
  * @property string $client_name
  * @property string $company_code
  * @property string $identity1
- * @property string $partner_flag
+ * @property int $partner_flag
  * @property string $remarks
+ * @property int $user_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Contract[] $contracts
  * @property \App\Model\Entity\Customer[] $customers
+ * @property \App\Model\Entity\Licensehistory[] $licensehistories
+ * @property \App\Model\Entity\License[] $licenses
+ * @property \App\Model\Entity\Order[] $orders
  */
 class Client extends Entity
 {
@@ -33,6 +41,14 @@ class Client extends Entity
         'identity1' => true,
         'partner_flag' => true,
         'remarks' => true,
-        'customers' => true
+        'user_id' => true,
+        'created' => true,
+        'modified' => true,
+        'user' => true,
+        'contracts' => true,
+        'customers' => true,
+        'licensehistories' => true,
+        'licenses' => true,
+        'orders' => true
     ];
 }

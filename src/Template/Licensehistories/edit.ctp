@@ -26,6 +26,10 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -49,6 +53,10 @@ $this->start('tb_sidebar');
     <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -77,7 +85,7 @@ $this->end();
     echo $this->Form->control('relate_no');
     echo $this->Form->control('product_name');
     echo $this->Form->control('license_name');
-    echo $this->Form->control('language');
+    echo $this->Form->control('language_id', ['options' => $languages]);
     echo $this->Form->control('license_qty');
     echo $this->Form->control('startdate');
     echo $this->Form->control('enddate');
@@ -87,6 +95,7 @@ $this->end();
     echo $this->Form->control('dir');
     echo $this->Form->control('size');
     echo $this->Form->control('type');
+    echo $this->Form->control('user_id', ['options' => $users]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>

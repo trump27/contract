@@ -9,10 +9,12 @@ use Cake\Validation\Validator;
 /**
  * Licensehistories Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Clients
+ * @property \App\Model\Table\ClientsTable|\Cake\ORM\Association\BelongsTo $Clients
  * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\BelongsTo $Customers
  * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\BelongsTo $Orders
  * @property \App\Model\Table\StatusesTable|\Cake\ORM\Association\BelongsTo $Statuses
+ * @property \App\Model\Table\LanguagesTable|\Cake\ORM\Association\BelongsTo $Languages
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \App\Model\Entity\Licensehistory get($primaryKey, $options = [])
  * @method \App\Model\Entity\Licensehistory newEntity($data = null, array $options = [])
@@ -55,6 +57,12 @@ class LicensehistoriesTable extends Table
         $this->belongsTo('Statuses', [
             'foreignKey' => 'status_id'
         ]);
+        $this->belongsTo('Languages', [
+            'foreignKey' => 'language_id'
+        ]);
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id'
+        ]);
     }
 
     /**
@@ -92,11 +100,6 @@ class LicensehistoriesTable extends Table
             ->scalar('license_name')
             ->maxLength('license_name', 256)
             ->allowEmpty('license_name');
-
-        $validator
-            ->scalar('language')
-            ->maxLength('language', 64)
-            ->allowEmpty('language');
 
         $validator
             ->integer('license_qty')
@@ -154,6 +157,8 @@ class LicensehistoriesTable extends Table
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
         $rules->add($rules->existsIn(['order_id'], 'Orders'));
         $rules->add($rules->existsIn(['status_id'], 'Statuses'));
+        $rules->add($rules->existsIn(['language_id'], 'Languages'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

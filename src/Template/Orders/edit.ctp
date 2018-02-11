@@ -18,12 +18,16 @@ $this->start('tb_actions');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?></li>
+    <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -39,12 +43,16 @@ $this->start('tb_sidebar');
     ?>
     </li>
     <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?></li>
+    <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
+    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
     <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -64,7 +72,7 @@ $this->end();
 <fieldset>
     <legend><?= __('Edit {0}', ['Order']) ?></legend>
     <?php
-    echo $this->Form->control('company_code');
+    echo $this->Form->control('company_code', ['options' => $clients]);
     echo $this->Form->control('company_name1');
     echo $this->Form->control('company_name2');
     echo $this->Form->control('order_date');
@@ -81,10 +89,13 @@ $this->end();
     echo $this->Form->control('price');
     echo $this->Form->control('sales_dept');
     echo $this->Form->control('sales_staff');
+    echo $this->Form->control('product_detail');
+    echo $this->Form->control('status_id', ['options' => $statuses]);
     echo $this->Form->control('file');
     echo $this->Form->control('dir');
     echo $this->Form->control('size');
     echo $this->Form->control('type');
+    echo $this->Form->control('user_id', ['options' => $users]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>

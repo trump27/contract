@@ -24,13 +24,21 @@ use Cake\ORM\Entity;
  * @property int $price
  * @property string $sales_dept
  * @property string $sales_staff
+ * @property string $product_detail
+ * @property int $status_id
  * @property string $file
  * @property string $dir
  * @property int $size
  * @property string $type
+ * @property int $user_id
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\Status $status
+ * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
+ * @property \App\Model\Entity\Client $client
  */
 class Order extends Entity
 {
@@ -62,11 +70,19 @@ class Order extends Entity
         'price' => true,
         'sales_dept' => true,
         'sales_staff' => true,
+        'product_detail' => true,
+        'status_id' => true,
         'file' => true,
         'dir' => true,
         'size' => true,
         'type' => true,
+        'user_id' => true,
+        'created' => true,
+        'modified' => true,
+        'status' => true,
+        'user' => true,
         'licensehistories' => true,
-        'licenses' => true
+        'licenses' => true,
+        'client' => true
     ];
 }

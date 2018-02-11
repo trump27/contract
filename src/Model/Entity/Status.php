@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
+ * @property \App\Model\Entity\Order[] $orders
  */
 class Status extends Entity
 {
@@ -29,6 +30,7 @@ class Status extends Entity
         'code' => true,
         'name' => true,
         'licensehistories' => true,
-        'licenses' => true
+        'licenses' => true,
+        'orders' => true
     ];
 }

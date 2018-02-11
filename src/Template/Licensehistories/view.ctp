@@ -16,6 +16,10 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -34,6 +38,10 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
+<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -78,7 +86,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Language') ?></td>
-            <td><?= h($licensehistory->language) ?></td>
+            <td><?= $licensehistory->has('language') ? $this->Html->link($licensehistory->language->language_name, ['controller' => 'Languages', 'action' => 'view', $licensehistory->language->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('License Key') ?></td>
@@ -95,6 +103,10 @@ $this->end();
         <tr>
             <td><?= __('Type') ?></td>
             <td><?= h($licensehistory->type) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('User') ?></td>
+            <td><?= $licensehistory->has('user') ? $this->Html->link($licensehistory->user->name, ['controller' => 'Users', 'action' => 'view', $licensehistory->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Id') ?></td>

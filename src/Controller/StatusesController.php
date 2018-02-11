@@ -35,7 +35,7 @@ class StatusesController extends AppController
     public function view($id = null)
     {
         $status = $this->Statuses->get($id, [
-            'contain' => ['Licensehistories', 'Licenses']
+            'contain' => ['Licensehistories', 'Licenses', 'Orders']
         ]);
 
         $this->set('status', $status);

@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property string $relate_no
  * @property string $product_name
  * @property string $license_name
- * @property string $language
+ * @property int $language_id
  * @property int $license_qty
  * @property \Cake\I18n\FrozenDate $startdate
  * @property \Cake\I18n\FrozenDate $enddate
@@ -26,12 +26,16 @@ use Cake\ORM\Entity;
  * @property string $dir
  * @property int $size
  * @property string $type
+ * @property int $user_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
+ * @property \App\Model\Entity\Client $client
+ * @property \App\Model\Entity\Customer $customer
  * @property \App\Model\Entity\Order $order
  * @property \App\Model\Entity\Status $status
- * @property \App\Model\Entity\Customer $customer
+ * @property \App\Model\Entity\Language $language
+ * @property \App\Model\Entity\User $user
  */
 class Licensehistory extends Entity
 {
@@ -55,7 +59,7 @@ class Licensehistory extends Entity
         'relate_no' => true,
         'product_name' => true,
         'license_name' => true,
-        'language' => true,
+        'language_id' => true,
         'license_qty' => true,
         'startdate' => true,
         'enddate' => true,
@@ -65,10 +69,14 @@ class Licensehistory extends Entity
         'dir' => true,
         'size' => true,
         'type' => true,
+        'user_id' => true,
         'created' => true,
         'modified' => true,
+        'client' => true,
+        'customer' => true,
         'order' => true,
         'status' => true,
-        'customer' => true
+        'language' => true,
+        'user' => true
     ];
 }
