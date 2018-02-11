@@ -12,6 +12,29 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout']);
+    }
+
+    public function logout()
+    {
+        $this->Flash->success('You are logged out.');
+        return $this->redirect($this->Auth->logout());
+    }
+
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('ユーザー名またはパスワードが不正です。');
+        }
+    }
 
     /**
      * Index method
@@ -35,7 +58,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Clients', 'Contracts', 'Customers', 'Licensehistories', 'Licenses', 'Orders']
+            'contain' => ['Clients', 'Contracts', 'Customers', 'Licensehistories', 'Licenses', 'Orders'],
         ]);
 
         $this->set('user', $user);
@@ -71,7 +94,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());

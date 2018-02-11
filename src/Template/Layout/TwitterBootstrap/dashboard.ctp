@@ -27,7 +27,7 @@ $this->start('tb_body_start');
                     <li><a href="#">ステータス</a></li>
                     <li><a href="#">Settings</a></li>
                     <li><a href="#">Profile</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']); ?></li>
                 </ul>
                 <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Search...">

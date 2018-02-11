@@ -15,7 +15,6 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use Cake\Event\Event;
 
 /**
  * Application Controller
@@ -50,5 +49,24 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password',
+                    ],
+                ],
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            // 未認証の場合、直前のページに戻します
+            'unauthorizedRedirect' => $this->referer(),
+        ]);
+        $this->Auth->allow(['display', 'login', 'index']);
+
     }
 }
