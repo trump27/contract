@@ -26,7 +26,15 @@ $this->start('tb_body_start');
                     <li class="nav-divider"></li>
                     <li><a href="#">ステータス</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                        role="button" aria-haspopup="true" aria-expanded="false">メンテナンス <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><?= $this->Html->link(__('Contractnames'), ['controller' => 'Contractnames', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('Languages'), ['controller' => 'Languages', 'action' => 'index']); ?></li>
+                            <li role="separator" class="divider"></li>
+                            <li><?= $this->Html->link(__('Statuses'), ['controller' => 'Statuses', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
+                        </ul>
                     <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']); ?></li>
                 </ul>
                 <form class="navbar-form navbar-right">

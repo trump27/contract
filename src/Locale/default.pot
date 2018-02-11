@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2018-02-11 12:53+0900\n"
+"POT-Creation-Date: 2018-02-11 21:50+0900\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -158,19 +158,19 @@ msgstr ""
 msgid "The status could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:55;79
+#: Controller/UsersController.php:78;102
 msgid "The user has been saved."
 msgstr ""
 
-#: Controller/UsersController.php:59;83
+#: Controller/UsersController.php:82;106
 msgid "The user could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:100
+#: Controller/UsersController.php:123
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:102
+#: Controller/UsersController.php:125
 msgid "The user could not be deleted. Please, try again."
 msgstr ""
 
@@ -202,7 +202,7 @@ msgstr ""
 #: Template/Statuses/index.ctp:32
 #: Template/Statuses/view.ctp:122;196;278
 #: Template/Users/edit.ctp:14;41
-#: Template/Users/index.ctp:42
+#: Template/Users/index.ctp:41
 #: Template/Users/view.ctp:122;174;236;310;384;466
 msgid "Delete"
 msgstr ""
@@ -238,7 +238,7 @@ msgstr ""
 #: Template/Statuses/index.ctp:32
 #: Template/Statuses/view.ctp:8;24;122;196;278
 #: Template/Users/edit.ctp:16;43
-#: Template/Users/index.ctp:42
+#: Template/Users/index.ctp:41
 #: Template/Users/view.ctp:8;30;122;174;236;310;384;466
 msgid "Are you sure you want to delete # {0}?"
 msgstr ""
@@ -314,7 +314,7 @@ msgstr ""
 #: Template/Orders/view.ctp:224;298
 #: Template/Statuses/index.ctp:30
 #: Template/Statuses/view.ctp:120;194;276
-#: Template/Users/index.ctp:40
+#: Template/Users/index.ctp:39
 #: Template/Users/view.ctp:120;172;234;308;382;464
 msgid "View"
 msgstr ""
@@ -336,7 +336,7 @@ msgstr ""
 #: Template/Orders/view.ctp:225;299
 #: Template/Statuses/index.ctp:31
 #: Template/Statuses/view.ctp:121;195;277
-#: Template/Users/index.ctp:41
+#: Template/Users/index.ctp:40
 #: Template/Users/view.ctp:121;173;235;309;383;465
 msgid "Edit"
 msgstr ""
@@ -351,7 +351,7 @@ msgstr ""
 #: Template/Licenses/index.ctp:65
 #: Template/Orders/index.ctp:57
 #: Template/Statuses/index.ctp:43
-#: Template/Users/index.ctp:57
+#: Template/Users/index.ctp:55
 msgid "previous"
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 #: Template/Licenses/index.ctp:67
 #: Template/Orders/index.ctp:59
 #: Template/Statuses/index.ctp:45
-#: Template/Users/index.ctp:59
+#: Template/Users/index.ctp:57
 msgid "next"
 msgstr ""
 
@@ -762,10 +762,10 @@ msgstr ""
 msgid "Add {0}"
 msgstr ""
 
-#: Template/Clients/add.ctp:71
+#: Template/Clients/add.ctp:70
 #: Template/Contractnames/add.ctp:46
 #: Template/Contracts/add.ctp:66
-#: Template/Customers/add.ctp:75
+#: Template/Customers/add.ctp:74
 #: Template/Languages/add.ctp:50
 #: Template/Licensehistories/add.ctp:85
 #: Template/Licenses/add.ctp:85
@@ -788,10 +788,10 @@ msgstr ""
 msgid "Edit {0}"
 msgstr ""
 
-#: Template/Clients/edit.ctp:87
+#: Template/Clients/edit.ctp:86
 #: Template/Contractnames/edit.ctp:62
 #: Template/Contracts/edit.ctp:82
-#: Template/Customers/edit.ctp:91
+#: Template/Customers/edit.ctp:90
 #: Template/Languages/edit.ctp:66
 #: Template/Licensehistories/edit.ctp:101
 #: Template/Licenses/edit.ctp:101
@@ -1457,6 +1457,26 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:32
+msgid "Contractnames"
+msgstr ""
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:33
+msgid "Languages"
+msgstr ""
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:35
+msgid "Statuses"
+msgstr ""
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:36
+msgid "Users"
+msgstr ""
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:38
+msgid "Logout"
+msgstr ""
+
 #: Template/Licensehistories/add.ctp:19;38
 #: Template/Licensehistories/edit.ctp:27;54
 #: Template/Licensehistories/index.ctp:13
@@ -1547,6 +1567,14 @@ msgstr ""
 #: Template/Statuses/view.ctp:48
 #: Template/Users/view.ctp:60
 msgid "Name"
+msgstr ""
+
+#: Template/Users/login.ctp:24
+msgid "Login"
+msgstr ""
+
+#: Template/Users/login.ctp:30
+msgid "Lohin"
 msgstr ""
 
 #: Template/Users/view.ctp:7;29

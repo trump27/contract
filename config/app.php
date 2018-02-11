@@ -354,5 +354,7 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+        'timeout' => 720,
+        'cookie' => 'contract'
     ],
 ];

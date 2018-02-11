@@ -4,14 +4,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2018-02-11 12:53+0900\n"
-"PO-Revision-Date: 2018-02-11 13:37+0900\n"
+"POT-Creation-Date: 2018-02-11 21:50+0900\n"
+"PO-Revision-Date: 2018-02-11 21:58+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "X-Generator: Poedit 2.0.6\n"
 
 #: Controller/ClientsController.php:58;83
@@ -158,19 +158,19 @@ msgstr ""
 msgid "The status could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:55;79
+#: Controller/UsersController.php:78;102
 msgid "The user has been saved."
 msgstr ""
 
-#: Controller/UsersController.php:59;83
+#: Controller/UsersController.php:82;106
 msgid "The user could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:100
+#: Controller/UsersController.php:123
 msgid "The user has been deleted."
 msgstr ""
 
-#: Controller/UsersController.php:102
+#: Controller/UsersController.php:125
 msgid "The user could not be deleted. Please, try again."
 msgstr ""
 
@@ -188,7 +188,7 @@ msgstr ""
 #: Template/Orders/index.ctp:40 Template/Orders/view.ctp:226;300
 #: Template/Statuses/edit.ctp:14;35 Template/Statuses/index.ctp:32
 #: Template/Statuses/view.ctp:122;196;278 Template/Users/edit.ctp:14;41
-#: Template/Users/index.ctp:42 Template/Users/view.ctp:122;174;236;310;384;466
+#: Template/Users/index.ctp:41 Template/Users/view.ctp:122;174;236;310;384;466
 msgid "Delete"
 msgstr "削除"
 
@@ -210,7 +210,7 @@ msgstr "削除"
 #: Template/Orders/edit.ctp:16;41 Template/Orders/index.ctp:40
 #: Template/Orders/view.ctp:8;28;226;300 Template/Statuses/edit.ctp:16;37
 #: Template/Statuses/index.ctp:32 Template/Statuses/view.ctp:8;24;122;196;278
-#: Template/Users/edit.ctp:16;43 Template/Users/index.ctp:42
+#: Template/Users/edit.ctp:16;43 Template/Users/index.ctp:41
 #: Template/Users/view.ctp:8;30;122;174;236;310;384;466
 msgid "Are you sure you want to delete # {0}?"
 msgstr "本当に # {0}を削除しますか？"
@@ -240,7 +240,9 @@ msgid "List <%= Inflector::humanize($details[\"controller\"]) %>"
 msgstr ""
 
 #: Template/Bake/Template/index.ctp:18 Template/Bake/Template/view.ctp:62
-msgid "New <%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>"
+msgid ""
+"New <%= Inflector::humanize(Inflector::singularize(Inflector::"
+"underscore($alias))) %>"
 msgstr ""
 
 #: Template/Bake/Template/index.ctp:38 Template/Bake/Template/view.ctp:151
@@ -264,7 +266,7 @@ msgstr ""
 #: Template/Languages/view.ctp:112;186 Template/Licensehistories/index.ctp:40
 #: Template/Licenses/index.ctp:40 Template/Orders/index.ctp:38
 #: Template/Orders/view.ctp:224;298 Template/Statuses/index.ctp:30
-#: Template/Statuses/view.ctp:120;194;276 Template/Users/index.ctp:40
+#: Template/Statuses/view.ctp:120;194;276 Template/Users/index.ctp:39
 #: Template/Users/view.ctp:120;172;234;308;382;464
 msgid "View"
 msgstr ""
@@ -277,7 +279,7 @@ msgstr ""
 #: Template/Languages/view.ctp:113;187 Template/Licensehistories/index.ctp:41
 #: Template/Licenses/index.ctp:41 Template/Orders/index.ctp:39
 #: Template/Orders/view.ctp:225;299 Template/Statuses/index.ctp:31
-#: Template/Statuses/view.ctp:121;195;277 Template/Users/index.ctp:41
+#: Template/Statuses/view.ctp:121;195;277 Template/Users/index.ctp:40
 #: Template/Users/view.ctp:121;173;235;309;383;465
 msgid "Edit"
 msgstr ""
@@ -287,7 +289,7 @@ msgstr ""
 #: Template/Customers/index.ctp:57 Template/Languages/index.ctp:39
 #: Template/Licensehistories/index.ctp:65 Template/Licenses/index.ctp:65
 #: Template/Orders/index.ctp:57 Template/Statuses/index.ctp:43
-#: Template/Users/index.ctp:57
+#: Template/Users/index.ctp:55
 msgid "previous"
 msgstr "prev"
 
@@ -296,7 +298,7 @@ msgstr "prev"
 #: Template/Customers/index.ctp:59 Template/Languages/index.ctp:41
 #: Template/Licensehistories/index.ctp:67 Template/Licenses/index.ctp:67
 #: Template/Orders/index.ctp:59 Template/Statuses/index.ctp:45
-#: Template/Users/index.ctp:59
+#: Template/Users/index.ctp:57
 msgid "next"
 msgstr ""
 
@@ -362,7 +364,7 @@ msgstr "クライアント一覧"
 #: Template/Orders/view.ctp:13;33 Template/Users/add.ctp:12;31
 #: Template/Users/edit.ctp:20;47 Template/Users/view.ctp:9;31
 msgid "List Users"
-msgstr ""
+msgstr "システム利用者一覧"
 
 #: Template/Clients/add.ctp:14;33 Template/Clients/edit.ctp:22;49
 #: Template/Clients/index.ctp:8 Template/Clients/view.ctp:12;34
@@ -380,7 +382,7 @@ msgstr ""
 #: Template/Orders/view.ctp:14;34 Template/Users/index.ctp:6
 #: Template/Users/view.ctp:10;32
 msgid "New User"
-msgstr ""
+msgstr "システム利用者追加"
 
 #: Template/Clients/add.ctp:15;34 Template/Clients/edit.ctp:23;50
 #: Template/Clients/index.ctp:9 Template/Clients/view.ctp:13;35
@@ -537,7 +539,7 @@ msgstr "受注一覧"
 #: Template/Users/edit.ctp:32;59 Template/Users/index.ctp:18
 #: Template/Users/view.ctp:22;44
 msgid "New Order"
-msgstr ""
+msgstr "受注追加"
 
 #: Template/Clients/add.ctp:61 Template/Contractnames/add.ctp:41
 #: Template/Contracts/add.ctp:53 Template/Customers/add.ctp:57
@@ -547,13 +549,13 @@ msgstr ""
 msgid "Add {0}"
 msgstr ""
 
-#: Template/Clients/add.ctp:71 Template/Contractnames/add.ctp:46
-#: Template/Contracts/add.ctp:66 Template/Customers/add.ctp:75
+#: Template/Clients/add.ctp:70 Template/Contractnames/add.ctp:46
+#: Template/Contracts/add.ctp:66 Template/Customers/add.ctp:74
 #: Template/Languages/add.ctp:50 Template/Licensehistories/add.ctp:85
 #: Template/Licenses/add.ctp:85 Template/Orders/add.ctp:85
 #: Template/Statuses/add.ctp:55 Template/Users/add.ctp:69
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: Template/Clients/edit.ctp:77 Template/Contractnames/edit.ctp:57
 #: Template/Contracts/edit.ctp:69 Template/Customers/edit.ctp:73
@@ -563,8 +565,8 @@ msgstr ""
 msgid "Edit {0}"
 msgstr ""
 
-#: Template/Clients/edit.ctp:87 Template/Contractnames/edit.ctp:62
-#: Template/Contracts/edit.ctp:82 Template/Customers/edit.ctp:91
+#: Template/Clients/edit.ctp:86 Template/Contractnames/edit.ctp:62
+#: Template/Contracts/edit.ctp:82 Template/Customers/edit.ctp:90
 #: Template/Languages/edit.ctp:66 Template/Licensehistories/edit.ctp:101
 #: Template/Licenses/edit.ctp:101 Template/Orders/edit.ctp:101
 #: Template/Statuses/edit.ctp:71 Template/Users/edit.ctp:85
@@ -1056,6 +1058,26 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:32
+msgid "Contractnames"
+msgstr "契約書名"
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:33
+msgid "Languages"
+msgstr "言語"
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:35
+msgid "Statuses"
+msgstr "ステータス"
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:36
+msgid "Users"
+msgstr "ユーザ"
+
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:38
+msgid "Logout"
+msgstr ""
+
 #: Template/Licensehistories/add.ctp:19;38
 #: Template/Licensehistories/edit.ctp:27;54
 #: Template/Licensehistories/index.ctp:13
@@ -1066,7 +1088,7 @@ msgstr ""
 #: Template/Orders/view.ctp:11;31 Template/Statuses/add.ctp:12;25
 #: Template/Statuses/edit.ctp:20;41 Template/Statuses/view.ctp:9;25
 msgid "List Statuses"
-msgstr ""
+msgstr "ステータス一覧"
 
 #: Template/Licensehistories/add.ctp:20;39
 #: Template/Licensehistories/edit.ctp:28;55
@@ -1078,7 +1100,7 @@ msgstr ""
 #: Template/Orders/view.ctp:12;32 Template/Statuses/index.ctp:6
 #: Template/Statuses/view.ctp:10;26
 msgid "New Status"
-msgstr ""
+msgstr "ステータス追加"
 
 #: Template/Licensehistories/view.ctp:7;29
 msgid "Edit Licensehistory"
@@ -1119,27 +1141,35 @@ msgstr "受注削除"
 
 #: Template/Statuses/view.ctp:7;23
 msgid "Edit Status"
-msgstr ""
+msgstr "ステータス編集"
 
 #: Template/Statuses/view.ctp:8;24
 msgid "Delete Status"
-msgstr ""
+msgstr "ステータス削除"
 
 #: Template/Statuses/view.ctp:44
 msgid "Code"
-msgstr ""
+msgstr "コード"
 
 #: Template/Statuses/view.ctp:48 Template/Users/view.ctp:60
 msgid "Name"
+msgstr "名前"
+
+#: Template/Users/login.ctp:24
+msgid "Login"
+msgstr ""
+
+#: Template/Users/login.ctp:30
+msgid "Lohin"
 msgstr ""
 
 #: Template/Users/view.ctp:7;29
 msgid "Edit User"
-msgstr ""
+msgstr "システム利用者編集"
 
 #: Template/Users/view.ctp:8;30
 msgid "Delete User"
-msgstr ""
+msgstr "システム利用者削除"
 
 #: Template/Users/view.ctp:56
 msgid "Username"
