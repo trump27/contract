@@ -25,7 +25,7 @@ if (!$this->fetch('title')) {
  */
 if (!$this->fetch('tb_footer')) {
     $this->start('tb_footer');
-    printf('&copy;%s %s', date('Y'), Configure::read('App.title'));
+    printf('<div class="text-right">&copy;%s %s</div>', date('Y'), 'k.k');
     $this->end();
 }
 
