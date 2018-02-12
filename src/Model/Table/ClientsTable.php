@@ -71,6 +71,8 @@ class ClientsTable extends Table
                 ],
             ],
         ]);
+        $this->addBehavior('Search.Search');
+
     }
 
     /**
@@ -136,5 +138,18 @@ class ClientsTable extends Table
             return $results->combine('company_code', 'client_name');
         });
         return $query;
+    }
+
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->like('client_name', [
+                'before' => true,
+                'after' => true
+            ]);
+
+        return $searchManager;
     }
 }

@@ -25,7 +25,7 @@ if (!$this->fetch('title')) {
  */
 if (!$this->fetch('tb_footer')) {
     $this->start('tb_footer');
-    printf('<div class="text-right">&copy;%s %s</div>', date('Y'), 'k.k');
+    printf('<div class="text-right" style="margin-right:30px"><small>&copy;%s %s</small></div>', date('Y'), 'k.k');
     $this->end();
 }
 

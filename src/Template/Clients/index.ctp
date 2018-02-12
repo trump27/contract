@@ -4,22 +4,30 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('New Client'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Clients') ?></h1>
+
+<?php
+echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
+echo $this->Form->input('client_name', ['label'=>'クライアント名　']);
+echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
+// if (!empty($_isSearch)) {
+echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
+// }
+echo $this->Form->end();
+?>
+<div>&nbsp;</div>
+
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -61,5 +69,5 @@ $this->start('tb_actions');
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
         <?= $this->Paginator->next(__('next') . ' >') ?>
     </ul>
-    <p><?= $this->Paginator->counter() ?></p>
+    <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
 </div>

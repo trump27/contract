@@ -220,3 +220,5 @@ Plugin::load('BootstrapUI');
 Plugin::load('Muffin/Footprint');
 
 Plugin::load('Josegonzalez/Upload');
+
+Plugin::load('Search');

@@ -12,6 +12,13 @@ use App\Controller\AppController;
  */
 class ClientsController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index']
+        ]);
+    }
 
     public function recent()
     {
@@ -48,12 +55,18 @@ class ClientsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-        ];
-        $clients = $this->paginate($this->Clients);
+        // $this->paginate = [
+        //     'contain' => ['Users'],
+        // ];
+        // $clients = $this->paginate($this->Clients);
+        // $this->set(compact('clients'));
 
-        $this->set(compact('clients'));
+        $clients = $this->Clients
+            ->find('search', ['search' => $this->request->query])
+            ->contain(['Users']);
+
+        $this->set('clients', $this->paginate($clients));
+
     }
 
     /**
