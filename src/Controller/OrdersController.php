@@ -90,7 +90,8 @@ class OrdersController extends AppController
         }
         $statuses = $this->Orders->Statuses->find('list', ['limit' => 200]);
         $users = $this->Orders->Users->find('list', ['limit' => 200]);
-        $clients = $this->Orders->Clients->find('list', ['limit' => 200]);
+        $clients = $this->Orders->Clients->find('orderlist', ['limit' => 200]);
+        // $clients = $this->Orders->Clients->find('list', ['limit' => 200]);
         $this->set(compact('order', 'statuses', 'users', 'clients'));
     }
 

@@ -13,9 +13,10 @@ use App\Controller\AppController;
 class ClientsController extends AppController
 {
 
-    public function latest()
+    public function recent()
     {
-        $orders = $this->Clients->Orders->find()
+        $this->loadModel('Orders');
+        $orders = $this->Orders->find()
             ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date', 'sales_date', 'status_msg', 'product_name', 'Clients.id'])
             ->limit(10)
             ->order(['order_date' => 'DESC'])
@@ -23,7 +24,7 @@ class ClientsController extends AppController
 
         $this->loadModel('Contracts');
         $contracts = $this->Contracts->find()
-            ->select(['Contracts.id', 'Contracts.file', 'Contracts.dir', 'Clients.id', 'Clients.client_name', 
+            ->select(['Contracts.id', 'Contracts.file', 'Contracts.dir', 'Contracts.modified', 'Clients.id', 'Clients.client_name',
                 'Customers.id', 'Customers.customer_name', 'Contractnames.contract_name'])
             ->limit(10)
             ->order(['Contracts.modified' => 'DESC'])
@@ -31,7 +32,7 @@ class ClientsController extends AppController
 
         // $this->loadModel('Contracts');
         $licenses = $this->Clients->Licenses->find()
-            ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name',  'Licenses.issued', 
+            ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name', 'Licenses.issued',
                 'Clients.id', 'Clients.client_name', 'Customers.id', 'Customers.customer_name', 'Statuses.name'])
             ->limit(10)
             ->order(['Licenses.modified' => 'DESC'])
