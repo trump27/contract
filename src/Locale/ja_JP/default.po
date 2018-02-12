@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2018-02-11 22:47+0900\n"
-"PO-Revision-Date: 2018-02-12 14:21+0900\n"
+"PO-Revision-Date: 2018-02-12 17:03+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -364,7 +364,7 @@ msgstr "クライアント一覧"
 #: Template/Orders/view.ctp:13;33 Template/Users/add.ctp:12;31
 #: Template/Users/edit.ctp:20;47 Template/Users/view.ctp:9;31
 msgid "List Users"
-msgstr "システム利用者一覧"
+msgstr "ユーザ一覧"
 
 #: Template/Clients/add.ctp:14;33 Template/Clients/edit.ctp:22;49
 #: Template/Clients/index.ctp:8 Template/Clients/view.ctp:12;34
@@ -382,7 +382,7 @@ msgstr "システム利用者一覧"
 #: Template/Orders/view.ctp:14;34 Template/Users/index.ctp:6
 #: Template/Users/view.ctp:10;32
 msgid "New User"
-msgstr "システム利用者追加"
+msgstr "ユーザ追加"
 
 #: Template/Clients/add.ctp:15;34 Template/Clients/edit.ctp:23;50
 #: Template/Clients/index.ctp:9 Template/Clients/view.ctp:13;35
@@ -785,7 +785,7 @@ msgstr "担当者2"
 #: Template/Clients/view.ctp:168 Template/Customers/view.ctp:93
 #: Template/Users/view.ctp:206
 msgid "Div2"
-msgstr "住所"
+msgstr "部署"
 
 #: Template/Clients/view.ctp:169 Template/Customers/view.ctp:97
 #: Template/Users/view.ctp:207
@@ -1095,7 +1095,7 @@ msgstr "ステータス"
 #: Template/Users/edit.ctp:64 Template/Users/index.ctp:22
 #: Template/Users/view.ctp:49
 msgid "Users"
-msgstr "システム利用者"
+msgstr "ユーザ"
 
 #: Template/Layout/TwitterBootstrap/dashboard.ctp:38
 msgid "Logout"
@@ -1203,11 +1203,11 @@ msgstr ""
 
 #: Template/Users/view.ctp:7;29
 msgid "Edit User"
-msgstr "システム利用者編集"
+msgstr "ユーザ編集"
 
 #: Template/Users/view.ctp:8;30
 msgid "Delete User"
-msgstr "システム利用者削除"
+msgstr "ユーザ削除"
 
 #: Template/Users/view.ctp:57
 msgid "Username"

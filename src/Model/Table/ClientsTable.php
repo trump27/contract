@@ -3,6 +3,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\Query;
 use Cake\Validation\Validator;
 
 /**
@@ -62,15 +63,14 @@ class ClientsTable extends Table
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'company_code', // FK
         ]);
-    
+
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
                     'user_id' => 'always',
                 ],
-            ]
+            ],
         ]);
-
     }
 
     /**
@@ -94,7 +94,7 @@ class ClientsTable extends Table
         $validator
             ->scalar('company_code')
             ->maxLength('company_code', 20)
-            ->allowEmpty('company_code');
+            ->notEmpty('company_code');
 
         $validator
             ->scalar('identity1')
@@ -122,7 +122,19 @@ class ClientsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->isUnique(['company_code']));
 
         return $rules;
+    }
+
+    // Orders用リスト
+    public function findOrderlist(Query $query, array $options)
+    {
+        // return $query
+        //     ->select(['code', 'client_name']);
+        $query->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
+            return $results->combine('company_code', 'client_name');
+        });
+        return $query;
     }
 }

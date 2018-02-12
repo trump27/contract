@@ -40,6 +40,7 @@ $this->start('tb_sidebar');
 </ul>
 <?php
 $this->end();
+$this->element('datepicker');
 ?>
 <h1 class="page-header"><?= __('Orders') ?></h1>
 <?= $this->Form->create($order, ['align' => [
@@ -60,12 +61,12 @@ $this->end();
     echo $this->Form->control('company_code', ['options' => $clients]);
     echo $this->Form->control('company_name1');
     echo $this->Form->control('company_name2');
-    echo $this->Form->control('order_date');
+    echo $this->Form->control('order_date', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('order_no');
     echo $this->Form->control('order_detail_no');
     echo $this->Form->control('purchase_no');
-    echo $this->Form->control('delivery_date');
-    echo $this->Form->control('sales_date');
+    echo $this->Form->control('delivery_date', ['type'=>'text', 'class'=>'datepicker']);
+    echo $this->Form->control('sales_date', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('status_msg');
     echo $this->Form->control('product_category');
     echo $this->Form->control('product_code');

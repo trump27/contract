@@ -60,6 +60,7 @@ $this->start('tb_sidebar');
 </ul>
 <?php
 $this->end();
+$this->element('datepicker');
 ?>
 <h1 class="page-header"><?= __('Licenses') ?></h1>
 <?= $this->Form->create($license, ['align' => [
@@ -81,15 +82,15 @@ $this->end();
     echo $this->Form->control('customer_id', ['options' => $customers]);
     echo $this->Form->control('order_id', ['options' => $orders]);
     echo $this->Form->control('status_id', ['options' => $statuses]);
-    echo $this->Form->control('issued');
+    echo $this->Form->control('issued', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('license_no');
     echo $this->Form->control('relate_no');
     echo $this->Form->control('product_name');
     echo $this->Form->control('license_name');
     echo $this->Form->control('language_id', ['options' => $languages]);
     echo $this->Form->control('license_qty');
-    echo $this->Form->control('startdate');
-    echo $this->Form->control('enddate');
+    echo $this->Form->control('startdate', ['type'=>'text', 'class'=>'datepicker']);
+    echo $this->Form->control('enddate', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('license_key');
     echo $this->Form->control('notice');
     echo $this->Form->control('file');

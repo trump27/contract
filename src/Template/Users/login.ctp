@@ -21,7 +21,7 @@ $this->extend('../Layout/TwitterBootstrap/signin');
     ]
 ]]); ?>
 <fieldset>
-    <legend><?= __('Login') ?></legend>
+    <legend><?= __('Login') . ' Contracts' ?></legend>
     <?php
     echo $this->Form->control('username');
     echo $this->Form->control('password');
