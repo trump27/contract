@@ -25,8 +25,6 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('customer_id'); ?></th>
             <th><?= $this->Paginator->sort('contractname_id'); ?></th>
             <th><?= $this->Paginator->sort('file'); ?></th>
-            <th><?= $this->Paginator->sort('dir'); ?></th>
-            <th><?= $this->Paginator->sort('size'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -48,9 +46,12 @@ $this->start('tb_actions');
             <td>
                 <?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>
-            <td><?= h($contract->file) ?></td>
-            <td><?= h($contract->dir) ?></td>
-            <td><?= $this->Number->format($contract->size) ?></td>
+            <!-- <td><?= h($contract->file) ?></td> -->
+            <!-- <td><?= $this->Html->link(urldecode ($contract->file) , str_replace(
+                'webroot', '',
+                str_replace('\\','/',$contract->dir ).urlencode($contract->file) )) ?></td> -->
+
+            <td><?= $this->Downloadfile->downloadlink($contract) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

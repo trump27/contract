@@ -41,9 +41,11 @@ class AppView extends View
     {
         // parent::initialize();
         $this->initializeUI(['layout' => 'defaultui']);
-        $this->Form->setTemplates([
-            // 'dateWidget' => '{{day}}{{month}}{{year}}',
-            // 'dateWidget' => '<input type="text" class="form-control datepicker" name="{{name}}" {{attrs}} />',
-        ]);
+        // $this->Form->setTemplates([
+        //     // 'dateWidget' => '{{day}}{{month}}{{year}}',
+        //     // 'dateWidget' => '<input type="text" class="form-control datepicker" name="{{name}}" {{attrs}} />',
+        // ]);
+        $this->loadHelper('Downloadfile');
+
     }
 }

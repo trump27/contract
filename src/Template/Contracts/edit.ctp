@@ -54,17 +54,19 @@ $this->start('tb_sidebar');
 $this->end();
 ?>
 <h1 class="page-header"><?= __('Contract') ?></h1>
-<?= $this->Form->create($contract, ['align' => [
-    'sm' => [
-        'left' => 3,
-        'middle' => 8,
-        'right' => 1
-    ],
-    'md' => [
-        'left' => 3,
-        'middle' => 6,
-        'right' => 2
-    ]
+<?= $this->Form->create($contract, [
+    'type'=> 'file',
+    'align' => [
+        'sm' => [
+            'left' => 3,
+            'middle' => 8,
+            'right' => 1
+        ],
+        'md' => [
+            'left' => 3,
+            'middle' => 6,
+            'right' => 2
+        ]
 ]]); ?>
 <fieldset>
     <legend><?= __('Edit {0}', ['Contract']) ?></legend>
@@ -73,11 +75,9 @@ $this->end();
     echo $this->Form->control('customer_id', ['options' => $customers]);
     echo $this->Form->control('contractname_id', ['options' => $contractnames]);
     echo $this->Form->control('remarks');
-    echo $this->Form->control('file');
-    echo $this->Form->control('dir');
-    echo $this->Form->control('size');
-    echo $this->Form->control('type');
-    echo $this->Form->control('user_id', ['options' => $users]);
+    echo $this->Form->control('file', ['disabled'=>'disabled', 'value'=>urldecode($contract->file)]);
+    echo $this->Form->control('file', ['type' => 'file', 'label'=>'新しいファイル']);
+
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>

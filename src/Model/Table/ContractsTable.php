@@ -62,6 +62,16 @@ class ContractsTable extends Table
                 ],
             ],
         ]);
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'file' => [
+                // 'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}',
+                'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}{day}{time}{DS}',
+                'nameCallback' => function ($data, $settings) {
+                    return urlencode($data['name']);
+                },
+                'keepFilesOnDelete' => false
+            ],
+        ]);
 
     }
 
@@ -82,8 +92,8 @@ class ContractsTable extends Table
             ->allowEmpty('remarks');
 
         $validator
-            ->scalar('file')
-            ->maxLength('file', 256)
+        // ->scalar('file')
+        ->maxLength('file', 256)
             ->allowEmpty('file');
 
         $validator
