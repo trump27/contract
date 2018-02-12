@@ -45,7 +45,7 @@ class AppView extends View
         //     // 'dateWidget' => '{{day}}{{month}}{{year}}',
         //     // 'dateWidget' => '<input type="text" class="form-control datepicker" name="{{name}}" {{attrs}} />',
         // ]);
-        $this->loadHelper('Downloadfile');
+        $this->loadHelper('My');
 
     }
 }

@@ -51,7 +51,7 @@ echo $this->Form->end();
                 <?= $this->Form->postLink('', ['action' => 'delete', $client->id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
             <td><?= $this->Number->format($client->id) ?></td>
-            <td><?= h($client->client_name) ?></td>
+            <td><?= h($this->my->trunc($client->client_name)) ?></td>
             <td><?= h($client->company_code) ?></td>
             <td><?= h($client->identity1) ?></td>
             <td><?= $this->Number->format($client->partner_flag) ?></td>

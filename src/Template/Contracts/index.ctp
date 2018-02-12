@@ -51,7 +51,7 @@ $this->start('tb_actions');
                 'webroot', '',
                 str_replace('\\','/',$contract->dir ).urlencode($contract->file) )) ?></td> -->
 
-            <td><?= $this->Downloadfile->downloadlink($contract) ?></td>
+            <td><?= $this->My->downloadlink($contract) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

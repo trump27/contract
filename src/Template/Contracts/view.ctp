@@ -57,7 +57,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('File') ?></td>
-            <td><?= $this->Downloadfile->downloadlink($contract) ?></td>
+            <td><?= $this->My->downloadlink($contract) ?></td>
         </tr>
         <tr>
             <td><?= __('Remarks') ?></td>

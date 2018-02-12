@@ -25,7 +25,7 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_name'); ?></th>
-            <th><?= $this->Paginator->sort('address'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('address'); ?></th> -->
             <th><?= $this->Paginator->sort('identity2'); ?></th>
             <th><?= $this->Paginator->sort('sales_dept'); ?></th>
             <th><?= $this->Paginator->sort('sales_staff'); ?></th>
@@ -42,10 +42,10 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($customer->id) ?></td>
             <td>
-                <?= $customer->has('client') ? $this->Html->link($customer->client->client_name, ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?>
+                <?= $customer->has('client') ? $this->Html->link($this->my->trunc($customer->client->client_name), ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?>
             </td>
-            <td><?= h($customer->customer_name) ?></td>
-            <td><?= h($customer->address) ?></td>
+            <td><?= h($this->my->trunc($customer->customer_name)) ?></td>
+            <!-- <td><?= h($this->my->trunc($customer->address)) ?></td> -->
             <td><?= h($customer->identity2) ?></td>
             <td><?= h($customer->sales_dept) ?></td>
             <td><?= h($customer->sales_staff) ?></td>
@@ -59,5 +59,5 @@ $this->start('tb_actions');
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
         <?= $this->Paginator->next(__('next') . ' >') ?>
     </ul>
-    <p><?= $this->Paginator->counter() ?></p>
+    <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
 </div>

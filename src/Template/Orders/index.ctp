@@ -42,10 +42,10 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($order->id) ?></td>
             <td>
-                <?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
+                <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->client_name), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
             </td>
-            <td><?= h($order->company_name1) ?></td>
-            <td><?= h($order->company_name2) ?></td>
+            <td><?= h($this->my->trunc($order->company_name1)) ?></td>
+            <td><?= h($this->my->trunc($order->company_name2)) ?></td>
             <td><?= h($order->order_date) ?></td>
             <td><?= h($order->order_no) ?></td>
             <td><?= h($order->order_detail_no) ?></td>
@@ -59,5 +59,5 @@ $this->start('tb_actions');
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
         <?= $this->Paginator->next(__('next') . ' >') ?>
     </ul>
-    <p><?= $this->Paginator->counter() ?></p>
+    <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
 </div>

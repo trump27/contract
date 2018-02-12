@@ -37,7 +37,7 @@ $this->start('tb_actions');
             </td>
             <!-- <td><?=$this->Number->format($order->id)?></td> -->
             <!-- <td><?=h($order->company_code)?></td> -->
-            <td><?=$this->Html->link($order->company_name1, ['controller' => 'Clients', 'action' => 'view', $order->client->id])?></td>
+            <td><?=$this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id])?></td>
             <td><?=h($order->status_msg)?></td>
 
             <td><?=h($order->order_date)?></td>
@@ -75,10 +75,10 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($contract->id) ?></td>
             <td>
-                <?= $contract->has('client') ? $this->Html->link($contract->client->client_name, ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
+                <?= $contract->has('client') ? $this->Html->link($this->my->trunc($contract->client->client_name), ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
             </td>
             <td>
-                <?= $contract->has('customer') ? $this->Html->link($contract->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
+                <?= $contract->has('customer') ? $this->Html->link($this->my->trunc($contract->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
             </td>
             <td>
                 <?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
@@ -88,7 +88,7 @@ $this->start('tb_actions');
                 'webroot', '',
                 str_replace('\\','/',$contract->dir ).urlencode($contract->file) )) ?></td> -->
 
-            <td><?= $this->Downloadfile->downloadlink($contract) ?></td>
+            <td><?= $this->My->downloadlink($contract) ?></td>
             <td><?= h($contract->modified) ?></td>
         </tr>
         <?php endforeach; ?>
@@ -120,7 +120,7 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($license->id) ?></td>
             <td>
-                <?= $license->has('client') ? $this->Html->link($license->client->client_name, ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?>
+                <?= $license->has('client') ? $this->Html->link($this->my->trunc($license->client->client_name), ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?>
             </td>
             <td>
                 <?= $license->has('customer') ? $this->Html->link($license->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
