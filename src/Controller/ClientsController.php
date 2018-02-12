@@ -13,6 +13,21 @@ use App\Controller\AppController;
 class ClientsController extends AppController
 {
 
+    public function liststatus()
+    {
+        // $this->paginate = [
+        //     'contain' => ['Users']
+        // ];
+        // $clients = $this->paginate($this->Clients);
+        $orders = $this->Clients->Orders->find()
+            ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date', 'sales_date', 'status_msg', 'product_name', 'Clients.id'])
+            ->limit(8)
+            ->order(['order_date'=>'DESC'])
+            ->contain(['Clients']);
+
+        $this->set(compact('orders'));
+    }
+
     /**
      * Index method
      *

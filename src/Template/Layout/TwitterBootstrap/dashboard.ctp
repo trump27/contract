@@ -16,7 +16,8 @@ $this->start('tb_body_start');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Contract</a>
+                <!-- <a class="navbar-brand" href="/">Contract</a> -->
+                <?= $this->Html->link('Contract', ['controller' => 'Clients', 'action' => 'liststatus'], ['class'=>'navbar-brand']); ?>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right visible-xs">
