@@ -54,6 +54,10 @@ $this->end();
     </div>
     <table class="table table-striped table-responsive text-nowrap">
         <tr>
+            <td><?= __('Id') ?></td>
+            <td><?= $this->Number->format($license->id) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Client') ?></td>
             <td><?= $license->has('client') ? $this->Html->link($license->client->client_name, ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?></td>
         </tr>
@@ -90,12 +94,28 @@ $this->end();
             <td><?= $license->has('language') ? $this->Html->link($license->language->language_name, ['controller' => 'Languages', 'action' => 'view', $license->language->id]) : '' ?></td>
         </tr>
         <tr>
+            <td><?= __('Issued') ?></td>
+            <td><?= h($license->issued) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Startdate') ?></td>
+            <td><?= h($license->startdate) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Enddate') ?></td>
+            <td><?= h($license->enddate) ?></td>
+        </tr>
+        <tr>
             <td><?= __('License Key') ?></td>
             <td><?= h($license->license_key) ?></td>
         </tr>
         <tr>
             <td><?= __('File') ?></td>
             <td><?= h($license->file) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Notice') ?></td>
+            <td><?= $this->Text->autoParagraph(h($license->notice)); ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>
@@ -110,10 +130,6 @@ $this->end();
             <td><?= $license->has('user') ? $this->Html->link($license->user->name, ['controller' => 'Users', 'action' => 'view', $license->user->id]) : '' ?></td>
         </tr>
         <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($license->id) ?></td>
-        </tr>
-        <tr>
             <td><?= __('License Qty') ?></td>
             <td><?= $this->Number->format($license->license_qty) ?></td>
         </tr>
@@ -122,28 +138,12 @@ $this->end();
             <td><?= $this->Number->format($license->size) ?></td>
         </tr>
         <tr>
-            <td><?= __('Issued') ?></td>
-            <td><?= h($license->issued) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Startdate') ?></td>
-            <td><?= h($license->startdate) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Enddate') ?></td>
-            <td><?= h($license->enddate) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Created') ?></td>
             <td><?= h($license->created) ?></td>
         </tr>
         <tr>
             <td><?= __('Modified') ?></td>
             <td><?= h($license->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Notice') ?></td>
-            <td><?= $this->Text->autoParagraph(h($license->notice)); ?></td>
         </tr>
     </table>
 </div>

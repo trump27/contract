@@ -13,19 +13,31 @@ use App\Controller\AppController;
 class ClientsController extends AppController
 {
 
-    public function liststatus()
+    public function latest()
     {
-        // $this->paginate = [
-        //     'contain' => ['Users']
-        // ];
-        // $clients = $this->paginate($this->Clients);
         $orders = $this->Clients->Orders->find()
             ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date', 'sales_date', 'status_msg', 'product_name', 'Clients.id'])
-            ->limit(8)
-            ->order(['order_date'=>'DESC'])
+            ->limit(10)
+            ->order(['order_date' => 'DESC'])
             ->contain(['Clients']);
 
-        $this->set(compact('orders'));
+        $this->loadModel('Contracts');
+        $contracts = $this->Contracts->find()
+            ->select(['Contracts.id', 'Contracts.file', 'Contracts.dir', 'Clients.id', 'Clients.client_name', 
+                'Customers.id', 'Customers.customer_name', 'Contractnames.contract_name'])
+            ->limit(10)
+            ->order(['Contracts.modified' => 'DESC'])
+            ->contain(['Clients', 'Customers', 'Contractnames']);
+
+        // $this->loadModel('Contracts');
+        $licenses = $this->Clients->Licenses->find()
+            ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name',  'Licenses.issued', 
+                'Clients.id', 'Clients.client_name', 'Customers.id', 'Customers.customer_name', 'Statuses.name'])
+            ->limit(10)
+            ->order(['Licenses.modified' => 'DESC'])
+            ->contain(['Clients', 'Customers', 'Statuses']);
+
+        $this->set(compact('orders', 'contracts', 'licenses'));
     }
 
     /**
@@ -36,7 +48,7 @@ class ClientsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'contain' => ['Users'],
         ];
         $clients = $this->paginate($this->Clients);
 
@@ -53,7 +65,7 @@ class ClientsController extends AppController
     public function view($id = null)
     {
         $client = $this->Clients->get($id, [
-            'contain' => ['Users', 'Contracts', 'Customers', 'Licensehistories', 'Licenses', 'Orders']
+            'contain' => ['Users', 'Contracts', 'Customers', 'Licensehistories', 'Licenses', 'Orders'],
         ]);
 
         $this->set('client', $client);
@@ -90,7 +102,7 @@ class ClientsController extends AppController
     public function edit($id = null)
     {
         $client = $this->Clients->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $client = $this->Clients->patchEntity($client, $this->request->getData());
