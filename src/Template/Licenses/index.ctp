@@ -44,10 +44,10 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($license->id) ?></td>
             <td>
-                <?= $license->has('client') ? $this->Html->link($license->client->client_name, ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?>
+                <?= $license->has('client') ? $this->Html->link($this->my->trunc($license->client->client_name), ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?>
             </td>
             <td>
-                <?= $license->has('customer') ? $this->Html->link($license->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
+                <?= $license->has('customer') ? $this->Html->link($this->my->trunc($license->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
             </td>
             <td>
                 <?= $license->has('order') ? $this->Html->link($license->order->product_name, ['controller' => 'Orders', 'action' => 'view', $license->order->id]) : '' ?>
