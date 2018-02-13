@@ -38,8 +38,11 @@ $this->start('tb_body_start');
                         </ul>
                     <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']); ?></li>
                 </ul>
-                <form class="navbar-form navbar-right">
+                <!-- <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Search...">
+                </form> -->
+                <form class="navbar-form navbar-right" action="/customers">
+                    <input type="text" name="client_name" class="form-control" placeholder="クライアント...">
                 </form>
             </div>
         </div>

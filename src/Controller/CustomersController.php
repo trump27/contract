@@ -12,6 +12,13 @@ use App\Controller\AppController;
  */
 class CustomersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
 
     /**
      * Index method
@@ -20,12 +27,18 @@ class CustomersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'Users']
-        ];
-        $customers = $this->paginate($this->Customers);
+        $customers = $this->Customers
+            ->find('search', ['search' => $this->request->query])
+            ->contain(['Clients']);
 
-        $this->set(compact('customers'));
+        $this->set('customers', $this->paginate($customers));
+
+        // $this->paginate = [
+        //     'contain' => ['Clients', 'Users']
+        // ];
+        // $customers = $this->paginate($this->Customers);
+
+        // $this->set(compact('customers'));
     }
 
     /**
@@ -38,7 +51,7 @@ class CustomersController extends AppController
     public function view($id = null)
     {
         $customer = $this->Customers->get($id, [
-            'contain' => ['Clients', 'Users', 'Contracts', 'Licensehistories', 'Licenses']
+            'contain' => ['Clients', 'Users', 'Contracts', 'Licensehistories', 'Licenses'],
         ]);
 
         $this->set('customer', $customer);
@@ -76,7 +89,7 @@ class CustomersController extends AppController
     public function edit($id = null)
     {
         $customer = $this->Customers->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $customer = $this->Customers->patchEntity($customer, $this->request->getData());

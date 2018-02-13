@@ -67,6 +67,8 @@ class CustomersTable extends Table
             ],
         ]);
 
+        $this->addBehavior('Search.Search');
+
     }
 
     /**
@@ -158,4 +160,26 @@ class CustomersTable extends Table
 
         return $rules;
     }
+
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->like('customer_name', [
+                'before' => true,
+                'after' => true
+            ])
+            ->add('client_name', 'Search.Callback', [
+                'callback' => function ($query, $args, $filter) {
+                    $client_name = $args['client_name'];
+                    $query->matching('Clients', function ($q) use ($client_name) {
+                        return $q->where(['Clients.client_name LIKE' => "%$client_name%"]);
+                    });
+                }]
+            );
+
+        return $searchManager;
+    }
+
 }

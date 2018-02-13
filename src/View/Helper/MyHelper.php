@@ -38,7 +38,7 @@ class MyHelper extends Helper
     /**
      * 文字列の切りつめ
      */
-    public function trunc($value, $len=20)
+    public function trunc($value, $len=15)
     {
         return Text::truncate($value, $len, [
             'ellipsis' => '..',
