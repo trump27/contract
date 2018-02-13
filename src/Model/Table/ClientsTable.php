@@ -104,8 +104,8 @@ class ClientsTable extends Table
             ->allowEmpty('identity1');
 
         $validator
-            ->integer('partner_flag')
-            ->allowEmpty('partner_flag');
+            ->integer('partner_flag');
+            // ->allowEmpty('partner_flag');
 
         $validator
             ->scalar('remarks')

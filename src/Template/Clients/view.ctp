@@ -53,7 +53,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Partner Flag') ?></td>
-            <td><?= $this->Number->format($client->partner_flag) ?></td>
+            <td><?= $this->My->partner($client->partner_flag) ?></td>
         </tr>
         <tr>
             <td><?= __('Remarks') ?></td>

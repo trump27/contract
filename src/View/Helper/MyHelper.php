@@ -46,4 +46,10 @@ class MyHelper extends Helper
             // 'html' => false
         ]);
     }
+
+    public function partner($value)
+    {
+        return $value===1 ? 'Yes' : '';
+    }
+
 }

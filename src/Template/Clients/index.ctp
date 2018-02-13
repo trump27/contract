@@ -54,7 +54,7 @@ echo $this->Form->end();
             <td><?= h($this->my->trunc($client->client_name)) ?></td>
             <td><?= h($client->company_code) ?></td>
             <td><?= h($client->identity1) ?></td>
-            <td><?= $this->Number->format($client->partner_flag) ?></td>
+            <td><?= $this->My->partner($client->partner_flag) ?></td>
             <td>
                 <?= $client->has('user') ? $this->Html->link($client->user->name, ['controller' => 'Users', 'action' => 'view', $client->user->id]) : '' ?>
             </td>
