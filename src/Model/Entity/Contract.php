@@ -40,6 +40,7 @@ class Contract extends Entity
         'client_id' => true,
         'customer_id' => true,
         'contractname_id' => true,
+        'contract_date' => true,
         'remarks' => true,
         'file' => true,
         'dir' => true,

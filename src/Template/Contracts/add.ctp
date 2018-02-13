@@ -36,6 +36,7 @@ $this->start('tb_sidebar');
 </ul>
 <?php
 $this->end();
+$this->element('datepicker');
 ?>
 <h1 class="page-header"><?= __('Contract') ?></h1>
 <?= $this->Form->create($contract, [
@@ -58,6 +59,7 @@ $this->end();
     echo $this->Form->control('client_id', ['options' => $clients]);
     echo $this->Form->control('customer_id', ['options' => $customers]);
     echo $this->Form->control('contractname_id', ['options' => $contractnames]);
+    echo $this->Form->control('contract_date', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('remarks');
     echo $this->Form->control('file', ['type'=>'file']);
     // echo $this->Form->control('dir');

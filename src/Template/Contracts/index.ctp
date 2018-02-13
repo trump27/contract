@@ -24,6 +24,7 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_id'); ?></th>
             <th><?= $this->Paginator->sort('contractname_id'); ?></th>
+            <th><?= $this->Paginator->sort('contract_date'); ?></th>
             <th><?= $this->Paginator->sort('file'); ?></th>
         </tr>
     </thead>
@@ -38,14 +39,16 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($contract->id) ?></td>
             <td>
-                <?= $contract->has('client') ? $this->Html->link($contract->client->client_name, ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
+                <?= $contract->has('client') ? $this->Html->link($this->my->trunc($contract->client->client_name,15), ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
             </td>
             <td>
-                <?= $contract->has('customer') ? $this->Html->link($contract->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
+                <?= $contract->has('customer') ? $this->Html->link($this->my->trunc($contract->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
             </td>
             <td>
-                <?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
+                <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>
+            <td><?= h($contract->contract_date) ?></td>
+
             <!-- <td><?= h($contract->file) ?></td> -->
             <!-- <td><?= $this->Html->link(urldecode ($contract->file) , str_replace(
                 'webroot', '',
@@ -62,5 +65,5 @@ $this->start('tb_actions');
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
         <?= $this->Paginator->next(__('next') . ' >') ?>
     </ul>
-    <p><?= $this->Paginator->counter() ?></p>
+    <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
 </div>

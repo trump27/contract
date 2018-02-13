@@ -27,5 +27,5 @@ $this->extend('../Layout/TwitterBootstrap/signin');
     echo $this->Form->control('password');
     ?>
 </fieldset>
-<?= $this->Form->button(__("Lohin"), ['class'=>'btn-primary']); ?>
+<?= $this->Form->button(__("Login"), ['class'=>'btn-primary']); ?>
 <?= $this->Form->end() ?>

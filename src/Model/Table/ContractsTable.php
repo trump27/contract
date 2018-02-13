@@ -69,7 +69,7 @@ class ContractsTable extends Table
                 'nameCallback' => function ($data, $settings) {
                     return urlencode($data['name']);
                 },
-                'keepFilesOnDelete' => false
+                'keepFilesOnDelete' => false,
             ],
         ]);
 
@@ -88,12 +88,16 @@ class ContractsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->date('contract_date')
+            ->allowEmpty('contract_date');
+
+        $validator
             ->scalar('remarks')
             ->allowEmpty('remarks');
 
         $validator
-        // ->scalar('file')
-        ->maxLength('file', 256)
+            // ->scalar('file')
+            ->maxLength('file', 256)
             ->allowEmpty('file');
 
         $validator

@@ -56,6 +56,10 @@ $this->end();
             <td><?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?></td>
         </tr>
         <tr>
+            <td><?= __('contract_date') ?></td>
+            <td><?= h($contract->contract_date) ?></td>
+        </tr>
+        <tr>
             <td><?= __('File') ?></td>
             <td><?= $this->My->downloadlink($contract) ?></td>
         </tr>
