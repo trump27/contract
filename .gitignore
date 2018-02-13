@@ -40,3 +40,5 @@ nbproject/*
 # Sass preprocessor
 .sass-cache/
 /webroot/files
+/src/Locale/cake.pot
+/src/Locale/default.pot
