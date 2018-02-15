@@ -12,6 +12,13 @@ use App\Controller\AppController;
  */
 class ContractsController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
 
     /**
      * Index method
@@ -20,12 +27,17 @@ class ContractsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Contractnames', 'Users']
-        ];
-        $contracts = $this->paginate($this->Contracts);
+        $contracts = $this->Contracts
+            ->find('search', ['search' => $this->request->query])
+            ->contain(['Clients', 'Customers', 'Contractnames', 'Users']);
 
-        $this->set(compact('contracts'));
+        $this->set('contracts', $this->paginate($contracts));
+
+        // $this->paginate = [
+        //     'contain' => ['Clients', 'Customers', 'Contractnames', 'Users']
+        // ];
+        // $contracts = $this->paginate($this->Contracts);
+        // $this->set(compact('contracts'));
     }
 
     /**
@@ -38,7 +50,7 @@ class ContractsController extends AppController
     public function view($id = null)
     {
         $contract = $this->Contracts->get($id, [
-            'contain' => ['Clients', 'Customers', 'Contractnames', 'Users']
+            'contain' => ['Clients', 'Customers', 'Contractnames', 'Users'],
         ]);
 
         $this->set('contract', $contract);
@@ -78,7 +90,7 @@ class ContractsController extends AppController
     public function edit($id = null)
     {
         $contract = $this->Contracts->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());

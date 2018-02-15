@@ -72,6 +72,7 @@ class ContractsTable extends Table
                 'keepFilesOnDelete' => false,
             ],
         ]);
+        $this->addBehavior('Search.Search');
 
     }
 
@@ -96,8 +97,8 @@ class ContractsTable extends Table
             ->allowEmpty('remarks');
 
         $validator
-            // ->scalar('file')
-            ->maxLength('file', 256)
+        // ->scalar('file')
+        ->maxLength('file', 256)
             ->allowEmpty('file');
 
         $validator
@@ -132,5 +133,21 @@ class ContractsTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
+    }
+
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->add('client_name', 'Search.Callback', [
+                'callback' => function ($query, $args, $filter) {
+                    $client_name = $args['client_name'];
+                    $query->matching('Clients', function ($q) use ($client_name) {
+                        return $q->where(['Clients.client_name LIKE' => "%$client_name%"]);
+                    });
+                }]
+            );
+
+        return $searchManager;
     }
 }
