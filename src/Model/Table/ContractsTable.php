@@ -89,8 +89,10 @@ class ContractsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->date('contract_date')
-            ->allowEmpty('contract_date');
+            ->integer('customer_id');
+
+        $validator
+            ->date('contract_date');
 
         $validator
             ->scalar('remarks')

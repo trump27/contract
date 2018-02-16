@@ -27,7 +27,7 @@ use Muffin\Footprint\Auth\FootprintAwareTrait;
  */
 class AppController extends Controller
 {
-    
+
     use FootprintAwareTrait;
 
     /**
@@ -73,5 +73,18 @@ class AppController extends Controller
         ]);
         $this->Auth->allow(['display', 'index']);
 
+    }
+
+    public function customeroptions($client_id = null)
+    {
+        $this->loadModel('Customers');
+        $this->autoRender = false;
+        // $this->viewBuilder()->setLayout("");
+        $list = $this->Customers->find('list', ['keyField' => 'id', 'valueField' => 'customer_name'])
+                          ->where(['client_id' => $client_id]);
+
+        $this->set(compact('list'));
+        $this->render('/Customers/customeroptions', '');
+        // $this->render('options', '');
     }
 }
