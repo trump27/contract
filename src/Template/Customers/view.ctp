@@ -50,16 +50,16 @@ $this->end();
     </div>
     <table class="table table-striped table-responsive text-nowrap">
         <tr>
+            <td><?= __('Id') ?></td>
+            <td><?= $this->Number->format($customer->id) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Client') ?></td>
             <td><?= $customer->has('client') ? $this->Html->link($customer->client->client_name, ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Customer Name') ?></td>
             <td><?= h($customer->customer_name) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Address') ?></td>
-            <td><?= h($customer->address) ?></td>
         </tr>
         <tr>
             <td><?= __('Identity2') ?></td>
@@ -72,6 +72,14 @@ $this->end();
         <tr>
             <td><?= __('Sales Staff') ?></td>
             <td><?= h($customer->sales_staff) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Address') ?></td>
+            <td><?= h($customer->address) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Remarks') ?></td>
+            <td><?= $this->Text->autoParagraph(h($customer->remarks)); ?></td>
         </tr>
         <tr>
             <td><?= __('Admin Name1') ?></td>
@@ -102,20 +110,12 @@ $this->end();
             <td><?= $customer->has('user') ? $this->Html->link($customer->user->name, ['controller' => 'Users', 'action' => 'view', $customer->user->id]) : '' ?></td>
         </tr>
         <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($customer->id) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Created') ?></td>
             <td><?= h($customer->created) ?></td>
         </tr>
         <tr>
             <td><?= __('Modified') ?></td>
             <td><?= h($customer->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Remarks') ?></td>
-            <td><?= $this->Text->autoParagraph(h($customer->remarks)); ?></td>
         </tr>
     </table>
 </div>

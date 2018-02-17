@@ -135,6 +135,7 @@ $this->end();
                 <!-- <th><?= __('Customer Id') ?></th> -->
                 <!-- <th><?= __('Contractname Id') ?></th> -->
                 <!-- <th><?= __('Remarks') ?></th> -->
+                <th><?= __('Contract Date') ?></th>
                 <th><?= __('File') ?></th>
                 <!-- <th><?= __('Dir') ?></th>
                 <th><?= __('Size') ?></th>
@@ -153,6 +154,7 @@ $this->end();
                     <!-- <td><?= h($contracts->customer_id) ?></td> -->
                     <!-- <td><?= h($contracts->contractname_id) ?></td> -->
                     <!-- <!-- <td><?= h($contracts->remarks) ?></td> -->
+                    <td><?= h($contracts->contract_date) ?></td>
                     <td><?= h($contracts->file) ?></td>
                     <!-- <td><?= h($contracts->dir) ?></td>
                     <td><?= h($contracts->size) ?></td>

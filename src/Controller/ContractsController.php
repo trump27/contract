@@ -33,11 +33,6 @@ class ContractsController extends AppController
 
         $this->set('contracts', $this->paginate($contracts));
 
-        // $this->paginate = [
-        //     'contain' => ['Clients', 'Customers', 'Contractnames', 'Users']
-        // ];
-        // $contracts = $this->paginate($this->Contracts);
-        // $this->set(compact('contracts'));
     }
 
     /**
@@ -69,7 +64,8 @@ class ContractsController extends AppController
             if ($this->Contracts->save($contract)) {
                 $this->Flash->success(__('The contract has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $contract->id]);
+                // return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The contract could not be saved. Please, try again.'));
         }
@@ -97,7 +93,8 @@ class ContractsController extends AppController
             if ($this->Contracts->save($contract)) {
                 $this->Flash->success(__('The contract has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $contract->id]);
+                // return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The contract could not be saved. Please, try again.'));
         }

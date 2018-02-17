@@ -152,15 +152,15 @@ class ClientsTable extends Table
             ->like('client_name', [
                 'before' => true,
                 'after' => true,
-            ])
-            ->add('partner_name', 'Search.Callback', [
-                'callback' => function ($query, $args, $filter) {
-                    $partner_name = $args['partner_name'];
-                    $query->matching('Partners', function ($q) use ($partner_name) {
-                        return $q->where(['Partners.client_name LIKE' => "%$partner_name%"]);
-                    });
-                }]
-            );
+            ]);
+            // ->add('partner_name', 'Search.Callback', [
+            //     'callback' => function ($query, $args, $filter) {
+            //         $partner_name = $args['partner_name'];
+            //         $query->matching('Partners', function ($q) use ($partner_name) {
+            //             return $q->where(['Partners.client_name LIKE' => "%$partner_name%"]);
+            //         });
+            //     }]
+            // );
 
         return $searchManager;
     }

@@ -20,7 +20,7 @@ $this->start('tb_actions');
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
 echo $this->Form->input('client_name', ['label' => 'クライアント名　']);
-echo $this->Form->input('partner_name', ['label'=>'　パートナー名　']);
+// echo $this->Form->input('partner_name', ['label'=>'　パートナー名　']);
 echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
 echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
 echo $this->Form->end();

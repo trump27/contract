@@ -7,7 +7,8 @@ $this->prepend('tb_body_attrs', ' class="' . implode(' ', [$this->request->contr
 $this->start('tb_body_start');
 ?>
 <body <?= $this->fetch('tb_body_attrs') ?>>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -41,7 +42,7 @@ $this->start('tb_body_start');
                 <!-- <form class="navbar-form navbar-right">
                     <input type="text" class="form-control" placeholder="Search...">
                 </form> -->
-                <form class="navbar-form navbar-right" action="/customers">
+                <form class="navbar-form navbar-right" action="/clients">
                     <input type="text" name="client_name" class="form-control" placeholder="クライアント...">
                 </form>
             </div>

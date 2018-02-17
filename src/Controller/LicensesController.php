@@ -57,7 +57,8 @@ class LicensesController extends AppController
             if ($this->Licenses->save($license)) {
                 $this->Flash->success(__('The license has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $license->id]);
+                // return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
@@ -87,7 +88,8 @@ class LicensesController extends AppController
             if ($this->Licenses->save($license)) {
                 $this->Flash->success(__('The license has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $license->id]);
+                // return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }

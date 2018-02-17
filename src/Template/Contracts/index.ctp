@@ -29,7 +29,7 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_id'); ?></th>
-            <th><?= $this->Paginator->sort('contractname_id'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('contractname_id'); ?></th> -->
             <th><?= $this->Paginator->sort('contract_date'); ?></th>
             <th><?= $this->Paginator->sort('file'); ?></th>
         </tr>
@@ -47,9 +47,9 @@ echo $this->Form->end();
             <td>
                 <?= $contract->has('client') ? $this->Html->link($this->my->trunc($contract->client->client_name,15), ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
             </td>
-            <td>
+            <!-- <td>
                 <?= $contract->has('customer') ? $this->Html->link($this->my->trunc($contract->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
-            </td>
+            </td> -->
             <td>
                 <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>

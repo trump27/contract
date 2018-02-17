@@ -8,16 +8,8 @@ $this->start('tb_actions');
 <li><?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?> </li>
 <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Order'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -28,16 +20,8 @@ $this->start('tb_sidebar');
 <li><?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?> </li>
 <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Order'), ['action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
-<li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -49,6 +33,10 @@ $this->end();
         <h3 class="panel-title"><?= h($order->product_name) ?></h3>
     </div>
     <table class="table table-striped table-responsive text-nowrap">
+        <tr>
+            <td><?= __('Id') ?></td>
+            <td><?= $this->Number->format($order->id) ?></td>
+        </tr>
         <tr>
             <td><?= __('Client') ?></td>
             <td><?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?></td>
@@ -90,38 +78,6 @@ $this->end();
             <td><?= h($order->product_name) ?></td>
         </tr>
         <tr>
-            <td><?= __('Sales Dept') ?></td>
-            <td><?= h($order->sales_dept) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Sales Staff') ?></td>
-            <td><?= h($order->sales_staff) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Status') ?></td>
-            <td><?= $order->has('status') ? $this->Html->link($order->status->name, ['controller' => 'Statuses', 'action' => 'view', $order->status->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <td><?= __('File') ?></td>
-            <td><?= h($order->file) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Dir') ?></td>
-            <td><?= h($order->dir) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Type') ?></td>
-            <td><?= h($order->type) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('User') ?></td>
-            <td><?= $order->has('user') ? $this->Html->link($order->user->name, ['controller' => 'Users', 'action' => 'view', $order->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($order->id) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Quantity') ?></td>
             <td><?= $this->Number->format($order->quantity) ?></td>
         </tr>
@@ -130,8 +86,16 @@ $this->end();
             <td><?= $this->Number->format($order->price) ?></td>
         </tr>
         <tr>
-            <td><?= __('Size') ?></td>
-            <td><?= $this->Number->format($order->size) ?></td>
+            <td><?= __('Status') ?></td>
+            <td><?= $order->has('status') ? $this->Html->link($order->status->name, ['controller' => 'Statuses', 'action' => 'view', $order->status->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Sales Dept') ?></td>
+            <td><?= h($order->sales_dept) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Sales Staff') ?></td>
+            <td><?= h($order->sales_staff) ?></td>
         </tr>
         <tr>
             <td><?= __('Order Date') ?></td>
@@ -146,16 +110,36 @@ $this->end();
             <td><?= h($order->sales_date) ?></td>
         </tr>
         <tr>
+            <td><?= __('Product Detail') ?></td>
+            <td><?= $this->Text->autoParagraph(h($order->product_detail)); ?></td>
+        </tr>
+        <tr>
+            <td><?= __('File') ?></td>
+            <td><?= h($order->file) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Dir') ?></td>
+            <td><?= h($order->dir) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Type') ?></td>
+            <td><?= h($order->type) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Size') ?></td>
+            <td><?= $this->Number->format($order->size) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('User') ?></td>
+            <td><?= $order->has('user') ? $this->Html->link($order->user->name, ['controller' => 'Users', 'action' => 'view', $order->user->id]) : $order->user_id ?></td>
+        </tr>
+        <tr>
             <td><?= __('Created') ?></td>
             <td><?= h($order->created) ?></td>
         </tr>
         <tr>
             <td><?= __('Modified') ?></td>
             <td><?= h($order->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Product Detail') ?></td>
-            <td><?= $this->Text->autoParagraph(h($order->product_detail)); ?></td>
         </tr>
     </table>
 </div>

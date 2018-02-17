@@ -92,12 +92,12 @@ $this->end();
             <td><?= h($license->license_key) ?></td>
         </tr>
         <tr>
-            <td><?= __('File') ?></td>
-            <td><?= h($license->file) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Notice') ?></td>
             <td><?= $this->Text->autoParagraph(h($license->notice)); ?></td>
+        </tr>
+        <tr>
+            <td><?= __('File') ?></td>
+            <td><?= h($license->file) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>

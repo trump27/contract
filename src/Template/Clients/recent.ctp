@@ -11,8 +11,10 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
 
-<h1 class="page-header">Recent 10</h1>
-
+<div class="jumbotron">
+  <h1>Recent 10 records</h1>
+  <p>最近更新されたデータ</p>
+</div>
 <h2 class="page-header"><?=__('Orders')?></h2>
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
@@ -58,7 +60,7 @@ $this->start('tb_actions');
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
-            <th><?= $this->Paginator->sort('customer_id'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('customer_id'); ?></th> -->
             <th><?= $this->Paginator->sort('contractname_id'); ?></th>
             <th><?= $this->Paginator->sort('file'); ?></th>
             <th><?= $this->Paginator->sort('modified'); ?></th>
@@ -77,9 +79,9 @@ $this->start('tb_actions');
             <td>
                 <?= $contract->has('client') ? $this->Html->link($this->my->trunc($contract->client->client_name), ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
             </td>
-            <td>
+            <!-- <td>
                 <?= $contract->has('customer') ? $this->Html->link($this->my->trunc($contract->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
-            </td>
+            </td> -->
             <td>
                 <?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>

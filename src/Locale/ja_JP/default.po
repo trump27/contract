@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2018-02-17 15:28+0900\n"
-"PO-Revision-Date: 2018-02-17 15:28+0900\n"
+"PO-Revision-Date: 2018-02-17 20:53+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -570,7 +570,7 @@ msgstr "クライアント編集"
 
 #: Template/Clients/view.ctp:8;21
 msgid "Delete Client"
-msgstr "クライアント策"
+msgstr "クライアント削除"
 
 #: Template/Clients/view.ctp:39;90;133;186;232;269
 #: Template/Contractnames/view.ctp:33 Template/Contracts/view.ctp:37
