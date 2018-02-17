@@ -114,16 +114,14 @@ $this->start('tb_actions');
         <tr>
             
             <td class="actions">
-                <?= $this->Html->link('', ['License' => 'Clients', 'action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
-                <!-- <?= $this->Html->link('', ['action' => 'edit', $license->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?> -->
-                <!-- <?= $this->Form->postLink('', ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
+                <?= $this->Html->link('', ['controller' => 'Licenses', 'action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
             </td>
             <td><?= $this->Number->format($license->id) ?></td>
             <td>
                 <?= $license->has('client') ? $this->Html->link($this->my->trunc($license->client->client_name), ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?>
             </td>
             <td>
-                <?= $license->has('customer') ? $this->Html->link($license->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
+                <?= $license->has('customer') ? $this->Html->link($this->my->trunc($license->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
             </td>
             <td>
                 <?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?>

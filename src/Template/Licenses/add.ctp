@@ -11,17 +11,8 @@ $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('List Licenses'), ['action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -30,17 +21,8 @@ $this->start('tb_sidebar');
 <ul class="nav nav-sidebar">
     <li><?= $this->Html->link(__('List Licenses'), ['action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?> </li>
     <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Status'), ['controller' => 'Statuses', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
-    <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -49,6 +31,7 @@ $this->element('datepicker');
 <?= $this->Html->script('customeroptions',['block' => true]) ?>
 <h1 class="page-header"><?= __('Licenses') ?></h1>
 <?= $this->Form->create($license, ['align' => [
+    'type'=> 'file',
     'sm' => [
         'left' => 3,
         'middle' => 8,
@@ -81,8 +64,7 @@ $this->element('datepicker');
     echo $this->Form->control('file');
     echo $this->Form->control('dir');
     echo $this->Form->control('size');
-    echo $this->Form->control('type');
-    echo $this->Form->control('user_id', ['options' => $users]);
+    echo $this->Form->control('type', ['type'=>'file']);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add"), ['class'=>'btn-primary']); ?>

@@ -67,7 +67,7 @@ class LicensesController extends AppController
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
         $users = $this->Licenses->Users->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages', 'users'));
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages'));
     }
 
     /**
@@ -97,7 +97,7 @@ class LicensesController extends AppController
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
         $users = $this->Licenses->Users->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages', 'users'));
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages'));
     }
 
     /**
