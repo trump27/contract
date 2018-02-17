@@ -8,24 +8,14 @@
 $this->extend('../Layout/TwitterBootstrap/signin');
 ?>
 
-<?= $this->Form->create('', ['align' => [
-    'sm' => [
-        'left' => 3,
-        'middle' => 8,
-        'right' => 1
-    ],
-    'md' => [
-        'left' => 3,
-        'middle' => 6,
-        'right' => 2
-    ]
-]]); ?>
-<fieldset>
-    <legend><?= __('Login') . ' Contracts' ?></legend>
-    <?php
-    echo $this->Form->control('username');
-    echo $this->Form->control('password');
-    ?>
-</fieldset>
-<?= $this->Form->button(__("Login"), ['class'=>'btn-primary']); ?>
+<?= $this->Form->create('', [
+    'class' => 'form-signin'
+]); ?>
+    <h2 class="form-signin-heading">Please login</h2>
+    <input type="text" name="username" placeholder="username"
+        autofocus id="username" class="form-control" required>
+    <input type="password" name="password" placeholder="password" 
+        autofocus id="password" class="form-control" required>
+
+<?= $this->Form->button(__("Login"), ['class'=>'btn-primary btn-block']); ?>
 <?= $this->Form->end() ?>
