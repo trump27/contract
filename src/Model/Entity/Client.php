@@ -40,6 +40,7 @@ class Client extends Entity
         'company_code' => true,
         'identity1' => true,
         'partner_flag' => true,
+        'partner_id' => true,
         'remarks' => true,
         'user_id' => true,
         'created' => true,

@@ -16,7 +16,7 @@ class ClientsController extends AppController
     {
         parent::initialize();
         $this->loadComponent('Search.Prg', [
-            'actions' => ['index']
+            'actions' => ['index'],
         ]);
     }
 
@@ -55,15 +55,10 @@ class ClientsController extends AppController
      */
     public function index()
     {
-        // $this->paginate = [
-        //     'contain' => ['Users'],
-        // ];
-        // $clients = $this->paginate($this->Clients);
-        // $this->set(compact('clients'));
 
         $clients = $this->Clients
             ->find('search', ['search' => $this->request->query])
-            ->contain(['Users']);
+            ->contain(['Partners', 'Users']);
 
         $this->set('clients', $this->paginate($clients));
 
@@ -79,7 +74,7 @@ class ClientsController extends AppController
     public function view($id = null)
     {
         $client = $this->Clients->get($id, [
-            'contain' => ['Users', 'Contracts', 'Customers', 'Licensehistories', 'Licenses', 'Orders'],
+            'contain' => ['Users', 'Contracts', 'Customers', 'Licensehistories', 'Licenses', 'Orders', 'Partners'],
         ]);
 
         $this->set('client', $client);
@@ -103,7 +98,9 @@ class ClientsController extends AppController
             $this->Flash->error(__('The client could not be saved. Please, try again.'));
         }
         $users = $this->Clients->Users->find('list', ['limit' => 200]);
-        $this->set(compact('client', 'users'));
+        $partners = $this->Clients->Partners->find('list')
+            ->where(['partner_flag' => 1]);
+        $this->set(compact('client', 'users', 'partners'));
     }
 
     /**
@@ -128,7 +125,9 @@ class ClientsController extends AppController
             $this->Flash->error(__('The client could not be saved. Please, try again.'));
         }
         $users = $this->Clients->Users->find('list', ['limit' => 200]);
-        $this->set(compact('client', 'users'));
+        $partners = $this->Clients->Partners->find('list')
+            ->where(['partner_flag' => 1]);
+        $this->set(compact('client', 'users', 'partners'));
     }
 
     /**

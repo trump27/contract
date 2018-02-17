@@ -19,11 +19,10 @@ $this->start('tb_actions');
 
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
-echo $this->Form->input('client_name', ['label'=>'クライアント名　']);
+echo $this->Form->input('client_name', ['label' => 'クライアント名　']);
+echo $this->Form->input('partner_name', ['label'=>'　パートナー名　']);
 echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
-// if (!empty($_isSearch)) {
 echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
-// }
 echo $this->Form->end();
 ?>
 <div>&nbsp;</div>
@@ -34,11 +33,11 @@ echo $this->Form->end();
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_name'); ?></th>
-            <th><?= $this->Paginator->sort('company_code'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('company_code'); ?></th> -->
             <th><?= $this->Paginator->sort('identity1'); ?></th>
             <th><?= $this->Paginator->sort('partner_flag'); ?></th>
-            <th><?= $this->Paginator->sort('user_id'); ?></th>
-            <th><?= $this->Paginator->sort('created'); ?></th>
+            <th><?= $this->Paginator->sort('partner_id'); ?></th>
+            <th><?= $this->Paginator->sort('modified'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -52,13 +51,13 @@ echo $this->Form->end();
             </td>
             <td><?= $this->Number->format($client->id) ?></td>
             <td><?= h($this->my->trunc($client->client_name)) ?></td>
-            <td><?= h($client->company_code) ?></td>
+            <!-- <td><?= h($client->company_code) ?></td> -->
             <td><?= h($client->identity1) ?></td>
             <td><?= $this->My->partner($client->partner_flag) ?></td>
             <td>
-                <?= $client->has('user') ? $this->Html->link($client->user->name, ['controller' => 'Users', 'action' => 'view', $client->user->id]) : '' ?>
+                <?= $client->has('partner') ? $this->Html->link($this->my->trunc($client->partner->client_name), ['controller' => 'Clients', 'action' => 'view', $client->partner->id]) : '' ?>
             </td>
-            <td><?= h($client->created) ?></td>
+            <td><?= h($client->modified) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

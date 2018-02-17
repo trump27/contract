@@ -56,6 +56,10 @@ $this->end();
             <td><?= $this->My->partner($client->partner_flag) ?></td>
         </tr>
         <tr>
+            <td><?= __('Partner Id') ?></td>
+            <td><?= $client->has('partner') ? $this->Html->link($client->partner->client_name, ['controller' => 'Clients', 'action' => 'view', $client->partner->id]) : '' ?></td>
+        </tr>
+        <tr>
             <td><?= __('Remarks') ?></td>
             <td><?= $this->Text->autoParagraph(h($client->remarks)); ?></td>
         </tr>

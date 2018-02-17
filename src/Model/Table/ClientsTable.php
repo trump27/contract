@@ -1,9 +1,9 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
-use Cake\ORM\Query;
 use Cake\Validation\Validator;
 
 /**
@@ -63,6 +63,10 @@ class ClientsTable extends Table
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'company_code', // FK
         ]);
+        $this->belongsTo('Partners', [      // 自身への参照
+            'className' => 'Clients',
+            'finder' => 'partner'
+        ]);
 
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
@@ -105,7 +109,7 @@ class ClientsTable extends Table
 
         $validator
             ->integer('partner_flag');
-            // ->allowEmpty('partner_flag');
+        // ->allowEmpty('partner_flag');
 
         $validator
             ->scalar('remarks')
@@ -147,9 +151,23 @@ class ClientsTable extends Table
         $searchManager
             ->like('client_name', [
                 'before' => true,
-                'after' => true
-            ]);
+                'after' => true,
+            ])
+            ->add('partner_name', 'Search.Callback', [
+                'callback' => function ($query, $args, $filter) {
+                    $partner_name = $args['partner_name'];
+                    $query->matching('Partners', function ($q) use ($partner_name) {
+                        return $q->where(['Partners.client_name LIKE' => "%$partner_name%"]);
+                    });
+                }]
+            );
 
         return $searchManager;
+    }
+
+    public function findPartner(Query $query, array $options)
+    {
+        return $query->select(['Partners.id', 'Partners.client_name'])
+            ->where(['Partners.partner_flag' => 1]);
     }
 }

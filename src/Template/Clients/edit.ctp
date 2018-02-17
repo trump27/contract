@@ -82,7 +82,8 @@ $this->end();
     echo $this->Form->control('identity1');
     echo $this->Form->control('partner_flag', ['type' => 'radio', 'options' => [
         0 => 'No', 1 => 'Yes',
-    ]]);
+        ]]);
+    echo $this->Form->control('partner_id', ['empty'=>'---']);
     echo $this->Form->control('remarks');
     ?>
 </fieldset>
