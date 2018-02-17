@@ -56,7 +56,7 @@ $this->end();
             <td><?= $this->My->partner($client->partner_flag) ?></td>
         </tr>
         <tr>
-            <td><?= __('Partner Id') ?></td>
+            <td><?= __('Partner') ?></td>
             <td><?= $client->has('partner') ? $this->Html->link($client->partner->client_name, ['controller' => 'Clients', 'action' => 'view', $client->partner->id]) : '' ?></td>
         </tr>
         <tr>
@@ -76,6 +76,49 @@ $this->end();
             <td><?= h($client->modified) ?></td>
         </tr>
     </table>
+</div>
+
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= __('Related Customers') ?></h3>
+    </div>
+    <?php if (!empty($client->customers)): ?>
+        <table class="table table-striped text-nowrap">
+            <thead>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Customer Name') ?></th>
+                <th><?= __('Identity2') ?></th>
+                <th><?= __('Sales Dept') ?></th>
+                <th><?= __('Sales Staff') ?></th>
+                <th><?= __('Admin Name1') ?></th>
+                <th><?= __('Admin Name2') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($client->customers as $customers): ?>
+                <tr>
+                    <td><?= h($customers->id) ?></td>
+                    <td><?= $this->My->trunc($customers->customer_name) ?></td>
+                    <td><?= h($customers->identity2) ?></td>
+                    <td><?= $this->My->trunc($customers->sales_dept) ?></td>
+                    <td><?= h($customers->sales_staff) ?></td>
+                    <td><?= h($customers->admin_name1) ?></td>
+                    <td><?= h($customers->admin_name2) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link('', ['controller' => 'Customers', 'action' => 'view', $customers->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Customers', 'action' => 'edit', $customers->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
+                        <!-- <?= $this->Form->postLink('', ['controller' => 'Customers', 'action' => 'delete', $customers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $customers->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?> -->
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="panel-body">no related Customers</p>
+    <?php endif; ?>
 </div>
 
 <div class="panel panel-default">
@@ -128,68 +171,6 @@ $this->end();
         </table>
     <?php else: ?>
         <p class="panel-body">no related Contracts</p>
-    <?php endif; ?>
-</div>
-<div class="panel panel-default">
-    <!-- Panel header -->
-    <div class="panel-heading">
-        <h3 class="panel-title"><?= __('Related Customers') ?></h3>
-    </div>
-    <?php if (!empty($client->customers)): ?>
-        <table class="table table-striped text-nowrap">
-            <thead>
-            <tr>
-                <th><?= __('Id') ?></th>
-                <!-- <th><?= __('Client Id') ?></th> -->
-                <th><?= __('Customer Name') ?></th>
-                <!-- <th><?= __('Address') ?></th> -->
-                <th><?= __('Identity2') ?></th>
-                <th><?= __('Sales Dept') ?></th>
-                <th><?= __('Sales Staff') ?></th>
-                <!-- <th><?= __('Remarks') ?></th> -->
-                <th><?= __('Admin Name1') ?></th>
-                <!-- <th><?= __('Div1') ?></th>
-                <th><?= __('Mail1') ?></th> -->
-                <th><?= __('Admin Name2') ?></th>
-                <!-- <th><?= __('Div2') ?></th>
-                <th><?= __('Mail2') ?></th>
-                <th><?= __('User Id') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th> -->
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($client->customers as $customers): ?>
-                <tr>
-                    <td><?= h($customers->id) ?></td>
-                    <!-- <td><?= h($customers->client_id) ?></td> -->
-                    <td><?= h($customers->customer_name) ?></td>
-                    <!-- <td><?= h($customers->address) ?></td> -->
-                    <td><?= h($customers->identity2) ?></td>
-                    <td><?= h($customers->sales_dept) ?></td>
-                    <td><?= h($customers->sales_staff) ?></td>
-                    <!-- <td><?= h($customers->remarks) ?></td> -->
-                    <td><?= h($customers->admin_name1) ?></td>
-                    <!-- <td><?= h($customers->div1) ?></td>
-                    <td><?= h($customers->mail1) ?></td> -->
-                    <td><?= h($customers->admin_name2) ?></td>
-                    <!-- <td><?= h($customers->div2) ?></td>
-                    <td><?= h($customers->mail2) ?></td>
-                    <td><?= h($customers->user_id) ?></td>
-                    <td><?= h($customers->created) ?></td>
-                    <td><?= h($customers->modified) ?></td> -->
-                    <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'Customers', 'action' => 'view', $customers->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => 'Customers', 'action' => 'edit', $customers->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
-                        <!-- <?= $this->Form->postLink('', ['controller' => 'Customers', 'action' => 'delete', $customers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $customers->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash']) ?> -->
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p class="panel-body">no related Customers</p>
     <?php endif; ?>
 </div>
 

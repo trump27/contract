@@ -49,7 +49,7 @@ class MyHelper extends Helper
 
     public function partner($value)
     {
-        return $value===1 ? 'Yes' : '';
+        return $value===1 ? 'パートナー' : '';
     }
 
 }
