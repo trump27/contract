@@ -42,7 +42,7 @@ $this->start('tb_actions');
                 <?= $this->Html->link('', ['action' => 'edit', $licensehistory->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $licensehistory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $licensehistory->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($licensehistory->id) ?></td>
+            <td align="right"><?= $this->Number->format($licensehistory->id) ?></td>
             <td>
                 <?= $licensehistory->has('client') ? $this->Html->link($licensehistory->client->client_name, ['controller' => 'Clients', 'action' => 'view', $licensehistory->client->id]) : '' ?>
             </td>

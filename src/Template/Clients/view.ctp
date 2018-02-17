@@ -100,7 +100,7 @@ $this->end();
             <tbody>
             <?php foreach ($client->customers as $customers): ?>
                 <tr>
-                    <td><?= h($customers->id) ?></td>
+                    <td align="right"><?= h($customers->id) ?></td>
                     <td><?= $this->My->trunc($customers->customer_name) ?></td>
                     <td><?= h($customers->identity2) ?></td>
                     <td><?= $this->My->trunc($customers->sales_dept) ?></td>
@@ -149,7 +149,7 @@ $this->end();
             <tbody>
             <?php foreach ($client->contracts as $contracts): ?>
                 <tr>
-                    <td><?= h($contracts->id) ?></td>
+                    <td align="right"><?= h($contracts->id) ?></td>
                     <!-- <td><?= h($contracts->client_id) ?></td> -->
                     <!-- <td><?= h($contracts->customer_id) ?></td> -->
                     <!-- <td><?= h($contracts->contractname_id) ?></td> -->
@@ -200,7 +200,7 @@ $this->end();
             <tbody>
             <?php foreach ($client->orders as $orders): ?>
                 <tr>
-                    <td><?= h($orders->id) ?></td>
+                    <td align="right"><?= h($orders->id) ?></td>
                     <td><?= h($orders->company_code) ?></td>
                     <td><?= h($orders->company_name1) ?></td>
                     <td><?= h($orders->order_date) ?></td>
@@ -242,7 +242,7 @@ $this->end();
             <tbody>
             <?php foreach ($client->licenses as $licenses): ?>
                 <tr>
-                    <td><?= h($licenses->id) ?></td>
+                    <td align="right"><?= h($licenses->id) ?></td>
                     <td><?= h($licenses->product_name) ?></td>
                     <td><?= h($licenses->license_name) ?></td>
                     <td><?= h($licenses->startdate) ?></td>
@@ -279,7 +279,7 @@ $this->end();
             <tbody>
             <?php foreach ($client->licensehistories as $licensehistories): ?>
                 <tr>
-                    <td><?= h($licensehistories->id) ?></td>
+                    <td align="right"><?= h($licensehistories->id) ?></td>
                     <td><?= h($licensehistories->product_name) ?></td>
                     <td><?= h($licensehistories->license_name) ?></td>
                     <td><?= h($licensehistories->startdate) ?></td>

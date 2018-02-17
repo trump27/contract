@@ -25,7 +25,7 @@ $this->start('tb_actions');
                 <?= $this->Html->link('', ['action' => 'edit', $language->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $language->id], ['confirm' => __('Are you sure you want to delete # {0}?', $language->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($language->id) ?></td>
+            <td align="right"><?= $this->Number->format($language->id) ?></td>
             <td><?= h($language->language_name) ?></td>
         </tr>
         <?php endforeach; ?>

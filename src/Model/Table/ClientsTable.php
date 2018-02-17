@@ -149,6 +149,7 @@ class ClientsTable extends Table
     {
         $searchManager = $this->behaviors()->Search->searchManager();
         $searchManager
+            ->value('partner_flag')
             ->like('client_name', [
                 'before' => true,
                 'after' => true,

@@ -20,6 +20,10 @@ $this->start('tb_actions');
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
 echo $this->Form->input('client_name', ['label' => 'クライアント名　']);
+echo $this->Form->control('partner_flag', ['type' => 'select',
+    'options' => [0 => 'No', 1 => 'Yes'],
+    'empty' => '---', 'label' => '　パートナー　'
+    ]);
 // echo $this->Form->input('partner_name', ['label'=>'　パートナー名　']);
 echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
 echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
@@ -49,7 +53,7 @@ echo $this->Form->end();
                 <?= $this->Html->link('', ['action' => 'edit', $client->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $client->id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($client->id) ?></td>
+            <td align="right"><?= $this->Number->format($client->id) ?></td>
             <td><?= h($this->my->trunc($client->client_name)) ?></td>
             <!-- <td><?= h($client->company_code) ?></td> -->
             <td><?= h($client->identity1) ?></td>

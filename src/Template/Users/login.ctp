@@ -17,5 +17,5 @@ $this->extend('../Layout/TwitterBootstrap/signin');
     <input type="password" name="password" placeholder="password" 
         autofocus id="password" class="form-control" required>
 
-<?= $this->Form->button(__("Login"), ['class'=>'btn-primary btn-block']); ?>
+<?= $this->Form->button(__("Login"), ['class'=>'btn-primary btn-lg btn-block']); ?>
 <?= $this->Form->end() ?>

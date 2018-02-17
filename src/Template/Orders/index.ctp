@@ -33,7 +33,7 @@ $this->start('tb_actions');
                 <?= $this->Html->link('', ['action' => 'edit', $order->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($order->id) ?></td>
+            <td align="right"><?= $this->Number->format($order->id) ?></td>
             <td>
                 <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->client_name), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
             </td>

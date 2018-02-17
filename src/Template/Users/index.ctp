@@ -29,7 +29,7 @@ $this->start('tb_actions');
                 <?= $this->Html->link('', ['action' => 'edit', $user->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($user->id) ?></td>
+            <td align="right"><?= $this->Number->format($user->id) ?></td>
             <td><?= h($user->username) ?></td>
             <td><?= h($user->name) ?></td>
             <td><?= h($user->email) ?></td>

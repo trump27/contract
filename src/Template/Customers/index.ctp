@@ -53,7 +53,7 @@ echo $this->Form->end();
                 <?= $this->Html->link('', ['action' => 'edit', $customer->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $customer->id], ['confirm' => __('Are you sure you want to delete # {0}?', $customer->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($customer->id) ?></td>
+            <td align="right"><?= $this->Number->format($customer->id) ?></td>
             <td>
                 <?= $customer->has('client') ? $this->Html->link($this->my->trunc($customer->client->client_name), ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?>
             </td>

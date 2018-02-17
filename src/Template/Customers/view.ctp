@@ -147,7 +147,7 @@ $this->end();
             <tbody>
             <?php foreach ($customer->contracts as $contracts): ?>
                 <tr>
-                    <td><?= h($contracts->id) ?></td>
+                    <td align="right"><?= h($contracts->id) ?></td>
                     <td><?= h($contracts->client_id) ?></td>
                     <td><?= h($contracts->customer_id) ?></td>
                     <td><?= h($contracts->contractname_id) ?></td>
@@ -210,7 +210,7 @@ $this->end();
             <tbody>
             <?php foreach ($customer->licensehistories as $licensehistories): ?>
                 <tr>
-                    <td><?= h($licensehistories->id) ?></td>
+                    <td align="right"><?= h($licensehistories->id) ?></td>
                     <td><?= h($licensehistories->client_id) ?></td>
                     <td><?= h($licensehistories->customer_id) ?></td>
                     <td><?= h($licensehistories->order_id) ?></td>
@@ -284,7 +284,7 @@ $this->end();
             <tbody>
             <?php foreach ($customer->licenses as $licenses): ?>
                 <tr>
-                    <td><?= h($licenses->id) ?></td>
+                    <td align="right"><?= h($licenses->id) ?></td>
                     <td><?= h($licenses->client_id) ?></td>
                     <td><?= h($licenses->customer_id) ?></td>
                     <td><?= h($licenses->order_id) ?></td>
