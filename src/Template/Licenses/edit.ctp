@@ -62,6 +62,7 @@ $this->start('tb_sidebar');
 $this->end();
 $this->element('datepicker');
 ?>
+<?= $this->Html->script('customeroptions',['block' => true]) ?>
 <h1 class="page-header"><?= __('Licenses') ?></h1>
 <?= $this->Form->create($license, ['align' => [
     'sm' => [
