@@ -61,10 +61,7 @@ $this->element('datepicker');
     echo $this->Form->control('enddate', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('license_key');
     echo $this->Form->control('notice');
-    echo $this->Form->control('file');
-    echo $this->Form->control('dir');
-    echo $this->Form->control('size');
-    echo $this->Form->control('type', ['type'=>'file']);
+    echo $this->Form->control('file', ['type'=>'file']);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add"), ['class'=>'btn-primary']); ?>

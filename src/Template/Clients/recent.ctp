@@ -16,18 +16,18 @@ $this->start('tb_actions');
   <p>最近更新されたデータ</p>
 </div>
 <h2 class="page-header"><?=__('Orders')?></h2>
-<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
             <th class="actions"><?=__('Actions');?></th>
-            <!-- <th><?=$this->Paginator->sort('id');?></th> -->
-            <!-- <th><?=$this->Paginator->sort('company_code');?></th> -->
-            <th><?=$this->Paginator->sort('company_name1');?></th>
-            <th><?=$this->Paginator->sort('status_msg');?></th>
-            <th><?=$this->Paginator->sort('order_date');?></th>
-            <th><?=$this->Paginator->sort('delivery_date');?></th>
-            <th><?=$this->Paginator->sort('sales_date');?></th>
-            <th><?=$this->Paginator->sort('product_name');?></th>
+            <!-- <th><?=__('id');?></th> -->
+            <!-- <th><?=__('company_code');?></th> -->
+            <th><?=__('Company Name1');?></th>
+            <th><?=__('Status Msg');?></th>
+            <th><?=__('Order Date');?></th>
+            <th><?=__('Delivery Date');?></th>
+            <th><?=__('Sales Date');?></th>
+            <th><?=__('Product Name');?></th>
         </tr>
     </thead>
     <tbody>
@@ -45,7 +45,7 @@ $this->start('tb_actions');
             <td><?=h($order->order_date)?></td>
             <td><?=h($order->delivery_date)?></td>
             <td><?=h($order->sales_date)?></td>
-            <td><?=h($order->product_name)?></td>
+            <td><?=$this->my->trunc($order->product_name)?></td>
 
         </tr>
         <?php endforeach;?>
@@ -54,16 +54,16 @@ $this->start('tb_actions');
 
 <!-- Contract -->
 <h2 class="page-header"><?= __('Contract') ?></h2>
-<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
-            <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('client_id'); ?></th>
-            <!-- <th><?= $this->Paginator->sort('customer_id'); ?></th> -->
-            <th><?= $this->Paginator->sort('contractname_id'); ?></th>
-            <th><?= $this->Paginator->sort('file'); ?></th>
-            <th><?= $this->Paginator->sort('modified'); ?></th>
+            <th><?= __('Id'); ?></th>
+            <th><?= __('Client'); ?></th>
+            <!-- <th><?= __('customer_id'); ?></th> -->
+            <th><?= __('Contractname'); ?></th>
+            <th><?= __('File'); ?></th>
+            <th><?= __('Modified'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -99,16 +99,16 @@ $this->start('tb_actions');
 
 <!-- Licenses -->
 <h2 class="page-header"><?= __('Licenses') ?></h2>
-<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
-            <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('client_id'); ?></th>
-            <th><?= $this->Paginator->sort('customer_id'); ?></th>
-            <th><?= $this->Paginator->sort('status_id'); ?></th>
-            <th><?= $this->Paginator->sort('issued'); ?></th>
-            <th><?= $this->Paginator->sort('license_no'); ?></th>
+            <th><?= __('Id'); ?></th>
+            <th><?= __('Client'); ?></th>
+            <th><?= __('Customer'); ?></th>
+            <th><?= __('Status'); ?></th>
+            <th><?= __('Issued'); ?></th>
+            <th><?= __('License No'); ?></th>
         </tr>
     </thead>
     <tbody>
