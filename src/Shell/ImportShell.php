@@ -80,6 +80,7 @@ class ImportShell extends Shell
             $item = $this->$model->patchEntity($item, $data);
 
             if (!$this->$model->save($item)) {
+                pr($item->errors());
                 print_r($data);
                 $this->out("登録エラー");
                 return;
