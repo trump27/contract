@@ -60,7 +60,11 @@ class ClientsController extends AppController
             ->find('search', ['search' => $this->request->query])
             ->contain(['Partners', 'Users']);
 
+        $partners = $this->Clients->Partners->find('list')
+            ->where(['partner_flag' => 1]);
+
         $this->set('clients', $this->paginate($clients));
+        $this->set('partners',$partners);
 
     }
 

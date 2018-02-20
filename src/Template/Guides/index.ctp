@@ -9,6 +9,38 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 
+<?= $this->Html->scriptStart(['block' => true]) ?>
+$(function () {
+    function getOptions() {
+        $.ajax({
+            url: "/guides/search/" + $('#search').val(),
+        })
+        .done(function (data) {
+            $("#customer-id").html(data);
+        })
+        .fail(function () {
+            console.log('cannot load options.');
+        })
+    }
+    var t;
+    $("#search").bind("change keyup", getOptions);
+/*      setTimeout(getOptions, 300)
+      clearTimeout(t);
+      t = setTimeout(function() {
+        getOptions;
+      }, 300);
+); */
+});
+<?= $this->Html->scriptEnd() ?>
+
+<?php
+echo $this->Form->create(null);
+echo $this->Form->control('search');
+echo $this->Form->control('customer_id', ['options' => null, 'size'=>7]);
+
+echo $this->Form->button(__("Save"), ['class'=>'btn-primary']);
+echo $this->Form->end();
+?>
 
 <div class="jumbotron">
   <h1>ライセンス登録</h1>
@@ -51,6 +83,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <h4>Danger Callout</h4>
   This is a danger callout.
 </div>
+
 
 
 <!-- Button trigger modal -->
