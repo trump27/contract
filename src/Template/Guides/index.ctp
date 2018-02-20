@@ -58,7 +58,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
   Launch demo modal
 </button>
 
@@ -67,7 +67,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function() {
   // ダイアログ表示前にJavaScriptで操作する
-  $('#btn-save').click(function () {
+  $('#btn-select').click(function () {
     var recipient = $(exampleInput1).val();
     alert(recipient);
   });
