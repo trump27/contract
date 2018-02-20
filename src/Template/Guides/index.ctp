@@ -9,38 +9,9 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 
-<?= $this->Html->scriptStart(['block' => true]) ?>
-$(function () {
-    function getOptions() {
-        $.ajax({
-            url: "/guides/search/" + $('#search').val(),
-        })
-        .done(function (data) {
-            $("#customer-id").html(data);
-        })
-        .fail(function () {
-            console.log('cannot load options.');
-        })
-    }
-    var t;
-    $("#search").bind("change keyup", getOptions);
-/*      setTimeout(getOptions, 300)
-      clearTimeout(t);
-      t = setTimeout(function() {
-        getOptions;
-      }, 300);
-); */
-});
-<?= $this->Html->scriptEnd() ?>
+<?= $this->cell('Customer'); ?>
 
-<?php
-echo $this->Form->create(null);
-echo $this->Form->control('search');
-echo $this->Form->control('customer_id', ['options' => null, 'size'=>7]);
 
-echo $this->Form->button(__("Save"), ['class'=>'btn-primary']);
-echo $this->Form->end();
-?>
 
 <div class="jumbotron">
   <h1>ライセンス登録</h1>
@@ -91,25 +62,7 @@ echo $this->Form->end();
   Launch demo modal
 </button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-        <input type="text" value="123" class="form-control" id="exampleInput1" placeholder="数値を入力してください">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="btn-save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function() {
@@ -120,3 +73,4 @@ $(function() {
   });
 });
 <?= $this->Html->scriptEnd() ?>
+
