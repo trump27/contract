@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="customerModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,17 +7,15 @@
         <h4 class="modal-title" id="myModalLabel"><?=__('Customer')?> 選択</h4>
       </div>
       <div class="modal-body">
+
+      <div class="alert alert-info" role="alert">クライアント名で絞り込み、顧客を選択してください。</div>
 <?php
-// $this->start('modalCustomer');
-
 echo $this->Form->create(null);
-echo $this->Form->control('searchCustomer', ['label' => __('Customer') . '名']);
+echo $this->Form->control('searchCustomer', ['label' => __('Clients') . '名']);
 echo $this->Form->control('customer_id', ['options' => null, 'label' => false, 'size' => 7]);
-
 echo $this->Form->end();
-
-// $this->end();
 ?>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -34,7 +32,7 @@ $(function () {
         clearTimeout(t);
         t = setTimeout(function () {
             $.ajax({
-                url: "/guides/search/" + $('#searchcustomer').val(),
+                url: "/guides/ajaxcustomers/" + $('#searchcustomer').val(),
             })
             .done(function (data) {
                 $("#customer-id").html(data);
@@ -44,13 +42,15 @@ $(function () {
             })
         }, 300);
     });
-
-    $("#btn-select").click(function () {
+    $("#btn-select").click(function (e) {
         if ($('#customer-id').val()===null) {
             alert("選択されていません。");
+            e.preventDefault();
+            e.stopImmediatePropagation();
             return
         }
-        location.replace('http://localhost:8765/clients');
+        location.replace('<?= $replaceUrl ?>');
+//        location.replace('http://localhost:8765/clients');
     });
 });
 <?= $this->Html->scriptEnd() ?>

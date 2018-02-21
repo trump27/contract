@@ -22,7 +22,7 @@ class GuidesController extends AppController
      * Filter customers for ajax.
      * CustomerCell uses this action.
      */
-    public function search($client_name=null)
+    public function ajaxcustomers($client_name=null)
     {
 
         $this->autoRender = false;
@@ -45,7 +45,7 @@ class GuidesController extends AppController
             ->combine('id', 'customer_name')
             ->toArray();
         $this->set(compact('list'));
-        $this->render('search', '');
+        $this->render('ajaxcustomers', '');
 
     }
 

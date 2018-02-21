@@ -2,27 +2,56 @@
 /* @var $this \Cake\View\View */
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 ?>
+<?php $this->start('tb_actions');?>
+    <li><a href="#number1">商品ＣＤ、取引情報参照</a></li>
+<?php $this->end();?>
+<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
-<div class="jumbotron">
-  <h1>契約登録</h1>
-  <p>契約書PDFを登録する。</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+<div class="page-header">
+  <h1><?= __('Guides')?></h1>
 </div>
 
+<div class="bs-callout bs-callout-primary">
+  <h1>商品ＣＤ、取引情報参照</h1>
+  <p>商品情報を確認する。</p>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  契約を登録する
+  </button>
+</div>
 
+<div class="bs-callout bs-callout-info">
+  <h1>利用申込書作成依頼</h1>
+  <p>ＸＸＸＸＸ</p>
+</div>
 
+<div class="bs-callout bs-callout-success">
+  <h1>契約登録</h1>
+  <p>契約書PDFを登録する。</p>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  契約を登録する
+</div>
 
-<div class="jumbotron">
+<div class="bs-callout bs-callout-warning">
   <h1>ライセンス登録</h1>
   <p>受注データを選択し、ライセンスを登録する。</p>
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 
-<div class="bs-callout bs-callout-success">
-  <h4>ライセンス登録</h4>
-  <p>受注データを選択し、ライセンスを登録する。</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
+<!-- <div class="jumbotron">
+  <h1>利用申込書作成依頼</h1>
+  <p>ＸＸＸＸＸ</p>
+</div> -->
+
+<!-- <div class="jumbotron">
+  <h1>契約登録</h1>
+  <p>契約書PDFを登録する。</p>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  契約を登録する
+  </button>
+</div> -->
+
+
+
 
 <div class="bs-callout bs-callout-default">
   <h4>Default Callout</h4>
@@ -62,10 +91,8 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 </button>
 
 <?php 
-$cell = $this->cell('Customer'); 
-// echo $this->cell('Customer')->render();
-$cell->viewBuilder()->setTemplate('');
-echo $cell->render('display');
-// echo $cell->render('display', '');
-// echo $cell;
+echo $this->element('selectcustomer', [
+  "replaceUrl" => '/clients'
+]);
+
 
