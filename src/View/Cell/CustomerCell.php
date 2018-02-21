@@ -24,5 +24,10 @@ class CustomerCell extends Cell
      */
     public function display()
     {
+        // $this->viewBuilder()->setLayout(false);
+        // $this->autoRender = false;
+        // $this->render('display', '');
+        
+        
     }
 }

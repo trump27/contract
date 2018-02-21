@@ -17,39 +17,11 @@ class GuidesController extends AppController
 
     }
 
-    // public function search($client_name=null)
-    // {
 
-    //     $this->autoRender = false;
-    //     if (empty($client_name)) {
-    //         return;
-    //     }
-    //     $this->loadModel('Customers');
-    //     $list = $this->Customers->find()
-    //         ->select(['Customers.id', 'Customers.customer_name', 'Clients.client_name'])
-    //         ->contain(['Clients'])
-    //         // ->contain(['Clients' => function($q) {
-    //         //         return $q
-    //         //         ->select(['Clients.client_name'])
-    //         //         ->where(['client_name like' => "%client_name%"]);
-    //         //     }])
-    //         ->matching('Clients', function ($q) use ($client_name) {
-    //             return $q
-    //                 // ->select(['Clients.client_name'])
-    //                 ->where(['Clients.client_name LIKE' => "%$client_name%"]);
-    //         })
-    //         // ->limit(10)
-    //         ->map(function ($row) {
-    //             $row->customer_name = $row->client->client_name . ' / ' . $row->customer_name;
-    //             return $row;
-    //         })
-    //         // ->combine('id', 'customer_name')
-    //         ->toArray();
-    //     $this->set(compact('list'));
-    //     $this->render('search', '');
-
-    // }
-
+    /**
+     * Filter customers for ajax.
+     * CustomerCell uses this action.
+     */
     public function search($client_name=null)
     {
 
@@ -65,9 +37,9 @@ class GuidesController extends AppController
                     ->select(['Clients.client_name'])
                     ->where(['client_name like' => "%$client_name%"]);
             }])
-            // ->limit(10)
+            ->limit(10)
             ->map(function ($row) {
-                $row->customer_name = $row->client->client_name . ' / ' . $row->customer_name;
+                $row->customer_name = '【'.$row->client->client_name . '】 ' . $row->customer_name;
                 return $row;
             })
             ->combine('id', 'customer_name')

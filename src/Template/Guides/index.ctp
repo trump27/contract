@@ -9,7 +9,6 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 
-<?= $this->cell('Customer'); ?>
 
 
 
@@ -62,15 +61,11 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   Launch demo modal
 </button>
 
-
-
-<?= $this->Html->scriptStart(['block' => true]) ?>
-$(function() {
-  // ダイアログ表示前にJavaScriptで操作する
-  $('#btn-select').click(function () {
-    var recipient = $(exampleInput1).val();
-    alert(recipient);
-  });
-});
-<?= $this->Html->scriptEnd() ?>
+<?php 
+$cell = $this->cell('Customer'); 
+// echo $this->cell('Customer')->render();
+$cell->viewBuilder()->setTemplate('');
+echo $cell->render('display');
+// echo $cell->render('display', '');
+// echo $cell;
 
