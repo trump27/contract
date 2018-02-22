@@ -101,6 +101,11 @@ class OrdersTable extends Table
             ->allowEmpty('order_date');
 
         $validator
+            ->date('orderym')
+            ->maxLength('orderym', 6)
+            ->allowEmpty('orderym');
+
+        $validator
             ->scalar('order_no')
             ->maxLength('order_no', 20)
             ->allowEmpty('order_no');

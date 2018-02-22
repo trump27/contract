@@ -465,7 +465,7 @@ class Initial extends AbstractMigration
             ])
             ->addColumn('purchase_no', 'string', [
                 'default' => null,
-                'limit' => 20,
+                'limit' => 30,
                 'null' => true,
             ])
             ->addColumn('delivery_date', 'date', [

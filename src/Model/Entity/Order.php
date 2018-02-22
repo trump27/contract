@@ -57,6 +57,7 @@ class Order extends Entity
         'company_name1' => true,
         'company_name2' => true,
         'order_date' => true,
+        'orderym' => true,
         'order_no' => true,
         'order_detail_no' => true,
         'purchase_no' => true,
