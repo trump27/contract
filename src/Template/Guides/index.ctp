@@ -11,6 +11,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <h1><?= __('Guides')?></h1>
 </div>
 
+<div id="number1" />
 <div class="bs-callout bs-callout-primary">
   <h1>商品ＣＤ、取引情報参照</h1>
   <p>商品情報を確認する。</p>

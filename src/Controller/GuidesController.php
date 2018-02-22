@@ -5,6 +5,13 @@ use App\Controller\AppController;
 
 class GuidesController extends AppController
 {
+
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow();
+    }
+
     public function index()
     {
         // $this->loadModel('Customers');
@@ -17,12 +24,11 @@ class GuidesController extends AppController
 
     }
 
-
     /**
      * Filter customers for ajax.
      * CustomerCell uses this action.
      */
-    public function ajaxcustomers($client_name=null)
+    public function ajaxcustomers($client_name = null)
     {
 
         $this->autoRender = false;
@@ -32,14 +38,14 @@ class GuidesController extends AppController
         $this->loadModel('Customers');
         $list = $this->Customers->find()
             ->select(['Customers.id', 'Customers.customer_name', 'Clients.client_name'])
-            ->contain(['Clients' => function($q) use ($client_name) {
+            ->contain(['Clients' => function ($q) use ($client_name) {
                 return $q
                     ->select(['Clients.client_name'])
                     ->where(['client_name like' => "%$client_name%"]);
             }])
             ->limit(10)
             ->map(function ($row) {
-                $row->customer_name = '【'.$row->client->client_name . '】 ' . $row->customer_name;
+                $row->customer_name = '【' . $row->client->client_name . '】 ' . $row->customer_name;
                 return $row;
             })
             ->combine('id', 'customer_name')
@@ -48,6 +54,5 @@ class GuidesController extends AppController
         $this->render('ajaxcustomers', '');
 
     }
-
 
 }

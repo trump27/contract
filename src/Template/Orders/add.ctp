@@ -70,10 +70,6 @@ $this->element('datepicker');
     echo $this->Form->control('product_detail');
     echo $this->Form->control('status_id', ['options' => $statuses]);
     echo $this->Form->control('file');
-    echo $this->Form->control('dir');
-    echo $this->Form->control('size');
-    echo $this->Form->control('type');
-    echo $this->Form->control('user_id', ['options' => $users]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add"), ['class'=>'btn-primary']); ?>

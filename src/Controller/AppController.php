@@ -71,7 +71,7 @@ class AppController extends Controller
             // 未認証の場合、直前のページに戻します
             'unauthorizedRedirect' => $this->referer(),
         ]);
-        $this->Auth->allow(['display', 'index']);
+        $this->Auth->allow(['display']);
 
     }
 

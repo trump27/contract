@@ -19,9 +19,11 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('company_code'); ?></th>
             <th><?= $this->Paginator->sort('company_name1'); ?></th>
             <th><?= $this->Paginator->sort('company_name2'); ?></th>
-            <th><?= $this->Paginator->sort('order_date'); ?></th>
             <th><?= $this->Paginator->sort('order_no'); ?></th>
-            <th><?= $this->Paginator->sort('order_detail_no'); ?></th>
+            <th><?= $this->Paginator->sort('order_date'); ?></th>
+            <th><?= $this->Paginator->sort('delivery_date'); ?></th>
+            <th><?= $this->Paginator->sort('sales_date'); ?></th>
+            <th><?= $this->Paginator->sort('product_name'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -30,18 +32,20 @@ $this->start('tb_actions');
             
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $order->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
+                <!-- <?= $this->Html->link('', ['action' => 'edit', $order->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?> -->
+                <!-- <?= $this->Form->postLink('', ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
             </td>
             <td align="right"><?= $this->Number->format($order->id) ?></td>
             <td>
-                <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->client_name), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
+                <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
             </td>
             <td><?= h($this->my->trunc($order->company_name1)) ?></td>
             <td><?= h($this->my->trunc($order->company_name2)) ?></td>
+            <td><?= $order->order_no .'-'.$order->order_detail_no ?></td>
             <td><?= h($order->order_date) ?></td>
-            <td><?= h($order->order_no) ?></td>
-            <td><?= h($order->order_detail_no) ?></td>
+            <td><?= h($order->delivery_date) ?></td>
+            <td><?= h($order->sales_date) ?></td>
+            <td><?= h($order->product_name) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
