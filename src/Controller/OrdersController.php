@@ -12,6 +12,13 @@ use App\Controller\AppController;
  */
 class OrdersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
 
     /**
      * Index method
@@ -20,12 +27,18 @@ class OrdersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Statuses', 'Users', 'Clients']
-        ];
-        $orders = $this->paginate($this->Orders);
+        $orders = $this->Orders
+            ->find('search', ['search' => $this->request->query])
+            ->contain(['Statuses', 'Clients']);
 
-        $this->set(compact('orders'));
+        $this->set('orders', $this->paginate($orders));
+
+        // $this->paginate = [
+        //     'contain' => ['Statuses', 'Users', 'Clients'],
+        // ];
+        // $orders = $this->paginate($this->Orders);
+
+        // $this->set(compact('orders'));
     }
 
     /**
@@ -38,7 +51,7 @@ class OrdersController extends AppController
     public function view($id = null)
     {
         $order = $this->Orders->get($id, [
-            'contain' => ['Statuses', 'Users', 'Clients', 'Licensehistories', 'Licenses']
+            'contain' => ['Statuses', 'Users', 'Clients', 'Licensehistories', 'Licenses'],
         ]);
 
         $this->set('order', $order);
@@ -77,7 +90,7 @@ class OrdersController extends AppController
     public function edit($id = null)
     {
         $order = $this->Orders->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());

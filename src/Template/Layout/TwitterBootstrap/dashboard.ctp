@@ -34,6 +34,8 @@ $this->start('tb_body_start');
                             <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']); ?></li>
                             <li role="separator" class="divider"></li>
                             <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('List Supportcontracts'), ['controller' => 'Supportcontracts', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('List Productinfos'), ['controller' => 'Productinfos', 'action' => 'index']); ?></li>
                             <li role="separator" class="divider"></li>
                             <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>

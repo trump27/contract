@@ -11,6 +11,25 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Orders') ?></h1>
+
+<?php
+$ym[''] = '---';
+$date = date('Y/m/1');
+for ($i=1; $i <13 ; $i++) { 
+    $val = date('Ym', strtotime("-$i month", strtotime($date)));
+    $ym[$val] = $val;
+}
+echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
+echo $this->Form->input('orderym', ['label' => '受注年月　', 'options'=>$ym]);
+echo $this->Form->input('company_name1', ['label' => '　取引先名1　', 'size'=>12]);
+echo $this->Form->input('sales_staff', ['label' => '　営業担当　', 'size'=>8]);
+
+echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
+echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
+echo $this->Form->end();
+?>
+<div>&nbsp;</div>
+
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -24,6 +43,7 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('delivery_date'); ?></th>
             <th><?= $this->Paginator->sort('sales_date'); ?></th>
             <th><?= $this->Paginator->sort('product_name'); ?></th>
+            <th><?= $this->Paginator->sort('sales_staff'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +66,7 @@ $this->start('tb_actions');
             <td><?= h($order->delivery_date) ?></td>
             <td><?= h($order->sales_date) ?></td>
             <td><?= h($order->product_name) ?></td>
+            <td><?= h($order->sales_staff) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

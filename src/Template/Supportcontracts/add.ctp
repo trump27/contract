@@ -24,6 +24,7 @@ $this->start('tb_sidebar');
 </ul>
 <?php
 $this->end();
+$this->element('datepicker');
 ?>
 <h1 class="page-header"><?= __('Supportcontract') ?></h1>
 <?= $this->Form->create($supportcontract, ['align' => [
@@ -49,9 +50,9 @@ $this->end();
     echo $this->Form->control('contract_no');
     echo $this->Form->control('contract_no2');
     echo $this->Form->control('product_name');
-    echo $this->Form->control('contract_date');
-    echo $this->Form->control('startdate');
-    echo $this->Form->control('enddate');
+    echo $this->Form->control('contract_date', ['type'=>'text', 'class'=>'datepicker']);
+    echo $this->Form->control('startdate', ['type'=>'text', 'class'=>'datepicker']);
+    echo $this->Form->control('enddate', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('term');
     echo $this->Form->control('price');
     echo $this->Form->control('sales_dept');

@@ -65,6 +65,7 @@ class OrdersTable extends Table
                 ],
             ],
         ]);
+        $this->addBehavior('Search.Search');
 
     }
 
@@ -101,7 +102,6 @@ class OrdersTable extends Table
             ->allowEmpty('order_date');
 
         $validator
-            ->date('orderym')
             ->maxLength('orderym', 6)
             ->allowEmpty('orderym');
 
@@ -206,4 +206,23 @@ class OrdersTable extends Table
 
         return $rules;
     }
+
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->value('orderym')
+            ->like('company_name1', [
+                'before' => true,
+                'after' => true,
+            ])
+            ->like('sales_staff', [
+                'before' => true,
+                'after' => true,
+            ]);
+
+        return $searchManager;
+    }
+
 }

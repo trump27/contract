@@ -71,6 +71,7 @@ $this->element('datepicker');
     echo $this->Form->control('company_name1');
     echo $this->Form->control('company_name2');
     echo $this->Form->control('order_date', ['type'=>'text', 'class'=>'datepicker']);
+    echo $this->Form->control('orderym');
     echo $this->Form->control('order_no');
     echo $this->Form->control('order_detail_no');
     echo $this->Form->control('purchase_no');

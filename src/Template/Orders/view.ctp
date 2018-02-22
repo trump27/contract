@@ -102,6 +102,10 @@ $this->end();
             <td><?= h($order->order_date) ?></td>
         </tr>
         <tr>
+            <td><?= __('Orderym') ?></td>
+            <td><?= h($order->orderym) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Delivery Date') ?></td>
             <td><?= h($order->delivery_date) ?></td>
         </tr>
