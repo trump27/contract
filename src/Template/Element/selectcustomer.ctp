@@ -19,7 +19,7 @@ echo $this->Form->end();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="btn-select" class="btn btn-primary" data-dismiss="modal">選択</button>
+        <button type="button" id="btn-select-customer" class="btn btn-primary" data-dismiss="modal">選択</button>
       </div>
     </div>
   </div>
@@ -42,15 +42,15 @@ $(function () {
             })
         }, 300);
     });
-    $("#btn-select").click(function (e) {
+    $("#btn-select-customer").click(function (e) {
         if ($('#customer-id').val()===null) {
             alert("選択されていません。");
             e.preventDefault();
             e.stopImmediatePropagation();
             return
         }
-        location.replace('<?= $replaceUrl ?>');
-//        location.replace('http://localhost:8765/clients');
+        location.replace('<?= $replaceUrl ?>' + $('#customer-id').val());
+//        location.replace('/clients');
     });
 });
 <?= $this->Html->scriptEnd() ?>

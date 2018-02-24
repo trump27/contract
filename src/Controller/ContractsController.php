@@ -56,10 +56,19 @@ class ContractsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($customer_id=null)
     {
-        $contract = $this->Contracts->newEntity();
-        if ($this->request->is('post')) {
+        // from ajax (selectcustomer.ctp)
+        $data = [];
+        if ($customer_id) {
+            $data = $this->Contracts->Customers->find()
+                ->select(['customer_id' => 'id', 'client_id'])
+                ->where(['id' => $customer_id])
+                ->first();
+            $data = ['customer_id' => $data->customer_id, 'client_id' => $data->client_id];
+        }
+        $contract = $this->Contracts->newEntity($data);
+        if ($this->request->is(['post'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
             if ($this->Contracts->save($contract)) {
                 $this->Flash->success(__('The contract has been saved.'));
@@ -88,6 +97,7 @@ class ContractsController extends AppController
         $contract = $this->Contracts->get($id, [
             'contain' => [],
         ]);
+        debug($contract);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
             if ($this->Contracts->save($contract)) {

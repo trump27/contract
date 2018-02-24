@@ -93,7 +93,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 <?php 
 echo $this->element('selectcustomer', [
-  "replaceUrl" => '/clients'
+  "replaceUrl" => '/contracts/add/'
 ]);
 
 
