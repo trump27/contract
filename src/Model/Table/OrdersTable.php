@@ -117,7 +117,7 @@ class OrdersTable extends Table
 
         $validator
             ->scalar('purchase_no')
-            ->maxLength('purchase_no', 20)
+            ->maxLength('purchase_no', 30)
             ->allowEmpty('purchase_no');
 
         $validator

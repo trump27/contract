@@ -186,12 +186,12 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Company Code') ?></th>
+                <!-- <th><?= __('Company Code') ?></th> -->
                 <th><?= __('Company Name1') ?></th>
                 <th><?= __('Order Date') ?></th>
                 <th><?= __('Status Msg') ?></th>
                 <th><?= __('Product Category') ?></th>
-                <th><?= __('Product Code') ?></th>
+                <!-- <th><?= __('Product Code') ?></th> -->
                 <th><?= __('Product Name') ?></th>
                 <th><?= __('Sales Dept') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -201,13 +201,13 @@ $this->end();
             <?php foreach ($client->orders as $orders): ?>
                 <tr>
                     <td align="right"><?= h($orders->id) ?></td>
-                    <td><?= h($orders->company_code) ?></td>
-                    <td><?= h($orders->company_name1) ?></td>
+                    <!-- <td><?= h($orders->company_code) ?></td> -->
+                    <td><?= $this->My->trunc($orders->company_name1) ?></td>
                     <td><?= h($orders->order_date) ?></td>
                     <td><?= h($orders->status_msg) ?></td>
-                    <td><?= h($orders->product_category) ?></td>
-                    <td><?= h($orders->product_code) ?></td>
-                    <td><?= h($orders->product_name) ?></td>
+                    <td><?= $this->My->trunc($orders->product_category) ?></td>
+                    <!-- <td><?= h($orders->product_code) ?></td> -->
+                    <td><?= $this->My->trunc($orders->product_name) ?></td>
                     <td><?= h($orders->sales_dept) ?></td>
                     <td class="actions">
                         <?= $this->Html->link('', ['controller' => 'Orders', 'action' => 'view', $orders->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
@@ -243,8 +243,8 @@ $this->end();
             <?php foreach ($client->licenses as $licenses): ?>
                 <tr>
                     <td align="right"><?= h($licenses->id) ?></td>
-                    <td><?= h($licenses->product_name) ?></td>
-                    <td><?= h($licenses->license_name) ?></td>
+                    <td><?= $this->My->trunc($licenses->product_name) ?></td>
+                    <td><?= $this->My->trunc($licenses->license_name) ?></td>
                     <td><?= h($licenses->startdate) ?></td>
                     <td><?= h($licenses->enddate) ?></td>
                     <td class="actions">
@@ -280,8 +280,8 @@ $this->end();
             <?php foreach ($client->licensehistories as $licensehistories): ?>
                 <tr>
                     <td align="right"><?= h($licensehistories->id) ?></td>
-                    <td><?= h($licensehistories->product_name) ?></td>
-                    <td><?= h($licensehistories->license_name) ?></td>
+                    <td><?= $this->My->trunc($licensehistories->product_name) ?></td>
+                    <td><?= $this->My->trunc($licensehistories->license_name) ?></td>
                     <td><?= h($licensehistories->startdate) ?></td>
                     <td><?= h($licensehistories->enddate) ?></td>
                     <td class="actions">

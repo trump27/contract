@@ -15,7 +15,7 @@ $this->start('tb_actions');
 <?php
 $ym[''] = '---';
 $date = date('Y/m/1');
-for ($i=1; $i <13 ; $i++) { 
+for ($i=0; $i <13 ; $i++) { 
     $val = date('Ym', strtotime("-$i month", strtotime($date)));
     $ym[$val] = $val;
 }
@@ -37,7 +37,7 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('company_code'); ?></th>
             <th><?= $this->Paginator->sort('company_name1'); ?></th>
-            <th><?= $this->Paginator->sort('company_name2'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('company_name2'); ?></th> -->
             <th><?= $this->Paginator->sort('order_no'); ?></th>
             <th><?= $this->Paginator->sort('order_date'); ?></th>
             <th><?= $this->Paginator->sort('delivery_date'); ?></th>
@@ -60,12 +60,12 @@ echo $this->Form->end();
                 <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
             </td>
             <td><?= h($this->my->trunc($order->company_name1)) ?></td>
-            <td><?= h($this->my->trunc($order->company_name2)) ?></td>
+            <!-- <td><?= h($this->my->trunc($order->company_name2)) ?></td> -->
             <td><?= $order->order_no .'-'.$order->order_detail_no ?></td>
             <td><?= h($order->order_date) ?></td>
             <td><?= h($order->delivery_date) ?></td>
             <td><?= h($order->sales_date) ?></td>
-            <td><?= h($order->product_name) ?></td>
+            <td><?= $this->my->trunc($order->product_name) ?></td>
             <td><?= h($order->sales_staff) ?></td>
         </tr>
         <?php endforeach; ?>

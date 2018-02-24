@@ -72,6 +72,10 @@ $this->end();
             <td><?= h($license->license_name) ?></td>
         </tr>
         <tr>
+            <td><?= __('License Qty') ?></td>
+            <td><?= $this->Number->format($license->license_qty) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Language') ?></td>
             <td><?= $license->has('language') ? $this->Html->link($license->language->language_name, ['controller' => 'Languages', 'action' => 'view', $license->language->id]) : '' ?></td>
         </tr>
@@ -108,16 +112,12 @@ $this->end();
             <td><?= h($license->type) ?></td>
         </tr>
         <tr>
-            <td><?= __('User') ?></td>
-            <td><?= $license->has('user') ? $this->Html->link($license->user->name, ['controller' => 'Users', 'action' => 'view', $license->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <td><?= __('License Qty') ?></td>
-            <td><?= $this->Number->format($license->license_qty) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Size') ?></td>
             <td><?= $this->Number->format($license->size) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('User') ?></td>
+            <td><?= $license->has('user') ? $this->Html->link($license->user->name, ['controller' => 'Users', 'action' => 'view', $license->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Created') ?></td>

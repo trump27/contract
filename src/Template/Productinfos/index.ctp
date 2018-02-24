@@ -8,6 +8,19 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Productinfo') ?></h1>
+
+<?php
+echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
+echo $this->Form->input('category', ['label' => __('Category').'　']);
+echo $this->Form->input('product_name', ['label' => '　'.__('Product Name').'　']);
+echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
+// if (!empty($_isSearch)) {
+echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
+// }
+echo $this->Form->end();
+?>
+<div>&nbsp;</div>
+
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -47,5 +60,5 @@ $this->start('tb_actions');
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
         <?= $this->Paginator->next(__('next') . ' >') ?>
     </ul>
-    <p><?= $this->Paginator->counter() ?></p>
+    <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
 </div>

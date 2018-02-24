@@ -9,7 +9,6 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('List Supportcontracts'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Supportcontract'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -21,7 +20,6 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('List Supportcontracts'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('New Supportcontract'), ['action' => 'add']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -33,6 +31,10 @@ $this->end();
         <h3 class="panel-title"><?= h($supportcontract->eu_name) ?></h3>
     </div>
     <table class="table table-striped table-responsive text-nowrap">
+        <tr>
+            <td><?= __('Id') ?></td>
+            <td><?= $this->Number->format($supportcontract->id) ?></td>
+        </tr>
         <tr>
             <td><?= __('Company Code') ?></td>
             <td><?= h($supportcontract->company_code) ?></td>
@@ -47,11 +49,8 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Eu Name') ?></td>
-            <td><?= h($supportcontract->eu_name) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Category') ?></td>
-            <td><?= h($supportcontract->category) ?></td>
+            <td><?= $supportcontract->has('client') ? $this->Html->link($supportcontract->eu_name, ['controller' => 'Clients', 'action' => 'view', $supportcontract->client->id]) : '' ?></td>
+            <!-- <td><?= h($supportcontract->eu_name) ?></td> -->
         </tr>
         <tr>
             <td><?= __('Contract No') ?></td>
@@ -60,6 +59,22 @@ $this->end();
         <tr>
             <td><?= __('Contract No2') ?></td>
             <td><?= h($supportcontract->contract_no2) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Startdate') ?></td>
+            <td><?= h($supportcontract->startdate) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Enddate') ?></td>
+            <td><?= h($supportcontract->enddate) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Term') ?></td>
+            <td><?= $this->Number->format($supportcontract->term) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Category') ?></td>
+            <td><?= h($supportcontract->category) ?></td>
         </tr>
         <tr>
             <td><?= __('Product Name') ?></td>
@@ -74,28 +89,12 @@ $this->end();
             <td><?= h($supportcontract->sales_staff) ?></td>
         </tr>
         <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($supportcontract->id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Term') ?></td>
-            <td><?= $this->Number->format($supportcontract->term) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Price') ?></td>
             <td><?= $this->Number->format($supportcontract->price) ?></td>
         </tr>
         <tr>
             <td><?= __('Contract Date') ?></td>
             <td><?= h($supportcontract->contract_date) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Startdate') ?></td>
-            <td><?= h($supportcontract->startdate) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Enddate') ?></td>
-            <td><?= h($supportcontract->enddate) ?></td>
         </tr>
         <tr>
             <td><?= __('Created') ?></td>

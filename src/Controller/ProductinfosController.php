@@ -12,6 +12,13 @@ use App\Controller\AppController;
  */
 class ProductinfosController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
 
     /**
      * Index method
@@ -20,9 +27,10 @@ class ProductinfosController extends AppController
      */
     public function index()
     {
-        $productinfos = $this->paginate($this->Productinfos);
+        $productinfos = $this->Productinfos
+            ->find('search', ['search' => $this->request->query]);
+        $this->set('productinfos', $this->paginate($productinfos));
 
-        $this->set(compact('productinfos'));
     }
 
     /**
@@ -35,7 +43,7 @@ class ProductinfosController extends AppController
     public function view($id = null)
     {
         $productinfo = $this->Productinfos->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
 
         $this->set('productinfo', $productinfo);
@@ -71,7 +79,7 @@ class ProductinfosController extends AppController
     public function edit($id = null)
     {
         $productinfo = $this->Productinfos->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $productinfo = $this->Productinfos->patchEntity($productinfo, $this->request->getData());

@@ -19,7 +19,7 @@ $this->start('tb_actions');
 
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
-echo $this->Form->input('client_name', ['label' => '　クライアント名　']);
+echo $this->Form->input('client_name', ['label' => '　クライアント名　', 'size'=>10]);
 echo $this->Form->control('partner_flag', ['type' => 'select',
     'options' => [0 => 'No', 1 => 'Yes'],
     'empty' => '---', 'label' => '　パートナー　'

@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -37,6 +35,7 @@ class ProductinfosTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Search.Search');
     }
 
     /**
@@ -85,4 +84,21 @@ class ProductinfosTable extends Table
 
         return $validator;
     }
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->like('category', [
+                'before' => true,
+                'after' => true
+            ])
+            ->like('product_name', [
+                'before' => true,
+                'after' => true
+            ]);
+
+        return $searchManager;
+    }
+
 }

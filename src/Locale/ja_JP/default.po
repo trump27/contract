@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2018-02-22 21:45+0900\n"
-"PO-Revision-Date: 2018-02-22 21:51+0900\n"
+"PO-Revision-Date: 2018-02-24 15:48+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -1184,25 +1184,25 @@ msgstr "名前"
 #: Template/Supportcontracts/edit.ctp:20;37
 #: Template/Supportcontracts/view.ctp:9;21
 msgid "List Supportcontracts"
-msgstr "保守契約一覧"
+msgstr "CANVAS一覧"
 
 #: Template/Supportcontracts/add.ctp:28 Template/Supportcontracts/edit.ctp:44
 #: Template/Supportcontracts/index.ctp:12 Template/Supportcontracts/view.ctp:29
 msgid "Supportcontract"
-msgstr "保守契約"
+msgstr "CANVAS"
 
 #: Template/Supportcontracts/index.ctp:6
 #: Template/Supportcontracts/view.ctp:10;22
 msgid "New Supportcontract"
-msgstr "保守契約追加"
+msgstr "CANVAS追加"
 
 #: Template/Supportcontracts/view.ctp:7;19
 msgid "Edit Supportcontract"
-msgstr "保守契約編集"
+msgstr "CANVAS編集"
 
 #: Template/Supportcontracts/view.ctp:8;20
 msgid "Delete Supportcontract"
-msgstr "保守契約削除"
+msgstr "CANVAS削除"
 
 #: Template/Supportcontracts/view.ctp:41
 msgid "Contractor"

@@ -40,6 +40,7 @@ class SupportcontractsTable extends Table
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'eu_company_code', // FK
         ]);
+        $this->addBehavior('Search.Search');
 
     }
 
@@ -121,4 +122,23 @@ class SupportcontractsTable extends Table
 
         return $validator;
     }
+
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->add('q', 'Search.Like', [
+                'before' => true,
+                'after' => true,
+                'mode' => 'or',
+                'comparison' => 'LIKE',
+                'wildcardAny' => '*',
+                'wildcardOne' => '?',
+                'field' => ['contractor', 'eu_name']
+            ]);
+
+        return $searchManager;
+    }
+
 }

@@ -13,6 +13,14 @@ use App\Controller\AppController;
 class SupportcontractsController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
+
     /**
      * Index method
      *
@@ -20,12 +28,17 @@ class SupportcontractsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients']
-        ];
-        $supportcontracts = $this->paginate($this->Supportcontracts);
+        $supportcontracts = $this->Supportcontracts
+            ->find('search', ['search' => $this->request->query])
+            ->contain(['Clients' =>['fields' =>['id', 'client_name']]]);
+        $this->set('supportcontracts', $this->paginate($supportcontracts));
 
-        $this->set(compact('supportcontracts'));
+        // $this->paginate = [
+        //     'contain' => ['Clients'],
+        // ];
+        // $supportcontracts = $this->paginate($this->Supportcontracts);
+
+        // $this->set(compact('supportcontracts'));
     }
 
     /**
@@ -38,7 +51,7 @@ class SupportcontractsController extends AppController
     public function view($id = null)
     {
         $supportcontract = $this->Supportcontracts->get($id, [
-            'contain' => ['Clients']
+            'contain' => ['Clients'],
         ]);
 
         $this->set('supportcontract', $supportcontract);
@@ -61,7 +74,10 @@ class SupportcontractsController extends AppController
             }
             $this->Flash->error(__('The supportcontract could not be saved. Please, try again.'));
         }
-        $clients = $this->Supportcontracts->Clients->find('list', ['limit' => 200]);
+        $clients = $this->Supportcontracts->Clients->find('list', [
+            'keyField' => 'company_code', 'valueField' => 'client_name',
+            'limit' => 200,
+        ]);
         $this->set(compact('supportcontract', 'clients'));
     }
 
@@ -75,7 +91,7 @@ class SupportcontractsController extends AppController
     public function edit($id = null)
     {
         $supportcontract = $this->Supportcontracts->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $supportcontract = $this->Supportcontracts->patchEntity($supportcontract, $this->request->getData());
@@ -86,7 +102,10 @@ class SupportcontractsController extends AppController
             }
             $this->Flash->error(__('The supportcontract could not be saved. Please, try again.'));
         }
-        $clients = $this->Supportcontracts->Clients->find('list', ['limit' => 200]);
+        $clients = $this->Supportcontracts->Clients->find('list', [
+            'keyField' => 'company_code', 'valueField' => 'client_name',
+            'limit' => 200,
+        ]);
         $this->set(compact('supportcontract', 'clients'));
     }
 

@@ -19,7 +19,6 @@ $this->start('tb_actions');
     </li>
     <li><?= $this->Html->link(__('List Supportcontracts'), ['action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 <?php
 $this->end();
 
@@ -36,7 +35,6 @@ $this->start('tb_sidebar');
     </li>
     <li><?= $this->Html->link(__('List Supportcontracts'), ['action' => 'index']) ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
 </ul>
 <?php
 $this->end();
@@ -58,9 +56,9 @@ $this->element('datepicker');
 <fieldset>
     <legend><?= __('Edit {0}', ['Supportcontract']) ?></legend>
     <?php
-    echo $this->Form->control('company_code');
+    echo $this->Form->control('company_code', ['options' => $clients]);
     echo $this->Form->control('contractor');
-    echo $this->Form->control('eu_company_code');
+    echo $this->Form->control('eu_company_code', ['options' => $clients]);
     echo $this->Form->control('eu_name');
     echo $this->Form->control('category');
     echo $this->Form->control('contract_no');
@@ -78,3 +76,14 @@ $this->element('datepicker');
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>
 <?= $this->Form->end() ?>
+
+<?= $this->Html->scriptStart(['block' => true]) ?>
+$(function () {
+    $("#company-code").on("change", function () {
+        $("#contractor").val($("#company-code option:selected").text());
+    });
+    $("#eu-company-code").on("change", function () {
+        $("#eu-name").val($("#eu-company-code option:selected").text());
+    });
+});
+<?= $this->Html->scriptEnd() ?>
