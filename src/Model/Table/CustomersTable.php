@@ -168,7 +168,7 @@ class CustomersTable extends Table
         $searchManager
             ->like('customer_name', [
                 'before' => true,
-                'after' => true
+                'after' => true,
             ])
             ->add('client_name', 'Search.Callback', [
                 'callback' => function ($query, $args, $filter) {
@@ -182,4 +182,24 @@ class CustomersTable extends Table
         return $searchManager;
     }
 
+    public function beforeSave($event, $entity, $options)
+    {
+
+        if ($entity->isNew()) {
+
+            // 最大値＋１をセットする
+            $query = $this->find();
+            $ret = $query->select(['max_id' => $query->func()->max('identity2')])
+                ->where(['client_id' => $entity->client_id])
+                ->first();
+            $max_id = intval($ret->max_id);
+            if (!$max_id) {
+                $max_id = 1000;
+            }
+            $entity->set('identity2', ++$max_id);
+        }
+
+        // return false;
+
+    }
 }

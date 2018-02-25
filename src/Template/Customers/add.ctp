@@ -60,7 +60,7 @@ $this->end();
     echo $this->Form->control('client_id', ['options' => $clients]);
     echo $this->Form->control('customer_name');
     echo $this->Form->control('address');
-    echo $this->Form->control('identity2');
+    echo $this->Form->control('identity2', ['disabled'=>'disabled']);
     echo $this->Form->control('sales_dept');
     echo $this->Form->control('sales_staff');
     echo $this->Form->control('remarks');

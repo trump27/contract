@@ -64,7 +64,7 @@ class ClientsController extends AppController
             ->where(['partner_flag' => 1]);
 
         $this->set('clients', $this->paginate($clients));
-        $this->set('partners',$partners);
+        $this->set('partners', $partners);
 
     }
 
@@ -91,7 +91,19 @@ class ClientsController extends AppController
      */
     public function add()
     {
-        $client = $this->Clients->newEntity();
+        $data = [];
+        if (!$this->request->is('post')) {
+            // 最大値＋１を初期値とする
+            $query = $this->Clients->find();
+            $ret = $query->select(['max_id' => $query->func()->max('identity1')])->first();
+            $max_id = intval($ret->max_id);
+            if (!$max_id) {
+                $max_id = 1000;
+            }
+            $data = ['identity1' => ++$max_id];
+        }
+
+        $client = $this->Clients->newEntity($data);
         if ($this->request->is('post')) {
             $client = $this->Clients->patchEntity($client, $this->request->getData());
             if ($this->Clients->save($client)) {
