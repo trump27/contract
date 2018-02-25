@@ -53,7 +53,6 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
 
-        // $this->_userModel = 'Users';
         $this->loadComponent('Auth', [
             'authenticate' => [
                 'Form' => [
@@ -69,7 +68,8 @@ class AppController extends Controller
                 'action' => 'login',
             ],
             // 未認証の場合、直前のページに戻します
-            'unauthorizedRedirect' => $this->referer(),
+            // 'unauthorizedRedirect' => $this->referer(),
+            'authError'=>false,
         ]);
         $this->Auth->allow(['display']);
 

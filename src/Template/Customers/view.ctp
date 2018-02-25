@@ -66,20 +66,20 @@ $this->end();
             <td><?= h($customer->identity2) ?></td>
         </tr>
         <tr>
-            <td><?= __('Sales Dept') ?></td>
-            <td><?= h($customer->sales_dept) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Sales Staff') ?></td>
-            <td><?= h($customer->sales_staff) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Address') ?></td>
             <td><?= h($customer->address) ?></td>
         </tr>
         <tr>
             <td><?= __('Remarks') ?></td>
             <td><?= $this->Text->autoParagraph(h($customer->remarks)); ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Sales Dept') ?></td>
+            <td><?= h($customer->sales_dept) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Sales Staff') ?></td>
+            <td><?= h($customer->sales_staff) ?></td>
         </tr>
         <tr>
             <td><?= __('Admin Name1') ?></td>
