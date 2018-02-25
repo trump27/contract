@@ -90,6 +90,10 @@ class CustomersTable extends Table
             ->notEmpty('customer_name');
 
         $validator
+            ->scalar('division')
+            ->maxLength('division', 256);
+
+        $validator
             ->scalar('address')
             ->maxLength('address', 512)
             ->allowEmpty('address');

@@ -6,12 +6,6 @@ $this->start('tb_actions');
     <li><?= $this->Html->link(__('New Customer'), ['action' => 'add']); ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Contract'), ['controller' => 'Contracts', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Licensehistories'), ['controller' => 'Licensehistories', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New Licensehistory'), ['controller' => 'Licensehistories', 'action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
-    <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']); ?></li>
 <?php $this->end(); ?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
@@ -38,14 +32,14 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('customer_name'); ?></th>
             <!-- <th><?= $this->Paginator->sort('address'); ?></th> -->
             <th><?= $this->Paginator->sort('identity2'); ?></th>
-            <th><?= $this->Paginator->sort('sales_dept'); ?></th>
+            <th><?= $this->Paginator->sort('division'); ?></th>
             <th><?= $this->Paginator->sort('sales_staff'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($customers as $customer): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $customer->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $customer->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
@@ -58,7 +52,7 @@ echo $this->Form->end();
             <td><?= h($this->my->trunc($customer->customer_name)) ?></td>
             <!-- <td><?= h($this->my->trunc($customer->address)) ?></td> -->
             <td><?= h($customer->identity2) ?></td>
-            <td><?= h($customer->sales_dept) ?></td>
+            <td><?= h($customer->division) ?></td>
             <td><?= h($customer->sales_staff) ?></td>
         </tr>
         <?php endforeach; ?>
