@@ -8,7 +8,7 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Status') ?></h1>
-<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0" style="width:40%">
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
@@ -20,7 +20,7 @@ $this->start('tb_actions');
     <tbody>
         <?php foreach ($statuses as $status): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $status->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $status->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>

@@ -69,7 +69,7 @@ $this->start('tb_actions');
     <tbody>
         <?php foreach ($contracts as $contract): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'view', $contract->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <!-- <?= $this->Html->link('', ['action' => 'edit', $contract->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?> -->
@@ -83,7 +83,7 @@ $this->start('tb_actions');
                 <?= $contract->has('customer') ? $this->Html->link($this->my->trunc($contract->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?>
             </td> -->
             <td>
-                <?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
+                <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>
             <!-- <td><?= h($contract->file) ?></td> -->
             <!-- <td><?= $this->Html->link(urldecode ($contract->file) , str_replace(
@@ -114,7 +114,7 @@ $this->start('tb_actions');
     <tbody>
         <?php foreach ($licenses as $license): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Licenses', 'action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
             </td>

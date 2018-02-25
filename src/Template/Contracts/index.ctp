@@ -37,7 +37,7 @@ echo $this->Form->end();
     <tbody>
         <?php foreach ($contracts as $contract): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $contract->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $contract->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
