@@ -64,6 +64,7 @@ $this->end();
     echo $this->Form->control('sales_dept');
     echo $this->Form->control('sales_staff');
     echo $this->Form->control('remarks');
+    echo "<h4>担当者情報</h4>";
     echo $this->Form->control('admin_name1');
     echo $this->Form->control('div1');
     echo $this->Form->control('mail1');

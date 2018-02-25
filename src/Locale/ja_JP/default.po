@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2018-02-22 21:45+0900\n"
-"PO-Revision-Date: 2018-02-24 15:48+0900\n"
+"PO-Revision-Date: 2018-02-25 10:51+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -449,7 +449,7 @@ msgstr "契約追加"
 #: Template/Licenses/edit.ctp:22;40 Template/Licenses/index.ctp:8
 #: Template/Licenses/view.ctp:12;25
 msgid "List Customers"
-msgstr "顧客一覧"
+msgstr "プロダクト一覧"
 
 #: Template/Clients/add.ctp:18;37 Template/Clients/edit.ctp:26;53
 #: Template/Clients/index.ctp:10 Template/Customers/index.ctp:6
@@ -458,7 +458,7 @@ msgstr "顧客一覧"
 #: Template/Licensehistories/index.ctp:10
 #: Template/Licensehistories/view.ctp:14;36
 msgid "New Customer"
-msgstr "顧客追加"
+msgstr "プロダクト追加"
 
 #: Template/Clients/add.ctp:19;38 Template/Clients/edit.ctp:27;54
 #: Template/Clients/index.ctp:11 Template/Customers/add.ctp:19;36
@@ -662,10 +662,8 @@ msgid "Client"
 msgstr "クライアント"
 
 #: Template/Clients/recent.ctp:63
-#, fuzzy
-#| msgid "Customer"
 msgid "customer_id"
-msgstr "顧客"
+msgstr "プロダクト"
 
 #: Template/Clients/recent.ctp:64 Template/Contracts/view.ctp:49
 msgid "Contractname"
@@ -696,7 +694,7 @@ msgstr "ライセンス"
 #: Template/Element/selectcustomer.ctp:7 Template/Licensehistories/view.ctp:61
 #: Template/Licenses/view.ctp:47
 msgid "Customer"
-msgstr "顧客"
+msgstr "プロダクト"
 
 #: Template/Clients/recent.ctp:109 Template/Licensehistories/view.ctp:69
 #: Template/Licenses/view.ctp:55 Template/Orders/view.ctp:89
@@ -771,7 +769,7 @@ msgstr ""
 
 #: Template/Clients/view.ctp:91 Template/Customers/view.ctp:61
 msgid "Customer Name"
-msgstr "顧客名"
+msgstr "プロダクト名"
 
 #: Template/Clients/view.ctp:92 Template/Customers/view.ctp:65
 msgid "Identity2"
@@ -923,15 +921,15 @@ msgstr "契約情報削除"
 #: Template/Customers/add.ctp:44 Template/Customers/edit.ctp:60
 #: Template/Customers/index.ctp:20 Template/Customers/view.ctp:45
 msgid "Customers"
-msgstr "顧客"
+msgstr "プロダクト"
 
 #: Template/Customers/view.ctp:7;27
 msgid "Edit Customer"
-msgstr "顧客編集"
+msgstr "プロダクト編集"
 
 #: Template/Customers/view.ctp:8;28
 msgid "Delete Customer"
-msgstr "顧客削除"
+msgstr "プロダクト削除"
 
 #: Template/Customers/view.ctp:77
 msgid "Address"
@@ -1214,7 +1212,7 @@ msgstr "顧客CD"
 
 #: Template/Supportcontracts/view.ctp:49
 msgid "Eu Name"
-msgstr "顧客"
+msgstr "最終顧客"
 
 #: Template/Supportcontracts/view.ctp:57
 msgid "Contract No"

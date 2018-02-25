@@ -97,7 +97,6 @@ class ContractsController extends AppController
         $contract = $this->Contracts->get($id, [
             'contain' => [],
         ]);
-        debug($contract);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
             if ($this->Contracts->save($contract)) {

@@ -20,7 +20,7 @@ $this->start('tb_actions');
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
 echo $this->Form->input('client_name', ['label' => 'クライアント名　']);
-echo $this->Form->input('customer_name', ['label' => '　顧客名　']);
+echo $this->Form->input('customer_name', ['label' => '　'.__('Customer').'　']);
 echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
 // if (!empty($_isSearch)) {
 echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
