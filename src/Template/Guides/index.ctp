@@ -3,7 +3,8 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 ?>
 <?php $this->start('tb_actions');?>
-    <li><a href="#number1">商品ＣＤ、取引情報参照</a></li>
+    <li><a href="#number1">情報参照</a></li>
+    <li><a href="#number2">契約書登録</a></li>
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
@@ -12,12 +13,24 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 </div>
 
 <div id="number1" />
+<div class="bs-callout bs-callout-default">
+  <h1>情報参照</h1>
+  <p>基幹情報を確認する。</p>
+
+  <?= $this->Html->link('CANVASを確認する', ['controller'=>'Supportcontracts', 'action' => 'index'],
+       ['class' => 'btn btn-lg btn-default', 'role' => 'button']); ?>
+  <?= $this->Html->link('品目を確認する', ['controller'=>'Productinfos', 'action' => 'index'],
+      ['class' => 'btn btn-lg btn-default', 'role' => 'button']); ?>
+  <?= $this->Html->link('受注を確認する', ['controller'=>'Orders', 'action' => 'index'],
+      ['class' => 'btn btn-lg btn-default', 'role' => 'button']); ?>
+</div>
+
+<div id="number2" />
 <div class="bs-callout bs-callout-primary">
-  <h1>商品ＣＤ、取引情報参照</h1>
-  <p>商品情報を確認する。</p>
+  <h1>契約登録</h1>
+  <p>契約書PDFを登録する。</p>
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
   契約を登録する
-  </button>
 </div>
 
 <div class="bs-callout bs-callout-info">
@@ -25,17 +38,10 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <p>ＸＸＸＸＸ</p>
 </div>
 
-<div class="bs-callout bs-callout-success">
-  <h1>契約登録</h1>
-  <p>契約書PDFを登録する。</p>
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
-  契約を登録する
-</div>
-
 <div class="bs-callout bs-callout-warning">
   <h1>ライセンス登録</h1>
   <p>受注データを選択し、ライセンスを登録する。</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  <p><a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a></p>
 </div>
 
 <!-- <div class="jumbotron">

@@ -43,7 +43,7 @@ echo $this->Form->end();
                 <?= $this->Html->link('', ['action' => 'edit', $productinfo->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
                 <?= $this->Form->postLink('', ['action' => 'delete', $productinfo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productinfo->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
-            <td><?= $this->Number->format($productinfo->id) ?></td>
+            <td align="right"><?= $this->Number->format($productinfo->id) ?></td>
             <td><?= h($productinfo->category) ?></td>
             <td><?= $this->Number->format($productinfo->use_support) ?></td>
             <td><?= h($productinfo->product_code) ?></td>
