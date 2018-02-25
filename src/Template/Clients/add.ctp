@@ -63,7 +63,7 @@ $this->end();
     <?php
     echo $this->Form->control('client_name');
     echo $this->Form->control('company_code');
-    echo $this->Form->control('identity1');
+    echo $this->Form->control('identity1', ['disabled'=>'disabled']);
     echo $this->Form->control('partner_flag', ['type'=>'radio', 'value'=>0,'options'=>[
         0=>'No',1=>'Yes'
     ]]);

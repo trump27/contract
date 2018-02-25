@@ -198,8 +198,6 @@ class CustomersTable extends Table
             }
             $entity->set('identity2', ++$max_id);
         }
-
         // return false;
-
     }
 }

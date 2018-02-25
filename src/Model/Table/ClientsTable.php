@@ -172,4 +172,22 @@ class ClientsTable extends Table
         return $query->select(['Partners.id', 'Partners.client_name'])
             ->where(['Partners.partner_flag' => 1]);
     }
+
+    public function beforeSave($event, $entity, $options)
+    {
+
+        if ($entity->isNew()) {
+
+            // 最大値＋１をセットする
+            $query = $this->find();
+            $ret = $query->select(['max_id' => $query->func()->max('identity1')])
+                ->first();
+            $max_id = intval($ret->max_id);
+            if (!$max_id) {
+                $max_id = 1000;
+            }
+            $entity->set('identity1', ++$max_id);
+        }
+        // return false;
+    }
 }

@@ -27,22 +27,24 @@ $this->start('tb_body_start');
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-divider"></li>
                     <li class="active"><?= $this->Html->link(__('Guide'), ['controller' => 'Guides', 'action' => 'index']); ?></li>
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">Operations <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('List Requests'), ['controller' => 'Requests', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
                             <li role="separator" class="divider"></li>
                             <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Supportcontracts'), ['controller' => 'Supportcontracts', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Productinfos'), ['controller' => 'Productinfos', 'action' => 'index']); ?></li>
                         </ul>
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><?= $this->Html->link(__('Contractnames'), ['controller' => 'Contractnames', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('Appforms'), ['controller' => 'Appforms', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('Languages'), ['controller' => 'Languages', 'action' => 'index']); ?></li>
                             <li role="separator" class="divider"></li>
                             <li><?= $this->Html->link(__('Statuses'), ['controller' => 'Statuses', 'action' => 'index']); ?></li>
