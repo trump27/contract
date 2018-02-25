@@ -52,7 +52,7 @@ echo $this->Form->end();
             <td><?= h($this->my->trunc($customer->customer_name)) ?></td>
             <!-- <td><?= h($this->my->trunc($customer->address)) ?></td> -->
             <td><?= h($customer->identity2) ?></td>
-            <td><?= h($customer->division) ?></td>
+            <td><?= $this->my->trunc($customer->division) ?></td>
             <td><?= h($customer->sales_staff) ?></td>
         </tr>
         <?php endforeach; ?>

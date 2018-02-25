@@ -28,8 +28,8 @@ echo $this->Form->end();
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
-            <th><?= $this->Paginator->sort('customer_id'); ?></th>
-            <!-- <th><?= $this->Paginator->sort('contractname_id'); ?></th> -->
+            <!-- <th><?= $this->Paginator->sort('customer_id'); ?></th> -->
+            <th><?= $this->Paginator->sort('contractname_id'); ?></th>
             <th><?= $this->Paginator->sort('contract_date'); ?></th>
             <th><?= $this->Paginator->sort('file'); ?></th>
         </tr>

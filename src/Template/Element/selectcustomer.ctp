@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
 
-      <div class="alert alert-info" role="alert">クライアント名で絞り込み、顧客を選択してください。</div>
+      <div class="alert alert-info" role="alert">クライアント名で絞り込み、利用プロダクトを選択してください。</div>
 <?php
 echo $this->Form->create(null);
 echo $this->Form->control('searchCustomer', ['label' => __('Clients') . '名']);
@@ -28,7 +28,7 @@ echo $this->Form->end();
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function () {
     var t;
-    $("#searchcustomer").on("keyup change", function () {
+    $("#searchcustomer").on("keyup change paste", function () {
         clearTimeout(t);
         t = setTimeout(function () {
             $.ajax({

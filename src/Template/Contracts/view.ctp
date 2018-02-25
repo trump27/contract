@@ -9,7 +9,6 @@ $this->start('tb_actions');
 <li><?= $this->Html->link(__('List Contracts'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('List Contractnames'), ['controller' => 'Contractnames', 'action' => 'index']) ?> </li>
 <?php
 $this->end();
 
@@ -21,7 +20,6 @@ $this->start('tb_sidebar');
 <li><?= $this->Html->link(__('List Contracts'), ['action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
 <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('List Contractnames'), ['controller' => 'Contractnames', 'action' => 'index']) ?> </li>
 </ul>
 <?php
 $this->end();

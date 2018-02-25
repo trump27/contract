@@ -37,7 +37,7 @@ class GuidesController extends AppController
         }
         $this->loadModel('Customers');
         $list = $this->Customers->find()
-            ->select(['Customers.id', 'Customers.customer_name', 'Clients.client_name'])
+            ->select(['Customers.id', 'Customers.customer_name', 'Customers.division', 'Clients.client_name'])
             ->contain(['Clients' => function ($q) use ($client_name) {
                 return $q
                     ->select(['Clients.client_name'])
@@ -45,7 +45,7 @@ class GuidesController extends AppController
             }])
             ->limit(10)
             ->map(function ($row) {
-                $row->customer_name = '【' . $row->client->client_name . '】 ' . $row->customer_name;
+                $row->customer_name = '【' . $row->client->client_name . '】 ' . $row->customer_name . '／' . $row->division;
                 return $row;
             })
             ->combine('id', 'customer_name')
