@@ -69,7 +69,7 @@ class AppController extends Controller
             ],
             // 未認証の場合、直前のページに戻します
             // 'unauthorizedRedirect' => $this->referer(),
-            'authError'=>false,
+            'authError' => false,
         ]);
         $this->Auth->allow(['display']);
 
@@ -80,9 +80,17 @@ class AppController extends Controller
         $this->loadModel('Customers');
         $this->autoRender = false;
         // $this->viewBuilder()->setLayout("");
-        $list = $this->Customers->find('list', ['keyField' => 'id', 'valueField' => 'customer_name'])
-                          ->where(['client_id' => $client_id]);
-
+        // $list = $this->Customers->find('list', ['keyField' => 'id', 'valueField' => 'customer_name'])
+        //                   ->where(['client_id' => $client_id]);
+        $list = $this->Customers->find()
+            ->select(['Customers.id', 'Customers.customer_name', 'Customers.division'])
+            ->where(['client_id' => $client_id])
+            ->map(function ($row) {
+                $row->customer_name = '【' . $row->customer_name . '】 ' . $row->division;
+                return $row;
+            })
+            ->combine('id', 'customer_name')
+            ->toArray();
         $this->set(compact('list'));
         $this->render('/Customers/customeroptions', '');
         // $this->render('options', '');
