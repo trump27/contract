@@ -27,6 +27,12 @@ $this->start('tb_sidebar');
 $this->end();
 ?>
 <h1 class="page-header"><?= __('Request') ?></h1>
+
+<div class="bs-callout bs-callout-primary">
+  <?= $this->Html->link('申込書をWordで出力', ['action' => 'doc', $request->id],
+      ['class' => 'btn btn-lg btn-primary', 'role' => 'button']); ?>
+</div>
+
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
@@ -67,7 +73,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('License Qty') ?></td>
-            <td><?= $this->Number->format($request->license_qty) ?></td>
+            <td><?= $this->Number->format($request->license_qty).' ライセンスパック' ?></td>
         </tr>
         <tr>
             <td><?= __('License Date') ?></td>

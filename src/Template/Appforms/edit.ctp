@@ -55,7 +55,7 @@ $this->end();
     <?php
     echo $this->Form->control('form_name');
     echo $this->Form->control('file');
-    echo $this->Form->control('dir');
+    echo $this->Form->control('dir', ['value'=>'webroot\\doc_template\\', 'disabled'=>'disabled']);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>

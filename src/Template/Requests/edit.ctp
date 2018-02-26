@@ -68,7 +68,7 @@ $this->element('datepicker');
     echo $this->Form->control('product_name');
     echo $this->Form->control('license_name');
     echo $this->Form->control('language_id', ['options' => $languages]);
-    echo $this->Form->control('license_qty');
+    echo $this->Form->control('license_qty', ['type'=>'radio', 'options'=>$this->My->qty()]);
     echo $this->Form->control('license_date', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('startsupp_date', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('notice');

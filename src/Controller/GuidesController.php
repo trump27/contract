@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 class GuidesController extends AppController
 {
@@ -32,6 +33,7 @@ class GuidesController extends AppController
     {
 
         $this->autoRender = false;
+        Configure::write('debug', 0);
         if (empty($client_name)) {
             return;
         }

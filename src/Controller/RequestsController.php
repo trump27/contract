@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
+use \PhpOffice\PhpWord\PhpWord;
 
 /**
  * Requests Controller
@@ -49,7 +51,7 @@ class RequestsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add($customer_id=null)
+    public function add($customer_id = null)
     {
         // from ajax (selectcustomer.ctp)
         $data = [];
@@ -130,5 +132,62 @@ class RequestsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function doc($id = null)
+    {
+        $this->autoRender = false;
+
+        $request = $this->Requests->findById($id)
+            ->contain(['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages'])
+            ->where(['Requests.id'])
+            ->first()
+            ->toArray();
+
+        Configure::write('debug', 0);
+        $tempdoc = WWW_ROOT . DS . 'doc_template' . DS . $request['appform']['file'];
+        // $this->log($request);
+        // return;
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($tempdoc);
+        $templateProcessor->setValue('client_name', $request['client']['client_name']);
+        $templateProcessor->setValue('division', $request['customer']['division']);
+        $templateProcessor->setValue('address', $request['customer']['address']);
+        $templateProcessor->setValue('admin_name1', $request['customer']['admin_name1']);
+        $templateProcessor->setValue('mail1', $request['customer']['mail1']);
+        $templateProcessor->setValue('div1', $request['customer']['div1']);
+        $templateProcessor->setValue('admin_name2', $request['customer']['admin_name2']);
+        $templateProcessor->setValue('mail2', $request['customer']['mail2']);
+        $templateProcessor->setValue('div2', $request['customer']['div2']);
+
+        $t_date = strtotime($request['license_date']);
+        $templateProcessor->setValue('license_date_yy', date('Y', $t_date));
+        $templateProcessor->setValue('license_date_mm', date('n', $t_date));
+        $templateProcessor->setValue('license_date_dd', date('j', $t_date));
+
+        $t_date = strtotime($request['startsupp_date']);
+        $templateProcessor->setValue('startsupp_date_yy', date('Y', $t_date));
+        $templateProcessor->setValue('startsupp_date_mm', date('n', $t_date));
+        $templateProcessor->setValue('startsupp_date_dd', date('j', $t_date));
+        // return;
+        $templateProcessor->setValue('q3', $request['license_qty']==3 ? '■' : '□' );
+        $templateProcessor->setValue('q5', $request['license_qty']==5 ? '■' : '□' );
+        $templateProcessor->setValue('q10', $request['license_qty']==10 ? '■' : '□' );
+        $templateProcessor->setValue('q20', $request['license_qty']==20 ? '■' : '□' );
+        $templateProcessor->setValue('q30', $request['license_qty']==30 ? '■' : '□' );
+        $templateProcessor->setValue('q40', $request['license_qty']==40 ? '■' : '□' );
+        $templateProcessor->setValue('q50', $request['license_qty']==50 ? '■' : '□' );
+        //ダウンロード用
+        // $templateProcessor->saveAs("mytest.docx");
+        header("Content-Description: File Transfer");
+        header('Content-Disposition: attachment; filename="' . $request['appform']['form_name'] . '.docx"');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Expires: 0');
+        ob_end_clean(); //バッファ消去
+        $templateProcessor->saveAs("php://output");
+        $templateProcessor = null;
+        exit();
+
     }
 }

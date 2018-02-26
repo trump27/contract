@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Core\Configure;
 use Muffin\Footprint\Auth\FootprintAwareTrait;
 
 /**
@@ -79,6 +80,7 @@ class AppController extends Controller
     {
         $this->loadModel('Customers');
         $this->autoRender = false;
+        Configure::write('debug', 0);
         // $this->viewBuilder()->setLayout("");
         // $list = $this->Customers->find('list', ['keyField' => 'id', 'valueField' => 'customer_name'])
         //                   ->where(['client_id' => $client_id]);
