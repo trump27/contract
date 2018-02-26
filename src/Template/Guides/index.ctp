@@ -5,6 +5,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <?php $this->start('tb_actions');?>
     <li><a href="#number1">情報参照</a></li>
     <li><a href="#number2">契約書登録</a></li>
+    <li><a href="#number3">ライセンス利用申込</a></li>
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
@@ -29,13 +30,19 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <div class="bs-callout bs-callout-primary">
   <h1>契約登録</h1>
   <p>契約書PDFを登録する。</p>
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  <button type="button" data-url="/contracts/add/" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
   契約を登録する
+  </button>
 </div>
 
+
+<div id="number3" />
 <div class="bs-callout bs-callout-info">
-  <h1>利用申込書作成依頼</h1>
-  <p>ＸＸＸＸＸ</p>
+  <h1>ライセンス利用申込書</h1>
+  <p>ライセンス利用申込書を登録、出力する。</p>
+  <button type="button" data-url="/requests/add/" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  申込書を登録する
+  </button>
 </div>
 
 <div class="bs-callout bs-callout-warning">
@@ -97,9 +104,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   Launch demo modal
 </button>
 
-<?php 
-echo $this->element('selectcustomer', [
-  "replaceUrl" => '/contracts/add/'
-]);
+<?php
+echo $this->element('selectcustomer');
 
 

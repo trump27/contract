@@ -21,7 +21,7 @@ class RequestsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages', 'Users']
+            'contain' => ['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages', 'Users'],
         ];
         $requests = $this->paginate($this->Requests);
 
@@ -38,7 +38,7 @@ class RequestsController extends AppController
     public function view($id = null)
     {
         $request = $this->Requests->get($id, [
-            'contain' => ['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages', 'Users']
+            'contain' => ['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages', 'Users'],
         ]);
 
         $this->set('request', $request);
@@ -49,9 +49,19 @@ class RequestsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($customer_id=null)
     {
-        $request = $this->Requests->newEntity();
+        // from ajax (selectcustomer.ctp)
+        $data = [];
+        if ($customer_id) {
+            $data = $this->Requests->Customers->find()
+                ->select(['customer_id' => 'id', 'client_id'])
+                ->where(['id' => $customer_id])
+                ->first();
+            $data = ['customer_id' => $data->customer_id, 'client_id' => $data->client_id];
+        }
+        $request = $this->Requests->newEntity($data);
+
         if ($this->request->is('post')) {
             $request = $this->Requests->patchEntity($request, $this->request->getData());
             if ($this->Requests->save($request)) {
@@ -81,7 +91,7 @@ class RequestsController extends AppController
     public function edit($id = null)
     {
         $request = $this->Requests->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $request = $this->Requests->patchEntity($request, $this->request->getData());
