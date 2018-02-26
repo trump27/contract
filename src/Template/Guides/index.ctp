@@ -5,7 +5,8 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <?php $this->start('tb_actions');?>
     <li><a href="#number1">情報参照</a></li>
     <li><a href="#number2">契約書登録</a></li>
-    <li><a href="#number3">ライセンス利用申込</a></li>
+    <li><a href="#number3">ライセンス利用申込書</a></li>
+    <li><a href="#number4">ライセンス登録</a></li>
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
@@ -14,23 +15,23 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 </div>
 
 <div id="number1" />
-<div class="bs-callout bs-callout-default">
+<div class="bs-callout bs-callout-success">
   <h1>情報参照</h1>
   <p>基幹情報を確認する。</p>
 
   <?= $this->Html->link('CANVASを確認する', ['controller'=>'Supportcontracts', 'action' => 'index'],
-       ['class' => 'btn btn-lg btn-default', 'role' => 'button']); ?>
+       ['class' => 'btn btn-lg btn-success', 'role' => 'button']); ?>
   <?= $this->Html->link('品目を確認する', ['controller'=>'Productinfos', 'action' => 'index'],
-      ['class' => 'btn btn-lg btn-default', 'role' => 'button']); ?>
+      ['class' => 'btn btn-lg btn-success', 'role' => 'button']); ?>
   <?= $this->Html->link('受注を確認する', ['controller'=>'Orders', 'action' => 'index'],
-      ['class' => 'btn btn-lg btn-default', 'role' => 'button']); ?>
+      ['class' => 'btn btn-lg btn-success', 'role' => 'button']); ?>
 </div>
 
 <div id="number2" />
 <div class="bs-callout bs-callout-primary">
   <h1>契約登録</h1>
   <p>契約書PDFを登録する。</p>
-  <button type="button" data-url="/contracts/add/" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  <button type="button" data-url="/contracts/add/" class="btn btn-info btn-lg" data-toggle="modal" data-target="#customerModal">
   契約を登録する
   </button>
 </div>
@@ -45,10 +46,13 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   </button>
 </div>
 
+<div id="number4" />
 <div class="bs-callout bs-callout-warning">
   <h1>ライセンス登録</h1>
-  <p>受注データを選択し、ライセンスを登録する。</p>
-  <p><a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a></p>
+  <p>ライセンスを登録・発行依頼する。</p>
+  <button type="button" data-url="/licenses/add/" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#customerModal">
+  申込書を登録する
+  </button>
 </div>
 
 <!-- <div class="jumbotron">
@@ -100,11 +104,12 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#orderModal">
   Launch demo modal
 </button>
 
 <?php
 echo $this->element('selectcustomer');
+echo $this->element('selectorder');
 
 

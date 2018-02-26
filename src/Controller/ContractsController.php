@@ -67,7 +67,7 @@ class ContractsController extends AppController
                 ->first();
             $data = ['customer_id' => $data->customer_id, 'client_id' => $data->client_id];
         }
-        $contract = $this->Contracts->newEntity($data);
+        $contract = $this->Contracts->newEntity($data, ['validate' => false]);
         if ($this->request->is(['post'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
             if ($this->Contracts->save($contract)) {

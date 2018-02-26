@@ -40,8 +40,8 @@ $this->end();
     <legend><?= __('Add {0}', ['Client']) ?></legend>
     <?php
     echo $this->Form->control('client_name');
-    echo $this->Form->control('company_code');
-    echo $this->Form->control('identity1', ['disabled'=>'disabled']);
+    echo $this->Form->control('company_code', ['help'=>'基幹システムの取引先コード']);
+    echo $this->Form->control('identity1', ['disabled'=>'disabled', 'help'=>'自動で採番']);
     echo $this->Form->control('partner_flag', ['type'=>'radio', 'value'=>0,'options'=>[
         0=>'No',1=>'Yes'
     ]]);

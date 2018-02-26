@@ -15,13 +15,6 @@ class GuidesController extends AppController
 
     public function index()
     {
-        // $this->loadModel('Customers');
-        // $customers = $this->Customers->find()
-        //     // ->select(['Customers.id', 'Customers.customer_name', 'Clients.id', 'Clients.client_name'])
-        //     ->select(['Customers.id', 'Customers.customer_name', 'Clients.client_name'])
-        //     ->limit(10)
-        //     // ->order(['Contracts.modified' => 'DESC'])
-        //     ->contain(['Clients'])
 
     }
 
@@ -54,6 +47,39 @@ class GuidesController extends AppController
             ->toArray();
         $this->set(compact('list'));
         $this->render('ajaxcustomers', '');
+
+    }
+
+    public function ajaxorders($client_name = null)
+    {
+
+        $this->autoRender = false;
+        // Configure::write('debug', 0);
+        if (empty($client_name)) {
+            return;
+        }
+        // $this->loadModel('Clients');
+        // $list = $this->Clients->find()
+        // // ->select(['Clients.id', 'Orders.company_code', 'Orders.id',
+        // //     'company_name1', 'order_no', 'order_detail_no', 'order_date', 'product_name'])
+        //     ->innerJoinWith('Orders')
+        // // ->contain(['Orders'])
+        //     ->where(['client_name like' => "%$client_name%"])
+        //     ->limit(20);
+
+        $this->loadModel('Orders');
+        $list = $this->Orders->find()
+            ->select(['Clients.id', 'Orders.company_code', 'Orders.id',
+                    'company_name1', 'order_no', 'order_detail_no', 'order_date', 'product_name'])
+            ->matching('Clients', function ($q) use ($client_name) {
+                return $q
+                    // ->select(['Clients.id', 'Clients.company_code'])
+                    ->where(['client_name like' => "%$client_name%"]);
+                })
+            ->limit(20);
+
+        $this->set(compact('list'));
+        $this->render('ajaxorders', '');
 
     }
 

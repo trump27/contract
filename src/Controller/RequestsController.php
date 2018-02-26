@@ -56,9 +56,8 @@ class RequestsController extends AppController
         // from ajax (selectcustomer.ctp)
         $data = [];
         if ($customer_id) {
-            $data = $this->Requests->Customers->find()
+            $data = $this->Requests->Customers->findById($customer_id)
                 ->select(['customer_id' => 'id', 'client_id'])
-                ->where(['id' => $customer_id])
                 ->first();
             $data = ['customer_id' => $data->customer_id, 'client_id' => $data->client_id];
         }

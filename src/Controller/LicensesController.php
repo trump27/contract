@@ -21,7 +21,7 @@ class LicensesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users'],
         ];
         $licenses = $this->paginate($this->Licenses);
 
@@ -38,7 +38,7 @@ class LicensesController extends AppController
     public function view($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users']
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users'],
         ]);
 
         $this->set('license', $license);
@@ -49,9 +49,18 @@ class LicensesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($customer_id = null)
     {
-        $license = $this->Licenses->newEntity();
+        // from ajax (selectcustomer.ctp)
+        $data = [];
+        if ($customer_id) {
+            $data = $this->Licenses->Customers->findById($customer_id)
+                ->select(['customer_id' => 'id', 'client_id'])
+                ->first();
+            $data = ['customer_id' => $data->customer_id, 'client_id' => $data->client_id];
+        }
+
+        $license = $this->Licenses->newEntity($data);
         if ($this->request->is('post')) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
             if ($this->Licenses->save($license)) {
@@ -81,7 +90,7 @@ class LicensesController extends AppController
     public function edit($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
