@@ -176,6 +176,7 @@ class RequestsController extends AppController
         $templateProcessor->setValue('q30', $request['license_qty']==30 ? '■' : '□' );
         $templateProcessor->setValue('q40', $request['license_qty']==40 ? '■' : '□' );
         $templateProcessor->setValue('q50', $request['license_qty']==50 ? '■' : '□' );
+        $templateProcessor->setValue('notice', preg_replace("/\r\n|\r|\n/", "<w:br />",$request['notice']));
         //ダウンロード用
         // $templateProcessor->saveAs("mytest.docx");
         header("Content-Description: File Transfer");
