@@ -97,4 +97,31 @@ class AppController extends Controller
         $this->render('/Customers/customeroptions', '');
         // $this->render('options', '');
     }
+
+    public function orderoptions($client_id = null)
+    {
+        $this->autoRender = false;
+        // Configure::write('debug', 0);
+
+        $this->loadModel('Orders');
+        $list = $this->Orders->find()
+            ->select(['Orders.id', 'order_date', 'Orders.product_name'])
+            ->contain('Clients', function ($q) use($client_id) {
+                return $q
+                ->where(['Clients.id' => $client_id]);
+            })
+            ->matching('Clients', function ($q) use($client_id) {
+                return $q
+                ->where(['Clients.id' => $client_id]);
+                })
+            ->map(function ($row) {
+                $row->product_name = '【' . $row->order_date . '】 ' . $row->product_name;
+                return $row;
+                })
+            ->combine('id', 'product_name')
+            ->toArray();
+        debug($list);
+        $this->set(compact('list'));
+        $this->render('/Orders/orderoptions', '');
+    }
 }
