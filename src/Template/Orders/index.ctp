@@ -15,7 +15,7 @@ $this->start('tb_actions');
 <?php
 $ym[''] = '---';
 $date = date('Y/m/1');
-for ($i=0; $i <13 ; $i++) { 
+for ($i=0; $i <13 ; $i++) {
     $val = date('Ym', strtotime("-$i month", strtotime($date)));
     $ym[$val] = $val;
 }
@@ -37,11 +37,12 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('company_code'); ?></th>
             <th><?= $this->Paginator->sort('company_name1'); ?></th>
-            <!-- <th><?= $this->Paginator->sort('company_name2'); ?></th> -->
             <th><?= $this->Paginator->sort('order_no'); ?></th>
+            <th><?= $this->Paginator->sort('status_msg'); ?></th>
             <th><?= $this->Paginator->sort('order_date'); ?></th>
             <th><?= $this->Paginator->sort('delivery_date'); ?></th>
             <th><?= $this->Paginator->sort('sales_date'); ?></th>
+            <th><?= $this->Paginator->sort('product_category'); ?></th>
             <th><?= $this->Paginator->sort('product_name'); ?></th>
             <th><?= $this->Paginator->sort('sales_staff'); ?></th>
         </tr>
@@ -49,7 +50,7 @@ echo $this->Form->end();
     <tbody>
         <?php foreach ($orders as $order): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <!-- <?= $this->Html->link('', ['action' => 'edit', $order->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?> -->
@@ -57,14 +58,15 @@ echo $this->Form->end();
             </td>
             <td align="right"><?= $this->Number->format($order->id) ?></td>
             <td>
-                <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?>
+                <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_code ?>
             </td>
             <td><?= h($this->my->trunc($order->company_name1)) ?></td>
-            <!-- <td><?= h($this->my->trunc($order->company_name2)) ?></td> -->
             <td><?= $order->order_no .'-'.$order->order_detail_no ?></td>
-            <td><?= h($order->order_date) ?></td>
+            <td><?= h($order->status_msg) ?></td>
+            <td><?= h($this->my->trunc($order->order_date)) ?></td>
             <td><?= h($order->delivery_date) ?></td>
             <td><?= h($order->sales_date) ?></td>
+            <td><?= $this->my->trunc($order->product_category,20) ?></td>
             <td><?= $this->my->trunc($order->product_name) ?></td>
             <td><?= h($order->sales_staff) ?></td>
         </tr>

@@ -39,13 +39,13 @@ $this->start('tb_actions');
             </td>
             <!-- <td><?=$this->Number->format($order->id)?></td> -->
             <!-- <td><?=h($order->company_code)?></td> -->
-            <td><?=$this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id])?></td>
+            <td><?=$order->has('client') ? $this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_name1; ?></td>
             <td><?=h($order->status_msg)?></td>
 
             <td><?=h($order->order_date)?></td>
             <td><?=h($order->delivery_date)?></td>
             <td><?=h($order->sales_date)?></td>
-            <td><?=$this->my->trunc($order->product_name)?></td>
+            <td><?=$this->my->trunc($order->product_name,20)?></td>
 
         </tr>
         <?php endforeach;?>

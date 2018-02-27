@@ -51,6 +51,10 @@ $(function () {
         }, 300);
     });
     $("#btn-select-order").click(function (e) {
+//        alert( $('input[name=select]:checked').val() );
+        if (!$('input[name=select]:seleted').val()) {
+            alert('未選択・・・');
+        }
         if ($('#order-id').val()===null) {
             alert("対象を選択してください。");
             e.preventDefault();

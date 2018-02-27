@@ -1,6 +1,6 @@
 <?php //debug($list);?>
 <?php //debug($list->toArray());?>
-<div class="container-fluid">
+<div class="container-fluidxx" style="height:200px; overflow:auto;">
 <table class="table table-bordered table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -15,7 +15,10 @@
     <tbody>
         <?php foreach ($list as $order): ?>
         <tr>
-            <td align="right"><?= $this->Number->format($order->id) ?></td>
+            <td>
+            <input type="radio" name="select" value="<?=$order->id?>"> <?=$order->id?>
+            <!-- <td align="center"><?= $this->Form->radio('select', [$order->id]) ?></td> -->
+            <!-- <td align="right"><?= $this->Number->format($order->id) ?></td> -->
             <!-- <td><?= h($order->company_code) ?></td> -->
             <td><?= h($this->my->trunc($order->company_name1)) ?></td>
             <td><?= $order->order_no .'-'.$order->order_detail_no ?></td>

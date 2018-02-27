@@ -71,6 +71,7 @@ class GuidesController extends AppController
         $list = $this->Orders->find()
             ->select(['Clients.id', 'Orders.company_code', 'Orders.id',
                     'company_name1', 'order_no', 'order_detail_no', 'order_date', 'product_name'])
+            ->where(['status_msg <> ' => '売上済'])
             ->matching('Clients', function ($q) use ($client_name) {
                 return $q
                     // ->select(['Clients.id', 'Clients.company_code'])

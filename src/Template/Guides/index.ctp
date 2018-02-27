@@ -104,7 +104,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#orderModal">
+<button type="button" data-url="/requests/add/" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#orderModal">
   Launch demo modal
 </button>
 
