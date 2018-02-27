@@ -29,7 +29,7 @@ class OrdersController extends AppController
     {
         $orders = $this->Orders
             ->find('search', ['search' => $this->request->query])
-            ->contain(['Statuses', 
+            ->contain(['Statuses',
                 'Clients' => ['fields' => ['id', 'company_code' , 'client_name']]
             ]);
 
@@ -78,7 +78,7 @@ class OrdersController extends AppController
         }
         $statuses = $this->Orders->Statuses->find('list', ['limit' => 200]);
         $users = $this->Orders->Users->find('list', ['limit' => 200]);
-        $clients = $this->Orders->Clients->find('list', ['limit' => 200]);
+        $clients = $this->Orders->Clients->find('list', ['limit' => 1000]);
         $this->set(compact('order', 'statuses', 'users', 'clients'));
     }
 
@@ -105,7 +105,7 @@ class OrdersController extends AppController
         }
         $statuses = $this->Orders->Statuses->find('list', ['limit' => 200]);
         $users = $this->Orders->Users->find('list', ['limit' => 200]);
-        $clients = $this->Orders->Clients->find('orderlist', ['limit' => 200]);
+        $clients = $this->Orders->Clients->find('orderlist', ['limit' => 1000]);
         // $clients = $this->Orders->Clients->find('list', ['limit' => 200]);
         $this->set(compact('order', 'statuses', 'users', 'clients'));
     }

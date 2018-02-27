@@ -78,8 +78,8 @@ class ContractsController extends AppController
             }
             $this->Flash->error(__('The contract could not be saved. Please, try again.'));
         }
-        $clients = $this->Contracts->Clients->find('list', ['limit' => 200]);
-        $customers = $this->Contracts->Customers->find('list', ['limit' => 200]);
+        $clients = $this->Contracts->Clients->find('list', ['limit' => 1000]);
+        $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
         $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users'));
@@ -107,8 +107,8 @@ class ContractsController extends AppController
             }
             $this->Flash->error(__('The contract could not be saved. Please, try again.'));
         }
-        $clients = $this->Contracts->Clients->find('list', ['limit' => 200]);
-        $customers = $this->Contracts->Customers->find('list', ['limit' => 200]);
+        $clients = $this->Contracts->Clients->find('list', ['limit' => 1000]);
+        $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
         $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users'));

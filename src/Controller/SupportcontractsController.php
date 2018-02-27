@@ -76,7 +76,7 @@ class SupportcontractsController extends AppController
         }
         $clients = $this->Supportcontracts->Clients->find('list', [
             'keyField' => 'company_code', 'valueField' => 'client_name',
-            'limit' => 200,
+            'limit' => 1000,
         ]);
         $this->set(compact('supportcontract', 'clients'));
     }
@@ -104,7 +104,7 @@ class SupportcontractsController extends AppController
         }
         $clients = $this->Supportcontracts->Clients->find('list', [
             'keyField' => 'company_code', 'valueField' => 'client_name',
-            'limit' => 200,
+            'limit' => 1000,
         ]);
         $this->set(compact('supportcontract', 'clients'));
     }
