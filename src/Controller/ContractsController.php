@@ -70,6 +70,13 @@ class ContractsController extends AppController
         $contract = $this->Contracts->newEntity($data, ['validate' => false]);
         if ($this->request->is(['post'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
+
+            // 契約書のステータスをセット
+            $sts = $this->Contracts->Contractnames->findById($contract['contractname_id'])
+                ->select(['status_id'])
+                ->first();
+            $contract['status_id'] = $sts['status_id'];
+
             if ($this->Contracts->save($contract)) {
                 $this->Flash->success(__('The contract has been saved.'));
 
@@ -101,6 +108,12 @@ class ContractsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
+            // 契約書のステータスをセット
+            $sts = $this->Contracts->Contractnames->findById($contract['contractname_id'])
+                ->select(['status_id'])
+                ->first();
+            $contract['status_id'] = $sts['status_id'];
+
             if ($this->Contracts->save($contract)) {
                 $this->Flash->success(__('The contract has been saved.'));
 
