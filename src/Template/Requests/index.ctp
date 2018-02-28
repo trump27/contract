@@ -34,7 +34,7 @@ $this->start('tb_actions');
             </td>
             <td><?= $this->Number->format($request->id) ?></td>
             <td>
-                <?= $request->has('client') ? $this->Html->link($request->client->client_name, ['controller' => 'Clients', 'action' => 'view', $request->client->id]) : '' ?>
+                <?= $request->has('client') ? $this->Html->link($this->My->trunc($request->client->client_name), ['controller' => 'Clients', 'action' => 'view', $request->client->id]) : '' ?>
             </td>
             <td>
                 <?= $request->has('customer') ? $this->Html->link($request->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $request->customer->id]) : '' ?>

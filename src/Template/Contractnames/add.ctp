@@ -38,6 +38,7 @@ $this->end();
     <legend><?= __('Add {0}', ['Contractname']) ?></legend>
     <?php
     echo $this->Form->control('contract_name');
+    echo $this->Form->control('status_id');
     ?>
 </fieldset>
 <?= $this->Form->button(__("Add"), ['class'=>'btn-primary']); ?>

@@ -54,6 +54,7 @@ $this->end();
     <legend><?= __('Edit {0}', ['Contractname']) ?></legend>
     <?php
     echo $this->Form->control('contract_name');
+    echo $this->Form->control('status_id');
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>

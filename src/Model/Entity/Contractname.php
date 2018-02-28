@@ -25,6 +25,7 @@ class Contractname extends Entity
      */
     protected $_accessible = [
         'contract_name' => true,
-        'contracts' => true
+        'contracts' => true,
+        'status_id' => true
     ];
 }

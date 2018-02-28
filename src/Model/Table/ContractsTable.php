@@ -55,6 +55,12 @@ class ContractsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
         ]);
+        $this->belongsTo('Orders', [
+            'foreignKey' => 'order_id',
+        ]);
+        $this->belongsTo('Statuses', [
+            'foreignKey' => 'status_id',
+        ]);
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -133,6 +139,8 @@ class ContractsTable extends Table
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
         $rules->add($rules->existsIn(['contractname_id'], 'Contractnames'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['order_id'], 'Orders'));
+        $rules->add($rules->existsIn(['status_id'], 'Statuses'));
 
         return $rules;
     }

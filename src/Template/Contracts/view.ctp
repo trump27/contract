@@ -44,6 +44,10 @@ $this->end();
             <td><?= $contract->has('customer') ? $this->Html->link($contract->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : '' ?></td>
         </tr>
         <tr>
+            <td><?= __('Order') ?></td>
+            <td><?= $contract->has('order') ? $this->Html->link($contract->order->product_name, ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : $contract->order_id ?></td>
+        </tr>
+        <tr>
             <td><?= __('Contractname') ?></td>
             <td><?= $contract->has('contractname') ? $this->Html->link($contract->contractname->contract_name, ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?></td>
         </tr>

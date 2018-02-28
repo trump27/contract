@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -37,7 +35,10 @@ class ContractnamesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->hasMany('Contracts', [
-            'foreignKey' => 'contractname_id'
+            'foreignKey' => 'contractname_id',
+        ]);
+        $this->belongsTo('Statuses', [
+            'foreignKey' => 'status_id',
         ]);
     }
 
@@ -57,6 +58,9 @@ class ContractnamesTable extends Table
             ->scalar('contract_name')
             ->maxLength('contract_name', 256)
             ->allowEmpty('contract_name');
+
+        $validator
+            ->integer('status_id');
 
         return $validator;
     }

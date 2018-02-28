@@ -27,6 +27,7 @@ $this->end();
 $this->element('datepicker');
 ?>
 <?= $this->Html->script('customeroptions',['block' => true]) ?>
+<?= $this->Html->script('orderoptions',['block' => true]) ?>
 <h1 class="page-header"><?= __('Contract') ?></h1>
 <?= $this->Form->create($contract, [
     'type'=> 'file',
@@ -47,9 +48,11 @@ $this->element('datepicker');
     <?php
     echo $this->Form->control('client_id', ['options' => $clients, 'empty'=>'---']);
     echo $this->Form->control('customer_id', ['options' => $customers, 'empty'=>'---']);
+    echo $this->Form->control('order_id', ['options' => $orders]);
     echo $this->Form->control('contractname_id', ['options' => $contractnames]);
     echo $this->Form->control('contract_date', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('remarks');
+    echo $this->Form->control('status_id', ['options' => $statuses]);
     echo $this->Form->control('file', ['type'=>'file']);
     // echo $this->Form->control('dir');
     // echo $this->Form->control('size');

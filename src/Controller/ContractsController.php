@@ -29,7 +29,7 @@ class ContractsController extends AppController
     {
         $contracts = $this->Contracts
             ->find('search', ['search' => $this->request->query])
-            ->contain(['Clients', 'Customers', 'Contractnames', 'Users']);
+            ->contain(['Clients', 'Customers', 'Contractnames', 'Statuses']);
 
         $this->set('contracts', $this->paginate($contracts));
 
@@ -45,7 +45,7 @@ class ContractsController extends AppController
     public function view($id = null)
     {
         $contract = $this->Contracts->get($id, [
-            'contain' => ['Clients', 'Customers', 'Contractnames', 'Users'],
+            'contain' => ['Clients', 'Customers', 'Contractnames', 'Users', 'Orders', 'Statuses'],
         ]);
 
         $this->set('contract', $contract);
@@ -56,7 +56,7 @@ class ContractsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add($customer_id=null)
+    public function add($customer_id = null)
     {
         // from ajax (selectcustomer.ctp)
         $data = [];
@@ -82,7 +82,9 @@ class ContractsController extends AppController
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
-        $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users'));
+        $orders = $this->Contracts->Orders->find('list', ['limit' => 10]);
+        $statuses = $this->Contracts->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users', 'orders', 'statuses'));
     }
 
     /**
@@ -111,7 +113,9 @@ class ContractsController extends AppController
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
-        $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users'));
+        $orders = $this->Contracts->Orders->find('list', ['limit' => 10]);
+        $statuses = $this->Contracts->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users', 'orders', 'statuses'));
     }
 
     /**

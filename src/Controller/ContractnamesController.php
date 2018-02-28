@@ -20,6 +20,9 @@ class ContractnamesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Statuses'],
+        ];
         $contractnames = $this->paginate($this->Contractnames);
 
         $this->set(compact('contractnames'));
@@ -35,7 +38,7 @@ class ContractnamesController extends AppController
     public function view($id = null)
     {
         $contractname = $this->Contractnames->get($id, [
-            'contain' => ['Contracts']
+            'contain' => ['Contracts'],
         ]);
 
         $this->set('contractname', $contractname);
@@ -58,7 +61,8 @@ class ContractnamesController extends AppController
             }
             $this->Flash->error(__('The contractname could not be saved. Please, try again.'));
         }
-        $this->set(compact('contractname'));
+        $statuses = $this->Contractnames->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('contractname', 'statuses'));
     }
 
     /**
@@ -71,7 +75,7 @@ class ContractnamesController extends AppController
     public function edit($id = null)
     {
         $contractname = $this->Contractnames->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contractname = $this->Contractnames->patchEntity($contractname, $this->request->getData());
@@ -82,7 +86,8 @@ class ContractnamesController extends AppController
             }
             $this->Flash->error(__('The contractname could not be saved. Please, try again.'));
         }
-        $this->set(compact('contractname'));
+        $statuses = $this->Contractnames->Statuses->find('list', ['limit' => 200]);
+        $this->set(compact('contractname', 'statuses'));
     }
 
     /**

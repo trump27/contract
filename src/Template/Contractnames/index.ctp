@@ -14,6 +14,7 @@ $this->start('tb_actions');
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('contract_name'); ?></th>
+            <th><?= $this->Paginator->sort('status_id'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@ $this->start('tb_actions');
             </td>
             <td align="right"><?= $this->Number->format($contractname->id) ?></td>
             <td><?= h($contractname->contract_name) ?></td>
+            <td><?= $contractname->has('status') ? h($contractname->status->name) : $contractname->status_id ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
