@@ -101,27 +101,58 @@ class AppController extends Controller
     public function orderoptions($client_id = null)
     {
         $this->autoRender = false;
-        // Configure::write('debug', 0);
+        Configure::write('debug', 0);
+        if (empty($client_id )) return null;
 
+        // $this->loadModel('Orders');
+        // $list = $this->Orders->find()
+        //     ->select(['Orders.id', 'order_date', 'Orders.product_name'])
+        //     ->contain('Clients', function ($q) use ($client_id) {
+        //         return $q
+        //             ->where(['Clients.id' => $client_id]);
+        //     })
+        //     ->matching('Clients', function ($q) use ($client_id) {
+        //         return $q
+        //             ->where(['Clients.id' => $client_id]);
+        //     })
+        //     ->map(function ($row) {
+        //         $row->product_name = '【' . $row->order_date . '】 ' . $row->product_name;
+        //         return $row;
+        //     })
+        //     ->combine('id', 'product_name')
+        //     ->toArray();
+        // debug($list);
+        // $this->set(compact('list'));
+        // $this->render('/Orders/orderoptions', '');
+
+        $this->loadModel('Clients');
         $this->loadModel('Orders');
+
+        $subq = $this->Clients->findById($client_id)
+            ->select(['Clients.id', 'Clients.partner_id'])
+            ->first()
+            ->toArray();
+        $ids = empty($subq['partner_id']) ? [$client_id] : [$client_id, $subq['partner_id']];
+// debug($ids );
         $list = $this->Orders->find()
-            ->select(['Orders.id', 'order_date', 'Orders.product_name'])
-            ->contain('Clients', function ($q) use($client_id) {
+            ->select(['Orders.id', 'order_date', 'Orders.company_name1', 'Orders.product_name'])
+            ->contain('Clients', function ($q) use ($client_id) {
                 return $q
-                ->where(['Clients.id' => $client_id]);
+                    ->where(['Clients.id' => $client_id]);
             })
-            ->matching('Clients', function ($q) use($client_id) {
+            ->matching('Clients', function ($q) use ($ids) {
                 return $q
-                ->where(['Clients.id' => $client_id]);
-                })
+                    ->where(['Clients.id IN' => $ids]);
+            })
             ->map(function ($row) {
-                $row->product_name = '【' . $row->order_date . '】 ' . $row->product_name;
+                $row->product_name = $row->order_date . ' 【' . $row->company_name1 .'】 '. $row->product_name;
                 return $row;
-                })
+            })
             ->combine('id', 'product_name')
             ->toArray();
         debug($list);
         $this->set(compact('list'));
         $this->render('/Orders/orderoptions', '');
+
     }
 }
