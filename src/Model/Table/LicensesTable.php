@@ -70,6 +70,8 @@ class LicensesTable extends Table
             ],
         ]);
 
+        $this->addBehavior('Search.Search');
+
     }
 
     /**
@@ -85,13 +87,13 @@ class LicensesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->date('issued')
-            ->allowEmpty('issued');
+            ->date('issued');
+            // ->allowEmpty('issued');
 
         $validator
             ->scalar('license_no')
-            ->maxLength('license_no', 20)
-            ->allowEmpty('license_no');
+            ->maxLength('license_no', 20);
+            // ->allowEmpty('license_no');
 
         $validator
             ->scalar('relate_no')
@@ -100,25 +102,25 @@ class LicensesTable extends Table
 
         $validator
             ->scalar('product_name')
-            ->maxLength('product_name', 256)
-            ->allowEmpty('product_name');
+            ->maxLength('product_name', 256);
+            // ->allowEmpty('product_name');
 
         $validator
             ->scalar('license_name')
-            ->maxLength('license_name', 256)
-            ->allowEmpty('license_name');
+            ->maxLength('license_name', 256);
+            // ->allowEmpty('license_name');
 
         $validator
-            ->integer('license_qty')
-            ->allowEmpty('license_qty');
+            ->integer('license_qty');
+            // ->allowEmpty('license_qty');
 
         $validator
-            ->date('startdate')
-            ->allowEmpty('startdate');
+            ->date('startdate');
+            // ->allowEmpty('startdate');
 
         $validator
-            ->date('enddate')
-            ->allowEmpty('enddate');
+            ->date('enddate');
+            // ->allowEmpty('enddate');
 
         $validator
             ->scalar('license_key')
@@ -169,4 +171,26 @@ class LicensesTable extends Table
 
         return $rules;
     }
+
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->like('product_name', [
+                'before' => true,
+                'after' => true,
+            ])
+            ->add('client_name', 'Search.Callback', [
+                'callback' => function ($query, $args, $filter) {
+                    $client_name = $args['client_name'];
+                    $query->matching('Clients', function ($q) use ($client_name) {
+                        return $q->where(['Clients.client_name LIKE' => "%$client_name%"]);
+                    });
+                }]
+            );
+
+        return $searchManager;
+    }
+
 }

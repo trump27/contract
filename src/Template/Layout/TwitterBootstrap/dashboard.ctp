@@ -49,6 +49,7 @@ $this->start('tb_body_start');
                             <li><?= $this->Html->link(__('Languages'), ['controller' => 'Languages', 'action' => 'index']); ?></li>
                             <li role="separator" class="divider"></li>
                             <li><?= $this->Html->link(__('Statuses'), ['controller' => 'Statuses', 'action' => 'index']); ?></li>
+                            <li><?= $this->Html->link(__('Conditions'), ['controller' => 'Conditions', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
                         </ul>
                     <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']); ?></li>
