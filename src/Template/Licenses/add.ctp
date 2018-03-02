@@ -29,8 +29,9 @@ $this->end();
 $this->element('datepicker');
 ?>
 
-<?= $this->Html->script('customeroptions',['block' => true]) ?>
-<?= $this->Html->script('orderoptions',['block' => true]) ?>
+<?=$this->Html->script('customeroptions',['block' => true]) ?>
+<?=$this->Html->script('orderoptions',['block' => true]) ?>
+<?=$this->Html->script('customerinfo', ['block' => true])?>
 
 <h1 class="page-header"><?= __('Licenses') ?></h1>
 <?= $this->Form->create($license, ['align' => [
@@ -57,9 +58,9 @@ $this->element('datepicker');
     echo $this->Form->control('license_no');
     echo $this->Form->control('relate_no');
     echo $this->Form->control('product_name');
-    echo $this->Form->control('license_name');
+    echo $this->Form->control('license_name', ['value'=>'ユーザライセンス']);
     echo $this->Form->control('language_id', ['options' => $languages]);
-    echo $this->Form->control('license_qty');
+    echo $this->Form->control('license_qty', ['type'=>'radio', 'options'=>$this->My->qty()]);
     echo $this->Form->control('startdate', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('enddate', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('license_key');

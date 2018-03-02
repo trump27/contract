@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
+use \PhpOffice\PhpWord\PhpWord;
 
 /**
  * Licenses Controller
@@ -129,5 +131,65 @@ class LicensesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function doc($id = null)
+    {
+        $this->autoRender = false;
+
+        $license = $this->Licenses->findById($id)
+            ->contain(['Clients', 'Customers', 'Orders', 'Languages'])
+            ->first()
+            ->toArray();
+
+        Configure::write('debug', 0);
+        // $tempdoc = WWW_ROOT . DS . 'doc_template' . DS . $request['appform']['file'];
+        $tempdoc = WWW_ROOT . DS . 'doc_template' . DS . 'sample_lic.docx';
+        // $this->log($request);
+        // return;
+
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($tempdoc);
+
+        $t_date = strtotime($license['issued']);
+        $templateProcessor->setValue('issued_yy', date('Y', $t_date));
+        $templateProcessor->setValue('issued_mm', date('n', $t_date));
+        $templateProcessor->setValue('issued_dd', date('j', $t_date));
+
+        $templateProcessor->setValue('license_no', $license['license_no']);
+        $templateProcessor->setValue('purchase_no', $license['order']['purchase_no']);
+        $templateProcessor->setValue('relate_no', $license['relate_no']);
+        $templateProcessor->setValue('client_name', $license['client']['client_name']);
+        $templateProcessor->setValue('address', $license['customer']['address']);
+        $templateProcessor->setValue('product_name', $license['product_name']);
+        $templateProcessor->setValue('license_name', $license['license_name']);
+        $templateProcessor->setValue('language_name', $license['language']['language_name']);
+        $templateProcessor->setValue('license_qty', $license['license_qty']);
+        $templateProcessor->setValue('license_key', $license['license_key']);
+
+        $t_date = strtotime($license['startdate']);
+        $templateProcessor->setValue('start_yy', date('Y', $t_date));
+        $templateProcessor->setValue('start_mm', date('n', $t_date));
+        $templateProcessor->setValue('start_dd', date('j', $t_date));
+
+        $t_date = strtotime($license['enddate']);
+        $templateProcessor->setValue('end_yy', date('Y', $t_date));
+        $templateProcessor->setValue('end_mm', date('n', $t_date));
+        $templateProcessor->setValue('end_dd', date('j', $t_date));
+
+        $templateProcessor->setValue('direct', empty($license['client']['partner_id']) ? '■' : '□');
+        $templateProcessor->setValue('resale', empty($license['client']['partner_id']) ? '□' : '■');
+        $templateProcessor->setValue('notice', preg_replace("/\r\n|\r|\n/", "<w:br />", $license['notice']));
+        //ダウンロード用
+        header("Content-Description: File Transfer");
+        header('Content-Disposition: attachment; filename="' . 'ライセンス証書'. '.docx"');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Expires: 0');
+        ob_end_clean(); //バッファ消去
+        $templateProcessor->saveAs("php://output");
+        $templateProcessor = null;
+        exit();
+
     }
 }

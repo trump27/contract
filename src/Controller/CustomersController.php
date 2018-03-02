@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Customers Controller
@@ -18,6 +19,8 @@ class CustomersController extends AppController
         $this->loadComponent('Search.Prg', [
             'actions' => ['index'],
         ]);
+        $this->loadComponent('RequestHandler'); /// return json
+
     }
 
     /**
@@ -126,5 +129,29 @@ class CustomersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    // js uses this
+    public function customerinfo($customer_id = null)
+    {
+        $this->autoRender = false;
+        $this->viewBuilder()->autoLayout(false);
+        // Configure::write('debug', 0);
+        $this->response->type('application/json');
+
+        if (empty($customer_id)) {
+            return null;
+        }
+
+        $info = $this->Customers->findById($customer_id)
+            ->select(['Customers.customer_name', 'Customers.identity2', 'Clients.identity1'])
+            ->contain(['Clients'])
+            ->first()
+            ->toArray();
+        // $this->log( json_encode(compact('info')));
+        $this->response->body(json_encode(compact('info')));
+
+
+
     }
 }

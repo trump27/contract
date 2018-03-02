@@ -29,6 +29,12 @@ $this->start('tb_sidebar');
 $this->end();
 ?>
 <h1 class="page-header"><?= __('Licenses') ?></h1>
+
+<div class="bs-callout bs-callout-primary">
+  <?= $this->Html->link('証書をWordで出力', ['action' => 'doc', $license->id],
+      ['class' => 'btn btn-lg btn-primary', 'role' => 'button']); ?>
+</div>
+
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">

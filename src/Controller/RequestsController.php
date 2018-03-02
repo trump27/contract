@@ -139,7 +139,6 @@ class RequestsController extends AppController
 
         $request = $this->Requests->findById($id)
             ->contain(['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages'])
-            ->where(['Requests.id'])
             ->first()
             ->toArray();
 

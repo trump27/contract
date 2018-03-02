@@ -18,16 +18,17 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_id'); ?></th>
-            <th><?= $this->Paginator->sort('order_id'); ?></th>
+            <th><?= $this->Paginator->sort('license_name'); ?></th>
             <th><?= $this->Paginator->sort('status_id'); ?></th>
             <th><?= $this->Paginator->sort('issued'); ?></th>
             <th><?= $this->Paginator->sort('license_no'); ?></th>
+            <th><?= $this->Paginator->sort('license_qty'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($licenses as $license): ?>
         <tr>
-            
+
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $license->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
@@ -41,13 +42,14 @@ $this->start('tb_actions');
                 <?= $license->has('customer') ? $this->Html->link($this->my->trunc($license->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
             </td>
             <td>
-                <?= $license->has('order') ? $this->Html->link($license->order->product_name, ['controller' => 'Orders', 'action' => 'view', $license->order->id]) : '' ?>
+                <?= h($license->license_name) ?>
             </td>
             <td>
                 <?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?>
             </td>
             <td><?= h($license->issued) ?></td>
             <td><?= h($license->license_no) ?></td>
+            <td><?= h($license->license_qty) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
