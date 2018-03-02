@@ -12,10 +12,10 @@ $this->start('tb_actions');
 
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
-echo $this->Form->input('client_name', ['label' => '　クライアント名　', 'size'=>10]);
+echo $this->Form->input('client_name', ['label' => __('Client Name').'　', 'size'=>10]);
 echo $this->Form->control('partner_flag', ['type' => 'select',
     'options' => [0 => 'No', 1 => 'Yes'],
-    'empty' => '---', 'label' => '　パートナー　'
+    'empty' => '---', 'label' => '　'.__('Partner Flag').'　'
     ]);
 echo $this->Form->input('partner_id', ['label'=>'　パートナー名　', 'empty'=>'---']);
 echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);

@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
 
-      <div class="alert alert-info" role="alert">クライアント名で絞り込み、利用プロダクトを選択してください。</div>
+      <div class="alert alert-info" role="alert"><?=__('Client Name')?>で絞り込み、<?=__('Customer')?>を選択してください。</div>
 <?php
 echo $this->Form->create(null);
 echo $this->Form->control('searchCustomer', ['label' => __('Clients') . '名']);
