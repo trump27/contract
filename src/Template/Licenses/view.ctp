@@ -58,6 +58,10 @@ $this->end();
             <td><?= $license->has('order') ? $this->Html->link($license->order->product_name, ['controller' => 'Orders', 'action' => 'view', $license->order->id]) : '' ?></td>
         </tr>
         <tr>
+            <td><?= __('Condition') ?></td>
+            <td><?= $license->has('condition') ? $this->Html->link($license->condition->name, ['controller' => 'Conditions', 'action' => 'view', $license->condition->id]) : '' ?></td>
+        </tr>
+        <tr>
             <td><?= __('Status') ?></td>
             <td><?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?></td>
         </tr>

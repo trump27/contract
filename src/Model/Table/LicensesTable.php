@@ -56,6 +56,9 @@ class LicensesTable extends Table
         $this->belongsTo('Statuses', [
             'foreignKey' => 'status_id',
         ]);
+        $this->belongsTo('Conditions', [
+            'foreignKey' => 'condition_id',
+        ]);
         $this->belongsTo('Languages', [
             'foreignKey' => 'language_id',
         ]);
@@ -166,6 +169,7 @@ class LicensesTable extends Table
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
         $rules->add($rules->existsIn(['order_id'], 'Orders'));
         $rules->add($rules->existsIn(['status_id'], 'Statuses'));
+        $rules->add($rules->existsIn(['condition_id'], 'Conditions'));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
@@ -177,7 +181,8 @@ class LicensesTable extends Table
     {
         $searchManager = $this->behaviors()->Search->searchManager();
         $searchManager
-            ->like('product_name', [
+            ->value('condition_id')
+            ->like('license_no', [
                 'before' => true,
                 'after' => true,
             ])
@@ -186,6 +191,14 @@ class LicensesTable extends Table
                     $client_name = $args['client_name'];
                     $query->matching('Clients', function ($q) use ($client_name) {
                         return $q->where(['Clients.client_name LIKE' => "%$client_name%"]);
+                    });
+                }]
+            )
+            ->add('customer_name', 'Search.Callback', [
+                'callback' => function ($query, $args, $filter) {
+                    $customer_name = $args['customer_name'];
+                    $query->matching('Customers', function ($q) use ($customer_name) {
+                        return $q->where(['Customers.customer_name LIKE' => "%$customer_name%"]);
                     });
                 }]
             );

@@ -14,6 +14,13 @@ use \PhpOffice\PhpWord\PhpWord;
  */
 class LicensesController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
 
     /**
      * Index method
@@ -22,12 +29,23 @@ class LicensesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users'],
-        ];
-        $licenses = $this->paginate($this->Licenses);
+        $licenses = $this->Licenses
+            ->find('search', ['search' => $this->request->query])
+            ->contain(['Statuses', 'Conditions',
+                'Clients' => ['fields' => ['id', 'client_name']],
+                'Customers' => ['fields' => ['id', 'customer_name']],
+            ]);
+        $conditions = $this->Licenses->Conditions->find('list');
 
-        $this->set(compact('licenses'));
+        $this->set('licenses', $this->paginate($licenses));
+        $this->set('conditions', $conditions);
+
+        // $this->paginate = [
+        //     'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Conditions', 'Languages', 'Users'],
+        // ];
+        // $licenses = $this->paginate($this->Licenses);
+
+        // $this->set(compact('licenses'));
     }
 
     /**
@@ -40,7 +58,7 @@ class LicensesController extends AppController
     public function view($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Languages', 'Users'],
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Conditions', 'Languages', 'Users'],
         ]);
 
         $this->set('license', $license);
@@ -77,9 +95,10 @@ class LicensesController extends AppController
         $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
+        $conditions = $this->Licenses->Conditions->find('list', ['limit' => 200]);
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
         $users = $this->Licenses->Users->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages'));
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'conditions', 'languages'));
     }
 
     /**
@@ -108,9 +127,10 @@ class LicensesController extends AppController
         $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
+        $conditions = $this->Licenses->Conditions->find('list', ['limit' => 200]);
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
         $users = $this->Licenses->Users->find('list', ['limit' => 200]);
-        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'languages'));
+        $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'conditions', 'languages'));
     }
 
     /**
@@ -181,7 +201,7 @@ class LicensesController extends AppController
         $templateProcessor->setValue('notice', preg_replace("/\r\n|\r|\n/", "<w:br />", $license['notice']));
         //ダウンロード用
         header("Content-Description: File Transfer");
-        header('Content-Disposition: attachment; filename="' . 'ライセンス証書'. '.docx"');
+        header('Content-Disposition: attachment; filename="' . 'ライセンス証書' . '.docx"');
         header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
         header('Content-Transfer-Encoding: binary');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

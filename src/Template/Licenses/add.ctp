@@ -53,6 +53,7 @@ $this->element('datepicker');
     echo $this->Form->control('client_id', ['options' => $clients]);
     echo $this->Form->control('customer_id', ['options' => $customers]);
     echo $this->Form->control('order_id', ['options' => $orders]);
+    echo $this->Form->control('condition_id', ['options' => $conditions]);
     echo $this->Form->control('status_id', ['options' => $statuses]);
     echo $this->Form->control('issued', ['type'=>'text', 'class'=>'datepicker']);
     echo $this->Form->control('license_no');

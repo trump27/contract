@@ -64,6 +64,7 @@ class License extends Entity
         'startdate' => true,
         'enddate' => true,
         'license_key' => true,
+        'condition_id' => true,
         'notice' => true,
         'file' => true,
         'dir' => true,

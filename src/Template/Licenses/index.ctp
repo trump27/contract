@@ -11,6 +11,20 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Licenses') ?></h1>
+
+<?php
+echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
+echo $this->Form->input('condition_id', ['label' => __('Conditions').'　', 'empty' => '---']);
+echo $this->Form->input('client_name', ['label' => '　' . __('Client Name') . '　', 'size' => 10]);
+echo $this->Form->input('customer_name', ['label' => '　' . __('Customer Name') . '　', 'size' => 10]);
+echo $this->Form->input('license_no', ['label' => '　'.__('License No').'　', 'size' => 10]);
+
+echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
+echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
+echo $this->Form->end();
+?>
+<div>&nbsp;</div>
+
 <table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -19,6 +33,7 @@ $this->start('tb_actions');
             <th><?= $this->Paginator->sort('client_id'); ?></th>
             <th><?= $this->Paginator->sort('customer_id'); ?></th>
             <th><?= $this->Paginator->sort('license_name'); ?></th>
+            <th><?= $this->Paginator->sort('condition_id'); ?></th>
             <th><?= $this->Paginator->sort('status_id'); ?></th>
             <th><?= $this->Paginator->sort('issued'); ?></th>
             <th><?= $this->Paginator->sort('license_no'); ?></th>
@@ -45,11 +60,14 @@ $this->start('tb_actions');
                 <?= h($license->license_name) ?>
             </td>
             <td>
+                <?= $license->has('condition') ? $license->condition->name : '' ?>
+            </td>
+            <td>
                 <?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?>
             </td>
             <td><?= h($license->issued) ?></td>
             <td><?= h($license->license_no) ?></td>
-            <td><?= h($license->license_qty) ?></td>
+            <td align="right"><?= h($license->license_qty) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
