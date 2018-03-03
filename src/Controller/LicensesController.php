@@ -64,6 +64,14 @@ class LicensesController extends AppController
         $this->set('vw_license', $vw_license);
     }
 
+    // ステータス変更
+    private function saveOrderStatus($order_id=null) {
+        if (empty($order_id)) return;
+        $order = $this->Licenses->Orders->get($order_id);
+        $order->status_id =99;
+        $this->Licenses->Orders->save($order);
+    }
+
     /**
      * Add method
      *
@@ -84,6 +92,7 @@ class LicensesController extends AppController
         if ($this->request->is('post')) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
             if ($this->Licenses->save($license)) {
+                $this->saveOrderStatus($license->order_id);
                 $this->Flash->success(__('The license has been saved.'));
 
                 return $this->redirect(['action' => 'view', $license->id]);
@@ -116,6 +125,7 @@ class LicensesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
             if ($this->Licenses->save($license)) {
+                $this->saveOrderStatus($license->order_id);
                 $this->Flash->success(__('The license has been saved.'));
 
                 return $this->redirect(['action' => 'view', $license->id]);
