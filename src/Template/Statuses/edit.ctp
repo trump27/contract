@@ -53,7 +53,7 @@ $this->end();
 <fieldset>
     <legend><?= __('Edit {0}', ['Status']) ?></legend>
     <?php
-    echo $this->Form->control('code');
+    // echo $this->Form->control('code');
     echo $this->Form->control('name');
     ?>
 </fieldset>

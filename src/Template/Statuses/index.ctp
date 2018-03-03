@@ -13,7 +13,7 @@ $this->start('tb_actions');
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('code'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('code'); ?></th> -->
             <th><?= $this->Paginator->sort('name'); ?></th>
         </tr>
     </thead>
@@ -27,7 +27,7 @@ $this->start('tb_actions');
                 <?= $this->Form->postLink('', ['action' => 'delete', $status->id], ['confirm' => __('Are you sure you want to delete # {0}?', $status->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
             <td align="right"><?= $this->Number->format($status->id) ?></td>
-            <td><?= h($status->code) ?></td>
+            <!-- <td><?= h($status->code) ?></td> -->
             <td><?= h($status->name) ?></td>
         </tr>
         <?php endforeach; ?>
