@@ -164,6 +164,7 @@ class LicensesController extends AppController
         }
         $list = $this->Licenses->findByCustomerId($customer_id)
             ->select(['id', 'issued', 'license_no'])
+            ->order(['issued'=> 'DESC'])
             ->map(function ($row) {
                 $row->license_no =  ' 【' . $row->issued .'】 '. $row->license_no;
                 return $row;
