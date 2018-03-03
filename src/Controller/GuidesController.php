@@ -46,7 +46,8 @@ class GuidesController extends AppController
             ->combine('id', 'customer_name')
             ->toArray();
         $this->set(compact('list'));
-        $this->render('ajaxcustomers', '');
+        // $this->render('ajaxcustomers', '');
+        $this->render('/Element/selectlist', '');
 
     }
 

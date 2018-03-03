@@ -66,11 +66,24 @@ $this->element('datepicker');
 echo $this->Form->control('client_id', ['options' => $clients]);
 echo $this->Form->control('customer_id', ['options' => $customers]);
 echo $this->Form->control('order_id', ['options' => $orders]);
-echo $this->Form->control('condition_id', ['options' => $conditions]);
+?>
+<div class="form-group">
+<div class=" col-sm-offset-3 col-md-offset-3">
+<button type="button" class="btn btn-primary"
+    data-toggle="modal" data-target="#licenseModal" style="margin-left:15px">
+登録済みライセンスを確認する
+</button>
+</div>
+</div>
+<?php
+
+echo $this->Form->control('relate_no');
+echo $this->Form->control('condition_id', ['options' => $conditions,
+    'help'=>Cake\Utility\Text::toList($conditions->toArray(), $and = 'と').'のいずれかの状態を選択'
+    ]);
 echo $this->Form->control('status_id', ['options' => $statuses]);
 echo $this->Form->control('issued', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_no');
-echo $this->Form->control('relate_no');
 echo $this->Form->control('product_name');
 echo $this->Form->control('license_name');
 echo $this->Form->control('language_id', ['options' => $languages]);
@@ -85,3 +98,7 @@ echo $this->Form->control('file', ['type' => 'file', 'label' => '新しいファ
 </fieldset>
 <?=$this->Form->button(__("Save"), ['class' => 'btn-primary']);?>
 <?=$this->Form->end()?>
+
+<?php
+echo $this->element('vw_license_dialog');
+?>

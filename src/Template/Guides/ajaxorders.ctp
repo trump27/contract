@@ -1,5 +1,3 @@
-<?php //debug($list);?>
-<?php //debug($list->toArray());?>
 <div class="container-fluidxx" style="height:200px; overflow:auto;">
 <table class="table table-bordered table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>

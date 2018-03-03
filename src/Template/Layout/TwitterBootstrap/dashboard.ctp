@@ -58,7 +58,7 @@ $this->start('tb_body_start');
                     <input type="text" class="form-control" placeholder="Search...">
                 </form> -->
                 <form class="navbar-form navbar-right" action="/clients">
-                    <input type="text" name="client_name" class="form-control" placeholder="クライアント名...">
+                    <input type="text" name="client_name" class="form-control" placeholder="<?=__('Client Name')?>...">
                 </form>
             </div>
         </div>

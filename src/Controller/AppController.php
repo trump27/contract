@@ -94,8 +94,8 @@ class AppController extends Controller
             ->combine('id', 'customer_name')
             ->toArray();
         $this->set(compact('list'));
-        $this->render('/Customers/customeroptions', '');
-        // $this->render('options', '');
+        // $this->render('/Customers/customeroptions', '');
+        $this->render('/Element/selectlist', '');
     }
 
     public function orderoptions($client_id = null)
@@ -103,27 +103,6 @@ class AppController extends Controller
         $this->autoRender = false;
         Configure::write('debug', 0);
         if (empty($client_id )) return null;
-
-        // $this->loadModel('Orders');
-        // $list = $this->Orders->find()
-        //     ->select(['Orders.id', 'order_date', 'Orders.product_name'])
-        //     ->contain('Clients', function ($q) use ($client_id) {
-        //         return $q
-        //             ->where(['Clients.id' => $client_id]);
-        //     })
-        //     ->matching('Clients', function ($q) use ($client_id) {
-        //         return $q
-        //             ->where(['Clients.id' => $client_id]);
-        //     })
-        //     ->map(function ($row) {
-        //         $row->product_name = '【' . $row->order_date . '】 ' . $row->product_name;
-        //         return $row;
-        //     })
-        //     ->combine('id', 'product_name')
-        //     ->toArray();
-        // debug($list);
-        // $this->set(compact('list'));
-        // $this->render('/Orders/orderoptions', '');
 
         $this->loadModel('Clients');
         $this->loadModel('Orders');
@@ -150,9 +129,9 @@ class AppController extends Controller
             })
             ->combine('id', 'product_name')
             ->toArray();
-        debug($list);
         $this->set(compact('list'));
-        $this->render('/Orders/orderoptions', '');
+        $this->render('/Element/selectlist', '');
+        // $this->render('/Orders/orderoptions', '');
 
     }
 }

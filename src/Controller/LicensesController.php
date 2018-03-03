@@ -57,11 +57,11 @@ class LicensesController extends AppController
      */
     public function view($id = null)
     {
-        $license = $this->Licenses->get($id, [
+        $vw_license = $this->Licenses->get($id, [
             'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Conditions', 'Languages', 'Users'],
         ]);
 
-        $this->set('license', $license);
+        $this->set('vw_license', $vw_license);
     }
 
     /**
@@ -131,6 +131,7 @@ class LicensesController extends AppController
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
         $users = $this->Licenses->Users->find('list', ['limit' => 200]);
         $this->set(compact('license', 'clients', 'customers', 'orders', 'statuses', 'conditions', 'languages'));
+
     }
 
     /**
@@ -151,6 +152,42 @@ class LicensesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /* 同一Customerのライセンスを一覧 */
+    public function getrelative($customer_id = null)
+    {
+        $this->autoRender = false;
+        Configure::write('debug', 0);
+        if (empty($customer_id)) {
+            return null;
+        }
+        $list = $this->Licenses->findByCustomerId($customer_id)
+            ->select(['id', 'issued', 'license_no'])
+            ->map(function ($row) {
+                $row->license_no =  ' 【' . $row->issued .'】 '. $row->license_no;
+                return $row;
+            })
+            ->combine('id', 'license_no')
+            ->toArray();
+        $list = [""=>"---"] + $list;
+        $this->set(compact('list'));
+        $this->render('/Element/selectlist', '');
+    }
+
+    /* 同一Customerのライセンスを一覧 */
+    public function getinfoview($license_id = null)
+    {
+        $this->autoRender = false;
+        Configure::write('debug', 0);
+        if (empty($license_id)) {
+            return null;
+        }
+        $vw_license = $this->Licenses->get($license_id, [
+            'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Conditions', 'Languages', 'Users'],
+        ]);
+        $this->set('vw_license', $vw_license);
+        $this->render('/Element/vw_license', '');
     }
 
     public function doc($id = null)
