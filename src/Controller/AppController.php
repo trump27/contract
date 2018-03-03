@@ -98,6 +98,7 @@ class AppController extends Controller
         $this->render('/Element/selectlist', '');
     }
 
+    // js用　order一覧をオプションで返す
     public function orderoptions($client_id = null)
     {
         $this->autoRender = false;
@@ -119,6 +120,8 @@ class AppController extends Controller
                 return $q
                     ->where(['Clients.id' => $client_id]);
             })
+            ->where(['Orders.status_id IS' => null])
+            ->orWhere(['Orders.status_id <>' => 99])
             ->matching('Clients', function ($q) use ($ids) {
                 return $q
                     ->where(['Clients.id IN' => $ids]);

@@ -55,28 +55,17 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   </button>
 </div>
 
-<!-- <div class="jumbotron">
-  <h1>利用申込書作成依頼</h1>
-  <p>ＸＸＸＸＸ</p>
-</div> -->
-
-<!-- <div class="jumbotron">
-  <h1>契約登録</h1>
-  <p>契約書PDFを登録する。</p>
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
-  契約を登録する
-  </button>
-</div> -->
 
 
 
 
-<div class="bs-callout bs-callout-default">
+
+<!-- <div class="bs-callout bs-callout-default">
   <h4>Default Callout</h4>
   This is a default callout.
-</div>
+</div> -->
 
-<div class="bs-callout bs-callout-primary">
+<!-- <div class="bs-callout bs-callout-primary">
   <h4>Primary Callout</h4>
   This is a primary callout.
 </div>
@@ -99,14 +88,9 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <div class="bs-callout bs-callout-danger">
   <h4>Danger Callout</h4>
   This is a danger callout.
-</div>
+</div> -->
 
 
-
-<!-- Button trigger modal -->
-<button type="button" data-url="/requests/add/" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#orderModal">
-  Launch demo modal
-</button>
 
 <?php
 echo $this->element('selectcustomer');

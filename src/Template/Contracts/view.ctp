@@ -56,16 +56,16 @@ $this->end();
             <td><?= h($contract->contract_date) ?></td>
         </tr>
         <tr>
-            <td><?= __('File') ?></td>
-            <td><?= $this->My->downloadlink($contract) ?></td>
-        </tr>
-        <tr>
             <td><?= __('Remarks') ?></td>
             <td><?= $this->Text->autoParagraph(h($contract->remarks)); ?></td>
         </tr>
         <tr>
             <td><?= __('User') ?></td>
             <td><?= $contract->has('user') ? $this->Html->link($contract->user->name, ['controller' => 'Users', 'action' => 'view', $contract->user->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <td><?= __('File') ?></td>
+            <td><?= $this->My->downloadlink($contract) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>

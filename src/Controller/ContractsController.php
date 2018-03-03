@@ -97,7 +97,6 @@ class ContractsController extends AppController
 
     // ステータス変更
     private function saveOrderStatus($order_id=null) {
-        $this->log($order_id);
         if (empty($order_id)) return;
         $order = $this->Contracts->Orders->get($order_id);
         $order->status_id =99;

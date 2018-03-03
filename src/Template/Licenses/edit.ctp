@@ -47,18 +47,19 @@ $this->element('datepicker');
 <?=$this->Html->script('customeroptions', ['block' => true])?>
 <?=$this->Html->script('orderoptions',['block' => true]) ?>
 <h1 class="page-header"><?=__('Licenses')?></h1>
-<?=$this->Form->create($license, ['align' => [
-    'type' => 'file',
-    'sm' => [
-        'left' => 3,
-        'middle' => 8,
-        'right' => 1,
-    ],
-    'md' => [
-        'left' => 3,
-        'middle' => 6,
-        'right' => 2,
-    ],
+<?=$this->Form->create($license, [
+    'type'=> 'file',
+    'align' => [
+        'sm' => [
+            'left' => 3,
+            'middle' => 8,
+            'right' => 1
+        ],
+        'md' => [
+            'left' => 3,
+            'middle' => 6,
+            'right' => 2
+        ]
 ]]);?>
 <fieldset>
     <legend><?=__('Edit {0}', ['License'])?></legend>

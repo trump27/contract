@@ -72,6 +72,15 @@ class LicensesTable extends Table
                 ],
             ],
         ]);
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'file' => [
+                'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}',
+                'nameCallback' => function ($data, $settings) {
+                    return urlencode($data['name']);
+                },
+                'keepFilesOnDelete' => false,
+            ],
+        ]);
 
         $this->addBehavior('Search.Search');
 
@@ -91,12 +100,12 @@ class LicensesTable extends Table
 
         $validator
             ->date('issued');
-            // ->allowEmpty('issued');
+        // ->allowEmpty('issued');
 
         $validator
             ->scalar('license_no')
             ->maxLength('license_no', 20);
-            // ->allowEmpty('license_no');
+        // ->allowEmpty('license_no');
 
         $validator
             ->scalar('relate_no')
@@ -106,24 +115,24 @@ class LicensesTable extends Table
         $validator
             ->scalar('product_name')
             ->maxLength('product_name', 256);
-            // ->allowEmpty('product_name');
+        // ->allowEmpty('product_name');
 
         $validator
             ->scalar('license_name')
             ->maxLength('license_name', 256);
-            // ->allowEmpty('license_name');
+        // ->allowEmpty('license_name');
 
         $validator
             ->integer('license_qty');
-            // ->allowEmpty('license_qty');
+        // ->allowEmpty('license_qty');
 
         $validator
             ->date('startdate');
-            // ->allowEmpty('startdate');
+        // ->allowEmpty('startdate');
 
         $validator
             ->date('enddate');
-            // ->allowEmpty('enddate');
+        // ->allowEmpty('enddate');
 
         $validator
             ->scalar('license_key')
@@ -135,7 +144,7 @@ class LicensesTable extends Table
             ->allowEmpty('notice');
 
         $validator
-            ->scalar('file')
+            // ->scalar('file')
             ->maxLength('file', 256)
             ->allowEmpty('file');
 

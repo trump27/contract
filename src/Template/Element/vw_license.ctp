@@ -75,7 +75,7 @@
         </tr>
         <tr>
             <td><?= __('File') ?></td>
-            <td><?= h($vw_license->file) ?></td>
+            <td><?= $this->My->downloadlink($vw_license) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>
