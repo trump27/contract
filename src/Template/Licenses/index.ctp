@@ -31,12 +31,14 @@ echo $this->Form->end();
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('client_id'); ?></th>
-            <th><?= $this->Paginator->sort('customer_id'); ?></th>
-            <th><?= $this->Paginator->sort('license_name'); ?></th>
-            <th><?= $this->Paginator->sort('condition_id'); ?></th>
-            <th><?= $this->Paginator->sort('status_id'); ?></th>
-            <th><?= $this->Paginator->sort('issued'); ?></th>
-            <th><?= $this->Paginator->sort('license_no'); ?></th>
+            <th><?= $this->Paginator->sort('customer_id'); ?>
+                <br/><?= $this->Paginator->sort('license_no'); ?></th>
+            <th><?= $this->Paginator->sort('license_name'); ?>
+                <br/><?= $this->Paginator->sort('issued'); ?></th>
+            <th><?= $this->Paginator->sort('condition_id'); ?>
+                <br/><?= $this->Paginator->sort('startdate'); ?></th>
+            <th><?= $this->Paginator->sort('status_id'); ?>
+                <br/><?= $this->Paginator->sort('enddate');?></th>
             <th><?= $this->Paginator->sort('license_qty'); ?></th>
         </tr>
     </thead>
@@ -55,18 +57,20 @@ echo $this->Form->end();
             </td>
             <td>
                 <?= $license->has('customer') ? $this->Html->link($this->my->trunc($license->customer->customer_name), ['controller' => 'Customers', 'action' => 'view', $license->customer->id]) : '' ?>
+                <br/><?= h($license->license_no) ?>
             </td>
             <td>
                 <?= h($license->license_name) ?>
+                <br/><?= h($license->issued) ?>
             </td>
             <td>
                 <?= $license->has('condition') ? $license->condition->name : '' ?>
+                <br/><?= h($license->startdate) ?>
             </td>
             <td>
                 <?= $license->has('status') ? $this->Html->link($license->status->name, ['controller' => 'Statuses', 'action' => 'view', $license->status->id]) : '' ?>
+                <br/><?= h($license->enddate) ?>
             </td>
-            <td><?= h($license->issued) ?></td>
-            <td><?= h($license->license_no) ?></td>
             <td align="right"><?= h($license->license_qty) ?></td>
         </tr>
         <?php endforeach; ?>
