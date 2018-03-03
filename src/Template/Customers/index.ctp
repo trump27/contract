@@ -46,13 +46,13 @@ echo $this->Form->end();
                 <?= $this->Form->postLink('', ['action' => 'delete', $customer->id], ['confirm' => __('Are you sure you want to delete # {0}?', $customer->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
             </td>
             <td align="right"><?= $this->Number->format($customer->id) ?></td>
-            <td>
+            <td title="<?=$customer->client->client_name?>">
                 <?= $customer->has('client') ? $this->Html->link($this->my->trunc($customer->client->client_name), ['controller' => 'Clients', 'action' => 'view', $customer->client->id]) : '' ?>
             </td>
             <td><?= h($this->my->trunc($customer->customer_name)) ?></td>
             <!-- <td><?= h($this->my->trunc($customer->address)) ?></td> -->
             <td><?= h($customer->identity2) ?></td>
-            <td><?= $this->my->trunc($customer->division) ?></td>
+            <td title="<?=$customer->division?>"><?= $this->my->trunc($customer->division) ?></td>
             <td><?= h($customer->sales_staff) ?></td>
         </tr>
         <?php endforeach; ?>

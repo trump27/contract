@@ -29,6 +29,7 @@ class OrdersController extends AppController
     {
         $orders = $this->Orders
             ->find('search', ['search' => $this->request->query])
+            ->order(['order_date' =>'DESC'])
             ->contain(['Statuses',
                 'Clients' => ['fields' => ['id', 'company_code' , 'client_name']]
             ]);

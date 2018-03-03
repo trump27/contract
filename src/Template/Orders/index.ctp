@@ -37,7 +37,7 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('id'); ?></th>
             <th><?= $this->Paginator->sort('company_code'); ?></th>
             <th><?= $this->Paginator->sort('company_name1'); ?></th>
-            <th><?= $this->Paginator->sort('order_no'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('order_no'); ?></th> -->
             <th><?= $this->Paginator->sort('status_msg'); ?></th>
             <th><?= $this->Paginator->sort('order_date'); ?></th>
             <th><?= $this->Paginator->sort('delivery_date'); ?></th>
@@ -61,13 +61,13 @@ echo $this->Form->end();
                 <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_code ?>
             </td>
             <td><?= h($this->my->trunc($order->company_name1)) ?></td>
-            <td><?= $order->order_no .'-'.$order->order_detail_no ?></td>
+            <!-- <td><?= $order->order_no .'-'.$order->order_detail_no ?></td> -->
             <td><?= h($order->status_msg) ?></td>
             <td><?= h($this->my->trunc($order->order_date)) ?></td>
             <td><?= h($order->delivery_date) ?></td>
             <td><?= h($order->sales_date) ?></td>
             <td><?= $this->my->trunc($order->product_category,20) ?></td>
-            <td><?= $this->my->trunc($order->product_name) ?></td>
+            <td title="<?=$order->product_name?>"><?= $this->my->trunc($order->product_name) ?></td>
             <td><?= h($order->sales_staff) ?></td>
         </tr>
         <?php endforeach; ?>
