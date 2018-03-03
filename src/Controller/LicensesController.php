@@ -36,9 +36,10 @@ class LicensesController extends AppController
                 'Customers' => ['fields' => ['id', 'customer_name']],
             ]);
         $conditions = $this->Licenses->Conditions->find('list');
+        $statuses = $this->Licenses->Statuses->find('list');
 
         $this->set('licenses', $this->paginate($licenses));
-        $this->set('conditions', $conditions);
+        $this->set(compact('conditions', 'statuses'));
 
         // $this->paginate = [
         //     'contain' => ['Clients', 'Customers', 'Orders', 'Statuses', 'Conditions', 'Languages', 'Users'],

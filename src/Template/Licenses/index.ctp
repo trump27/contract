@@ -14,7 +14,8 @@ $this->start('tb_actions');
 
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
-echo $this->Form->input('condition_id', ['label' => __('Conditions').'　', 'empty' => '---']);
+echo $this->Form->input('status_id', ['label' => __('Status Id') . '　', 'empty' => '---']);
+echo $this->Form->input('condition_id', ['label' => '　' .__('Conditions').'　', 'empty' => '---']);
 echo $this->Form->input('client_name', ['label' => '　' . __('Client Name') . '　', 'size' => 10]);
 echo $this->Form->input('customer_name', ['label' => '　' . __('Customer Name') . '　', 'size' => 10]);
 echo $this->Form->input('license_no', ['label' => '　'.__('License No').'　', 'size' => 10]);

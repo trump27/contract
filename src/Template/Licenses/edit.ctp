@@ -93,6 +93,7 @@ echo $this->Form->control('startdate', ['type' => 'text', 'class' => 'datepicker
 echo $this->Form->control('enddate', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_key');
 echo $this->Form->control('notice');
+echo $this->Form->control('status_id', ['value' => 99]);
 echo $this->Form->control('file', ['disabled' => 'disabled', 'value' => urldecode($license->file)]);
 echo $this->Form->control('file', ['type' => 'file', 'label' => '新しいファイル']);
 ?>

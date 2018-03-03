@@ -67,7 +67,7 @@ echo $this->Form->control('order_id', ['options' => $orders]);
 echo $this->Form->control('condition_id', ['options' => $conditions,
     'help' => Cake\Utility\Text::toList($conditions->toArray(), $and = 'と') . 'のいずれかの状態を選択',
 ]);
-echo $this->Form->control('status_id', ['options' => $statuses]);
+// echo $this->Form->control('status_id', ['options' => $statuses]);
 echo $this->Form->control('issued', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_no');
 echo $this->Form->control('relate_no');
@@ -79,6 +79,7 @@ echo $this->Form->control('startdate', ['type' => 'text', 'class' => 'datepicker
 echo $this->Form->control('enddate', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_key');
 echo $this->Form->control('notice');
+echo $this->Form->control('status_id', ['value'=>20]);
 echo $this->Form->control('file', ['type' => 'file']);
 ?>
 </fieldset>

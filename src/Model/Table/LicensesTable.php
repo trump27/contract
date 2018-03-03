@@ -190,6 +190,7 @@ class LicensesTable extends Table
     {
         $searchManager = $this->behaviors()->Search->searchManager();
         $searchManager
+            ->value('status_id')
             ->value('condition_id')
             ->like('license_no', [
                 'before' => true,
