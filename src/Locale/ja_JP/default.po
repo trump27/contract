@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2018-03-02 23:30+0900\n"
-"PO-Revision-Date: 2018-03-03 01:03+0900\n"
+"PO-Revision-Date: 2018-03-03 21:28+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -655,7 +655,7 @@ msgstr "取引先名1"
 #: Template/Clients/recent.ctp:26 Template/Clients/view.ctp:186
 #: Template/Orders/view.ctp:65
 msgid "Status Msg"
-msgstr "ステータス"
+msgstr "状態"
 
 #: Template/Clients/recent.ctp:27 Template/Clients/view.ctp:185
 #: Template/Guides/ajaxorders.ctp:11 Template/Orders/view.ctp:101

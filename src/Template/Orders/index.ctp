@@ -35,16 +35,18 @@ echo $this->Form->end();
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= $this->Paginator->sort('id'); ?></th>
-            <th><?= $this->Paginator->sort('company_code'); ?></th>
-            <th><?= $this->Paginator->sort('company_name1'); ?></th>
+            <th><?= $this->Paginator->sort('company_name1'); ?>
+                <br/><?= $this->Paginator->sort('company_code'); ?></th>
             <!-- <th><?= $this->Paginator->sort('order_no'); ?></th> -->
-            <th><?= $this->Paginator->sort('status_msg'); ?></th>
-            <th><?= $this->Paginator->sort('order_date'); ?></th>
-            <th><?= $this->Paginator->sort('delivery_date'); ?></th>
-            <th><?= $this->Paginator->sort('sales_date'); ?></th>
-            <th><?= $this->Paginator->sort('product_category'); ?></th>
-            <th><?= $this->Paginator->sort('product_name'); ?></th>
-            <th><?= $this->Paginator->sort('sales_staff'); ?></th>
+            <th><?= $this->Paginator->sort('order_date'); ?>
+                <br/><?= $this->Paginator->sort('status_msg'); ?></th>
+            <th><?= $this->Paginator->sort('delivery_date'); ?>
+                <br/><?= $this->Paginator->sort('sales_date'); ?></th>
+            <th><?= $this->Paginator->sort('product_category'); ?>
+                <br/><?= $this->Paginator->sort('product_name'); ?></th>
+            <th><?= $this->Paginator->sort('sales_staff'); ?>
+                <br/><?= $this->Paginator->sort('price');?></th>
+            <th><?= $this->Paginator->sort('status_id'); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -57,18 +59,18 @@ echo $this->Form->end();
                 <!-- <?= $this->Form->postLink('', ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
             </td>
             <td align="right"><?= $this->Number->format($order->id) ?></td>
-            <td>
-                <?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_code ?>
-            </td>
-            <td><?= h($this->my->trunc($order->company_name1)) ?></td>
+            <td title="<?=$order->company_name1?>"><?= h($this->my->trunc($order->company_name1)) ?>
+                <br/><?= $order->has('client') ? $this->Html->link($this->my->trunc($order->client->company_code), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_code ?></td>
             <!-- <td><?= $order->order_no .'-'.$order->order_detail_no ?></td> -->
-            <td><?= h($order->status_msg) ?></td>
-            <td><?= h($this->my->trunc($order->order_date)) ?></td>
-            <td><?= h($order->delivery_date) ?></td>
-            <td><?= h($order->sales_date) ?></td>
-            <td><?= $this->my->trunc($order->product_category,20) ?></td>
-            <td title="<?=$order->product_name?>"><?= $this->my->trunc($order->product_name) ?></td>
-            <td><?= h($order->sales_staff) ?></td>
+            <td><?= h($this->my->trunc($order->order_date)) ?>
+                <br/><?= h($order->status_msg) ?></td>
+            <td><?= h($order->delivery_date) ?>
+                <br/><?= h($order->sales_date) ?></td>
+            <td title="<?=$order->product_name?>"><?= $this->my->trunc($order->product_category,20) ?>
+                <br/><?= $this->my->trunc($order->product_name,20) ?></td>
+            <td><?= h($order->sales_staff) ?>
+                <br/><?= $this->Number->format($order->price) ?></td>
+            <td><?= $order->has('status') ? $order->status->name : $order->status_id ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

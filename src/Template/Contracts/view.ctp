@@ -45,7 +45,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Order') ?></td>
-            <td><?= $contract->has('order') ? $this->Html->link($contract->order->product_name, ['controller' => 'Customers', 'action' => 'view', $contract->customer->id]) : $contract->order_id ?></td>
+            <td><?= $contract->has('order') ? $this->Html->link($contract->order->product_name, ['controller' => 'Orders', 'action' => 'view', $contract->order_id]) : $contract->order_id ?></td>
         </tr>
         <tr>
             <td><?= __('Contractname') ?></td>

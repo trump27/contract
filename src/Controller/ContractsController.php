@@ -58,7 +58,7 @@ class ContractsController extends AppController
      */
     public function add($customer_id = null)
     {
-        // from ajax (selectcustomer.ctp)
+        // js uses (selectcustomer.ctp)
         $data = [];
         if ($customer_id) {
             $data = $this->Contracts->Customers->find()
@@ -78,6 +78,7 @@ class ContractsController extends AppController
             $contract['status_id'] = $sts['status_id'];
 
             if ($this->Contracts->save($contract)) {
+                $this->saveOrderStatus($contract->order_id);
                 $this->Flash->success(__('The contract has been saved.'));
 
                 return $this->redirect(['action' => 'view', $contract->id]);
@@ -92,6 +93,15 @@ class ContractsController extends AppController
         $orders = $this->Contracts->Orders->find('list', ['limit' => 10]);
         $statuses = $this->Contracts->Statuses->find('list', ['limit' => 200]);
         $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users', 'orders', 'statuses'));
+    }
+
+    // ステータス変更
+    private function saveOrderStatus($order_id=null) {
+        $this->log($order_id);
+        if (empty($order_id)) return;
+        $order = $this->Contracts->Orders->get($order_id);
+        $order->status_id =99;
+        $this->Contracts->Orders->save($order);
     }
 
     /**
@@ -115,6 +125,7 @@ class ContractsController extends AppController
             $contract['status_id'] = $sts['status_id'];
 
             if ($this->Contracts->save($contract)) {
+                $this->saveOrderStatus($contract->order_id);
                 $this->Flash->success(__('The contract has been saved.'));
 
                 return $this->redirect(['action' => 'view', $contract->id]);

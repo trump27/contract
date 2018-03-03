@@ -87,7 +87,7 @@ $this->element('datepicker');
     echo $this->Form->control('sales_staff');
     echo $this->Form->control('product_detail');
     echo $this->Form->control('status_id', ['options' => $statuses]);
-    echo $this->Form->control('file');
+    // echo $this->Form->control('file');
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>
