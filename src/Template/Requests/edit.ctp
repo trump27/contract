@@ -63,6 +63,16 @@ $this->element('datepicker');
     <?php
     echo $this->Form->control('client_id', ['options' => $clients]);
     echo $this->Form->control('customer_id', ['options' => $customers]);
+    ?>
+    <div class="form-group">
+    <div class=" col-sm-offset-3 col-md-offset-3">
+    <button type="button" class="btn btn-primary"
+        data-toggle="modal" data-target="#licenseModal" style="margin-left:15px">
+    登録済みライセンスを確認する
+    </button>
+    </div>
+    </div>
+    <?php
     echo $this->Form->control('appform_id', ['options' => $appforms]);
     echo $this->Form->control('status_id', ['options' => $statuses]);
     echo $this->Form->control('product_name');
@@ -76,3 +86,7 @@ $this->element('datepicker');
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>
 <?= $this->Form->end() ?>
+
+<?php
+echo $this->element('vw_license_dialog');
+?>
