@@ -27,7 +27,13 @@ $this->start('tb_body_start');
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-divider"></li>
                     <li class="active"><?= $this->Html->link(__('Guide'), ['controller' => 'Guides', 'action' => 'index']); ?></li>
-                    <li><?= $this->Html->link('Recent', ['controller' => 'Clients', 'action' => 'recent']); ?></li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">State <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><?= $this->Html->link('未処理タスク', ['controller' => 'Clients', 'action' => 'state']); ?></li>
+                            <li><?= $this->Html->link('最近の更新', ['controller' => 'Clients', 'action' => 'recent']); ?></li>
+                        </ul>
+                    </li>
                     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">Operations <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -41,6 +47,7 @@ $this->start('tb_body_start');
                             <li><?= $this->Html->link(__('List Supportcontracts'), ['controller' => 'Supportcontracts', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Productinfos'), ['controller' => 'Productinfos', 'action' => 'index']); ?></li>
                         </ul>
+                    </li>
                     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -52,6 +59,7 @@ $this->start('tb_body_start');
                             <li><?= $this->Html->link(__('Conditions'), ['controller' => 'Conditions', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('Users'), ['controller' => 'Users', 'action' => 'index']); ?></li>
                         </ul>
+                    </li>
                     <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']); ?></li>
                 </ul>
                 <!-- <form class="navbar-form navbar-right">

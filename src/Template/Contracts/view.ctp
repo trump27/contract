@@ -60,6 +60,10 @@ $this->end();
             <td><?= $this->Text->autoParagraph(h($contract->remarks)); ?></td>
         </tr>
         <tr>
+            <td><?= __('Status') ?></td>
+            <td><?= $contract->has('status') ? $this->Html->link($contract->status->name, ['controller' => 'Statuses', 'action' => 'view', $contract->status->id]) : '' ?></td>
+        </tr>
+        <tr>
             <td><?= __('User') ?></td>
             <td><?= $contract->has('user') ? $this->Html->link($contract->user->name, ['controller' => 'Users', 'action' => 'view', $contract->user->id]) : '' ?></td>
         </tr>

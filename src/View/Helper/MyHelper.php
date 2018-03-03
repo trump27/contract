@@ -56,13 +56,40 @@ class MyHelper extends Helper
     public function qty()
     {
         return [
-            3=>'3ライセンスパック',
-            5=>'5ライセンスパック',
-            10=>'10ライセンスパック',
-            20=>'20ライセンスパック',
-            30=>'30ライセンスパック',
-            40=>'40ライセンスパック',
-            50=>'50ライセンスパック',
+            3 => '3ライセンスパック',
+            5 => '5ライセンスパック',
+            10 => '10ライセンスパック',
+            20 => '20ライセンスパック',
+            30 => '30ライセンスパック',
+            40 => '40ライセンスパック',
+            50 => '50ライセンスパック',
         ];
+    }
+
+    // 進捗のラベル
+    public function todo($id = null, $name = null)
+    {
+        switch ($id) {
+            case 1:
+                $label = "danger";
+                $name = "未処理";
+                break;
+            case 10:
+                $label = "warning";
+                $name = "企画待ち";
+                break;
+            case 20:
+                $label = "info";
+                $name = "サポート待ち";
+                break;
+            case 99:
+                $label = "default";
+                $name = "処理済み";
+                break;
+            default:
+                $label = "danger";
+                $name = "未処理";
+        }
+        return "<span class='label label-$label'>$name</span>";
     }
 }

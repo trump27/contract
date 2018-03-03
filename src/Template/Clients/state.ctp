@@ -12,8 +12,8 @@ $this->start('tb_actions');
 
 
 <div class="jumbotron">
-  <h1>Recent 20 records</h1>
-  <p>最近更新されたデータ</p>
+  <h1>未処理タスク</h1>
+  <p>処理が完了していないデータの一覧</p>
 </div>
 <h2 class="page-header"><?=__('Orders')?></h2>
 <table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
@@ -21,6 +21,7 @@ $this->start('tb_actions');
         <tr>
             <th class="actions"><?=__('Actions');?></th>
             <!-- <th><?=__('id');?></th> -->
+            <!-- <th><?=__('company_code');?></th> -->
             <th><?=__('Company Name1');?></th>
             <th><?=__('Status Msg');?></th>
             <th><?=__('Status Id');?></th>
@@ -38,8 +39,10 @@ $this->start('tb_actions');
                 <?=$this->Html->link('', ['controller' => 'Orders', 'action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info'])?>
             </td>
             <!-- <td><?=$this->Number->format($order->id)?></td> -->
+            <!-- <td><?=h($order->company_code)?></td> -->
             <td><?=$order->has('client') ? $this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_name1; ?></td>
             <td><?=h($order->status_msg)?></td>
+            <!-- <td><?= $order->has('status') ? $order->status->name : '未処理' ?></td> -->
             <td><?= $this->My->todo($order->status_id) ?></td>
 
             <td><?=h($order->order_date)?></td>
@@ -59,7 +62,7 @@ $this->start('tb_actions');
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
             <th><?= __('Id'); ?></th>
-            <th><?= __('Client');?></th>
+            <th><?= __('Client'); ?></th>
             <th><?= __('Contract Date'); ?></th>
             <!-- <th><?= __('customer_id'); ?></th> -->
             <th><?= __('Contractname'); ?></th>
