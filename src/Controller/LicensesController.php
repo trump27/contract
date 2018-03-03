@@ -32,7 +32,7 @@ class LicensesController extends AppController
         $licenses = $this->Licenses
             ->find('search', ['search' => $this->request->query])
             ->contain(['Statuses', 'Conditions',
-                'Clients' => ['fields' => ['id', 'client_name']],
+                'Clients' => ['fields' => ['id', 'client_name', 'partner_id']],
                 'Customers' => ['fields' => ['id', 'customer_name']],
             ]);
         $conditions = $this->Licenses->Conditions->find('list');

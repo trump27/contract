@@ -30,7 +30,7 @@ echo $this->Form->end();
 ?>
 <div>&nbsp;</div>
 
-<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
@@ -49,7 +49,7 @@ echo $this->Form->end();
     </thead>
     <tbody>
         <?php foreach ($orders as $order): ?>
-        <tr>
+        <tr class="<?=$order->client->partner_id?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>

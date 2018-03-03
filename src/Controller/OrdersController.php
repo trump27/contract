@@ -31,7 +31,7 @@ class OrdersController extends AppController
             ->find('search', ['search' => $this->request->query])
             ->order(['order_date' =>'DESC'])
             ->contain(['Statuses',
-                'Clients' => ['fields' => ['id', 'company_code' , 'client_name']]
+                'Clients' => ['fields' => ['id', 'company_code' , 'client_name', 'partner_id']]
             ]);
 
         $this->set('orders', $this->paginate($orders));

@@ -10,7 +10,7 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Request') ?></h1>
-<table class="table table-striped table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
@@ -25,7 +25,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($requests as $request): ?>
-        <tr>
+        <tr class="<?=$request->client->partner_id?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>

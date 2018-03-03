@@ -30,7 +30,7 @@ class SupportcontractsController extends AppController
     {
         $supportcontracts = $this->Supportcontracts
             ->find('search', ['search' => $this->request->query])
-            ->contain(['Clients' =>['fields' =>['id', 'client_name']]]);
+            ->contain(['Clients' =>['fields' =>['id', 'client_name', 'partner_id']]]);
         $this->set('supportcontracts', $this->paginate($supportcontracts));
 
         // $this->paginate = [
