@@ -65,10 +65,9 @@ $this->element('datepicker');
     <legend><?=__('Edit {0}', ['License'])?></legend>
     <?php
 echo $this->Form->hidden('mode', ['value'=>'edit']);
-echo $this->Form->control('status_id', ['value' => 99]);
+echo $this->Form->control('status_id', ['value' => 99, 'label'=>'依頼先']);
 echo $this->Form->control('client_id', ['options' => $clients]);
 echo $this->Form->control('customer_id', ['options' => $customers]);
-echo $this->Form->control('order_id', ['options' => $orders]);
 ?>
 <div class="form-group">
 <div class=" col-sm-offset-3 col-md-offset-3">
@@ -80,6 +79,7 @@ echo $this->Form->control('order_id', ['options' => $orders]);
 </div>
 <?php
 
+echo $this->Form->control('order_id', ['options' => $orders]);
 echo $this->Form->control('relate_no');
 echo $this->Form->control('condition_id', ['options' => $conditions,
     'help'=>Cake\Utility\Text::toList($conditions->toArray(), $and = 'と').'のいずれかの状態を選択'

@@ -116,7 +116,7 @@ class AppController extends Controller
         $ids = empty($subq['partner_id']) ? [$client_id] : [$client_id, $subq['partner_id']];
 
         $list = $this->Orders->find()
-            ->select(['Orders.id', 'order_date', 'Orders.company_name1', 'Orders.product_name']);
+            ->select(['Orders.id', 'order_date', 'Orders.company_name1', 'Orders.product_name', 'Orders.product_detail']);
 
         if ($mode <> 'edit') {
             // 編集時以外は未処理のみ表示
@@ -134,7 +134,8 @@ class AppController extends Controller
             });
 
         $data = $list->map(function ($row) {
-                $row->product_name = $row->order_date . ' 【' . $row->company_name1 . '】 ' . $row->product_name;
+                $row->product_name = $row->order_date . ' 【' . $row->company_name1 . '】 '
+                    . mb_convert_kana($row->product_name,'aks') . '/'. mb_convert_kana(mb_substr($row->product_detail,0,20),'aks');
                 return $row;
             })
             ->combine('id', 'product_name')
