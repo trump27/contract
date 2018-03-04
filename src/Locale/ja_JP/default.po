@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2018-03-04 13:03+0900\n"
-"PO-Revision-Date: 2018-03-04 13:07+0900\n"
+"PO-Revision-Date: 2018-03-04 23:03+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -788,7 +788,7 @@ msgstr "作成日"
 
 #: Template/Clients/view.ctp:78
 msgid "Related Customers"
-msgstr "関連する顧客"
+msgstr "関連する案件"
 
 #: Template/Clients/view.ctp:85 Template/Customers/index.ctp:17
 #: Template/Customers/view.ctp:41 Template/Licenses/index.ctp:20
