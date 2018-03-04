@@ -45,6 +45,7 @@ $this->element('datepicker');
 <fieldset>
     <legend><?= __('Add {0}', ['Request']) ?></legend>
     <?php
+    echo $this->Form->control('status_id', ['options' => $this->My->requestorder(), 'value' => 10, 'label' => '依頼']);
     echo $this->Form->control('client_id', ['options' => $clients, 'empty'=>'---']);
     echo $this->Form->control('customer_id', ['options' => $customers, 'empty'=>'---']);
     ?>
@@ -58,7 +59,6 @@ $this->element('datepicker');
     </div>
     <?php
     echo $this->Form->control('appform_id', ['options' => $appforms, 'empty'=>'---']);
-    echo $this->Form->control('status_id', ['options' => $statuses]);
     echo $this->Form->control('product_name');
     echo $this->Form->control('license_name');
     echo $this->Form->control('language_id', ['options' => $languages]);

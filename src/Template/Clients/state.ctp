@@ -7,8 +7,9 @@ $this->start('tb_actions');
     <li><?=$this->Html->link('最近更新されたデータ', ['controller' => 'Clients', 'action' => 'state', 'recent']);?></li>
     <li><?=$this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']);?></li>
     <li><?=$this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']);?></li>
-    <li><?=$this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']);?></li>
     <li><?=$this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']);?></li>
+    <li><?=$this->Html->link(__('List Requests'), ['controller' => 'Requests', 'action' => 'index']);?></li>
+    <li><?=$this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']);?></li>
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
@@ -57,6 +58,44 @@ $this->start('tb_actions');
 
         </tr>
         <?php endforeach;?>
+    </tbody>
+</table>
+
+<!-- Request -->
+<h2 class="page-header"><?= __('Request') ?></h2>
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th class="actions"><?= __('Actions'); ?></th>
+            <th><?= __('id'); ?></th>
+            <th><?= __('client_id'); ?></th>
+            <th><?= __('customer_id'); ?></th>
+            <th><?= __('appform_id'); ?></th>
+            <th><?= __('status_id'); ?></th>
+            <th><?= __('product_name'); ?></th>
+            <th><?= __('license_name'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($requests as $request): ?>
+        <tr class="<?=$request->client->partner_id?'active':''?>">
+
+            <td class="actions">
+                <?= $this->Html->link('', ['action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
+            </td>
+            <td><?= $this->Number->format($request->id) ?></td>
+            <td>
+                <?= $request->has('client') ? $this->Html->link($this->My->trunc($request->client->client_name), ['controller' => 'Clients', 'action' => 'view', $request->client->id]) : '' ?>
+            </td>
+            <td>
+                <?= $request->has('customer') ? $this->Html->link($request->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $request->customer->id]) : '' ?>
+            </td>
+            <td><?= h($request->appform->form_name) ?></td>
+            <td><?= $this->My->todo($request->status_id) ?></td>
+            <td><?= h($request->product_name) ?></td>
+            <td><?= h($request->license_name) ?></td>
+        </tr>
+        <?php endforeach; ?>
     </tbody>
 </table>
 

@@ -66,6 +66,15 @@ class MyHelper extends Helper
         ];
     }
 
+    // 数量
+    public function requestorder()
+    {
+        return [
+            10 => '企画へ',
+            99 => '完了',
+        ];
+    }
+
     // 進捗のラベル
     public function todo($id = null, $name = null)
     {
