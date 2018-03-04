@@ -54,7 +54,7 @@ class CustomersController extends AppController
     public function view($id = null)
     {
         $customer = $this->Customers->get($id, [
-            'contain' => ['Clients', 'Users', 'Contracts', 'Licenses'],
+            'contain' => ['Clients', 'Users', 'Contracts', 'Licenses', 'Contracts.Contractnames'],
         ]);
 
         $this->set('customer', $customer);

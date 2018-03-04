@@ -125,18 +125,9 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <!-- <th><?= __('Client Id') ?></th> -->
-                <!-- <th><?= __('Customer Id') ?></th> -->
-                <!-- <th><?= __('Contractname Id') ?></th> -->
-                <!-- <th><?= __('Remarks') ?></th> -->
                 <th><?= __('Contract Date') ?></th>
+                <th><?= __('Contractname Id') ?></th>
                 <th><?= __('File') ?></th>
-                <!-- <th><?= __('Dir') ?></th>
-                <th><?= __('Size') ?></th>
-                <th><?= __('Type') ?></th>
-                <th><?= __('User Id') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th> -->
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
@@ -144,18 +135,9 @@ $this->end();
             <?php foreach ($client->contracts as $contracts): ?>
                 <tr>
                     <td align="right"><?= h($contracts->id) ?></td>
-                    <!-- <td><?= h($contracts->client_id) ?></td> -->
-                    <!-- <td><?= h($contracts->customer_id) ?></td> -->
-                    <!-- <td><?= h($contracts->contractname_id) ?></td> -->
-                    <!-- <!-- <td><?= h($contracts->remarks) ?></td> -->
                     <td><?= h($contracts->contract_date) ?></td>
-                    <td><?= h($contracts->file) ?></td>
-                    <!-- <td><?= h($contracts->dir) ?></td>
-                    <td><?= h($contracts->size) ?></td>
-                    <td><?= h($contracts->type) ?></td>
-                    <td><?= h($contracts->user_id) ?></td>
-                    <td><?= h($contracts->created) ?></td>
-                    <td><?= h($contracts->modified) ?></td> -->
+                    <td><?= h($contracts->contractname->contract_name) ?></td>
+                    <td><?= $this->My->downloadlink($contracts) ?></td>
                     <td class="actions">
                         <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'view', $contracts->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
                         <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'edit', $contracts->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>
@@ -180,12 +162,10 @@ $this->end();
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
-                <!-- <th><?= __('Company Code') ?></th> -->
                 <th><?= __('Company Name1') ?></th>
                 <th><?= __('Order Date') ?></th>
                 <th><?= __('Status Msg') ?></th>
                 <th><?= __('Product Category') ?></th>
-                <!-- <th><?= __('Product Code') ?></th> -->
                 <th><?= __('Product Name') ?></th>
                 <th><?= __('Sales Dept') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -195,12 +175,10 @@ $this->end();
             <?php foreach ($client->orders as $orders): ?>
                 <tr>
                     <td align="right"><?= h($orders->id) ?></td>
-                    <!-- <td><?= h($orders->company_code) ?></td> -->
                     <td><?= $this->My->trunc($orders->company_name1) ?></td>
                     <td><?= h($orders->order_date) ?></td>
                     <td><?= h($orders->status_msg) ?></td>
                     <td><?= $this->My->trunc($orders->product_category) ?></td>
-                    <!-- <td><?= h($orders->product_code) ?></td> -->
                     <td><?= $this->My->trunc($orders->product_name) ?></td>
                     <td><?= h($orders->sales_dept) ?></td>
                     <td class="actions">
