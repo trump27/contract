@@ -52,6 +52,7 @@ $this->element('datepicker');
     <legend><?=__('Add {0}', ['License'])?></legend>
     <?php
 echo $this->Form->hidden('mode', ['value'=>'add']);
+echo $this->Form->control('status_id', ['value'=>20]);
 echo $this->Form->control('client_id', ['options' => $clients]);
 echo $this->Form->control('customer_id', ['options' => $customers]);
 echo $this->Form->control('order_id', ['options' => $orders]);
@@ -80,7 +81,6 @@ echo $this->Form->control('startdate', ['type' => 'text', 'class' => 'datepicker
 echo $this->Form->control('enddate', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_key');
 echo $this->Form->control('notice');
-echo $this->Form->control('status_id', ['value'=>20]);
 echo $this->Form->control('file', ['type' => 'file']);
 ?>
 </fieldset>

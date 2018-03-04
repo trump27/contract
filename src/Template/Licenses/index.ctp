@@ -49,8 +49,12 @@ echo $this->Form->end();
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $license->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', $license->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info'])?>
+                <!-- <?= $this->Form->postLink('', ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
+                <?php
+                if (!empty($license->file))
+                    echo $this->Html->link('', $this->My->dllink($license), ['title' => urldecode($license->file), 'target'=>'_blank', 'class' => 'btn btn-default btn-xs glyphicon glyphicon-file alert-warning']);
+                ?>
             </td>
             <td align="right"><?= $this->Number->format($license->id) ?></td>
             <td>

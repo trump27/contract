@@ -70,8 +70,11 @@ $this->element('datepicker');
     echo $this->Form->control('contract_date', ['type' => 'text', 'class' => 'datepicker']);
     echo $this->Form->control('remarks');
     // echo $this->Form->control('status_id', ['options' => $statuses]);
-    echo $this->Form->control('file', ['disabled'=>'disabled', 'value'=>urldecode($contract->file)]);
-    echo $this->Form->control('file', ['type' => 'file', 'label'=>'新しいファイル']);
+    // echo $this->Form->control('file', ['disabled'=>'disabled', 'value'=>urldecode($contract->file)]);
+    // echo $this->Form->control('file', ['type' => 'file', 'label'=>'新しいファイル']);
+    echo $this->Form->control('file', ['type'=>'file', 'label' => '新しいファイル',
+            'help' =>  "登録済みのファイル： ".$this->My->downloadlink($contract)
+        ]);
 
     ?>
 </fieldset>

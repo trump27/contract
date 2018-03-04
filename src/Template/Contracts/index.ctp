@@ -32,7 +32,7 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('contractname_id'); ?></th>
             <th><?= $this->Paginator->sort('contract_date'); ?></th>
             <th><?= $this->Paginator->sort('status_id'); ?></th>
-            <th><?= $this->Paginator->sort('file'); ?></th>
+            <!-- <th><?= $this->Paginator->sort('file'); ?></th> -->
         </tr>
     </thead>
     <tbody>
@@ -42,7 +42,11 @@ echo $this->Form->end();
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $contract->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $contract->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $contract->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contract->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?>
+                <!-- <?= $this->Form->postLink('', ['action' => 'delete', $contract->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contract->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
+                <?php
+                if (!empty($contract->file))
+                    echo $this->Html->link('', $this->My->dllink($contract), ['title' => urldecode($contract->file), 'target'=>'_blank', 'class' => 'btn btn-default btn-xs glyphicon glyphicon-file alert-warning']);
+                ?>
             </td>
             <td align="right"><?= $this->Number->format($contract->id) ?></td>
             <td>
@@ -62,7 +66,7 @@ echo $this->Form->end();
                 'webroot', '',
                 str_replace('\\','/',$contract->dir ).urlencode($contract->file) )) ?></td> -->
 
-            <td><?= $this->My->downloadlink($contract) ?></td>
+            <!-- <td><?= $this->My->downloadlink($contract) ?></td> -->
         </tr>
         <?php endforeach; ?>
     </tbody>

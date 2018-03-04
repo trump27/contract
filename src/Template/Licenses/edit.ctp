@@ -65,6 +65,7 @@ $this->element('datepicker');
     <legend><?=__('Edit {0}', ['License'])?></legend>
     <?php
 echo $this->Form->hidden('mode', ['value'=>'edit']);
+echo $this->Form->control('status_id', ['value' => 99]);
 echo $this->Form->control('client_id', ['options' => $clients]);
 echo $this->Form->control('customer_id', ['options' => $customers]);
 echo $this->Form->control('order_id', ['options' => $orders]);
@@ -83,7 +84,6 @@ echo $this->Form->control('relate_no');
 echo $this->Form->control('condition_id', ['options' => $conditions,
     'help'=>Cake\Utility\Text::toList($conditions->toArray(), $and = 'と').'のいずれかの状態を選択'
     ]);
-echo $this->Form->control('status_id', ['options' => $statuses]);
 echo $this->Form->control('issued', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_no');
 echo $this->Form->control('product_name');
@@ -94,9 +94,9 @@ echo $this->Form->control('startdate', ['type' => 'text', 'class' => 'datepicker
 echo $this->Form->control('enddate', ['type' => 'text', 'class' => 'datepicker']);
 echo $this->Form->control('license_key');
 echo $this->Form->control('notice');
-echo $this->Form->control('status_id', ['value' => 99]);
-echo $this->Form->control('file', ['disabled' => 'disabled', 'value' => urldecode($license->file)]);
-echo $this->Form->control('file', ['type' => 'file', 'label' => '新しいファイル']);
+echo $this->Form->control('file', ['type'=>'file', 'label' => '新しいファイル',
+        'help' =>  "登録済みのファイル： ".$this->My->downloadlink($license)
+    ]);
 ?>
 </fieldset>
 <?=$this->Form->button(__("Save"), ['class' => 'btn-primary']);?>

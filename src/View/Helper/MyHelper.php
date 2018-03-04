@@ -35,6 +35,15 @@ class MyHelper extends Helper
             str_replace('\\', '/', $record->$dir) . urlencode($record->$file)), ['target' => '_blank']);
     }
 
+    public function dllink($record)
+    {
+        $file = $this->config('field');
+        $dir = $this->config('dir');
+        return str_replace(
+            'webroot', '',
+            str_replace('\\', '/', $record->$dir) . urlencode($record->$file));
+    }
+
     /**
      * 文字列の切りつめ
      */
