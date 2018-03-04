@@ -30,8 +30,8 @@ $this->start('tb_body_start');
                     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">State <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><?= $this->Html->link('未処理タスク', ['controller' => 'Clients', 'action' => 'state']); ?></li>
-                            <li><?= $this->Html->link('最近の更新', ['controller' => 'Clients', 'action' => 'recent']); ?></li>
+                            <li><?= $this->Html->link('未処理タスク', ['controller' => 'Clients', 'action' => 'state', 'state']); ?></li>
+                            <li><?= $this->Html->link('最近の更新', ['controller' => 'Clients', 'action' => 'state', 'recent']); ?></li>
                         </ul>
                     </li>
                     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"

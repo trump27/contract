@@ -3,6 +3,8 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
+    <li><?=$this->Html->link('未処理タスク', ['controller' => 'Clients', 'action' => 'state', 'state']);?></li>
+    <li><?=$this->Html->link('最近更新されたデータ', ['controller' => 'Clients', 'action' => 'state', 'recent']);?></li>
     <li><?=$this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']);?></li>
     <li><?=$this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']);?></li>
     <li><?=$this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']);?></li>
@@ -10,18 +12,23 @@ $this->start('tb_actions');
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
-
+<?php if ($mode=='state') { ?>
 <div class="jumbotron">
   <h1>未処理タスク</h1>
   <p>処理が完了していないデータの一覧</p>
 </div>
+<?php } else { ?>
+<div class="jumbotron">
+  <h1>Recent 20 records</h1>
+  <p>最近更新されたデータ</p>
+</div>
+<?php } ?>
+
 <h2 class="page-header"><?=__('Orders')?></h2>
 <table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
             <th class="actions"><?=__('Actions');?></th>
-            <!-- <th><?=__('id');?></th> -->
-            <!-- <th><?=__('company_code');?></th> -->
             <th><?=__('Company Name1');?></th>
             <th><?=__('Status Msg');?></th>
             <th><?=__('Status Id');?></th>
@@ -33,13 +40,11 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($orders as $order): ?>
-        <tr>
+        <tr class="<?=$order->client->partner_id?'active':''?>">
 
             <td class="actions">
                 <?=$this->Html->link('', ['controller' => 'Orders', 'action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info'])?>
             </td>
-            <!-- <td><?=$this->Number->format($order->id)?></td> -->
-            <!-- <td><?=h($order->company_code)?></td> -->
             <td><?=$order->has('client') ? $this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_name1; ?></td>
             <td><?=h($order->status_msg)?></td>
             <!-- <td><?= $order->has('status') ? $order->status->name : '未処理' ?></td> -->
@@ -73,7 +78,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($contracts as $contract): ?>
-        <tr>
+        <tr class="<?=$contract->client->partner_id?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'view', $contract->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
@@ -112,7 +117,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($licenses as $license): ?>
-        <tr>
+        <tr class="<?=$license->client->partner_id?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Licenses', 'action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>

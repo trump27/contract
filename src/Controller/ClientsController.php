@@ -20,68 +20,57 @@ class ClientsController extends AppController
         ]);
     }
 
-    public function state()
+    /**
+     * 未処理データ一覧, 最近の更新
+     * mode: state, recent
+     */
+    public function state($mode='state')
     {
         $limit =20;
+
         $this->loadModel('Orders');
         $orders = $this->Orders->find()
-            ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date',
-                'sales_date', 'status_msg', 'product_name', 'Clients.id','Orders.status_id', 'Statuses.name'])
-            ->where(['Orders.status_id IS' => null])
-            ->orWhere(['Orders.status_id <>' => 99])
-            // ->order(['order_date' => 'DESC'])
-            ->contain(['Clients', 'Statuses']);
-
-        $this->loadModel('Contracts');
-        $contracts = $this->Contracts->find()
-            ->select(['Contracts.id', 'Contracts.file', 'Contracts.modified', 'contract_date', 'Clients.id', 'Clients.client_name',
-                'Customers.id', 'Customers.customer_name', 'Contractnames.contract_name', 'Contracts.status_id'])
-            ->contain(['Clients', 'Customers', 'Contractnames'])
-            ->where(['Contracts.status_id IS' => null])
-            ->orWhere(['Contracts.status_id <>' => 99]);
-            // ->order(['Contracts.modified' => 'DESC']);
-
-        // $this->loadModel('Contracts');
-        $licenses = $this->Clients->Licenses->find()
-            ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name', 'Licenses.issued',
-                'Clients.id', 'Clients.client_name', 'Customers.id', 'Customers.customer_name', 'Licenses.status_id'])
-            ->where(['Licenses.status_id IS' => null])
-            ->orWhere(['Licenses.status_id <>' => 99])
-            // ->order(['Licenses.issued' => 'DESC'])
-            ->contain(['Clients', 'Customers']);
-
-        $this->set(compact('orders', 'contracts', 'licenses'));
-    }
-
-    public function recent()
-    {
-        $limit =20;
-        $this->loadModel('Orders');
-        $orders = $this->Orders->find()
-            ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date',
+            ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date', 'Clients.partner_id',
                 'sales_date', 'status_msg', 'product_name', 'Clients.id','Orders.status_id'])
-            ->limit($limit)
-            ->order(['order_date' => 'DESC'])
             ->contain(['Clients']);
 
+        if ($mode=='state') {
+            $orders->where(['Orders.status_id IS' => null])
+                ->orWhere(['Orders.status_id <>' => 99]);
+        } else {
+            $orders->limit($limit)
+                ->order(['order_date' => 'DESC']);
+        }
+
         $this->loadModel('Contracts');
         $contracts = $this->Contracts->find()
-            ->select(['Contracts.id', 'Contracts.file', 'Contracts.modified', 'contract_date', 'Clients.id', 'Clients.client_name',
+            ->select(['Contracts.id', 'Contracts.file', 'Contracts.modified', 'contract_date', 'Clients.id', 'Clients.client_name', 'Clients.partner_id',
                 'Customers.id', 'Customers.customer_name', 'Contractnames.contract_name', 'Contracts.status_id'])
-            ->limit($limit)
-            ->order(['Contracts.modified' => 'DESC'])
             ->contain(['Clients', 'Customers', 'Contractnames']);
 
-        // $this->loadModel('Contracts');
+        if ($mode=='state') {
+            $contracts->where(['Contracts.status_id IS' => null])
+                ->orWhere(['Contracts.status_id <>' => 99]);
+        } else {
+            $contracts->limit($limit)
+                ->order(['Contracts.modified' => 'DESC']);
+        }
+
         $licenses = $this->Clients->Licenses->find()
             ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name', 'Licenses.issued',
-                'Clients.id', 'Clients.client_name', 'Customers.id', 'Customers.customer_name', 'Licenses.status_id'])
-            ->limit($limit)
-            ->order(['Licenses.modified' => 'DESC'])
+                'Clients.id', 'Clients.client_name', 'Clients.partner_id', 'Customers.id', 'Customers.customer_name', 'Licenses.status_id'])
             ->contain(['Clients', 'Customers']);
+        if ($mode=='state') {
+            $licenses->where(['Licenses.status_id IS' => null])
+                ->orWhere(['Licenses.status_id <>' => 99]);
+        } else {
+            $licenses->limit($limit)
+                ->order(['Licenses.modified' => 'DESC']);
+        }
 
-        $this->set(compact('orders', 'contracts', 'licenses'));
+        $this->set(compact('mode', 'orders', 'contracts', 'licenses'));
     }
+
 
     /**
      * Index method
