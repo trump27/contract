@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property string $code
  * @property string $name
  *
- * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  * @property \App\Model\Entity\Order[] $orders
  */
@@ -29,7 +28,6 @@ class Status extends Entity
     protected $_accessible = [
         'code' => true,
         'name' => true,
-        'licensehistories' => true,
         'licenses' => true,
         'orders' => true
     ];

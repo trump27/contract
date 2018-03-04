@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Languages Model
  *
- * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
  * @method \App\Model\Entity\Language get($primaryKey, $options = [])
@@ -37,9 +36,6 @@ class LanguagesTable extends Table
         $this->setDisplayField('language_name');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('Licensehistories', [
-            'foreignKey' => 'language_id'
-        ]);
         $this->hasMany('Licenses', [
             'foreignKey' => 'language_id'
         ]);

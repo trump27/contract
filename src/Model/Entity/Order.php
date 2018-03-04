@@ -36,7 +36,6 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\Status $status
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  * @property \App\Model\Entity\Client $client
  */
@@ -82,7 +81,6 @@ class Order extends Entity
         'modified' => true,
         'status' => true,
         'user' => true,
-        'licensehistories' => true,
         'licenses' => true,
         'client' => true
     ];

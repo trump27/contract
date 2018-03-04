@@ -35,7 +35,7 @@ class LanguagesController extends AppController
     public function view($id = null)
     {
         $language = $this->Languages->get($id, [
-            'contain' => ['Licensehistories', 'Licenses']
+            'contain' => ['Licenses']
         ]);
 
         $this->set('language', $language);

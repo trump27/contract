@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Statuses Model
  *
- * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\HasMany $Orders
  *
@@ -38,9 +37,6 @@ class StatusesTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('Licensehistories', [
-            'foreignKey' => 'status_id'
-        ]);
         $this->hasMany('Licenses', [
             'foreignKey' => 'status_id'
         ]);

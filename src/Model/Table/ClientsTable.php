@@ -12,7 +12,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\ContractsTable|\Cake\ORM\Association\HasMany $Contracts
  * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\HasMany $Customers
- * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
  * @method \App\Model\Entity\Client get($primaryKey, $options = [])
@@ -51,9 +50,6 @@ class ClientsTable extends Table
             'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Customers', [
-            'foreignKey' => 'client_id',
-        ]);
-        $this->hasMany('Licensehistories', [
             'foreignKey' => 'client_id',
         ]);
         $this->hasMany('Licenses', [

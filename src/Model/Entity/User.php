@@ -18,7 +18,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Client[] $clients
  * @property \App\Model\Entity\Contract[] $contracts
  * @property \App\Model\Entity\Customer[] $customers
- * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  * @property \App\Model\Entity\Order[] $orders
  */
@@ -44,7 +43,6 @@ class User extends Entity
         'clients' => true,
         'contracts' => true,
         'customers' => true,
-        'licensehistories' => true,
         'licenses' => true,
         'orders' => true
     ];

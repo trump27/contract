@@ -9,7 +9,6 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $language_name
  *
- * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  */
 class Language extends Entity
@@ -26,7 +25,6 @@ class Language extends Entity
      */
     protected $_accessible = [
         'language_name' => true,
-        'licensehistories' => true,
         'licenses' => true
     ];
 }

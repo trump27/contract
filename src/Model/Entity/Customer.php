@@ -27,7 +27,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Client $client
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Contract[] $contracts
- * @property \App\Model\Entity\Licensehistory[] $licensehistories
  * @property \App\Model\Entity\License[] $licenses
  */
 class Customer extends Entity
@@ -63,7 +62,6 @@ class Customer extends Entity
         'client' => true,
         'user' => true,
         'contracts' => true,
-        'licensehistories' => true,
         'licenses' => true
     ];
 }

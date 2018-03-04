@@ -10,7 +10,6 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\StatusesTable|\Cake\ORM\Association\BelongsTo $Statuses
  * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\LicensehistoriesTable|\Cake\ORM\Association\HasMany $Licensehistories
  * @property \App\Model\Table\LicensesTable|\Cake\ORM\Association\HasMany $Licenses
  *
  * @method \App\Model\Entity\Order get($primaryKey, $options = [])
@@ -47,9 +46,6 @@ class OrdersTable extends Table
         ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('Licensehistories', [
-            'foreignKey' => 'order_id',
         ]);
         $this->hasMany('Licenses', [
             'foreignKey' => 'order_id',
