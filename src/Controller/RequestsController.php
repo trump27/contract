@@ -15,6 +15,14 @@ use \PhpOffice\PhpWord\PhpWord;
 class RequestsController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Search.Prg', [
+            'actions' => ['index'],
+        ]);
+    }
+
     /**
      * Index method
      *
@@ -22,12 +30,24 @@ class RequestsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages', 'Users'],
-        ];
-        $requests = $this->paginate($this->Requests);
 
-        $this->set(compact('requests'));
+        $requests = $this->Requests
+            ->find('search', ['search' => $this->request->query])
+            ->order(['Requests.modified' => 'DESC'])
+            ->contain(['Customers', 'Appforms', 'Statuses',
+                'Clients' => ['fields' => ['id', 'company_code', 'client_name', 'partner_id']],
+            ]);
+        $statuses = $this->Requests->Statuses->find('list');
+
+        $this->set('requests', $this->paginate($requests));
+        $this->set(compact('statuses'));
+
+        // $this->paginate = [
+        //     'contain' => ['Clients', 'Customers', 'Appforms', 'Statuses', 'Languages', 'Users'],
+        // ];
+        // $requests = $this->paginate($this->Requests);
+
+        // $this->set(compact('requests'));
     }
 
     /**
@@ -167,14 +187,14 @@ class RequestsController extends AppController
         $templateProcessor->setValue('startsupp_date_mm', date('n', $t_date));
         $templateProcessor->setValue('startsupp_date_dd', date('j', $t_date));
         // return;
-        $templateProcessor->setValue('q3', $request['license_qty']==3 ? '■' : '□' );
-        $templateProcessor->setValue('q5', $request['license_qty']==5 ? '■' : '□' );
-        $templateProcessor->setValue('q10', $request['license_qty']==10 ? '■' : '□' );
-        $templateProcessor->setValue('q20', $request['license_qty']==20 ? '■' : '□' );
-        $templateProcessor->setValue('q30', $request['license_qty']==30 ? '■' : '□' );
-        $templateProcessor->setValue('q40', $request['license_qty']==40 ? '■' : '□' );
-        $templateProcessor->setValue('q50', $request['license_qty']==50 ? '■' : '□' );
-        $templateProcessor->setValue('notice', preg_replace("/\r\n|\r|\n/", "<w:br />",$request['notice']));
+        $templateProcessor->setValue('q3', $request['license_qty'] == 3 ? '■' : '□');
+        $templateProcessor->setValue('q5', $request['license_qty'] == 5 ? '■' : '□');
+        $templateProcessor->setValue('q10', $request['license_qty'] == 10 ? '■' : '□');
+        $templateProcessor->setValue('q20', $request['license_qty'] == 20 ? '■' : '□');
+        $templateProcessor->setValue('q30', $request['license_qty'] == 30 ? '■' : '□');
+        $templateProcessor->setValue('q40', $request['license_qty'] == 40 ? '■' : '□');
+        $templateProcessor->setValue('q50', $request['license_qty'] == 50 ? '■' : '□');
+        $templateProcessor->setValue('notice', preg_replace("/\r\n|\r|\n/", "<w:br />", $request['notice']));
         //ダウンロード用
         // $templateProcessor->saveAs("mytest.docx");
         header("Content-Description: File Transfer");

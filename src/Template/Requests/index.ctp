@@ -10,6 +10,19 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Request') ?></h1>
+
+<?php
+echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
+echo $this->Form->input('status_id', ['label' => __('Status Id') . '　', 'empty' => '---']);
+echo $this->Form->input('client_name', ['label' => '　' . __('Client Name') . '　', 'size' => 10]);
+echo $this->Form->input('license_name', ['label' => '　' . __('License Name') . '　', 'size' => 10]);
+
+echo $this->Form->button(__('Search'), ['type' => 'submit', 'class' => 'btn-primary']);
+echo $this->Html->link('Reset', ['action' => 'index'], ['class' => 'btn btn-success', 'role' => 'button']);
+echo $this->Form->end();
+?>
+<div>&nbsp;</div>
+
 <table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>

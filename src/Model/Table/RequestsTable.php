@@ -70,6 +70,7 @@ class RequestsTable extends Table
                 ],
             ],
         ]);
+        $this->addBehavior('Search.Search');
 
     }
 
@@ -140,5 +141,27 @@ class RequestsTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
+    }
+
+    // Search
+    public function searchManager()
+    {
+        $searchManager = $this->behaviors()->Search->searchManager();
+        $searchManager
+            ->value('status_id')
+            ->like('license_name', [
+                'before' => true,
+                'after' => true,
+            ])
+            ->add('client_name', 'Search.Callback', [
+                'callback' => function ($query, $args, $filter) {
+                    $client_name = $args['client_name'];
+                    $query->matching('Clients', function ($q) use ($client_name) {
+                        return $q->where(['Clients.client_name LIKE' => "%$client_name%"]);
+                    });
+                }]
+            );
+
+        return $searchManager;
     }
 }
