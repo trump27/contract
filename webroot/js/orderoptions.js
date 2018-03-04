@@ -1,8 +1,14 @@
 $(function () {
     var selected = $("#order-id").val();
     function listChange() {
+        if (!$("#client-id").val() ) {
+            $("#order-id").html("");
+            $("#order-id").effect("highlight", "slow");
+            return
+        }
         $.ajax({
-            url: "/orders/orderoptions/" + $("#client-id").val(),
+            url: "/orders/orderoptions/" + $("#client-id").val() + '/' +
+                $('input:hidden[name="mode"]').val()
         })
             .done(function (data) {
                 $("#order-id").html(data);

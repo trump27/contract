@@ -46,6 +46,7 @@ $this->element('datepicker');
 <fieldset>
     <legend><?= __('Add {0}', ['Contract']) ?></legend>
     <?php
+    echo $this->Form->hidden('mode', ['value'=>'add']);
     echo $this->Form->control('client_id', ['options' => $clients, 'empty'=>'---']);
     echo $this->Form->control('customer_id', ['options' => $customers, 'empty'=>'---']);
     echo $this->Form->control('order_id', ['options' => $orders]);

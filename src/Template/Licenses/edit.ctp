@@ -64,6 +64,7 @@ $this->element('datepicker');
 <fieldset>
     <legend><?=__('Edit {0}', ['License'])?></legend>
     <?php
+echo $this->Form->hidden('mode', ['value'=>'edit']);
 echo $this->Form->control('client_id', ['options' => $clients]);
 echo $this->Form->control('customer_id', ['options' => $customers]);
 echo $this->Form->control('order_id', ['options' => $orders]);

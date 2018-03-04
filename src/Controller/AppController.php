@@ -99,7 +99,7 @@ class AppController extends Controller
     }
 
     // js用　order一覧をオプションで返す
-    public function orderoptions($client_id = null)
+    public function orderoptions($client_id = null, $mode=null)
     {
         $this->autoRender = false;
         Configure::write('debug', 0);
@@ -108,33 +108,41 @@ class AppController extends Controller
         $this->loadModel('Clients');
         $this->loadModel('Orders');
 
+        // パートナーのIDを取得 IN句で使用
         $subq = $this->Clients->findById($client_id)
             ->select(['Clients.id', 'Clients.partner_id'])
             ->first()
             ->toArray();
         $ids = empty($subq['partner_id']) ? [$client_id] : [$client_id, $subq['partner_id']];
-// debug($ids );
+
         $list = $this->Orders->find()
-            ->select(['Orders.id', 'order_date', 'Orders.company_name1', 'Orders.product_name'])
-            ->contain('Clients', function ($q) use ($client_id) {
+            ->select(['Orders.id', 'order_date', 'Orders.company_name1', 'Orders.product_name']);
+
+        if ($mode <> 'edit') {
+            // 編集時以外は未処理のみ表示
+            $list->where(['Orders.status_id IS' => null])
+            ->orWhere(['Orders.status_id <>' => 99]);
+        }
+
+        $list->contain('Clients', function ($q) use ($client_id) {
                 return $q
                     ->where(['Clients.id' => $client_id]);
             })
-            ->where(['Orders.status_id IS' => null])
-            ->orWhere(['Orders.status_id <>' => 99])
             ->matching('Clients', function ($q) use ($ids) {
                 return $q
                     ->where(['Clients.id IN' => $ids]);
-            })
-            ->map(function ($row) {
-                $row->product_name = $row->order_date . ' 【' . $row->company_name1 .'】 '. $row->product_name;
+            });
+
+        $data = $list->map(function ($row) {
+                $row->product_name = $row->order_date . ' 【' . $row->company_name1 . '】 ' . $row->product_name;
                 return $row;
             })
             ->combine('id', 'product_name')
             ->toArray();
-        $this->set(compact('list'));
+
+        // $this->log($data);
+        $this->set('list', $data);
         $this->render('/Element/selectlist', '');
-        // $this->render('/Orders/orderoptions', '');
 
     }
 }
