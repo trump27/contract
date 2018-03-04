@@ -29,6 +29,11 @@ class LicensesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'order' => [
+                'issued' => 'desc'
+            ]
+        ];
         $licenses = $this->Licenses
             ->find('search', ['search' => $this->request->query])
             ->contain(['Statuses', 'Conditions',

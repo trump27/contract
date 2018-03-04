@@ -30,10 +30,14 @@ class RequestsController extends AppController
      */
     public function index()
     {
-
+        $this->paginate = [
+            'order' => [
+                'Requests.modified' => 'desc'
+            ]
+        ];
         $requests = $this->Requests
             ->find('search', ['search' => $this->request->query])
-            ->order(['Requests.modified' => 'DESC'])
+            // ->order(['Requests.modified' => 'DESC'])
             ->contain(['Customers', 'Appforms', 'Statuses',
                 'Clients' => ['fields' => ['id', 'company_code', 'client_name', 'partner_id']],
             ]);
