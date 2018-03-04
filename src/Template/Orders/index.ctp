@@ -12,6 +12,8 @@ $this->start('tb_actions');
 
 <h1 class="page-header"><?= __('Orders') ?></h1>
 
+<div class="alert alert-info" role="alert">再販の場合、取引先はパートナー</div>
+
 <?php
 $ym[''] = '---';
 $date = date('Y/m/1');

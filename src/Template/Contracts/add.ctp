@@ -29,6 +29,9 @@ $this->element('datepicker');
 <?= $this->Html->script('customeroptions',['block' => true]) ?>
 <?= $this->Html->script('orderoptions',['block' => true]) ?>
 <h1 class="page-header"><?= __('Contract') ?></h1>
+
+<div class="alert alert-info" role="alert">選択した契約名により企画、サポートが処理</div>
+
 <?= $this->Form->create($contract, [
     'type'=> 'file',
     'align' => [

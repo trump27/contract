@@ -30,6 +30,9 @@ $this->element('datepicker');
 ?>
 <?= $this->Html->script('customeroptions',['block' => true]) ?>
 <h1 class="page-header"><?= __('Request') ?></h1>
+
+<div class="alert alert-info" role="alert">ライセンス、保守の変更時に利用</div>
+
 <?= $this->Form->create($request, ['align' => [
     'sm' => [
         'left' => 3,
