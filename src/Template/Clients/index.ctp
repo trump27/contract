@@ -40,7 +40,7 @@ echo $this->Form->end();
     </thead>
     <tbody>
         <?php foreach ($clients as $client): ?>
-        <tr class="<?=$client->partner_id?'active':''?>">
+        <tr class="<?=!empty($client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $client->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>

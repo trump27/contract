@@ -124,11 +124,11 @@ class AppController extends Controller
             ->orWhere(['Orders.status_id <>' => 99]);
         }
 
-        $list->contain('Clients', function ($q) use ($client_id) {
-                return $q
-                    ->where(['Clients.id' => $client_id]);
-            })
-            ->matching('Clients', function ($q) use ($ids) {
+        // $list->contain('Clients', function ($q) use ($client_id) {
+        //         return $q
+        //             ->where(['Clients.id' => $client_id]);
+        //     })
+        $list->matching('Clients', function ($q) use ($ids) {
                 return $q
                     ->where(['Clients.id IN' => $ids]);
             });

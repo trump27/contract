@@ -87,7 +87,8 @@ class CustomersTable extends Table
 
         $validator
             ->scalar('division')
-            ->maxLength('division', 256);
+            ->maxLength('division', 256)
+            ->allowEmpty('division');
 
         $validator
             ->scalar('address')

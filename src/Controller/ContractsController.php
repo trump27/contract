@@ -96,10 +96,10 @@ class ContractsController extends AppController
     }
 
     // ステータス変更
-    private function saveOrderStatus($order_id=null) {
+    private function saveOrderStatus($order_id=null, $status=99) {
         if (empty($order_id)) return;
         $order = $this->Contracts->Orders->get($order_id);
-        $order->status_id =99;
+        $order->status_id = $status;
         $this->Contracts->Orders->save($order);
     }
 
@@ -122,8 +122,11 @@ class ContractsController extends AppController
                 ->select(['status_id'])
                 ->first();
             $contract['status_id'] = $sts['status_id'];
-
+            $before = $this->Contracts->get($contract->id);     // 変更前データ取得
             if ($this->Contracts->save($contract)) {
+                if ($contract->order_id <> $before->order_id) {
+                    $this->saveOrderStatus($before->order_id, 1);
+                }
                 $this->saveOrderStatus($contract->order_id);
                 $this->Flash->success(__('The contract has been saved.'));
 
@@ -136,7 +139,7 @@ class ContractsController extends AppController
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
-        $orders = $this->Contracts->Orders->find('list', ['limit' => 10]);
+        $orders = $this->Contracts->Orders->find('list', ['limit' => 1000]);
         $statuses = $this->Contracts->Statuses->find('list', ['limit' => 200]);
         $this->set(compact('contract', 'clients', 'customers', 'contractnames', 'users', 'orders', 'statuses'));
     }

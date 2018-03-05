@@ -71,10 +71,10 @@ class LicensesController extends AppController
     }
 
     // ステータス変更
-    private function saveOrderStatus($order_id=null) {
+    private function saveOrderStatus($order_id=null, $status=99) {
         if (empty($order_id)) return;
         $order = $this->Licenses->Orders->get($order_id);
-        $order->status_id =99;
+        $order->status_id = $status;
         $this->Licenses->Orders->save($order);
     }
 
@@ -106,8 +106,8 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        $clients = $this->Licenses->Clients->find('list', ['limit' => 200]);
-        $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
+        $clients = $this->Licenses->Clients->find('list', ['limit' => 1000]);
+        $customers = $this->Licenses->Customers->find('list', ['limit' => 1000]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
         $conditions = $this->Licenses->Conditions->find('list', ['limit' => 200]);
@@ -130,7 +130,12 @@ class LicensesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->getData());
+            // $this->log($this->request->getData());
+            $before = $this->Licenses->get($license->id); // 変更前データ
             if ($this->Licenses->save($license)) {
+                if ($license->order_id <> $before->order_id) {
+                    $this->saveOrderStatus($before->order_id, 1);   // 変更前を未処理状態へ
+                }
                 $this->saveOrderStatus($license->order_id);
                 $this->Flash->success(__('The license has been saved.'));
 
@@ -139,8 +144,8 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        $clients = $this->Licenses->Clients->find('list', ['limit' => 200]);
-        $customers = $this->Licenses->Customers->find('list', ['limit' => 200]);
+        $clients = $this->Licenses->Clients->find('list', ['limit' => 1000]);
+        $customers = $this->Licenses->Customers->find('list', ['limit' => 1000]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
         $conditions = $this->Licenses->Conditions->find('list', ['limit' => 200]);

@@ -103,7 +103,7 @@ class OrdersTable extends Table
 
         $validator
             ->scalar('order_no')
-            ->maxLength('order_no', 20)
+            ->maxLength('order_no', 30)
             ->allowEmpty('order_no');
 
         $validator

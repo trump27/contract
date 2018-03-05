@@ -44,8 +44,8 @@ echo $this->Form->end();
                 <br/><?= $this->Paginator->sort('status_msg'); ?></th>
             <th><?= $this->Paginator->sort('delivery_date'); ?>
                 <br/><?= $this->Paginator->sort('sales_date'); ?></th>
-            <th><?= $this->Paginator->sort('product_category'); ?>
-                <br/><?= $this->Paginator->sort('product_name'); ?></th>
+            <th><?= $this->Paginator->sort('product_name'); ?>
+                <br/><?= $this->Paginator->sort('product_detail'); ?></th>
             <th><?= $this->Paginator->sort('sales_staff'); ?>
                 <br/><?= $this->Paginator->sort('price');?></th>
             <th><?= $this->Paginator->sort('status_id'); ?></th>
@@ -53,7 +53,7 @@ echo $this->Form->end();
     </thead>
     <tbody>
         <?php foreach ($orders as $order): ?>
-        <tr class="<?=$order->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($order->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
@@ -68,8 +68,8 @@ echo $this->Form->end();
                 <br/><?= h($order->status_msg) ?></td>
             <td><?= h($order->delivery_date) ?>
                 <br/><?= h($order->sales_date) ?></td>
-            <td title="<?=$order->product_name?>"><?= $this->my->trunc($order->product_category,20) ?>
-                <br/><?= $this->my->trunc($order->product_name,20) ?></td>
+            <td title="<?=$order->product_name?>"><?= $this->my->trunc($order->product_name,25) ?>
+                <br/><?= $this->my->trunc($order->product_detail,25) ?></td>
             <td><?= h($order->sales_staff) ?>
                 <br/><?= $this->Number->format($order->price) ?></td>
             <td><?= $order->has('status') ? $order->status->name : $order->status_id ?></td>

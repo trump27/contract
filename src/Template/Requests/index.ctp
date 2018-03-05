@@ -38,7 +38,7 @@ echo $this->Form->end();
     </thead>
     <tbody>
         <?php foreach ($requests as $request): ?>
-        <tr class="<?=$request->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($request->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>

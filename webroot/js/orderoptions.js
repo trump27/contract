@@ -1,18 +1,21 @@
 $(function () {
-    var selected = $("#order-id").val();
     function listChange() {
+        var orderselected = $("#order-id").val();
+        console.log('test before:', orderselected);
+        // return;
         if (!$("#client-id").val() ) {
             $("#order-id").html("");
             $("#order-id").effect("highlight", "slow");
-            return
+            return;
         }
         $.ajax({
             url: "/orders/orderoptions/" + $("#client-id").val() + '/' +
                 $('input:hidden[name="mode"]').val()
         })
             .done(function (data) {
+                console.log('test after:', orderselected);
                 $("#order-id").html(data);
-                $("#order-id").val(selected);
+                $("#order-id").val(orderselected);
                 $("#order-id").effect("highlight", "slow");
             })
             .fail(function () {

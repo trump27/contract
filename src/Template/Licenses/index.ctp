@@ -45,7 +45,7 @@ echo $this->Form->end();
     </thead>
     <tbody>
         <?php foreach ($licenses as $license): ?>
-        <tr class="<?=$license->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($license->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>

@@ -42,7 +42,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($orders as $order): ?>
-        <tr class="<?=$order->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($order->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?=$this->Html->link('', ['controller' => 'Orders', 'action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info'])?>
@@ -79,7 +79,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($requests as $request): ?>
-        <tr class="<?=$request->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($request->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['controller'=>'Requests', 'action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
@@ -118,7 +118,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($contracts as $contract): ?>
-        <tr class="<?=$contract->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($contract->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'view', $contract->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
@@ -157,7 +157,7 @@ $this->start('tb_actions');
     </thead>
     <tbody>
         <?php foreach ($licenses as $license): ?>
-        <tr class="<?=$license->client->partner_id?'active':''?>">
+        <tr class="<?=!empty($license->client->partner_id)?'active':''?>">
 
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Licenses', 'action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
