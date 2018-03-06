@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="customerModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -15,6 +15,8 @@ echo $this->Form->control('searchCustomer', ['label' => __('Clients') . '名']);
 echo $this->Form->control('customer_id', ['options' => null, 'label' => false, 'size' => 7]);
 echo $this->Form->end();
 ?>
+<h4>(参考) <?=__('Orders')?></h4>
+<div id="order-list" style="height:200px; overflow:auto;"></div>
 
       </div>
       <div class="modal-footer">
@@ -34,8 +36,8 @@ $(function () {
         url = button.data('url');
     })
     var t;
-//    $("#searchcustomer").on("keyup change paste", function () {
-    $("#searchcustomer").on("keyup paste", function () {
+    $("#searchcustomer").on("keyup change paste", function () {
+//    $("#searchcustomer").on("keyup paste", function () {
         clearTimeout(t);
         t = setTimeout(function () {
             $.ajax({
@@ -46,7 +48,17 @@ $(function () {
             })
             .fail(function () {
                 console.log('cannot load options.');
+            });
+            // order list
+            $.ajax({
+                url: "/guides/ajaxorders/" + $('#searchcustomer').val(),
             })
+            .done(function (data) {
+                $("#order-list").html(data);
+            })
+            .fail(function () {
+                console.log('cannot load order lists.');
+            });
         }, 300);
     });
     $("#btn-select-customer").click(function (e) {

@@ -51,32 +51,48 @@ class GuidesController extends AppController
 
     }
 
+    // クライアント名でパートナーも含むクライアントIDの配列を取得
+    private function relateClients($client_name = null) {
+
+        // if (empty($client_name)) {
+        //     return [];
+        // }
+        $this->loadModel('Clients');
+        $query = $this->Clients
+            ->find()
+            ->select(['id', 'partner_id'])
+            ->where(['client_name LIKE' => "%$client_name%"])
+            ->toArray();
+        $id_list = [];
+        foreach ($query as $key => $value) {
+            $id_list[] = $value['id'];
+            if (!empty($value['partner_id'])) $id_list[] = $value['partner_id'];
+        }
+        return $id_list;
+
+    }
+
     public function ajaxorders($client_name = null)
     {
 
         $this->autoRender = false;
-        // Configure::write('debug', 0);
+        Configure::write('debug', 0);
         if (empty($client_name)) {
             return;
         }
-        // $this->loadModel('Clients');
-        // $list = $this->Clients->find()
-        // // ->select(['Clients.id', 'Orders.company_code', 'Orders.id',
-        // //     'company_name1', 'order_no', 'order_detail_no', 'order_date', 'product_name'])
-        //     ->innerJoinWith('Orders')
-        // // ->contain(['Orders'])
-        //     ->where(['client_name like' => "%$client_name%"])
-        //     ->limit(20);
+
+        $id_list = $this->relateClients($client_name);
 
         $this->loadModel('Orders');
         $list = $this->Orders->find()
             ->select(['Clients.id', 'Orders.company_code', 'Orders.id',
                     'company_name1', 'order_no', 'order_detail_no', 'order_date', 'product_name'])
-            ->where(['status_msg <> ' => '売上済'])
-            ->matching('Clients', function ($q) use ($client_name) {
+            ->where(['status_id <> ' => 99])
+            ->matching('Clients', function ($q) use ($id_list) {
                 return $q
                     // ->select(['Clients.id', 'Clients.company_code'])
-                    ->where(['client_name like' => "%$client_name%"]);
+                    // ->where(['client_name like' => "%$client_name%"]);
+                    ->where(['Clients.id IN' => $id_list]);
                 })
             ->limit(20);
 

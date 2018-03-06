@@ -11,9 +11,9 @@
       <div class="alert alert-info" role="alert">クライアント名で絞り込み、受注データを選択してください。</div>
 <?php
 echo $this->Form->create(null);
-echo $this->Form->control('searchorder', ['label' => __('Clients') . '名']);
-// echo $this->Form->control('order_id');
-echo '<div id="order-id"></div>';
+echo $this->Form->control('searchclient', ['label' => __('Clients') . '名']);
+// echo '<div id="client-list"></div>';
+// echo '<div id="order-list"></div>';
 echo $this->Form->end();
 ?>
 
@@ -30,20 +30,20 @@ echo $this->Form->end();
 $(function () {
     var url = '';
     $('#orderModal').on('shown.bs.modal', function (e) {
-        $('#searchorder').focus();
+        $('#searchclient').focus();
         var button = $(e.relatedTarget);
         url = button.data('url');
     })
     var t;
-//    $("#searchorder").on("keyup change paste", function () {
-    $("#searchorder").on("keyup paste", function () {
+//    $("#searchclient").on("keyup change paste", function () {
+    $("#searchclient").on("keyup paste", function () {
         clearTimeout(t);
         t = setTimeout(function () {
             $.ajax({
-                url: "/guides/ajaxorders/" + $('#searchorder').val(),
+                url: "/guides/ajaxorders/" + $('#searchclient').val(),
             })
             .done(function (data) {
-                $("#order-id").html(data);
+                $("#order-list").html(data);
             })
             .fail(function () {
                 console.log('cannot load options.');

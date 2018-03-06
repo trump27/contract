@@ -57,7 +57,10 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 
 
-
+<button type="button" data-url="/contracts/add/" class="btn btn-info btn-lg"
+    data-toggle="modal" data-target="#orderModal">
+受注
+</button>
 
 
 <!-- <div class="bs-callout bs-callout-default">
