@@ -144,9 +144,10 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        $clients = $this->Licenses->Clients->find('list', ['limit' => 1000]);
-        $customers = $this->Licenses->Customers->find('list', ['limit' => 1000]);
-        $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
+        // $clients = $this->Licenses->Clients->find('withpartner');
+        $clients = $this->Licenses->Clients->find('list');
+        $customers = $this->Licenses->Customers->find('list');
+        $orders = $this->Licenses->Orders->find('list');
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
         $conditions = $this->Licenses->Conditions->find('list', ['limit' => 200]);
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);
@@ -175,7 +176,7 @@ class LicensesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    /* 同一Customerのライセンスを一覧 */
+    /* 同一Customerのライセンスを一覧 for js*/
     public function getrelative($customer_id = null)
     {
         $this->autoRender = false;
@@ -197,7 +198,7 @@ class LicensesController extends AppController
         $this->render('/Element/selectlist', '');
     }
 
-    /* 同一Customerのライセンスを一覧 */
+    /* 同一Customerのライセンスを一覧 for js*/
     public function getinfoview($license_id = null)
     {
         $this->autoRender = false;
