@@ -91,3 +91,28 @@ echo $this->Form->control('file', ['type' => 'file']);
 <?php
 echo $this->element('vw_license_dialog');
 ?>
+
+<?= $this->Html->scriptStart(['block' => true]) ?>
+$(function () {
+    function formatDate (date, format) {
+        format = format.replace(/yyyy/g, date.getFullYear());
+        format = format.replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2));
+        format = format.replace(/dd/g, ('0' + date.getDate()).slice(-2));
+        format = format.replace(/HH/g, ('0' + date.getHours()).slice(-2));
+        format = format.replace(/mm/g, ('0' + date.getMinutes()).slice(-2));
+        format = format.replace(/ss/g, ('0' + date.getSeconds()).slice(-2));
+        format = format.replace(/SSS/g, ('00' + date.getMilliseconds()).slice(-3));
+        return format;
+    };
+    $("#startdate").on("keyup change paste", function () {
+        if (!$("#enddate").val()) {
+            var arr = $("#startdate").val().split('/');
+            var start = new Date(arr[0], arr[1] - 1, arr[2]);
+            console.log(start);
+            start.setDate(start.getDate() - 1);
+            start.setYear(start.getFullYear() + 1);
+            $("#enddate").val(formatDate(start, 'yyyy/MM/dd'));
+        }
+    });
+});
+<?= $this->Html->scriptEnd() ?>
