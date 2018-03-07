@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Database\Expression\IdentifierExpression;
 
 /**
  * Clients Model
@@ -184,20 +185,28 @@ class ClientsTable extends Table
         $query
             ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
             ->contain(['Partners']);
-        $concat = $query->newExpr()
+        $case = $query->newExpr()
             ->addCase(
-                $query->newExpr()->add(['Partners.client_name IS' => null]),
-                ['', 'Partners.client_name'],
+                [$query->newExpr()->add(['Partners.client_name IS' => null])],
+                ['', new IdentifierExpression('Partners.client_name')],
                 // ['', 'Partners.client_name'],
-                ['string']
+                'string'
             );
+        $conc = $query->func()->concat([
+                'Clients.client_name' => 'identifier',
+                ' /',
+                'pname' => 'identifier',
+            ]);
         $query
-            ->select(['gogo' => $concat])
+            ->select(['pname' => $case, 'name' => $conc]);
+            // ->select(['pname' => $case]);
+        $query
+            // ->select(['name' => $conc])
             ->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
                 // debug($results);
-                return $results->combine('id', 'gogo');//. 'client_name');
+                return $results->combine('id', 'name');//. 'client_name');
             });
-        debug($query);
+        // debug($query);
         // debug($query->toArray());
         return $query;
     }
