@@ -51,7 +51,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <h1>ライセンス登録</h1>
   <p>ライセンスを登録・発行依頼する。</p>
   <button type="button" data-url="/licenses/add/" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#customerModal">
-  申込書を登録する
+  ライセンスを登録する
   </button>
 </div>
 

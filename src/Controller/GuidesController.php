@@ -86,7 +86,7 @@ class GuidesController extends AppController
         $this->loadModel('Orders');
         $list = $this->Orders->find()
             ->select(['Clients.id', 'Orders.company_code', 'Orders.id',
-                    'company_name1', 'order_no', 'order_detail_no', 'order_date', 'product_name'])
+                    'company_name1', 'order_no', 'order_detail_no', 'order_date', 'sales_staff', 'product_name', 'product_detail', 'product_category', ])
             ->where(['status_id <> ' => 99])
             ->matching('Clients', function ($q) use ($id_list) {
                 return $q
