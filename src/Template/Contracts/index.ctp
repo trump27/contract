@@ -32,6 +32,7 @@ echo $this->Form->end();
             <th><?= $this->Paginator->sort('contractname_id'); ?></th>
             <th><?= $this->Paginator->sort('contract_date'); ?></th>
             <th><?= $this->Paginator->sort('status_id'); ?></th>
+            <th><?= __('remarks'); ?></th>
             <!-- <th><?= $this->Paginator->sort('file'); ?></th> -->
         </tr>
     </thead>
@@ -59,14 +60,9 @@ echo $this->Form->end();
                 <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>
             <td><?= h($contract->contract_date) ?></td>
-            <td><?= $contract->has('status') ? h($contract->status->name) : $contract->status_id ?></td>
+            <td><?= $contract->has('status') ? h($contract->status->name) : $contract->status_id?></td>
+            <td><?= $this->my->trunc(h($contract->remarks),20) ?></td>
 
-            <!-- <td><?= h($contract->file) ?></td> -->
-            <!-- <td><?= $this->Html->link(urldecode ($contract->file) , str_replace(
-                'webroot', '',
-                str_replace('\\','/',$contract->dir ).urlencode($contract->file) )) ?></td> -->
-
-            <!-- <td><?= $this->My->downloadlink($contract) ?></td> -->
         </tr>
         <?php endforeach; ?>
     </tbody>

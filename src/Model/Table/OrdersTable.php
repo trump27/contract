@@ -210,10 +210,17 @@ class OrdersTable extends Table
         $searchManager
             ->value('status_id')
             ->value('orderym')
-            ->like('company_name1', [
+            ->add('company_name1', 'Search.Like', [
                 'before' => true,
                 'after' => true,
+                'mode' => 'or',
+                'comparison' => 'LIKE',
+                'field' => ['company_name1', 'product_detail']
             ])
+            // ->like('company_name1', [
+            //     'before' => true,
+            //     'after' => true,
+            // ])
             ->like('sales_staff', [
                 'before' => true,
                 'after' => true,
