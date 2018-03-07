@@ -142,6 +142,7 @@ class AppController extends Controller
             ->toArray();
 
         // $this->log($data);
+        $data = [""=>"---"] + $data;
         $this->set('list', $data);
         $this->render('/Element/selectlist', '');
 

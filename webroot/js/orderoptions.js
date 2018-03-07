@@ -1,5 +1,5 @@
 $(function () {
-    function listChange() {
+    function listChangeorder() {
         var orderselected = $("#order-id").val();
         console.log('test before:', orderselected);
         // return;
@@ -15,14 +15,16 @@ $(function () {
             .done(function (data) {
                 console.log('test after:', orderselected);
                 $("#order-id").html(data);
-                $("#order-id").val(orderselected);
+                if ($('input:hidden[name="mode"]').val() !== 'add') {
+                    $("#order-id").val(orderselected);
+                }
                 $("#order-id").effect("highlight", "slow");
             })
             .fail(function () {
                 console.log('cannot load options.');
             })
     }
-    $("#client-id").bind("change keyup", listChange);
+    $("#client-id").bind("change keyup", listChangeorder);
     $("#client-id").trigger("change");  // 一度クリアする
 
 });

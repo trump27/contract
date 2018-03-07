@@ -1,5 +1,5 @@
 $(function () {
-    function listChange() {
+    function listChangecustomer() {
         var customerselected = $("#customer-id").val();
         $.ajax({
             url: "/customers/customeroptions/" + $("#client-id").val(),
@@ -13,7 +13,7 @@ $(function () {
             console.log('cannot load options.');
         })
     }
-    $("#client-id").bind("change keyup", listChange);
+    $("#client-id").bind("change keyup", listChangecustomer);
     $("#client-id").trigger("change");  // 一度クリアする
 
 });
