@@ -22,7 +22,8 @@ for ($i=0; $i <13 ; $i++) {
     $ym[$val] = $val;
 }
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
-echo $this->Form->input('orderym', ['label' => '受注年月　', 'options'=>$ym]);
+echo $this->Form->input('status_id', ['label' => __('Status Id') . '　', 'empty' => '---']);
+echo $this->Form->input('orderym', ['label' => '　受注年月　', 'options'=>$ym]);
 echo $this->Form->input('company_name1', ['label' => '　取引先名1　', 'size'=>12]);
 echo $this->Form->input('sales_staff', ['label' => '　営業担当　', 'size'=>8]);
 

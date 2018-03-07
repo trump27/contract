@@ -29,7 +29,8 @@ class OrdersController extends AppController
     {
         $this->paginate = [
             'order' => [
-                'order_date' => 'desc'
+                'order_date' => 'desc',
+                'company_code' => 'asc'
             ]
         ];
 
@@ -41,6 +42,8 @@ class OrdersController extends AppController
             ]);
 
         $this->set('orders', $this->paginate($orders));
+        $statuses = $this->Orders->Statuses->find('list');
+        $this->set(compact('statuses'));
 
         // $this->paginate = [
         //     'contain' => ['Statuses', 'Users', 'Clients'],

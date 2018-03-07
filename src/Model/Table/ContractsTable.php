@@ -106,7 +106,7 @@ class ContractsTable extends Table
 
         $validator
         // ->scalar('file')
-        ->maxLength('file', 256)
+        ->maxLength('file', 512)
             ->allowEmpty('file');
 
         $validator

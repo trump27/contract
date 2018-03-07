@@ -15,7 +15,10 @@ Actions	ID	–¼‘O
 
 
 CREATE INDEX `license_issued` ON `licenses` (`issued` DESC);
-CREATE INDEX `orders_order_date` ON `orders` (`order_date` DESC);
+CREATE INDEX `orders_order_date` ON `orders` (
+	`order_date`	DESC,
+	`company_code`	ASC
+);
 CREATE INDEX `clients_company_code` ON `clients` (`company_code` ASC);
 CREATE INDEX `clients_client_name` ON `clients` (`client_name` ASC);
 

@@ -65,6 +65,7 @@ class MyHelper extends Helper
     public function qty()
     {
         return [
+            2 => '2ライセンスパック',
             3 => '3ライセンスパック',
             5 => '5ライセンスパック',
             10 => '10ライセンスパック',

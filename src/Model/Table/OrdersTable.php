@@ -168,7 +168,7 @@ class OrdersTable extends Table
 
         $validator
             ->scalar('file')
-            ->maxLength('file', 256)
+            ->maxLength('file', 512)
             ->allowEmpty('file');
 
         $validator
@@ -208,6 +208,7 @@ class OrdersTable extends Table
     {
         $searchManager = $this->behaviors()->Search->searchManager();
         $searchManager
+            ->value('status_id')
             ->value('orderym')
             ->like('company_name1', [
                 'before' => true,
