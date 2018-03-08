@@ -55,9 +55,9 @@ echo $this->Form->end();
             <td>
                 <?= $supportcontract->has('client') ? $this->Html->link($this->my->trunc($supportcontract->eu_name), ['controller' => 'Clients', 'action' => 'view', $supportcontract->client->id]) : $this->my->trunc($supportcontract->eu_name) ?>
             </td>
-            <td><?= $this->my->trunc($supportcontract->category) ?></td>
-            <td><?= $this->my->trunc($supportcontract->product_name) ?></td>
+            <td><?= $this->my->trunc($supportcontract->category,20) ?></td>
             <td><?= h($supportcontract->contract_no) ?></td>
+            <td><?= $this->my->trunc($supportcontract->product_name,20) ?></td>
             <td><?= h($supportcontract->startdate) ?></td>
             <td><?= h($supportcontract->enddate) ?></td>
         </tr>

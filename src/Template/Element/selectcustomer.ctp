@@ -29,6 +29,9 @@ echo $this->Form->end();
         <button type="button" id="btn-select-license" class="btn btn-warning btn-lg">
         ライセンスを登録する
         </button>
+        <button type="button" id="btn-select-request" class="btn btn-primary btn-lg">
+        ライセンス利用申込書
+        </button>
       </div>
     </div>
   </div>
@@ -68,23 +71,26 @@ $(function () {
             });
         }, 300);
     });
-    $("#btn-select-contract").click(function (e) {
+    function check_select() {
         if ($('#customer-id').val()===null) {
             alert("対象を選択してください。");
             e.preventDefault();
             e.stopImmediatePropagation();
-            return
+            return false;
         }
+        return true;
+    }
+    $("#btn-select-contract").click(function (e) {
+        if (!check_select()) return;
         location.replace('/contracts/add/' + $('#customer-id').val());
     });
     $("#btn-select-license").click(function (e) {
-        if ($('#customer-id').val()===null) {
-            alert("対象を選択してください。");
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            return
-        }
+        if (!check_select()) return;
         location.replace('/licenses/add/' + $('#customer-id').val());
+    });
+    $("#btn-select-request").click(function (e) {
+        if (!check_select()) return;
+        location.replace('/requests/add/' + $('#customer-id').val());
     });
 });
 <?= $this->Html->scriptEnd() ?>

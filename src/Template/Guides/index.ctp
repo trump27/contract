@@ -40,7 +40,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <div class="bs-callout bs-callout-warning">
   <h1>ライセンス登録</h1>
   <p>ライセンスを登録・発行依頼する。</p>
-  <button type="button" data-url="/licenses/add/" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#customerModal">
+  <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#customerModal">
   ライセンスを登録する
   </button>
 </div>
@@ -49,7 +49,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <div class="bs-callout bs-callout-info">
   <h1>ライセンス利用申込書</h1>
   <p>既存顧客のライセンス変更の利用申込書を登録、出力する。</p>
-  <button type="button" data-url="/requests/add/" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
   申込書を登録する
   </button>
 </div>

@@ -39,7 +39,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Client') ?></td>
-            <td><?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : '' ?></td>
+            <td><?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_code ?></td>
         </tr>
         <tr>
             <td><?= __('Company Name1') ?></td>
