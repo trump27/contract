@@ -6,6 +6,7 @@ $this->start('tb_actions');
     <li><?=$this->Html->link(__('Guide'), ['controller' => 'Guides']);?></li>
     <li><?=$this->Html->link('未処理タスク', ['controller' => 'Clients', 'action' => 'state', 'state']);?></li>
     <li><?=$this->Html->link('最近更新されたデータ', ['controller' => 'Clients', 'action' => 'state', 'recent']);?></li>
+    <hr>
     <li><?=$this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']);?></li>
     <li><?=$this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']);?></li>
     <li><?=$this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']);?></li>

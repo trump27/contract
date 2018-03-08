@@ -3,10 +3,13 @@
 $this->extend('../Layout/TwitterBootstrap/dashboard');
 ?>
 <?php $this->start('tb_actions');?>
+    <li><?=$this->Html->link('未処理タスク', ['controller' => 'Clients', 'action' => 'state', 'state']);?></li>
+    <li><?=$this->Html->link('最近更新されたデータ', ['controller' => 'Clients', 'action' => 'state', 'recent']);?></li>
+    <hr>
     <li><a href="#number1">情報参照</a></li>
     <li><a href="#number2">契約書登録</a></li>
-    <li><a href="#number3">ライセンス利用申込書</a></li>
-    <li><a href="#number4">ライセンス登録</a></li>
+    <li><a href="#number3">ライセンス登録</a></li>
+    <li><a href="#number4">ライセンス利用申込書</a></li>
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
@@ -36,7 +39,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   </button>
 </div>
 
-<div id="number4" />
+<div id="number3" />
 <div class="bs-callout bs-callout-warning">
   <h1>ライセンス登録</h1>
   <p>ライセンスを登録・発行依頼する。</p>
@@ -45,7 +48,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   </button>
 </div>
 
-<div id="number3" />
+<div id="number4" />
 <div class="bs-callout bs-callout-info">
   <h1>ライセンス利用申込書</h1>
   <p>既存顧客のライセンス変更の利用申込書を登録、出力する。</p>

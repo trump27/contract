@@ -39,10 +39,9 @@ echo $this->Form->end();
 
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function () {
-//    var url = '';
     $('#customerModal').on('shown.bs.modal', function (e) {
         $('#searchcustomer').focus();
-        var button = $(e.relatedTarget);
+//        var button = $(e.relatedTarget);
 //        url = button.data('url');
     })
     var t;
