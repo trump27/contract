@@ -86,7 +86,7 @@ class ContractsController extends AppController
             }
             $this->Flash->error(__('The contract could not be saved. Please, try again.'));
         }
-        $clients = $this->Contracts->Clients->find('list', ['limit' => 1000]);
+        $clients = $this->Contracts->Clients->find('withpf');
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
@@ -135,7 +135,7 @@ class ContractsController extends AppController
             }
             $this->Flash->error(__('The contract could not be saved. Please, try again.'));
         }
-        $clients = $this->Contracts->Clients->find('list', ['limit' => 1000]);
+        $clients = $this->Contracts->Clients->find('withpf');
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
         $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);

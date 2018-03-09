@@ -1,11 +1,11 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\Database\Expression\IdentifierExpression;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-use Cake\Database\Expression\IdentifierExpression;
 
 /**
  * Clients Model
@@ -60,9 +60,9 @@ class ClientsTable extends Table
             'bindingKey' => 'company_code', // リレーション先のカラム名
             'foreignKey' => 'company_code', // FK
         ]);
-        $this->belongsTo('Partners', [      // 自身への参照
+        $this->belongsTo('Partners', [ // 自身への参照
             'className' => 'Clients',
-            'finder' => 'partner'
+            'finder' => 'partner',
         ]);
 
         $this->addBehavior('Muffin/Footprint.Footprint', [
@@ -142,73 +142,97 @@ class ClientsTable extends Table
     }
 
     // 汎用用リスト（パートナー名付き）
-    public function findWithpartner(Query $query, array $options)
+    // public function findWithpartner(Query $query, array $options)
+    // {
+
+    //     // $conc = $query->func()->concat([
+    //     //         'Clients.client_name' => 'identifier',
+    //     //         ' （',
+    //     //         'Partners.client_name' => 'identifier',
+    //     //         '）'
+    //     //     ]);
+    //     // $query
+    //     //     ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
+    //     //     // ->select(['name' => $conc])
+    //     //     // ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
+    //     //     ->contain('Partners')
+    //     //     // ->func()->concat([
+    //     //     //     'Clients.client_name' => 'identifier',
+    //     //     //     '---'.
+    //     //     //     'Clients.id' => 'identifier',
+    //     //     // ]);
+    //     //     // ->contain(['Partners' => ['fields' => ['id', 'client_name']]]);
+    //     //     // ->combine('id', 'name')
+    //     //     ->select(['name' => $conc])
+    //     //     // ->map(function ($row) {
+    //     //     //     // debug($row);
+    //     //     //     $row->client_name = $row->client_name . empty($row->partner->client_name) ? '' : ' （' . $row->partner->client_name . '）';
+    //     //     //     return $row;
+    //     //     // })
+    //     //     // ->combine('id', 'Clients.client_name');
+    //     //     // ->toArray();
+    //     //     ->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
+    //     //         // debug($results);
+    //     //         return $results->combine('id', 'name');//. 'client_name');
+    //     //     });
+    //     // debug($query->toArray());
+    //     // $query = $this->Attendees->find()->contain(['Users']);
+    //     // $lastModifedCase = $query->newExpr()->addCase($query->newExpr()
+    //     //         ->add(['Attendees.modified <' => 'Users.modified']), ['Users.modified', 'Attendees.modified'], 'datetime');
+    //     // $query->select(['Attendees.id', 'lastModified' => $lastModifedCase, 'Users.firstName', 'Users.lastName']);
+
+    //     $query
+    //         ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
+    //         ->contain(['Partners']);
+    //     $case = $query->newExpr()
+    //         ->addCase(
+    //             [$query->newExpr()->add(['Partners.client_name IS' => null])],
+    //             ['', new IdentifierExpression('Partners.client_name')],
+    //             // ['', 'Partners.client_name'],
+    //             'string'
+    //         );
+    //     $conc = $query->func()->concat([
+    //         'Clients.client_name' => 'identifier',
+    //         ' /',
+    //         'pname' => 'identifier',
+    //     ]);
+    //     $query
+    //         ->select(['pname' => $case, 'name' => $conc]);
+    //     // ->select(['pname' => $case]);
+    //     $query
+    //     // ->select(['name' => $conc])
+    //     ->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
+    //         // debug($results);
+    //         return $results->combine('id', 'name'); //. 'client_name');
+    //     });
+    //     // debug($query);
+    //     // debug($query->toArray());
+    //     return $query;
+    // }
+
+    // with partner flag
+    public function findWithpf(Query $query, array $options)
     {
-
-
-        // $conc = $query->func()->concat([
-        //         'Clients.client_name' => 'identifier',
-        //         ' （',
-        //         'Partners.client_name' => 'identifier',
-        //         '）'
-        //     ]);
-        // $query
-        //     ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
-        //     // ->select(['name' => $conc])
-        //     // ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
-        //     ->contain('Partners')
-        //     // ->func()->concat([
-        //     //     'Clients.client_name' => 'identifier',
-        //     //     '---'.
-        //     //     'Clients.id' => 'identifier',
-        //     // ]);
-        //     // ->contain(['Partners' => ['fields' => ['id', 'client_name']]]);
-        //     // ->combine('id', 'name')
-        //     ->select(['name' => $conc])
-        //     // ->map(function ($row) {
-        //     //     // debug($row);
-        //     //     $row->client_name = $row->client_name . empty($row->partner->client_name) ? '' : ' （' . $row->partner->client_name . '）';
-        //     //     return $row;
-        //     // })
-        //     // ->combine('id', 'Clients.client_name');
-        //     // ->toArray();
-        //     ->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
-        //         // debug($results);
-        //         return $results->combine('id', 'name');//. 'client_name');
-        //     });
-            // debug($query->toArray());
-// $query = $this->Attendees->find()->contain(['Users']);
-// $lastModifedCase = $query->newExpr()->addCase($query->newExpr()
-//         ->add(['Attendees.modified <' => 'Users.modified']), ['Users.modified', 'Attendees.modified'], 'datetime');
-// $query->select(['Attendees.id', 'lastModified' => $lastModifedCase, 'Users.firstName', 'Users.lastName']);
-
-        $query
-            ->select(['Clients.id', 'Clients.client_name', 'Partners.client_name'])
-            ->contain(['Partners']);
         $case = $query->newExpr()
             ->addCase(
-                [$query->newExpr()->add(['Partners.client_name IS' => null])],
-                ['', new IdentifierExpression('Partners.client_name')],
-                // ['', 'Partners.client_name'],
-                'string'
+                [$query->newExpr()->add(['Clients.partner_flag' => 1])],
+                [
+                    $query->func()->concat([
+                        'Clients.client_name' => 'identifier',
+                        ' (*)'
+                    ]),
+                    new IdentifierExpression('Clients.client_name')
+                ],
+                ['string']
             );
-        $conc = $query->func()->concat([
-                'Clients.client_name' => 'identifier',
-                ' /',
-                'pname' => 'identifier',
-            ]);
         $query
-            ->select(['pname' => $case, 'name' => $conc]);
-            // ->select(['pname' => $case]);
-        $query
-            // ->select(['name' => $conc])
+            ->select(['id', 'name' => $case])
             ->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
-                // debug($results);
-                return $results->combine('id', 'name');//. 'client_name');
+                return $results->combine('id', 'name');
             });
-        // debug($query);
-        // debug($query->toArray());
+
         return $query;
+
     }
 
     // Search
@@ -222,14 +246,6 @@ class ClientsTable extends Table
                 'before' => true,
                 'after' => true,
             ]);
-            // ->add('partner_name', 'Search.Callback', [
-            //     'callback' => function ($query, $args, $filter) {
-            //         $partner_name = $args['partner_name'];
-            //         $query->matching('Partners', function ($q) use ($partner_name) {
-            //             return $q->where(['Partners.client_name LIKE' => "%$partner_name%"]);
-            //         });
-            //     }]
-            // );
 
         return $searchManager;
     }

@@ -31,8 +31,8 @@ class LicensesController extends AppController
     {
         $this->paginate = [
             'order' => [
-                'issued' => 'desc'
-            ]
+                'issued' => 'desc',
+            ],
         ];
         $licenses = $this->Licenses
             ->find('search', ['search' => $this->request->query])
@@ -71,8 +71,12 @@ class LicensesController extends AppController
     }
 
     // ステータス変更
-    private function saveOrderStatus($order_id=null, $status=99) {
-        if (empty($order_id)) return;
+    private function saveOrderStatus($order_id = null, $status = 99)
+    {
+        if (empty($order_id)) {
+            return;
+        }
+
         $order = $this->Licenses->Orders->get($order_id);
         $order->status_id = $status;
         $this->Licenses->Orders->save($order);
@@ -106,7 +110,8 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        $clients = $this->Licenses->Clients->find('list', ['limit' => 1000]);
+        // $clients = $this->Licenses->Clients->find('list', ['limit' => 1000]);
+        $clients = $this->Licenses->Clients->find('withpf');
         $customers = $this->Licenses->Customers->find('list', ['limit' => 1000]);
         $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
@@ -133,8 +138,8 @@ class LicensesController extends AppController
             // $this->log($this->request->getData());
             $before = $this->Licenses->get($license->id); // 変更前データ
             if ($this->Licenses->save($license)) {
-                if ($license->order_id <> $before->order_id) {
-                    $this->saveOrderStatus($before->order_id, 1);   // 変更前を未処理状態へ
+                if ($license->order_id != $before->order_id) {
+                    $this->saveOrderStatus($before->order_id, 1); // 変更前を未処理状態へ
                 }
                 $this->saveOrderStatus($license->order_id);
                 $this->Flash->success(__('The license has been saved.'));
@@ -144,8 +149,8 @@ class LicensesController extends AppController
             }
             $this->Flash->error(__('The license could not be saved. Please, try again.'));
         }
-        // $clients = $this->Licenses->Clients->find('withpartner');
-        $clients = $this->Licenses->Clients->find('list');
+        $clients = $this->Licenses->Clients->find('withpf');
+        // $clients = $this->Licenses->Clients->find('list');
         $customers = $this->Licenses->Customers->find('list');
         $orders = $this->Licenses->Orders->find('list');
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
@@ -186,14 +191,14 @@ class LicensesController extends AppController
         }
         $list = $this->Licenses->findByCustomerId($customer_id)
             ->select(['id', 'issued', 'license_no'])
-            ->order(['issued'=> 'DESC'])
+            ->order(['issued' => 'DESC'])
             ->map(function ($row) {
-                $row->license_no =  ' 【' . $row->issued .'】 '. $row->license_no;
+                $row->license_no = ' 【' . $row->issued . '】 ' . $row->license_no;
                 return $row;
             })
             ->combine('id', 'license_no')
             ->toArray();
-        $list = [""=>"---"] + $list;
+        $list = ["" => "---"] + $list;
         $this->set(compact('list'));
         $this->render('/Element/selectlist', '');
     }

@@ -97,7 +97,7 @@ class RequestsController extends AppController
             }
             $this->Flash->error(__('The request could not be saved. Please, try again.'));
         }
-        $clients = $this->Requests->Clients->find('list', ['limit' => 1000]);
+        $clients = $this->Requests->Clients->find('withpf');
         $customers = $this->Requests->Customers->find('list', ['limit' => 1000]);
         $appforms = $this->Requests->Appforms->find('list', ['limit' => 200]);
         $statuses = $this->Requests->Statuses->find('list', ['limit' => 200]);
@@ -128,7 +128,7 @@ class RequestsController extends AppController
             }
             $this->Flash->error(__('The request could not be saved. Please, try again.'));
         }
-        $clients = $this->Requests->Clients->find('list', ['limit' => 1000]);
+        $clients = $this->Requests->Clients->find('withpf');
         $customers = $this->Requests->Customers->find('list', ['limit' => 1000]);
         $appforms = $this->Requests->Appforms->find('list', ['limit' => 200]);
         $statuses = $this->Requests->Statuses->find('list', ['limit' => 200]);
