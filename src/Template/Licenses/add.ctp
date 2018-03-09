@@ -53,6 +53,7 @@ $this->element('datepicker');
     <?php
 echo $this->Form->hidden('mode', ['value'=>'add']);
 echo $this->Form->control('status_id', ['value'=>20, 'label'=>'依頼先']);
+echo "<h4>登録情報</h4>";
 echo $this->Form->control('client_id', ['options' => $clients]);
 echo $this->Form->control('customer_id', ['options' => $customers]);
 ?>

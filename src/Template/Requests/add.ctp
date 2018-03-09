@@ -49,6 +49,7 @@ $this->element('datepicker');
     <legend><?= __('Add {0}', ['Request']) ?></legend>
     <?php
     echo $this->Form->control('status_id', ['options' => $this->My->requestorder(), 'value' => 10, 'label' => '依頼']);
+    echo "<h4>登録情報</h4>";
     echo $this->Form->control('client_id', ['options' => $clients, 'empty'=>'---']);
     echo $this->Form->control('customer_id', ['options' => $customers, 'empty'=>'---']);
     ?>
