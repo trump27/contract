@@ -38,6 +38,7 @@ $this->start('tb_body_start');
                         <ul class="dropdown-menu">
                             <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']); ?></li>
+                            <li role="separator" class="divider"></li>
                             <li><?= $this->Html->link(__('List Contracts'), ['controller' => 'Contracts', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Requests'), ['controller' => 'Requests', 'action' => 'index']); ?></li>
                             <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
