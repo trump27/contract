@@ -162,6 +162,7 @@ class ContractsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $contract = $this->Contracts->get($id);
         if ($this->Contracts->delete($contract)) {
+            $this->saveOrderStatus($contract->order_id, 1); // 変更前を未処理状態へ
             $this->Flash->success(__('The contract has been deleted.'));
         } else {
             $this->Flash->error(__('The contract could not be deleted. Please, try again.'));

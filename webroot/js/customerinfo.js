@@ -1,6 +1,11 @@
 $(function () {
     // for adding license
     function getCustomerInfo() {
+        if (!$("#customer-id").val()) {
+            $("#product-name").html("").effect("highlight", "slow");
+            $("#license-no").html("").effect("highlight", "slow");
+            return;
+        }
         $.ajax({
             url: "/customers/customerinfo/" + $("#customer-id").val(),
         })

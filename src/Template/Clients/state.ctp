@@ -50,6 +50,12 @@ $this->start('tb_actions');
 
             <td class="actions">
                 <?=$this->Html->link('', ['controller' => 'Orders', 'action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info'])?>
+                <?php
+                    if (empty($order->status_id) || $order->status_id==1){
+                        echo $this->Html->link('', ['controller'=>'Contracts', 'action' => 'add', 'client_id'=>$order->client->id], ['title' => __('New Contract'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-folder-open alert-warning']);
+                        echo $this->Html->link('', ['controller'=>'Licenses', 'action' => 'add', 'client_id'=>$order->client->id], ['title' => __('New License'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-edit alert-danger']);
+                    }
+                ?>
             </td>
             <td><?=$order->has('client') ? $this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_name1; ?></td>
             <td><?=h($order->status_msg)?></td>

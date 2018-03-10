@@ -58,6 +58,12 @@ echo $this->Form->end();
 
             <td class="actions">
                 <?= $this->Html->link('', ['action' => 'view', $order->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
+                <?php
+                    if (empty($order->status_id) || $order->status_id==1){
+                        echo $this->Html->link('', ['controller'=>'Contracts', 'action' => 'add', 'client_id'=>$order->client->id], ['title' => __('New Contract'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-folder-open alert-warning']);
+                        echo $this->Html->link('', ['controller'=>'Licenses', 'action' => 'add', 'client_id'=>$order->client->id], ['title' => __('New License'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-edit alert-danger']);
+                    }
+                ?>
                 <!-- <?= $this->Html->link('', ['action' => 'edit', $order->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?> -->
                 <!-- <?= $this->Form->postLink('', ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
             </td>
@@ -75,7 +81,8 @@ echo $this->Form->end();
                 <br/><?= $this->my->trunc($order->product_detail,30) ?></td>
             <td><?= h($order->sales_staff) ?>
                 <br/><?= $this->Number->format($order->price) ?></td>
-            <td><?= $order->has('status') ? $order->status->name : $order->status_id ?></td>
+            <td><?= $this->My->todo($order->status_id) ?></td>
+            <!-- <td><?= $order->has('status') ? $order->status->name : $order->status_id ?></td> -->
         </tr>
         <?php endforeach; ?>
     </tbody>

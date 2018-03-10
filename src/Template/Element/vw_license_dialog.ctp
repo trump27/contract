@@ -28,6 +28,7 @@ echo $this->Form->end();
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function () {
     $('#licenseModal').on('shown.bs.modal', function (e) {
+        if (!$('#customer-id').val()) alert('案件が選択させていません');
         $("#select-license").html("");
         $("#infoview").html("");
         $.ajax({

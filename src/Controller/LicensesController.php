@@ -90,12 +90,7 @@ class LicensesController extends AppController
     public function add($customer_id = null, $client_id = null)
     // public function add($customer_id = null, $client_id = null)
     {
-        $this->log('client_id:'.$client_id);
-        $this->log('customer_id:'.$customer_id);
-        $this->log($this->request->query);
-
-
-        // from ajax (selectcustomer.ctp)
+        // from ajax (selectcustomer.ctp, order list)
         $data = [];
         if (!empty($this->request->query['customer_id'])) {
             $customer_id = $this->request->query['customer_id'];
@@ -184,6 +179,8 @@ class LicensesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $license = $this->Licenses->get($id);
         if ($this->Licenses->delete($license)) {
+            $this->saveOrderStatus($license->order_id, 1); // 変更前を未処理状態へ
+
             $this->Flash->success(__('The license has been deleted.'));
         } else {
             $this->Flash->error(__('The license could not be deleted. Please, try again.'));
