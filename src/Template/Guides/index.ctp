@@ -18,6 +18,10 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
   <p>各種登録処理のガイド</p>
 </div>
 
+<?php
+echo $this->Html->link('hello', ['controller'=>'Requests', 'action'=>'add', 'client_id'=>9]);
+?>
+
 <div id="number1" />
 <div class="bs-callout bs-callout-success">
   <h1>参考情報</h1>

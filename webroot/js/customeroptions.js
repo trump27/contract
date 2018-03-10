@@ -8,6 +8,7 @@ $(function () {
             $("#customer-id").html(data);
             $("#customer-id").val(customerselected);
             $("#customer-id").effect("highlight", "slow");
+            $("#customer-id").trigger("change");    // fire
         })
         .fail(function () {
             console.log('cannot load options.');

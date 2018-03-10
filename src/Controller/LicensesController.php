@@ -87,15 +87,26 @@ class LicensesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add($customer_id = null)
+    public function add($customer_id = null, $client_id = null)
+    // public function add($customer_id = null, $client_id = null)
     {
+        $this->log('client_id:'.$client_id);
+        $this->log('customer_id:'.$customer_id);
+        $this->log($this->request->query);
+
+
         // from ajax (selectcustomer.ctp)
         $data = [];
-        if ($customer_id) {
+        if (!empty($this->request->query['customer_id'])) {
+            $customer_id = $this->request->query['customer_id'];
             $data = $this->Licenses->Customers->findById($customer_id)
                 ->select(['customer_id' => 'id', 'client_id'])
                 ->first();
             $data = ['customer_id' => $data->customer_id, 'client_id' => $data->client_id];
+        }
+        if (!empty($this->request->query['client_id'])) {
+            $client_id = $this->request->query['client_id'];
+            $data = ['client_id' => $client_id];
         }
 
         $license = $this->Licenses->newEntity($data);
@@ -113,7 +124,7 @@ class LicensesController extends AppController
         // $clients = $this->Licenses->Clients->find('list', ['limit' => 1000]);
         $clients = $this->Licenses->Clients->find('withpf');
         $customers = $this->Licenses->Customers->find('list', ['limit' => 1000]);
-        $orders = $this->Licenses->Orders->find('list', ['limit' => 200]);
+        $orders = $this->Licenses->Orders->find('list');
         $statuses = $this->Licenses->Statuses->find('list', ['limit' => 200]);
         $conditions = $this->Licenses->Conditions->find('list', ['limit' => 200]);
         $languages = $this->Licenses->Languages->find('list', ['limit' => 200]);

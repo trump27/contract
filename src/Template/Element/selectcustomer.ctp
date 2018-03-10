@@ -81,15 +81,15 @@ $(function () {
     }
     $("#btn-select-contract").click(function (e) {
         if (!check_select()) return;
-        location.replace('/contracts/add/' + $('#customer-id').val());
+        location.replace('/contracts/add?customer_id=' + $('#customer-id').val());
     });
     $("#btn-select-license").click(function (e) {
         if (!check_select()) return;
-        location.replace('/licenses/add/' + $('#customer-id').val());
+        location.replace('/licenses/add?customer_id=' + $('#customer-id').val());
     });
     $("#btn-select-request").click(function (e) {
         if (!check_select()) return;
-        location.replace('/requests/add/' + $('#customer-id').val());
+        location.replace('/requests/add?customer_id=' + $('#customer-id').val());
     });
 });
 <?= $this->Html->scriptEnd() ?>
