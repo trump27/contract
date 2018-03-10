@@ -63,7 +63,7 @@ class ClientsController extends AppController
             ->contain(['Clients', 'Customers', 'Appforms']);
 
         if ($mode == 'state') {
-            $requests->where(['Requests.status_id' => 99]);
+            $requests->where(['Requests.status_id <>' => 99]);
         } else {
             $requests->limit($limit)
                 ->order(['Requests.modified' => 'DESC']);
@@ -82,6 +82,25 @@ class ClientsController extends AppController
         }
 
         $this->set(compact('mode', 'orders', 'contracts', 'licenses', 'requests'));
+
+        // 未処理数
+        $counts['Orders'] = $this->getStatusCount($this->Orders);
+        $counts['Contracts'] = $this->getStatusCount($this->Contracts);
+        $counts['Licenses'] = $this->getStatusCount($this->Clients->Licenses);
+        $counts['Requests'] = $this->getStatusCount($this->Requests);
+
+        $this->set(compact('counts'));
+
+    }
+
+    private function getStatusCount($table) {
+        $query = $table->find();
+        $query->select([
+            'status_id',
+            'cnt' => $query->func()->count('*'),
+        ])->where(['status_id <' => 99])->group('status_id');
+        // $count_licenses = $count_licenses->toarray(); //->combine('status_idid', 'cnt');
+        return $query->combine('status_id', 'cnt')->toArray();
     }
 
     /**
@@ -115,7 +134,7 @@ class ClientsController extends AppController
     {
         $client = $this->Clients->get($id, [
             'contain' => ['Users', 'Customers', 'Licenses', 'Orders', 'Partners',
-                'Contracts', 'Contracts.Contractnames'
+                'Contracts', 'Contracts.Contractnames',
             ],
         ]);
 

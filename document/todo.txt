@@ -25,3 +25,8 @@ CREATE INDEX `clients_client_name` ON `clients` (`client_name` ASC);
 CREATE INDEX `customers_customer_name` ON `customers` (`customer_name` ASC);
 CREATE INDEX `supportcontracts_eu_name` ON `supportcontracts` (`eu_name` ASC);
 CREATE INDEX `supportcontracts_company_code` ON `supportcontracts` (`company_code` ASC);
+
+CREATE INDEX `orders_status` ON `orders` (`status_id` ASC);
+CREATE INDEX `contracts_status` ON `contracts` (`status_id` ASC);
+CREATE INDEX `licenses_status` ON `licenses` (`status_id` ASC);
+CREATE INDEX `requests_status` ON `requests` (`status_id` ASC);

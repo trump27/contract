@@ -4,7 +4,6 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 $this->start('tb_actions');
 ?>
     <li><?= $this->Html->link(__('New Order'), ['action' => 'add']); ?></li>
-    <li><?= $this->Html->link(__('List Statuses'), ['controller' => 'Statuses', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']); ?></li>
     <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']); ?></li>
 <?php $this->end(); ?>
@@ -12,7 +11,7 @@ $this->start('tb_actions');
 
 <h1 class="page-header"><?= __('Orders') ?></h1>
 
-<div class="alert alert-info" role="alert">再販の場合、取引先はパートナー</div>
+<div class="alert alert-info" role="alert">再販の場合、取引先はパートナー<br/>コンサル、個別開発除く</div>
 
 <?php
 $ym[''] = '---';

@@ -27,7 +27,10 @@ $this->start('tb_actions');
 </div>
 <?php } ?>
 
-<h2 class="page-header"><?=__('Orders')?></h2>
+<?=$this->element('counts')?>
+
+<div id="Orders" />
+<h2 class="page-header vspace"><?=__('Orders')?></h2>
 <table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -63,46 +66,9 @@ $this->start('tb_actions');
     </tbody>
 </table>
 
-<!-- Request -->
-<h2 class="page-header"><?= __('Request') ?></h2>
-<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th class="actions"><?= __('Actions'); ?></th>
-            <th><?= __('id'); ?></th>
-            <th><?= __('client_id'); ?></th>
-            <th><?= __('customer_id'); ?></th>
-            <th><?= __('appform_id'); ?></th>
-            <th><?= __('status_id'); ?></th>
-            <th><?= __('product_name'); ?></th>
-            <th><?= __('license_name'); ?></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($requests as $request): ?>
-        <tr class="<?=!empty($request->client->partner_id)?'active':''?>">
-
-            <td class="actions">
-                <?= $this->Html->link('', ['controller'=>'Requests', 'action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
-            </td>
-            <td><?= $this->Number->format($request->id) ?></td>
-            <td>
-                <?= $request->has('client') ? $this->Html->link($this->My->trunc($request->client->client_name), ['controller' => 'Clients', 'action' => 'view', $request->client->id]) : '' ?>
-            </td>
-            <td>
-                <?= $request->has('customer') ? $this->Html->link($request->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $request->customer->id]) : '' ?>
-            </td>
-            <td><?= h($request->appform->form_name) ?></td>
-            <td><?= $this->My->todo($request->status_id) ?></td>
-            <td><?= h($request->product_name) ?></td>
-            <td><?= h($request->license_name) ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-
 <!-- Contract -->
-<h2 class="page-header"><?= __('Contract') ?></h2>
+<div id="Contracts" />
+<h2 class="page-header vspace"><?= __('Contract') ?></h2>
 <table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -143,7 +109,8 @@ $this->start('tb_actions');
 </table>
 
 <!-- Licenses -->
-<h2 class="page-header"><?= __('Licenses') ?></h2>
+<div id="Licenses" />
+<h2 class="page-header vspace"><?= __('Licenses') ?></h2>
 <table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
     <thead>
         <tr>
@@ -175,6 +142,45 @@ $this->start('tb_actions');
             </td>
             <td><?= h($license->issued) ?></td>
             <td><?= h($license->license_no) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<!-- Request -->
+<div id="Requests" />
+<h2 class="page-header vspace"><?= __('Request') ?></h2>
+<table class="table table-condensed table-responsive text-nowrap" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th class="actions"><?= __('Actions'); ?></th>
+            <th><?= __('id'); ?></th>
+            <th><?= __('client_id'); ?></th>
+            <th><?= __('customer_id'); ?></th>
+            <th><?= __('appform_id'); ?></th>
+            <th><?= __('status_id'); ?></th>
+            <th><?= __('product_name'); ?></th>
+            <th><?= __('license_name'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($requests as $request): ?>
+        <tr class="<?=!empty($request->client->partner_id)?'active':''?>">
+
+            <td class="actions">
+                <?= $this->Html->link('', ['controller'=>'Requests', 'action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
+            </td>
+            <td><?= $this->Number->format($request->id) ?></td>
+            <td>
+                <?= $request->has('client') ? $this->Html->link($this->My->trunc($request->client->client_name), ['controller' => 'Clients', 'action' => 'view', $request->client->id]) : '' ?>
+            </td>
+            <td>
+                <?= $request->has('customer') ? $this->Html->link($request->customer->customer_name, ['controller' => 'Customers', 'action' => 'view', $request->customer->id]) : '' ?>
+            </td>
+            <td><?= h($request->appform->form_name) ?></td>
+            <td><?= $this->My->todo($request->status_id) ?></td>
+            <td><?= h($request->product_name) ?></td>
+            <td><?= h($request->license_name) ?></td>
         </tr>
         <?php endforeach; ?>
     </tbody>
