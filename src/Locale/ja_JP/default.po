@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2018-03-10 11:28+0900\n"
-"PO-Revision-Date: 2018-03-10 11:30+0900\n"
+"POT-Creation-Date: 2018-03-10 20:46+0900\n"
+"PO-Revision-Date: 2018-03-10 21:19+0900\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: ja_JP\n"
@@ -273,7 +273,7 @@ msgstr "追加"
 #: Template/Appforms/edit.ctp:14;29 Template/Appforms/index.ctp:28
 #: Template/Bake/Element/form.ctp:22 Template/Bake/Template/index.ctp:54
 #: Template/Bake/Template/view.ctp:165 Template/Clients/edit.ctp:14;30
-#: Template/Clients/index.ctp:48 Template/Clients/state.ctp:91
+#: Template/Clients/index.ctp:48 Template/Clients/state.ctp:93
 #: Template/Clients/view.ctp:107;144;187 Template/Conditions/edit.ctp:14;29
 #: Template/Conditions/index.ctp:26 Template/Contractnames/edit.ctp:14;29
 #: Template/Contractnames/index.ctp:27 Template/Contracts/edit.ctp:14;31
@@ -281,7 +281,7 @@ msgstr "追加"
 #: Template/Customers/index.ctp:47 Template/Customers/view.ctp:133;175
 #: Template/Languages/edit.ctp:14;29 Template/Languages/index.ctp:26
 #: Template/Licenses/edit.ctp:14;32 Template/Licenses/index.ctp:53
-#: Template/Orders/edit.ctp:14;37 Template/Orders/index.ctp:63
+#: Template/Orders/edit.ctp:14;37 Template/Orders/index.ctp:62
 #: Template/Productinfos/edit.ctp:14;29 Template/Productinfos/index.ctp:44
 #: Template/Requests/edit.ctp:14;32 Template/Requests/index.ctp:46
 #: Template/Statuses/edit.ctp:14;29 Template/Statuses/index.ctp:27
@@ -295,7 +295,7 @@ msgstr "削除"
 #: Template/Appforms/view.ctp:8;18 Template/Bake/Element/form.ctp:25
 #: Template/Bake/Template/index.ctp:54 Template/Bake/Template/view.ctp:53;165
 #: Template/Clients/edit.ctp:16;32 Template/Clients/index.ctp:48
-#: Template/Clients/state.ctp:91 Template/Clients/view.ctp:8;18;107;144;187
+#: Template/Clients/state.ctp:93 Template/Clients/view.ctp:8;18;107;144;187
 #: Template/Conditions/edit.ctp:16;31 Template/Conditions/index.ctp:26
 #: Template/Conditions/view.ctp:8;18 Template/Contractnames/edit.ctp:16;31
 #: Template/Contractnames/index.ctp:27 Template/Contractnames/view.ctp:8;18
@@ -305,7 +305,7 @@ msgstr "削除"
 #: Template/Languages/edit.ctp:16;31 Template/Languages/index.ctp:26
 #: Template/Languages/view.ctp:8;18 Template/Licenses/edit.ctp:16;34
 #: Template/Licenses/index.ctp:53 Template/Licenses/view.ctp:8;21
-#: Template/Orders/edit.ctp:16;39 Template/Orders/index.ctp:63
+#: Template/Orders/edit.ctp:16;39 Template/Orders/index.ctp:62
 #: Template/Orders/view.ctp:8;20 Template/Productinfos/edit.ctp:16;31
 #: Template/Productinfos/index.ctp:44 Template/Productinfos/view.ctp:8;18
 #: Template/Requests/edit.ctp:16;34 Template/Requests/index.ctp:46
@@ -344,12 +344,12 @@ msgstr "申込書名追加"
 
 #: Template/Appforms/index.ctp:14 Template/Bake/Template/index.ctp:39
 #: Template/Bake/Template/view.ctp:152 Template/Clients/index.ctp:31
-#: Template/Clients/state.ctp:36;73;114;152
+#: Template/Clients/state.ctp:37;75;117;156
 #: Template/Clients/view.ctp:91;131;171;211 Template/Conditions/index.ctp:14
 #: Template/Contractnames/index.ctp:14 Template/Contracts/index.ctp:28
 #: Template/Customers/index.ctp:30 Template/Customers/view.ctp:120;159
 #: Template/Languages/index.ctp:14 Template/Licenses/index.ctp:32
-#: Template/Orders/index.ctp:39 Template/Productinfos/index.ctp:27
+#: Template/Orders/index.ctp:38 Template/Productinfos/index.ctp:27
 #: Template/Requests/index.ctp:29 Template/Statuses/index.ctp:14
 #: Template/Supportcontracts/index.ctp:27 Template/Users/index.ctp:14
 msgid "Actions"
@@ -357,12 +357,12 @@ msgstr ""
 
 #: Template/Appforms/index.ctp:26 Template/Bake/Template/index.ctp:52
 #: Template/Bake/Template/view.ctp:163 Template/Clients/index.ctp:46
-#: Template/Clients/state.ctp:51;89;128;167
+#: Template/Clients/state.ctp:52;91;131;171
 #: Template/Clients/view.ctp:105;142;185;223 Template/Conditions/index.ctp:24
 #: Template/Contractnames/index.ctp:25 Template/Contracts/index.ctp:44
 #: Template/Customers/index.ctp:45 Template/Customers/view.ctp:131;173
 #: Template/Languages/index.ctp:24 Template/Licenses/index.ctp:51
-#: Template/Orders/index.ctp:61 Template/Productinfos/index.ctp:42
+#: Template/Orders/index.ctp:60 Template/Productinfos/index.ctp:42
 #: Template/Requests/index.ctp:44 Template/Statuses/index.ctp:25
 #: Template/Supportcontracts/index.ctp:45 Template/Users/index.ctp:28
 msgid "View"
@@ -370,11 +370,11 @@ msgstr ""
 
 #: Template/Appforms/index.ctp:27 Template/Bake/Template/index.ctp:53
 #: Template/Bake/Template/view.ctp:164 Template/Clients/index.ctp:47
-#: Template/Clients/state.ctp:90 Template/Clients/view.ctp:106;143;186;224
+#: Template/Clients/state.ctp:92 Template/Clients/view.ctp:106;143;186;224
 #: Template/Conditions/index.ctp:25 Template/Contractnames/index.ctp:26
 #: Template/Contracts/index.ctp:45 Template/Customers/index.ctp:46
 #: Template/Customers/view.ctp:132;174 Template/Languages/index.ctp:25
-#: Template/Licenses/index.ctp:52 Template/Orders/index.ctp:62
+#: Template/Licenses/index.ctp:52 Template/Orders/index.ctp:61
 #: Template/Productinfos/index.ctp:43 Template/Requests/index.ctp:45
 #: Template/Statuses/index.ctp:26 Template/Supportcontracts/index.ctp:46
 #: Template/Users/index.ctp:29
@@ -385,7 +385,7 @@ msgstr ""
 #: Template/Clients/index.ctp:65 Template/Conditions/index.ctp:36
 #: Template/Contractnames/index.ctp:38 Template/Contracts/index.ctp:72
 #: Template/Customers/index.ctp:64 Template/Languages/index.ctp:36
-#: Template/Licenses/index.ctp:86 Template/Orders/index.ctp:86
+#: Template/Licenses/index.ctp:86 Template/Orders/index.ctp:85
 #: Template/Productinfos/index.ctp:59 Template/Requests/index.ctp:69
 #: Template/Statuses/index.ctp:38 Template/Supportcontracts/index.ctp:69
 #: Template/Users/index.ctp:44
@@ -396,7 +396,7 @@ msgstr "prev"
 #: Template/Clients/index.ctp:67 Template/Conditions/index.ctp:38
 #: Template/Contractnames/index.ctp:40 Template/Contracts/index.ctp:74
 #: Template/Customers/index.ctp:66 Template/Languages/index.ctp:38
-#: Template/Licenses/index.ctp:88 Template/Orders/index.ctp:88
+#: Template/Licenses/index.ctp:88 Template/Orders/index.ctp:87
 #: Template/Productinfos/index.ctp:61 Template/Requests/index.ctp:71
 #: Template/Statuses/index.ctp:40 Template/Supportcontracts/index.ctp:71
 #: Template/Users/index.ctp:46
@@ -411,7 +411,7 @@ msgstr "申込書名編集"
 msgid "Delete Appform"
 msgstr "申込書名削除"
 
-#: Template/Appforms/view.ctp:33 Template/Clients/state.ctp:74;115
+#: Template/Appforms/view.ctp:33 Template/Clients/state.ctp:76;118
 #: Template/Clients/view.ctp:33;84;127;164;206 Template/Conditions/view.ctp:37
 #: Template/Contractnames/view.ctp:33 Template/Contracts/view.ctp:35
 #: Template/Customers/view.ctp:33;116;152 Template/Element/vw_license.ctp:9
@@ -426,7 +426,7 @@ msgstr "ID"
 msgid "Form Name"
 msgstr "申込書名"
 
-#: Template/Appforms/view.ctp:40 Template/Clients/state.ctp:80
+#: Template/Appforms/view.ctp:40 Template/Clients/state.ctp:82
 #: Template/Clients/view.ctp:130 Template/Contracts/view.ctp:71
 #: Template/Customers/view.ctp:119 Template/Element/vw_license.ctp:77
 #: Template/Orders/view.ctp:121
@@ -511,7 +511,7 @@ msgstr ""
 #: Template/Licenses/add.ctp:13;23 Template/Licenses/edit.ctp:21;39
 #: Template/Licenses/index.ctp:7 Template/Licenses/view.ctp:11;24
 #: Template/Orders/add.ctp:17;28 Template/Orders/edit.ctp:25;45
-#: Template/Orders/index.ctp:8 Template/Orders/view.ctp:11;23
+#: Template/Orders/index.ctp:7 Template/Orders/view.ctp:11;23
 #: Template/Requests/add.ctp:13;23 Template/Requests/edit.ctp:21;39
 #: Template/Requests/index.ctp:7 Template/Requests/view.ctp:11;23
 #: Template/Supportcontracts/add.ctp:13;21
@@ -549,7 +549,7 @@ msgstr "顧客追加"
 #: Template/Clients/index.ctp:16 Template/Clients/view.ctp:37
 #: Template/Contracts/index.ctp:16 Template/Customers/index.ctp:17
 #: Template/Element/selectcustomer.ctp:11
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:68
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:69
 #: Template/Licenses/index.ctp:19 Template/Requests/index.ctp:17
 msgid "Client Name"
 msgstr "顧客名"
@@ -560,14 +560,14 @@ msgstr "パートナー区分"
 
 #: Template/Clients/index.ctp:22 Template/Contracts/index.ctp:17
 #: Template/Customers/index.ctp:19 Template/Licenses/index.ctp:23
-#: Template/Orders/index.ctp:30 Template/Productinfos/index.ctp:16
+#: Template/Orders/index.ctp:29 Template/Productinfos/index.ctp:16
 #: Template/Requests/index.ctp:20 Template/Supportcontracts/index.ctp:16
 msgid "Search"
 msgstr ""
 
 #: Template/Clients/index.ctp:69 Template/Contracts/index.ctp:76
 #: Template/Customers/index.ctp:68 Template/Licenses/index.ctp:90
-#: Template/Orders/index.ctp:90 Template/Productinfos/index.ctp:63
+#: Template/Orders/index.ctp:89 Template/Productinfos/index.ctp:63
 #: Template/Supportcontracts/index.ctp:73
 msgid ""
 "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} "
@@ -575,34 +575,33 @@ msgid ""
 msgstr ""
 
 #: Template/Clients/state.ctp:6
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:28
 msgid "Guide"
-msgstr ""
+msgstr "Navi"
 
 #: Template/Clients/state.ctp:11
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:43
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:44
 #: Template/Licenses/add.ctp:12;22 Template/Licenses/edit.ctp:20;38
 #: Template/Licenses/view.ctp:9;22 Template/Orders/add.ctp:19;29
-#: Template/Orders/edit.ctp:27;46 Template/Orders/index.ctp:9
+#: Template/Orders/edit.ctp:27;46 Template/Orders/index.ctp:8
 #: Template/Orders/view.ctp:12;24
 msgid "List Licenses"
 msgstr "ライセンス一覧"
 
 #: Template/Clients/state.ctp:12 Template/Contracts/add.ctp:12;21
 #: Template/Contracts/edit.ctp:20;37 Template/Contracts/view.ctp:9;20
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:41
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:42
 msgid "List Contracts"
 msgstr "契約一覧"
 
 #: Template/Clients/state.ctp:13
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:42
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:43
 #: Template/Requests/add.ctp:12;22 Template/Requests/edit.ctp:20;38
 #: Template/Requests/view.ctp:9;21
 msgid "List Requests"
-msgstr "ライセンス申込一覧"
+msgstr "ライセンス依頼一覧"
 
 #: Template/Clients/state.ctp:14
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:45
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:46
 #: Template/Licenses/add.ctp:15;25 Template/Licenses/edit.ctp:23;41
 #: Template/Licenses/index.ctp:9 Template/Licenses/view.ctp:13;26
 #: Template/Orders/add.ctp:12;27 Template/Orders/edit.ctp:20;43
@@ -610,41 +609,41 @@ msgstr "ライセンス申込一覧"
 msgid "List Orders"
 msgstr "受注一覧"
 
-#: Template/Clients/state.ctp:32 Template/Element/selectcustomer.ctp:18
+#: Template/Clients/state.ctp:33 Template/Element/selectcustomer.ctp:18
 #: Template/Orders/add.ctp:35 Template/Orders/edit.ctp:52
-#: Template/Orders/index.ctp:13 Template/Orders/view.ctp:29
+#: Template/Orders/index.ctp:12 Template/Orders/view.ctp:29
 msgid "Orders"
 msgstr "受注"
 
-#: Template/Clients/state.ctp:37 Template/Clients/view.ctp:165
+#: Template/Clients/state.ctp:38 Template/Clients/view.ctp:165
 #: Template/Guides/ajaxorders.ctp:7 Template/Orders/view.ctp:45
 msgid "Company Name1"
 msgstr "取引先名1"
 
-#: Template/Clients/state.ctp:38 Template/Clients/view.ctp:167
+#: Template/Clients/state.ctp:39 Template/Clients/view.ctp:167
 #: Template/Orders/view.ctp:65
 msgid "Status Msg"
 msgstr "状態"
 
-#: Template/Clients/state.ctp:39;79 Template/Licenses/index.ctp:17
-#: Template/Orders/index.ctp:25 Template/Requests/index.ctp:16
+#: Template/Clients/state.ctp:40;81 Template/Licenses/index.ctp:17
+#: Template/Orders/index.ctp:24 Template/Requests/index.ctp:16
 msgid "Status Id"
 msgstr "ステータス"
 
-#: Template/Clients/state.ctp:40 Template/Clients/view.ctp:166
+#: Template/Clients/state.ctp:41 Template/Clients/view.ctp:166
 #: Template/Guides/ajaxorders.ctp:6 Template/Orders/view.ctp:101
 msgid "Order Date"
 msgstr "受注日"
 
-#: Template/Clients/state.ctp:41 Template/Orders/view.ctp:109
+#: Template/Clients/state.ctp:42 Template/Orders/view.ctp:109
 msgid "Delivery Date"
 msgstr "納品予定日"
 
-#: Template/Clients/state.ctp:42 Template/Orders/view.ctp:113
+#: Template/Clients/state.ctp:43 Template/Orders/view.ctp:113
 msgid "Sales Date"
 msgstr "売上予定日"
 
-#: Template/Clients/state.ctp:43 Template/Clients/view.ctp:169;207
+#: Template/Clients/state.ctp:44 Template/Clients/view.ctp:169;207
 #: Template/Customers/view.ctp:155 Template/Element/vw_license.ctp:41
 #: Template/Guides/ajaxorders.ctp:10 Template/Orders/view.ctp:77
 #: Template/Productinfos/index.ctp:15 Template/Productinfos/view.ctp:41
@@ -652,32 +651,32 @@ msgstr "売上予定日"
 msgid "Product Name"
 msgstr "製品名"
 
-#: Template/Clients/state.ctp:69 Template/Contracts/add.ctp:31
+#: Template/Clients/state.ctp:71 Template/Contracts/add.ctp:31
 #: Template/Contracts/edit.ctp:47 Template/Contracts/view.ctp:27
 msgid "Contract"
 msgstr "契約"
 
-#: Template/Clients/state.ctp:75;116 Template/Contracts/view.ctp:39
+#: Template/Clients/state.ctp:77;119 Template/Contracts/view.ctp:39
 #: Template/Customers/view.ctp:37 Template/Element/vw_license.ctp:13
 #: Template/Orders/view.ctp:41 Template/Requests/view.ctp:47
 msgid "Client"
 msgstr "顧客"
 
-#: Template/Clients/state.ctp:76 Template/Clients/view.ctp:128
+#: Template/Clients/state.ctp:78 Template/Clients/view.ctp:128
 #: Template/Contracts/view.ctp:55 Template/Customers/view.ctp:117
 #: Template/Supportcontracts/view.ctp:96
 msgid "Contract Date"
 msgstr "契約日"
 
-#: Template/Clients/state.ctp:77;155
+#: Template/Clients/state.ctp:79;159
 msgid "customer_id"
 msgstr "案件"
 
-#: Template/Clients/state.ctp:78 Template/Contracts/view.ctp:51
+#: Template/Clients/state.ctp:80 Template/Contracts/view.ctp:51
 msgid "Contractname"
 msgstr "契約名"
 
-#: Template/Clients/state.ctp:81 Template/Clients/view.ctp:69
+#: Template/Clients/state.ctp:83 Template/Clients/view.ctp:69
 #: Template/Contracts/view.ctp:91 Template/Customers/view.ctp:101
 #: Template/Element/vw_license.ctp:101 Template/Orders/view.ctp:145
 #: Template/Productinfos/view.ctp:65 Template/Requests/view.ctp:99
@@ -685,19 +684,19 @@ msgstr "契約名"
 msgid "Modified"
 msgstr "変更日"
 
-#: Template/Clients/state.ctp:110 Template/Element/vw_license_dialog.ctp:7;11
+#: Template/Clients/state.ctp:113 Template/Element/vw_license_dialog.ctp:7;11
 #: Template/Licenses/add.ctp:36 Template/Licenses/edit.ctp:49
 #: Template/Licenses/index.ctp:13 Template/Licenses/view.ctp:31
 msgid "Licenses"
 msgstr "ライセンス"
 
-#: Template/Clients/state.ctp:117 Template/Contracts/view.ctp:43
+#: Template/Clients/state.ctp:120 Template/Contracts/view.ctp:43
 #: Template/Element/selectcustomer.ctp:7;11 Template/Element/vw_license.ctp:17
 #: Template/Requests/view.ctp:51
 msgid "Customer"
 msgstr "案件"
 
-#: Template/Clients/state.ctp:118 Template/Contracts/view.ctp:63
+#: Template/Clients/state.ctp:121 Template/Contracts/view.ctp:63
 #: Template/Element/vw_license.ctp:29 Template/Orders/view.ctp:89
 #: Template/Requests/view.ctp:59 Template/Statuses/add.ctp:24
 #: Template/Statuses/edit.ctp:40 Template/Statuses/index.ctp:10
@@ -705,42 +704,42 @@ msgstr "案件"
 msgid "Status"
 msgstr "ステータス"
 
-#: Template/Clients/state.ctp:119 Template/Customers/view.ctp:153
+#: Template/Clients/state.ctp:122 Template/Customers/view.ctp:153
 #: Template/Element/vw_license.ctp:57
 msgid "Issued"
 msgstr "発行日"
 
-#: Template/Clients/state.ctp:120 Template/Customers/view.ctp:154
+#: Template/Clients/state.ctp:123 Template/Customers/view.ctp:154
 #: Template/Element/vw_license.ctp:33 Template/Licenses/index.ctp:21
 msgid "License No"
 msgstr "ライセンス番号"
 
-#: Template/Clients/state.ctp:148 Template/Requests/add.ctp:32
+#: Template/Clients/state.ctp:152 Template/Requests/add.ctp:32
 #: Template/Requests/edit.ctp:48 Template/Requests/view.ctp:29
 msgid "Request"
-msgstr "ライセンス申込"
+msgstr "ライセンス依頼"
 
-#: Template/Clients/state.ctp:153
+#: Template/Clients/state.ctp:157
 msgid "id"
 msgstr ""
 
-#: Template/Clients/state.ctp:154
+#: Template/Clients/state.ctp:158
 msgid "client_id"
 msgstr "顧客"
 
-#: Template/Clients/state.ctp:156
+#: Template/Clients/state.ctp:160
 msgid "appform_id"
 msgstr "申込書"
 
-#: Template/Clients/state.ctp:157
+#: Template/Clients/state.ctp:161
 msgid "status_id"
 msgstr "ステータス"
 
-#: Template/Clients/state.ctp:158
+#: Template/Clients/state.ctp:162
 msgid "product_name"
 msgstr "製品名"
 
-#: Template/Clients/state.ctp:159
+#: Template/Clients/state.ctp:163
 msgid "license_name"
 msgstr "ライセンス名"
 
@@ -888,7 +887,7 @@ msgstr "契約書名一覧"
 
 #: Template/Contractnames/add.ctp:24 Template/Contractnames/edit.ctp:40
 #: Template/Contractnames/index.ctp:10 Template/Contractnames/view.ctp:25
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:53
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:54
 msgid "Contractnames"
 msgstr "契約書名"
 
@@ -1013,8 +1012,9 @@ msgid "Order No"
 msgstr "受注No"
 
 #: Template/Guides/index.ctp:17
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:28
 msgid "Guides"
-msgstr ""
+msgstr "Navi"
 
 #: Template/Languages/add.ctp:12;19 Template/Languages/edit.ctp:20;35
 #: Template/Languages/view.ctp:9;19
@@ -1023,7 +1023,7 @@ msgstr "言語一覧"
 
 #: Template/Languages/add.ctp:24 Template/Languages/edit.ctp:40
 #: Template/Languages/index.ctp:10 Template/Languages/view.ctp:25
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:55
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:56
 msgid "Languages"
 msgstr "言語"
 
@@ -1051,39 +1051,39 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:46
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:47
 #: Template/Supportcontracts/add.ctp:12;20
 #: Template/Supportcontracts/edit.ctp:20;36
 #: Template/Supportcontracts/view.ctp:9;20
 msgid "List Supportcontracts"
 msgstr "CANVAS一覧"
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:47
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:48
 #: Template/Productinfos/add.ctp:12;19 Template/Productinfos/edit.ctp:20;35
 #: Template/Productinfos/view.ctp:9;19
 msgid "List Productinfos"
 msgstr "品目CD一覧"
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:54
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:55
 msgid "Appforms"
 msgstr "申込書名"
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:57
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:58
 msgid "Statuses"
 msgstr "ステータス"
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:58
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:59
 #: Template/Licenses/index.ctp:18
 msgid "Conditions"
 msgstr "契約状態"
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:59 Template/Users/add.ctp:24
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:60 Template/Users/add.ctp:24
 #: Template/Users/edit.ctp:40 Template/Users/index.ctp:10
 #: Template/Users/view.ctp:24
 msgid "Users"
 msgstr "ユーザ"
 
-#: Template/Layout/TwitterBootstrap/dashboard.ctp:62
+#: Template/Layout/TwitterBootstrap/dashboard.ctp:63
 msgid "Logout"
 msgstr ""
 
@@ -1101,8 +1101,8 @@ msgid "Delete License"
 msgstr "ライセンス削除"
 
 #: Template/Orders/add.ctp:13 Template/Orders/edit.ctp:21;44
-#: Template/Orders/index.ctp:7 Template/Statuses/add.ctp:12;19
-#: Template/Statuses/edit.ctp:20;35 Template/Statuses/view.ctp:9;19
+#: Template/Statuses/add.ctp:12;19 Template/Statuses/edit.ctp:20;35
+#: Template/Statuses/view.ctp:9;19
 msgid "List Statuses"
 msgstr "ステータス一覧"
 
@@ -1195,19 +1195,19 @@ msgstr "保守用"
 
 #: Template/Requests/index.ctp:6 Template/Requests/view.ctp:10;22
 msgid "New Request"
-msgstr "ライセンス申込追加"
+msgstr "ライセンス依頼追加"
 
 #: Template/Requests/index.ctp:12
 msgid "Requests"
-msgstr "ライセンス申込"
+msgstr "ライセンス依頼"
 
 #: Template/Requests/view.ctp:7;19
 msgid "Edit Request"
-msgstr "ライセンス申込編集"
+msgstr "ライセンス依頼編集"
 
 #: Template/Requests/view.ctp:8;20
 msgid "Delete Request"
-msgstr "ライセンス申込削除"
+msgstr "ライセンス依頼削除"
 
 #: Template/Requests/view.ctp:79
 msgid "License Date"

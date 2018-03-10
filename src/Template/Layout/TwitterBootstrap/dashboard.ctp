@@ -25,7 +25,7 @@ $this->start('tb_body_start');
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-divider"></li>
-                    <li class="active"><?= $this->Html->link(__('Guide'), ['controller' => 'Guides', 'action' => 'index']); ?></li>
+                    <li class="active"><?= $this->Html->link(__('Guides'), ['controller' => 'Guides', 'action' => 'index']); ?></li>
                     <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">State <span class="caret"></span></a>
                         <ul class="dropdown-menu">

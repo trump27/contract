@@ -9,18 +9,19 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
     <li><a href="#number1">情報参照</a></li>
     <li><a href="#number2">契約書登録</a></li>
     <li><a href="#number3">ライセンス登録</a></li>
-    <li><a href="#number4">ライセンス利用申込書</a></li>
+    <li><a href="#number4"><?=__('Request')?></a></li>
 <?php $this->end();?>
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>');?>
 
-<div class="page-header">
+<div class="jumbotron">
   <h1><?= __('Guides')?></h1>
+  <p>各種登録処理のガイド</p>
 </div>
 
 <div id="number1" />
 <div class="bs-callout bs-callout-success">
-  <h1>情報参照</h1>
-  <p>基幹情報を確認する。</p>
+  <h1>参考情報</h1>
+  <p>基幹の情報を参照する。</p>
 
   <?= $this->Html->link('CANVASを確認する', ['controller'=>'Supportcontracts', 'action' => 'index'],
        ['class' => 'btn btn-lg btn-success', 'role' => 'button']); ?>
@@ -33,7 +34,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 <div id="number2" />
 <div class="bs-callout bs-callout-primary">
   <h1>契約登録</h1>
-  <p>契約書PDFを登録する。</p>
+  <p>注文・取引における手続き、契約書（PDF）などを登録する。</p>
   <button type="button" data-url="/contracts/add/" class="btn btn-info btn-lg" data-toggle="modal" data-target="#customerModal">
   契約を登録する
   </button>
@@ -50,7 +51,7 @@ $this->extend('../Layout/TwitterBootstrap/dashboard');
 
 <div id="number4" />
 <div class="bs-callout bs-callout-info">
-  <h1>ライセンス利用申込書</h1>
+  <h1><?=__('Request')?></h1>
   <p>既存顧客のライセンス変更の利用申込書を登録、出力する。</p>
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#customerModal">
   申込書を登録する
