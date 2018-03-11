@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
 
-      <div class="alert alert-danger" id= "msg" style:"display:none" role="alert">表示する<?=__('Orders')?>を選択してください。</div>
+      <div class="alert alert-danger" id= "msg" style="display:none" role="alert">表示する<?=__('Orders')?>を選択してください。</div>
 
       <div id="orderinfo" style="overflow:auto;"></div>
 

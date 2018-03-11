@@ -2,7 +2,10 @@
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
+use Cake\ORM\Query;
 use Cake\Validation\Validator;
+use Cake\Database\Expression\IdentifierExpression;
+
 
 /**
  * Contractnames Model
@@ -63,5 +66,26 @@ class ContractnamesTable extends Table
             ->integer('status_id');
 
         return $validator;
+    }
+
+    // with offer to
+    public function findWithp(Query $query, array $options)
+    {
+
+        $concat = $query->func()->concat([
+            'Contractnames.contract_name' => 'identifier',
+            ' (',
+            'Statuses.name' => 'identifier',
+            ')',
+        ]);
+        $query
+            ->select(['id', 'name' => $concat])
+            ->contain(['Statuses'])
+            ->formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
+                return $results->combine('id', 'name');
+            });
+
+        return $query;
+
     }
 }

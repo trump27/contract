@@ -94,7 +94,7 @@ class ContractsController extends AppController
         }
         $clients = $this->Contracts->Clients->find('withpf');
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
-        $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
+        $contractnames = $this->Contracts->Contractnames->find('withp');
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
         $orders = $this->Contracts->Orders->find('list', ['limit' => 10]);
         $statuses = $this->Contracts->Statuses->find('list', ['limit' => 200]);
@@ -143,7 +143,7 @@ class ContractsController extends AppController
         }
         $clients = $this->Contracts->Clients->find('withpf');
         $customers = $this->Contracts->Customers->find('list', ['limit' => 1000]);
-        $contractnames = $this->Contracts->Contractnames->find('list', ['limit' => 200]);
+        $contractnames = $this->Contracts->Contractnames->find('withp');
         $users = $this->Contracts->Users->find('list', ['limit' => 200]);
         $orders = $this->Contracts->Orders->find('list', ['limit' => 1000]);
         $statuses = $this->Contracts->Statuses->find('list', ['limit' => 200]);
