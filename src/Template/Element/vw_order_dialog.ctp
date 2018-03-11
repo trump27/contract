@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
 
-      <div class="alert alert-danger" id= "msg" display="none" role="alert">表示する<?=__('Orders')?>を選択してください。</div>
+      <div class="alert alert-danger" id= "msg" style:"display:none" role="alert">表示する<?=__('Orders')?>を選択してください。</div>
 
       <div id="orderinfo" style="overflow:auto;"></div>
 
@@ -22,8 +22,12 @@
 
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function () {
+    $('#orderModal').on('hide.bs.modal', function (e) {
+        $("#orderinfo").hide();
+        $("#msg").hide();
+    })
     $('#orderModal').on('shown.bs.modal', function (e) {
-        $("#orderinfo").html("");
+        $("#orderinfo").hide();
         if ($('#order-id').val()) {
             $('#msg').hide();
         } else {
@@ -34,7 +38,7 @@ $(function () {
             url: "/orders/getinfoview/" + $('#order-id').val(),
         })
         .done(function (data) {
-            $("#orderinfo").html(data);
+            $("#orderinfo").html(data).fadeIn(1000);
         })
         .fail(function () {
             console.log('cannot load options.');

@@ -27,6 +27,10 @@ echo $this->Form->end();
 
 <?= $this->Html->scriptStart(['block' => true]) ?>
 $(function () {
+    $('#licenseModal').on('hide.bs.modal', function (e) {
+        $("#select-license").html("");
+        $("#infoview").hide();
+    })
     $('#licenseModal').on('shown.bs.modal', function (e) {
         if (!$('#customer-id').val()) alert('案件が選択させていません');
         $("#select-license").html("");
@@ -35,7 +39,7 @@ $(function () {
             url: "/licenses/getrelative/" + $('#customer-id').val(),
         })
         .done(function (data) {
-            $("#select-license").html(data);
+            $("#select-license").html(data).effect("highlight", "slow");
         })
         .fail(function () {
             console.log('cannot load options.');
@@ -45,12 +49,13 @@ $(function () {
     $("#select-license").on("change keyup paste", function () {
         clearTimeout(t);
         t = setTimeout(function () {
+            $("#infoview").hide();
             $.ajax({
                 url: "/licenses/getinfoview/" + $('#select-license').val(),
             })
             .done(function (data) {
-                $("#infoview").html(data);
-                $("#select-license").effect("highlight", "slow");
+                $("#infoview").html(data).fadeIn(1000);
+//                $("#select-license").effect("highlight", "slow");
             })
             .fail(function () {
                 console.log('cannot load getinfoview.');
