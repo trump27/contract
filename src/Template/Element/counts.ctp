@@ -1,5 +1,5 @@
 <h2 class="page-header vspace">未処理件数</h2>
-<table class="table table-bordered table-responsive text-nowrap" cellpadding="0" cellspacing="0" style="width:auto">
+<table class="table table-responsive text-nowrap" cellpadding="0" cellspacing="0" style="width:auto">
     <thead>
         <tr>
             <th></th>
@@ -11,7 +11,7 @@
     <tbody>
         <?php foreach ($counts as $title => $cnts): ?>
         <tr>
-            <td style="width:200px"><?php
+            <td class="warning" style="width:200px"><?php
                 echo "<a href='#$title'>".__($title)."</a>";
             ?></td>
             <td align="right" style="width:120px"><?php
