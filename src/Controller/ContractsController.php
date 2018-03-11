@@ -124,10 +124,10 @@ class ContractsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $contract = $this->Contracts->patchEntity($contract, $this->request->getData());
             // 契約書のステータスをセット
-            $sts = $this->Contracts->Contractnames->findById($contract['contractname_id'])
-                ->select(['status_id'])
-                ->first();
-            $contract['status_id'] = $sts['status_id'];
+            // $sts = $this->Contracts->Contractnames->findById($contract['contractname_id'])
+            //     ->select(['status_id'])
+            //     ->first();
+            // $contract['status_id'] = $sts['status_id'];
             $before = $this->Contracts->get($contract->id);     // 変更前データ取得
             if ($this->Contracts->save($contract)) {
                 if ($contract->order_id <> $before->order_id) {

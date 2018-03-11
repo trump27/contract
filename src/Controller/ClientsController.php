@@ -31,7 +31,7 @@ class ClientsController extends AppController
         $this->loadModel('Orders');
         $orders = $this->Orders->find()
             ->select(['id', 'company_code', 'company_name1', 'order_date', 'delivery_date', 'Clients.partner_id',
-                'sales_date', 'status_msg', 'product_name', 'Clients.id', 'Orders.status_id'])
+                'sales_date', 'status_msg', 'product_name', 'Clients.id', 'Orders.status_id', 'Orders.modified'])
             ->contain(['Clients']);
 
         if ($mode == 'state') {
@@ -39,7 +39,8 @@ class ClientsController extends AppController
                 ->orWhere(['Orders.status_id <>' => 99]);
         } else {
             $orders->limit($limit)
-                ->order(['order_date' => 'DESC']);
+                ->order(['Orders.modified' => 'DESC']);
+                // ->order(['order_date' => 'DESC']);
         }
 
         $this->loadModel('Contracts');
@@ -70,7 +71,7 @@ class ClientsController extends AppController
         }
 
         $licenses = $this->Clients->Licenses->find()
-            ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name', 'Licenses.issued',
+            ->select(['Licenses.id', 'Licenses.status_id', 'Licenses.license_no', 'Licenses.license_name', 'Licenses.issued', 'Licenses.modified',
                 'Clients.id', 'Clients.client_name', 'Clients.partner_id', 'Customers.id', 'Customers.customer_name', 'Licenses.status_id'])
             ->contain(['Clients', 'Customers']);
         if ($mode == 'state') {

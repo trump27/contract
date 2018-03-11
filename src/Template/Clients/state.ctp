@@ -35,6 +35,7 @@ $this->start('tb_actions');
     <thead>
         <tr>
             <th class="actions"><?=__('Actions');?></th>
+            <th></th>
             <th><?=__('Company Name1');?></th>
             <th><?=__('Status Msg');?></th>
             <th><?=__('Status Id');?></th>
@@ -55,8 +56,10 @@ $this->start('tb_actions');
                         echo $this->Html->link('', ['controller'=>'Contracts', 'action' => 'add', 'client_id'=>$order->client->id], ['title' => __('New Contract'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-folder-open alert-warning']).' ';
                         echo $this->Html->link('', ['controller'=>'Licenses', 'action' => 'add', 'client_id'=>$order->client->id], ['title' => __('New License'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-edit alert-danger']);
                     }
+                    // echo $order->modified->isToday();
                 ?>
             </td>
+            <td><?= $order->modified->isToday() ? '<span class="text-danger">New</span>': '' ?></td>
             <td><?=$order->has('client') ? $this->Html->link($this->my->trunc($order->company_name1), ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_name1; ?></td>
             <td><?=h($order->status_msg)?></td>
             <!-- <td><?= $order->has('status') ? $order->status->name : '未処理' ?></td> -->
@@ -79,6 +82,7 @@ $this->start('tb_actions');
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
+            <th></th>
             <th><?= __('Id'); ?></th>
             <th><?= __('Client'); ?></th>
             <th><?= __('Contract Date'); ?></th>
@@ -98,6 +102,7 @@ $this->start('tb_actions');
                 <!-- <?= $this->Html->link('', ['action' => 'edit', $contract->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil alert-info']) ?> -->
                 <!-- <?= $this->Form->postLink('', ['action' => 'delete', $contract->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contract->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
             </td>
+            <td><?= $contract->modified->isToday() ? '<span class="text-danger">New</span>': '' ?></td>
             <td align="right"><?= $this->Number->format($contract->id) ?></td>
             <td>
                 <?= $contract->has('client') ? $this->Html->link($this->my->trunc($contract->client->client_name), ['controller' => 'Clients', 'action' => 'view', $contract->client->id]) : '' ?>
@@ -121,6 +126,7 @@ $this->start('tb_actions');
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
+            <th></th>
             <th><?= __('Id'); ?></th>
             <th><?= __('Client'); ?></th>
             <th><?= __('Customer'); ?></th>
@@ -136,6 +142,7 @@ $this->start('tb_actions');
             <td class="actions">
                 <?= $this->Html->link('', ['controller' => 'Licenses', 'action' => 'view', $license->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
             </td>
+            <td><?= $license->modified->isToday() ? '<span class="text-danger">New</span>': '' ?></td>
             <td align="right"><?= $this->Number->format($license->id) ?></td>
             <td>
                 <?= $license->has('client') ? $this->Html->link($this->my->trunc($license->client->client_name), ['controller' => 'Clients', 'action' => 'view', $license->client->id]) : '' ?>
@@ -160,6 +167,7 @@ $this->start('tb_actions');
     <thead>
         <tr>
             <th class="actions"><?= __('Actions'); ?></th>
+            <th></th>
             <th><?= __('id'); ?></th>
             <th><?= __('client_id'); ?></th>
             <th><?= __('customer_id'); ?></th>
@@ -176,6 +184,7 @@ $this->start('tb_actions');
             <td class="actions">
                 <?= $this->Html->link('', ['controller'=>'Requests', 'action' => 'view', $request->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open alert-info']) ?>
             </td>
+            <td><?= $request->modified->isToday() ? '<span class="text-danger">New</span>': '' ?></td>
             <td><?= $this->Number->format($request->id) ?></td>
             <td>
                 <?= $request->has('client') ? $this->Html->link($this->My->trunc($request->client->client_name), ['controller' => 'Clients', 'action' => 'view', $request->client->id]) : '' ?>
