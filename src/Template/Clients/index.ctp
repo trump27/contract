@@ -9,7 +9,7 @@ $this->start('tb_actions');
 <?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <h1 class="page-header"><?= __('Clients') ?></h1>
-<div class="alert alert-info" role="alert">網掛けが再販先</div>
+<div class="alert alert-info" role="alert">網掛けは再販先</div>
 
 <?php
 echo $this->Form->create(null, ['valueSources' => 'query', 'class' => 'form-inline']);
