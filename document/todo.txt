@@ -30,3 +30,22 @@ CREATE INDEX `orders_status` ON `orders` (`status_id` ASC);
 CREATE INDEX `contracts_status` ON `contracts` (`status_id` ASC);
 CREATE INDEX `licenses_status` ON `licenses` (`status_id` ASC);
 CREATE INDEX `requests_status` ON `requests` (`status_id` ASC);
+
+■sqlite to mysql
+CREATE DATABASE `cake3_contract` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+sqlite3 contract.db .dump > dump.sql
+
+
+cat dump.sql | python sqlite3-to-mysql.py > mysql.sql
+
+テキストエディタ／エスケープ変換（フォルダのパス名の最後に該当）
+\' -> \\'
+
+mysql.sqlより以下を削除
+"INSERT INTO sqlite_sequence VALUES('xxxx',x);"
+
+phpmyadminでインポート
+
+
