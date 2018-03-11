@@ -42,6 +42,10 @@ $this->end();
             <td><?= $order->has('client') ? $this->Html->link($order->client->client_name, ['controller' => 'Clients', 'action' => 'view', $order->client->id]) : $order->company_code ?></td>
         </tr>
         <tr>
+            <td><?= __('Status Msg') ?></td>
+            <td><?= h($order->status_msg) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Company Name1') ?></td>
             <td><?= h($order->company_name1) ?></td>
         </tr>
@@ -50,6 +54,22 @@ $this->end();
             <td><?= h($order->company_name2) ?></td>
         </tr>
         <tr>
+        <tr>
+            <td><?= __('Order Date') ?></td>
+            <td><?= h($order->order_date) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Orderym') ?></td>
+            <td><?= h($order->orderym) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Delivery Date') ?></td>
+            <td><?= h($order->delivery_date) ?></td>
+        </tr>
+        <tr>
+            <td><?= __('Sales Date') ?></td>
+            <td><?= h($order->sales_date) ?></td>
+        </tr>
             <td><?= __('Order No') ?></td>
             <td><?= h($order->order_no) ?></td>
         </tr>
@@ -60,10 +80,6 @@ $this->end();
         <tr>
             <td><?= __('Purchase No') ?></td>
             <td><?= h($order->purchase_no) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Status Msg') ?></td>
-            <td><?= h($order->status_msg) ?></td>
         </tr>
         <tr>
             <td><?= __('Product Category') ?></td>
@@ -96,22 +112,6 @@ $this->end();
         <tr>
             <td><?= __('Sales Staff') ?></td>
             <td><?= h($order->sales_staff) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Order Date') ?></td>
-            <td><?= h($order->order_date) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Orderym') ?></td>
-            <td><?= h($order->orderym) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Delivery Date') ?></td>
-            <td><?= h($order->delivery_date) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Sales Date') ?></td>
-            <td><?= h($order->sales_date) ?></td>
         </tr>
         <tr>
             <td><?= __('Product Detail') ?></td>

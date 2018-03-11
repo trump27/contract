@@ -215,7 +215,7 @@ class ClientsTable extends Table
     {
         $case = $query->newExpr()
             ->addCase(
-                [$query->newExpr()->add(['Clients.partner_flag' => 1])],
+                [$query->newExpr()->add(['Clients.partner_id >' => 0])],
                 [
                     $query->func()->concat([
                         'Clients.client_name' => 'identifier',

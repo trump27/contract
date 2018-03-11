@@ -221,9 +221,9 @@ return [
     'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',  //Sqlite
+            'driver' => 'Cake\Database\Driver\Sqlite',  //Sqlite
             'persistent' => false,
-            'host' => '127.0.0.1',  //localhost
+            'host' => 'localhost',  //localhost
             /**
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
@@ -231,10 +231,10 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root', //my_app
-            'password' => 'root', //secret
-            'database' => 'cake3_contract',    //ROOT . DS . 'contract.db'
+            'password' => 'secret', //secret
+            'database' => ROOT . DS . 'contract.db',
             'encoding' => 'utf8',
-            // 'timezone' => 'Asia/Tokyo',
+            'timezone' => 'Asia/Tokyo',
             'flags' => [],
             'cacheMetadata' => true,
             'log' => false,
