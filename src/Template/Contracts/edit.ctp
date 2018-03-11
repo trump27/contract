@@ -66,6 +66,16 @@ $this->element('datepicker');
     echo $this->Form->control('client_id', ['options' => $clients]);
     echo $this->Form->control('customer_id', ['options' => $customers]);
     echo $this->Form->control('order_id', ['options' => $orders]);
+?>
+<div class="form-group">
+<div class=" col-sm-offset-3 col-md-offset-3">
+<button type="button" class="btn btn-success"
+    data-toggle="modal" data-target="#orderModal" style="margin-left:15px">
+選択した受注を確認する
+</button>
+</div>
+</div>
+<?php
     echo $this->Form->control('contractname_id', ['options' => $contractnames]);
     echo $this->Form->control('contract_date', ['type' => 'text', 'class' => 'datepicker']);
     echo $this->Form->control('remarks');
@@ -80,3 +90,7 @@ $this->element('datepicker');
 </fieldset>
 <?= $this->Form->button(__("Save"), ['class'=>'btn-primary']); ?>
 <?= $this->Form->end() ?>
+
+<?php
+echo $this->element('vw_order_dialog');
+?>

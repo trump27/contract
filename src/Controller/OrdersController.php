@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Orders Controller
@@ -62,11 +63,11 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
-        $order = $this->Orders->get($id, [
+        $vw_order = $this->Orders->get($id, [
             'contain' => ['Statuses', 'Users', 'Clients', 'Licenses'],
         ]);
 
-        $this->set('order', $order);
+        $this->set('vw_order', $vw_order);
     }
 
     /**
@@ -138,5 +139,20 @@ class OrdersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /* 同一Customerのライセンスを一覧 for js*/
+    public function getinfoview($order_id = null)
+    {
+        $this->autoRender = false;
+        Configure::write('debug', 0);
+        if (empty($order_id)) {
+            return null;
+        }
+        $vw_order = $this->Orders->get($order_id, [
+            'contain' => ['Clients', 'Statuses', 'Users'],
+        ]);
+        $this->set('vw_order', $vw_order);
+        $this->render('/Element/vw_order', '');
     }
 }

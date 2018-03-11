@@ -82,6 +82,16 @@ echo $this->Form->control('customer_id', ['options' => $customers]);
 <?php
 
 echo $this->Form->control('order_id', ['options' => $orders]);
+?>
+<div class="form-group">
+<div class=" col-sm-offset-3 col-md-offset-3">
+<button type="button" class="btn btn-success"
+    data-toggle="modal" data-target="#orderModal" style="margin-left:15px">
+選択した受注を確認する
+</button>
+</div>
+</div>
+<?php
 echo $this->Form->control('relate_no');
 echo $this->Form->control('condition_id', ['options' => $conditions,
     'help'=>Cake\Utility\Text::toList($conditions->toArray(), $and = 'と').'のいずれかの状態を選択'
@@ -106,4 +116,5 @@ echo $this->Form->control('file', ['type'=>'file', 'label' => '新しいファ�
 
 <?php
 echo $this->element('vw_license_dialog');
+echo $this->element('vw_order_dialog');
 ?>
