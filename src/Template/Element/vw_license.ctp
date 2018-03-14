@@ -75,7 +75,7 @@
         </tr>
         <tr>
             <td><?= __('File') ?></td>
-            <td><?= $this->My->downloadlink($vw_license) ?></td>
+            <td><?= $this->Html->link($vw_license->file, ['controller' => 'Licenses', 'action' => 'download', $vw_license->id]) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>

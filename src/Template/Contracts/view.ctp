@@ -69,7 +69,7 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('File') ?></td>
-            <td><?= $this->My->downloadlink($contract) ?></td>
+            <td><?= $this->Html->link($contract->file, ['controller' => 'Contracts', 'action' => 'download', $contract->id]) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>

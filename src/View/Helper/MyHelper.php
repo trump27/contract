@@ -18,31 +18,31 @@ class MyHelper extends Helper
      *
      * @var array
      */
-    protected $_defaultConfig = [
-        'field' => 'file',
-        'dir' => 'dir',
-    ];
+    // protected $_defaultConfig = [
+    //     'field' => 'file',
+    //     'dir' => 'dir',
+    // ];
 
     /**
      * uploaderしたファイルのパスを生成
      */
-    public function downloadlink($record)
-    {
-        $file = $this->config('field');
-        $dir = $this->config('dir');
-        return $this->Html->link(urldecode($record->$file), str_replace(
-            'webroot', '',
-            str_replace('\\', '/', $record->$dir) . urlencode($record->$file)), ['target' => '_blank']);
-    }
+    // public function downloadlink($record)
+    // {
+    //     $file = $this->config('field');
+    //     $dir = $this->config('dir');
+    //     return $this->Html->link(urldecode($record->$file), str_replace(
+    //         'webroot', '',
+    //         str_replace('\\', '/', $record->$dir) . urlencode($record->$file)), ['target' => '_blank']);
+    // }
 
-    public function dllink($record)
-    {
-        $file = $this->config('field');
-        $dir = $this->config('dir');
-        return str_replace(
-            'webroot', '',
-            str_replace('\\', '/', $record->$dir) . urlencode($record->$file));
-    }
+    // public function dllink($record)
+    // {
+    //     $file = $this->config('field');
+    //     $dir = $this->config('dir');
+    //     return str_replace(
+    //         'webroot', '',
+    //         str_replace('\\', '/', $record->$dir) . urlencode($record->$file));
+    // }
 
     /**
      * 文字列の切りつめ

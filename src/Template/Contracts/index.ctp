@@ -46,7 +46,7 @@ echo $this->Form->end();
                 <!-- <?= $this->Form->postLink('', ['action' => 'delete', $contract->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contract->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
                 <?php
                 if (!empty($contract->file))
-                    echo $this->Html->link('', $this->My->dllink($contract), ['title' => urldecode($contract->file), 'target'=>'_blank', 'class' => 'btn btn-default btn-xs glyphicon glyphicon-file alert-warning']);
+                    echo $this->Html->link('', ['controller' => 'Contracts', 'action' => 'download', $contract->id], ['title' => $contract->file, 'class' => 'btn btn-default btn-xs glyphicon glyphicon-file alert-warning']);
                 ?>
             </td>
             <td align="right"><?= $this->Number->format($contract->id) ?></td>

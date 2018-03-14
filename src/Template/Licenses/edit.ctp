@@ -107,7 +107,7 @@ echo $this->Form->control('enddate', ['type' => 'text', 'class' => 'datepicker']
 echo $this->Form->control('license_key');
 echo $this->Form->control('notice');
 echo $this->Form->control('file', ['type'=>'file', 'label' => '新しいファイル',
-        'help' =>  "登録済みのファイル： ".$this->My->downloadlink($license)
+        'help' =>  "登録済みのファイル： ".$this->Html->link($license->file, ['controller' => 'Licenses', 'action' => 'download', $license->id])
     ]);
 ?>
 </fieldset>

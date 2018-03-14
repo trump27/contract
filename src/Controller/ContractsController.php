@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Contracts Controller
@@ -169,5 +170,19 @@ class ContractsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function download($id=null) {
+        $this->autoRender = false;
+
+        $contract = $this->Contracts->get($id);
+        if (!$contract->file) return;
+        $response = $this->response->withFile(
+            ROOT . DS . $contract->dir . $contract->file,
+            ['download' => true, 'name' => $contract->file]
+        );
+
+        // レスポンスオブジェクトを返すとコントローラーがビューの描画を中止します
+        return $response;
     }
 }

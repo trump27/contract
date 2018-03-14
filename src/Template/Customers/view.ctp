@@ -126,7 +126,7 @@ $this->end();
                     <td align="right"><?= h($contracts->id) ?></td>
                     <td><?= h($contracts->contract_date) ?></td>
                     <td><?= h($contracts->contractname->contract_name) ?></td>
-                    <td><?= $this->My->downloadlink($contracts) ?></td>
+                    <td><?= $this->Html->link($contracts->file, ['controller' => 'Contracts', 'action' => 'download', $contracts->id]) ?></td>
                     <td class="actions">
                         <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'view', $contracts->id], ['title' => __('View'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-eye-open']) ?>
                         <?= $this->Html->link('', ['controller' => 'Contracts', 'action' => 'edit', $contracts->id], ['title' => __('Edit'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-pencil']) ?>

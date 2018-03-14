@@ -226,6 +226,19 @@ class LicensesController extends AppController
         $this->render('/Element/vw_license', '');
     }
 
+    public function download($id=null) {
+        $this->autoRender = false;
+
+        $license = $this->Licenses->get($id);
+        $response = $this->response->withFile(
+            ROOT . DS . $license->dir . $license->file,
+            ['download' => true, 'name' => $license->file]
+        );
+
+        // レスポンスオブジェクトを返すとコントローラーがビューの描画を中止します
+        return $response;
+    }
+
     public function doc($id = null)
     {
         $this->autoRender = false;

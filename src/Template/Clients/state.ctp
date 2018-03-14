@@ -112,7 +112,9 @@ $this->start('tb_actions');
                 <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
             </td>
             <td><?= $this->My->todo($contract->status_id) ?></td>
-            <td><?= $this->My->downloadlink($contract) ?></td>
+            <!-- <td><?php //$this->My->downloadlink($contract) ?></td> -->
+            <!-- <td><?php // $this->My->dl('Contracts', $contract) ?></td> -->
+            <td><?= $this->Html->link($contract->file, ['controller' => 'Contracts', 'action' => 'download', $contract->id]) ?></td>
             <td><?= h($contract->modified) ?></td>
         </tr>
         <?php endforeach; ?>

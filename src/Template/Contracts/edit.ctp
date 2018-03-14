@@ -84,7 +84,7 @@ $this->element('datepicker');
     // echo $this->Form->control('file', ['disabled'=>'disabled', 'value'=>urldecode($contract->file)]);
     // echo $this->Form->control('file', ['type' => 'file', 'label'=>'新しいファイル']);
     echo $this->Form->control('file', ['type'=>'file', 'label' => '新しいファイル',
-            'help' =>  "登録済みのファイル： ".$this->My->downloadlink($contract)
+            'help' =>  "登録済みのファイル： ". $this->Html->link($contract->file, ['controller' => 'Contracts', 'action' => 'download', $contract->id])
         ]);
 
     ?>

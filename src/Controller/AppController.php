@@ -99,11 +99,13 @@ class AppController extends Controller
     }
 
     // js用　order一覧をオプションで返す
-    public function orderoptions($client_id = null, $mode=null)
+    public function orderoptions($client_id = null, $mode = null)
     {
         $this->autoRender = false;
         Configure::write('debug', 0);
-        if (empty($client_id )) return null;
+        if (empty($client_id)) {
+            return null;
+        }
 
         $this->loadModel('Clients');
         $this->loadModel('Orders');
@@ -118,10 +120,10 @@ class AppController extends Controller
         $list = $this->Orders->find()
             ->select(['Orders.id', 'order_date', 'Orders.company_name1', 'Orders.product_name', 'Orders.product_detail']);
 
-        if ($mode <> 'edit') {
+        if ($mode != 'edit') {
             // 編集時以外は未処理のみ表示
             $list->where(['Orders.status_id IS' => null])
-            ->orWhere(['Orders.status_id <>' => 99]);
+                ->orWhere(['Orders.status_id <>' => 99]);
         }
 
         // $list->contain('Clients', function ($q) use ($client_id) {
@@ -129,22 +131,34 @@ class AppController extends Controller
         //             ->where(['Clients.id' => $client_id]);
         //     })
         $list->matching('Clients', function ($q) use ($ids) {
-                return $q
-                    ->where(['Clients.id IN' => $ids]);
-            });
+            return $q
+                ->where(['Clients.id IN' => $ids]);
+        });
 
         $data = $list->map(function ($row) {
-                $row->product_name = $row->order_date . ' 【' . $row->company_name1 . '】 '
-                    . mb_convert_kana($row->product_name,'aks') . '/'. mb_convert_kana(mb_substr($row->product_detail,0,20),'aks');
-                return $row;
-            })
+            $row->product_name = $row->order_date . ' 【' . $row->company_name1 . '】 '
+            . mb_convert_kana($row->product_name, 'aks') . '/' . mb_convert_kana(mb_substr($row->product_detail, 0, 20), 'aks');
+            return $row;
+        })
             ->combine('id', 'product_name')
             ->toArray();
 
         // $this->log($data);
-        $data = [""=>"---"] + $data;
+        $data = ["" => "---"] + $data;
         $this->set('list', $data);
         $this->render('/Element/selectlist', '');
 
+    }
+
+    // ファイルダウンロード
+    public function sendFile($dir, $name)
+    {
+        $response = $this->response->withFile(
+            ROOT . DS . $dir . $name,
+            ['download' => true, 'name' => $name]
+        );
+
+        // レスポンスオブジェクトを返すとコントローラーがビューの描画を中止します
+        return $response;
     }
 }

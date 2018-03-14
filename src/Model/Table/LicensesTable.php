@@ -75,9 +75,9 @@ class LicensesTable extends Table
         $this->addBehavior('Josegonzalez/Upload.Upload', [
             'file' => [
                 'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}',
-                'nameCallback' => function ($data, $settings) {
-                    return urlencode($data['name']);
-                },
+                // 'nameCallback' => function ($data, $settings) {
+                //     return urlencode($data['name']);
+                // },
                 'keepFilesOnDelete' => false,
             ],
         ]);
