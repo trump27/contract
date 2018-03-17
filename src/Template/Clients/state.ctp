@@ -109,7 +109,7 @@ $this->start('tb_actions');
             </td>
             <td><?= $contract->contract_date ?></td>
             <td>
-                <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname->id]) : '' ?>
+                <?= $contract->has('contractname') ? $this->Html->link($this->my->trunc($contract->contractname->contract_name), ['controller' => 'Contractnames', 'action' => 'view', $contract->contractname_id]) : '' ?>
             </td>
             <td><?= $this->My->todo($contract->status_id) ?></td>
             <!-- <td><?php //$this->My->downloadlink($contract) ?></td> -->

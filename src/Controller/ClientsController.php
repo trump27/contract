@@ -46,7 +46,7 @@ class ClientsController extends AppController
         $this->loadModel('Contracts');
         $contracts = $this->Contracts->find()
             ->select(['Contracts.id', 'Contracts.file', 'Contracts.dir', 'Contracts.modified', 'contract_date', 'Clients.id', 'Clients.client_name', 'Clients.partner_id',
-                'Customers.id', 'Customers.customer_name', 'Contractnames.contract_name', 'Contracts.status_id'])
+                'Customers.id', 'Customers.customer_name', 'Contractnames.contract_name', 'Contracts.contractname_id', 'Contracts.status_id'])
             ->contain(['Clients', 'Customers', 'Contractnames']);
 
         if ($mode == 'state') {
