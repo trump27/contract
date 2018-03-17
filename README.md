@@ -1,4 +1,4 @@
-# 概要 
+# 概要
 
 cakephp 3.5
 
@@ -11,6 +11,13 @@ cakephp 3.5
 # インストール
 
 以降、コマンドはbashで行う。
+
+## cloneした場合
+
+```bash
+# adminユーザ挿入
+bin/cake migrations seed
+```
 
 ## composer準備
 ```
