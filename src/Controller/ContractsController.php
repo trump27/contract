@@ -179,7 +179,7 @@ class ContractsController extends AppController
         if (!$contract->file) return;
         $response = $this->response->withFile(
             ROOT . DS . $contract->dir . $contract->file,
-            ['download' => true, 'name' => $contract->file]
+            ['download' => true, 'name' => urldecode($contract->file)]
         );
 
         // レスポンスオブジェクトを返すとコントローラーがビューの描画を中止します

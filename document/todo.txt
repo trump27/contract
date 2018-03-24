@@ -9,8 +9,8 @@ Actions	ID	名前
 ステータス
 Actions	ID	名前
   	1	未処理
-  	10	企画へ
-  	20	サポートへ
+  	10	to planner
+  	20	to support
   	99	完了
 
 

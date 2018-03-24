@@ -53,7 +53,7 @@ echo $this->Form->end();
                 <!-- <?= $this->Form->postLink('', ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id), 'title' => __('Delete'), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-trash alert-danger']) ?> -->
                 <?php
                 if (!empty($license->file))
-                    echo $this->Html->link('', ['controller' => 'Licenses', 'action' => 'download', $license->id], ['title' => $license->file, 'class' => 'btn btn-default btn-xs glyphicon glyphicon-file alert-warning']);
+                    echo $this->Html->link('', ['controller' => 'Licenses', 'action' => 'download', $license->id], ['title' => urldecode($license->file), 'class' => 'btn btn-default btn-xs glyphicon glyphicon-file alert-warning']);
                 ?>
             </td>
             <td align="right"><?= $this->Number->format($license->id) ?></td>

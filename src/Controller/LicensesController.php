@@ -232,7 +232,7 @@ class LicensesController extends AppController
         $license = $this->Licenses->get($id);
         $response = $this->response->withFile(
             ROOT . DS . $license->dir . $license->file,
-            ['download' => true, 'name' => $license->file]
+            ['download' => true, 'name' => urldecode($license->file)]
         );
 
         // レスポンスオブジェクトを返すとコントローラーがビューの描画を中止します

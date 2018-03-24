@@ -91,7 +91,7 @@
         </tr>
         <tr>
             <td><?= __('File') ?></td>
-            <td><?= h($vw_order->file) ?></td>
+            <td><?= h(urldecode($vw_order->file)) ?></td>
         </tr>
         <tr>
             <td><?= __('Dir') ?></td>

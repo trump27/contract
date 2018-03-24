@@ -72,9 +72,9 @@ class ContractsTable extends Table
             'file' => [
                 'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}',
                 // 'path' => 'webroot{DS}files{DS}{model}{DS}{field}{DS}{day}{time}{DS}',
-                // 'nameCallback' => function ($data, $settings) {
-                //     return urlencode($data['name']);
-                // },
+                'nameCallback' => function ($data, $settings) {
+                    return urlencode($data['name']);
+                },
                 'keepFilesOnDelete' => false,
             ],
         ]);

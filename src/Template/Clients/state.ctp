@@ -114,7 +114,7 @@ $this->start('tb_actions');
             <td><?= $this->My->todo($contract->status_id) ?></td>
             <!-- <td><?php //$this->My->downloadlink($contract) ?></td> -->
             <!-- <td><?php // $this->My->dl('Contracts', $contract) ?></td> -->
-            <td><?= $this->Html->link($contract->file, ['controller' => 'Contracts', 'action' => 'download', $contract->id]) ?></td>
+            <td><?= $this->Html->link(urldecode($contract->file), ['controller' => 'Contracts', 'action' => 'download', $contract->id]) ?></td>
             <td><?= h($contract->modified) ?></td>
         </tr>
         <?php endforeach; ?>
